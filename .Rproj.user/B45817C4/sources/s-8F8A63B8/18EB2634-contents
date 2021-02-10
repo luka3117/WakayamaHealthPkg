@@ -1,0 +1,7 @@
+wakayama::city.code
+
+help(package="wakayama")
+
+wakayama::aaa
+
+system("open .")
