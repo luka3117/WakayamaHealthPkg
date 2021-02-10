@@ -1,1 +1,6 @@
 system("open .")
+help(package = "Wakayama")
+
+Wakayama::DataFormat
+
+
