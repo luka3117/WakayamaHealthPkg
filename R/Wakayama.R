@@ -10,16 +10,72 @@ suppressMessages(library(tidyverse))
 #  "DataFormat.csv" data from Wakayama received from R2 11. 2
 #  latest version 2021年2月10日
 
+
+# ----------------- data import
 getwd()
-temp<-read_csv("data/DataFormat.csv", skip=1, locale = readr::locale(encoding = "CP932"))
-temp<-temp[-95,]
-tmep %>% dim()
-temp$X1
+d<-read_csv("data/DataFormat.csv", skip=1, locale = readr::locale(encoding = "CP932"))
+# d<-read_csv("data/DataFormat.csv", skip=1)
+d<-d[-95,]
+d %>% dim()
+d<-d %>% rename(key=X1)
+d %>% colnames() %>% head()
+# d %>% colnames() %>% tbl_df() %>%
+#   write_csv("var_name_Jpn.csv")
+var<-read.csv("var_name_Eng.csv")
+
+
+# ----------------- data varname change
+d
+colnames(d)<-var$var_name_Eng
+
+d %>% select(contains("dz"))
+
+
+# -----------------　data Jpn and Eng table
+
+JpnEng<-read_csv(file = "var_name_Jpn.csv") %>% bind_cols(., read_csv(file = "var_name_Eng.csv"))
+
+write_csv(JpnEng, "JpnEng.csv")
+
+
+# ----------------- descriptve stat
+
+install.packages("DataExplorer")
+library(DataExplorer)
+q
+
+d %>% select(Treatment_rate_Hospitalization_Malignant_neoplasm_2017:pop_Double_income_household_ratio_2020) %>%
+DataExplorer::create_report()
+
+
+
+d[,sapply(d, is.numeric)]
+
+summary(d)
+
+system("open .")
+
+
+# -----------------
+# ignore belows
+# ignore belows
+# ignore belows
+# ignore belows
+# ignore belows
+# ignore belows
+# ignore belows
+
+
+
+
+
 
 colnames(temp)
 temp %>% select_if(is.character)
 
-temp %>% select(contains("BMI")) %>% as.numeric()
+temp %>% select(contains("BMI")) %>% c()
+
+%>% as.numeric()
 
 temp$`BMI平均値_2012(男性20〜69歳)(女性40〜69歳)(単位Kg/㎡)`
 
@@ -415,8 +471,3 @@ aa %>% colnames()
 #・図書館数は、N列「図書館数（人口100万人当たり）」を取得し、
 #・DataFormat.csvのAY列に転記
 #############################################################
-
-
-
-
-
