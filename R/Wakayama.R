@@ -33,27 +33,75 @@ d %>% select(contains("dz"))
 
 # -----------------　data Jpn and Eng table
 
-JpnEng<-read_csv(file = "var_name_Jpn.csv") %>% bind_cols(., read_csv(file = "var_name_Eng.csv"))
+# 連番
 
-write_csv(JpnEng, "JpnEng.csv")
+JpnEng <-
+  read_csv(file = "var_name_Jpn.csv") %>% bind_cols(., read_csv(file = "var_name_Eng.csv")) %>%
+  mutate(id = row_number()) %>%
+  select(id, everything())
+
+# write_csv(JpnEng, "JpnEng.csv")
 
 
 # ----------------- descriptve stat
 
-install.packages("DataExplorer")
+# install.packages("DataExplorer")
 library(DataExplorer)
-q
-
-d %>% select(Treatment_rate_Hospitalization_Malignant_neoplasm_2017:pop_Double_income_household_ratio_2020) %>%
-DataExplorer::create_report()
 
 
+# d %>% select(Treatment_rate_Hospitalization_Malignant_neoplasm_2017:pop_Double_income_household_ratio_2020) %>%
+# DataExplorer::create_report()
 
-d[,sapply(d, is.numeric)]
+# -----------------　男女区別のないデータ d_common
+# [1] 47 98
 
-summary(d)
 
-system("open .")
+d_common<-d[, sapply(d[48,], is.na)]
+
+d_common<-d_common[1:47, ]
+
+d_common%>% DT::datatable()
+
+d_common %>% dim()
+
+
+
+# -----------------　男女区別のあるデータ d_mf
+# [1] 94 70
+
+name <- function(x) {
+  !is.na(x)
+}
+d_mf<-d[, sapply(d[48,], name)]
+
+d_mf %>% DT::datatable()
+d_mf %>% dim()
+
+summary(d_mf)
+
+ls()=
+
+
+d_m<-d_mf %>% filter(sex=="M")
+d_f<-d_mf %>% filter(sex=="F")
+
+
+
+
+
+
+
+d_m
+
+d_f
+
+
+
+
+# [1] "d"
+"d_common"
+"d_mf"
+
 
 
 # -----------------
@@ -64,9 +112,6 @@ system("open .")
 # ignore belows
 # ignore belows
 # ignore belows
-
-
-
 
 
 
