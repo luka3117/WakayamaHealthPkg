@@ -1,3 +1,32 @@
+d %>% dim()
+d<-d %>% rename(key=X1)
+d %>% colnames() %>% head()
+# d %>% colnames() %>% tbl_df() %>%
+#   write_csv("var_name_Jpn.csv")
+d
+d %>% dim()
+system("open .")
+system("open .")
+read_csv("var_name_Eng.csv")
+read_csv("var_name_Eng.csv") %>% .[,1]
+colnames(d)<-
+read_csv("var_name_Eng.csv") %>% .[,1]
+d
+read_csv("var_name_Eng.csv") %>% c()
+d<-read_csv("data/DataFormat.csv", skip=1, locale = readr::locale(encoding = "CP932"))
+# d<-read_csv("data/DataFormat.csv", skip=1)
+d<-d[-95,]
+d %>% dim()
+d<-d %>% rename(key=X1)
+d %>% colnames() %>% head()
+# d %>% colnames() %>% tbl_df() %>%
+#   write_csv("var_name_Jpn.csv")
+d
+colnames(d)<-
+read_csv("var_name_Eng.csv") %>% c()
+d
+read_csv("var_name_Eng.csv") %>% c()
+read_csv("var_name_Eng.csv")
 d
 getwd()
 d<-read_csv("data/DataFormat.csv", skip=1, locale = readr::locale(encoding = "CP932"))
@@ -425,8 +454,9 @@ pt.cex = 1.5
 abline(v = 79, lty = 2)
 system("open .")
 library(Wakayama)
-names(d_m$LE_2015 )<-Wakayama::pref$pref.J
-# devtools::install_github(repo = "luka3117/JcPackage/OsakaUniv2020")
+library(Wakayama)
+Wakayama::pref
+d_m$LE_2015
 # 使用package
 suppressMessages(library(readxl))
 suppressMessages(library(dplyr))
@@ -461,52 +491,22 @@ d_f<-d_mf %>% filter(sex=="F")
 # summary(d_mf)
 d_m %>% DT::datatable()
 d_f %>% DT::datatable()
-names(d_m$LE_2015 )<-Wakayama::pref$pref.J
-%>%
-names(d_m$LE_2015 )<-Wakayama::pref$pref.J
 d_m$LE_2015
+suppressMessages(library(tidyverse))
+d_m$LE_2015 %>% bind_cols()
 Wakayama::pref$pref.J
 d_m$LE_2015
-d_m %>% select(LE_2015)
-d_m %>% select(LE_2015)
-d_m %>% select(LE_2015)
-d_m %>% select(LE_2015) %>% bind_cols(Wakayama::pref$pref.J)
 Wakayama::pref$pref.J
-Wakayama::pref[pref.J]
-d_m %>% select(LE_2015) %>% bind_cols(Wakayama::pref["pref.J"])
-Wakayama::pref["pref.J"]
-Wakayama::pref["pref.J"]
-d_m %>% select(LE_2015) %>% bind_cols(Wakayama::pref["pref.J"])
-d_m %>% select(LE_2015) %>% bind_cols(Wakayama::pref["pref.J"]) %>% arrange_(1)
-d_m %>% select(LE_2015) %>% bind_cols(Wakayama::pref["pref.J"]) %>% arrange_(LE_2015)
-d_m %>% select(LE_2015) %>% bind_cols(Wakayama::pref["pref.J"]) %>% arrange_at(LE_2015)
-d_m %>% select(LE_2015) %>% bind_cols(Wakayama::pref["pref.J"])
-d_m %>% select(LE_2015) %>% bind_cols(Wakayama::pref["pref.J"]) %>% arrange_all(LE_2015)
-d_m %>% select(LE_2015) %>% bind_cols(Wakayama::pref["pref.J"]) %>% arrange_all("LE_2015")
-d_m %>% select(LE_2015) %>% bind_cols(Wakayama::pref["pref.J"]) %>% dplyr::arrange(LE_2015)
-system("open .")
-library(Wakayama)
-Wakayama::DataFormat
-Wakayama::ShigaData
-ls()
-source('~/.active-rstudio-document', echo=TRUE)
-d
-ls()
-d_common
-Wakayama::jc_rank(d_common, Total_salary_2016)
-Wakayama::jc_rank(d_common, "Total_salary_2016")
-d_common
-Wakayama::jc_rank(d_common, Total_Num_of_caries_2014)
-Wakayama::jc_rank(d_common, "Total_Num_of_caries_2014")
-jc_rank <- function(d) {
-# d is dataset
-# var is varname to see the rank
-d %>%
-bind_cols(Wakayama::pref["pref.J"]) %>%
-dplyr::arrange(LE_2015) %>% mutate(rank = row_number()) %>% DT::datatable()
-}
-jc_rank(d_common$Trt_rate_Hospitalization_Malignant_neoplasm_2017)
-d_common$Trt_rate_Hospitalization_Malignant_neoplasm_2017
-jc_rank(d_common['Trt_rate_Hospitalization_Malignant_neoplasm_2017'])
-d_common['Trt_rate_Hospitalization_Malignant_neoplasm_2017']
-read.csv("JpnEng.csv")
+d_m$LE_2015 %>% bind_cols()
+Wakayama::pref$pref.J
+d_m$LE_2015 %>%
+# tbl_df() %>%
+bind_cols() %>%
+Wakayama::pref$pref.J
+d_m$LE_2015 %>%
+# tbl_df() %>%
+bind_cols(Wakayama::pref$pref.J)
+d_m$LE_2015 %>%
+# tbl_df() %>%
+bind_cols(Wakayama::pref$pref.J) %>%
+mutate(rank(1))

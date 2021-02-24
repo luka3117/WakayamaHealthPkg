@@ -27,15 +27,15 @@ output:
 # https://bookdown.org/yihui/rmarkdown/ioslides-presentation.html
 
 # The following single character keyboard shortcuts enable alternate display modes:
-# 
+#
 # 'f': enable fullscreen mode
-# 
+#
 # 'w': toggle widescreen mode
-# 
+#
 # 'o': enable overview mode
-# 
+#
 # 'h': enable code highlight mode
-# 
+#
 # 'p': show presenter notes
 ---
 
@@ -44,6 +44,9 @@ output:
 - "DataFormat.csv" latest version 2021年2月10日
 
 ```{r, warning=FALSE}
+
+# devtools::install_github(repo = "luka3117/JcPackage/OsakaUniv2020")
+
 # 使用package
 suppressMessages(library(readxl))
 suppressMessages(library(dplyr))
@@ -62,7 +65,7 @@ suppressMessages(library(tidyverse))
 - 94行と 168変数
 - **168変数の中、一部の変数は男女の区別がないため、県単位のデータ(47行のデータ)として扱う**
 
-- 
+-
 
 
 
@@ -70,7 +73,7 @@ suppressMessages(library(tidyverse))
 
 ```{r, warning=FALSE, message=FALSE}
 getwd()
-d<-read_csv("../data/DataFormat.csv", skip=1, locale = readr::locale(encoding = "CP932"))
+d<-read_csv("../..//data/DataFormat.csv", skip=1, locale = readr::locale(encoding = "CP932"))
 
 d<-d[-95,]
 d %>% dim()
@@ -80,25 +83,161 @@ d %>% DT::datatable()
 
 ## 変数名を英語に変換 :data名`d`
 ```{r}
-var<-read.csv("../var_name_Eng.csv")
+var<-read.csv("../..//var_name_Eng.csv")
 colnames(d)<-var$var_name_Eng
-d %>% DT::datatable()
+# d %>% DT::datatable()
 ```
 
+
+### 変数名：和英対応表
+
+```{r}
+read.csv("../../JpnEng.csv") %>% DT::datatable()
+
+```
+
+
 ## 男女区別のないデータ `d_common`
+- 変数は 104
 ```{r}
 d_common<-d[, sapply(d[48,], is.na)]
 
 d_common<-d_common[1:47, ]
 
-d_common%>% DT::datatable()
+# d_common%>% DT::datatable()
 
-d %>% select(1:6) %>% .[1:47,] %>% bind_cols(d_common)
+d_common<-d %>% select(1:6) %>% .[1:47,] %>% bind_cols(d_common)
 
-# d_common %>% dim()
+d_common %>% DT::datatable()
+d_common %>% dim()
 
 ```
-- 男女区別のな dataの次元は`r dim(d_common)`
+
+### `d_common` data 変数名
+
+	-健康/疾患
+	Trt_rate_Hospitalization_Malignant_neoplasm_2017
+	Trt_rate_hospitalization_heart_dz_2017
+	Trt_rate_Hospitalization_Cerebrovascular_dz_2017
+	Trt_rate_Outpatient_Malignant_neoplasm_2017
+	Trt_rate_outpatient_heart_dz_2017
+	Trt_rate_Outpatient_Cerebrovascular_dz_2017
+	-医療施設
+	Num_of_hospitals_2019
+	Num_of_clinics_2019
+	Num_of_general_clinics
+	HM_Num_of_general_hospitals
+	HM_Num_of_general_dental_clinics_per_100k_pop
+	HM_Num_of_doctors_engaged_in_medical_facilities_per_100k_pop
+	HM_Num_of_public_health_nurses_per_100k_pop
+	-医療従事者
+	Num_of_certified_cancer_doctors_2020
+	Num_of_cardiologists_2020
+	Num_of_endoscopists_2020
+	-文化
+	Book_purchase_price_2019
+	Num_of_libraries
+	Sports_Participant_Rate
+	Travel_Rate1
+	Volunteer_Activity_Participant_Rate
+	-人口
+	pop_Young_pop_Ratio_2020
+	pop_oldElderly_pop_Ratio_2020
+	pop_Working_Age_pop_Ratio_2020
+	pop_Rough_Mortality_2020
+	pop_Double_income_household_ratio_2020
+	-自然環境
+	Natural_environment_annual_avg_temperature
+	Natural_environment_annual_avg_relative_humidity
+	Natural_environment_annual_rain
+	Natural_environment_annual_Num_of_snow_days
+	-経済
+	Economic_pref_income
+	Admin_base_Financial_strength_index
+	Admin_base_balance_ratio
+	Admin_infrastructure_living_protection_cost_ratio_(prefectural_finance)
+	Admin_infrastructure_Edu_cost_ratio_(prefectural_finance)
+	Gini_coeff_2014
+	Income_Gini_Coeff_Working_Household_2014
+	-教育
+	Edu_Ptc_of_university_graduate_students_with_a_final_academic_background
+	Academic_ability_middle_school_2015
+	Academic_ability_elementary_school_2015
+	-労働
+	Labor_primary_industry_emp_ratio
+	Labor_secondary_industry_emp_ratio
+	Labor_tertiary_industry_emp_ratio
+	Labor_Unemp_rate
+	Total_working_hours_2016
+	Total_salary_2016
+	-住居
+	Residence_owner_ratio
+	Residence_house_ratio
+	Residence_water_supply_pop_ratio
+	Residence_sewerage_ratio
+	Residential_city_park_area_(per_pop)
+	Residence_road_pavement_rate
+	Residence_simachi_pavement_rate
+	Safety_Num_of_traffic_accidents_per_100k_pop
+	Residence_Num_of_city_parks
+	-家計経済
+	Household_actual_income
+	Household_consumption_expenditure
+	Household_Edu_cost_ratio
+	Household_Liberal_Arts_and_Entertainment_Expenditure_Ratio
+	Household_Savings
+	Household_Smartphone_ownership_quantity
+	Household_PC_ownership_quantity
+	Household_Car_ownership_quantity
+	Household_Tablet_terminal_Ownership_quantity
+	pop_Household_Ratio_of_elderly_single_person_households
+	-疾患
+	Hypertension_Hospitalization_2014
+	Hypertension_Outpatient_2014
+	Diabetes_hospitalization_2014
+	Diabetes_Outpatient_2014
+	Total_Num_of_caries_2014
+	Total_Num_of_periodontal_2014
+	Bone_density_disorder_2014
+	Fracture_2014
+	Tooth_supplement_2014
+	Alzheimer_dz_2014
+	-食
+	Meat_2014
+	Seafood_2014
+	Milk_2014
+	Dairy_2014
+	Egg_2014
+	Soybean_2014
+	-住居施設
+	Usual_barrier_free_handrails_2013
+	Usual_barrier_free_no_steps_2013
+	High_barrier_free_handrails_2013
+	High_barrier_free_no_steps_2013
+	High_barrier_free_wheelchairs_pass_Width
+	-食消費
+	Fish_meat_consumption_2014
+	Fish_meat_consumption_2015
+	Fish_meat_consumption_2016
+	Fish_meat_consumption_avg_2014_2016
+	Confectionery_consumption_2014
+	Confectionery_consumption_2015
+	Confectionery_consumption_2016
+	Confectionery_consumption_avg_2014_2016
+	Fruits_consumption_2014
+	Fruits_consumption_2015
+	Fruits_consumption_2016
+	Fruit_consumption_avg_2014_2016
+
+
+
+```{r, warning=FALSE}
+d_common %>% colnames() %>%tbl_df() %>%  DT::datatable()
+
+
+```
+
+- 男女区別のないデータの***変数は`r dim(d_common)[2]-6`個***
 
 ## 男女区別のあるデータ `d_mf`,`d_m`,`d_f`
 
@@ -109,29 +248,204 @@ name <- function(x) {
   !is.na(x)
 }
 d_mf<-d[, sapply(d[48,], name)]
-
 d_mf %>% DT::datatable()
 d_mf %>% dim()
-
 d_m<-d_mf %>% filter(sex=="M")
 d_f<-d_mf %>% filter(sex=="F")
-
 # summary(d_mf)
+
 ```
 
-### `d_m`
+### 男性データ`d_m`
 
 ```{r}
 d_m %>% DT::datatable()
+```
+
+### 女性データ`d_f`
+```{r}
 d_f %>% DT::datatable()
 ```
 
 
+## 以下分析対象データ`d_common`, `d_m`, `d_f`
+
+# dataの変数属性を確認 {.tabset .tabset-fade .tabset-pills}
+
+## `d_common`
 
 
-ls()=
-  
+## `d_m`
 
+
+## `d_f`
+
+
+
+# 寿命(目的変数)の都道府県の順位確認{.tabset .tabset-fade .tabset-pills}
+
+## 男性の平均寿命
+
+
+```{r}
+d_m %>% select(LE_2015) %>% bind_cols(Wakayama::pref["pref.J"]) %>% dplyr::arrange(LE_2015) %>% mutate(rank=row_number()) %>%DT::datatable()
+```
+
+
+```{r}
+jc.dotplot <- function(x) {
+  # x is HLE or LE in c()　vector
+  names(x)<-Wakayama::pref$pref.J
+  x<-x[order(x)]
+
+}
+
+colfunc <- colorRampPalette(c("gray90","black"))
+
+par(family= "HiraKakuProN-W3")
+
+dotchart(
+  main = "平均寿命(2015年, 男性)",
+  jc.dotplot(d_m$LE_2015),
+  cex = 0.7,
+  lcolor = "gray90",
+  pch = 19,
+  col = colfunc(47),
+  pt.cex = 1.5
+)
+
+abline(v = 79, lty = 2)
+
+```
+
+
+
+## 男性の健康寿命
+
+```{r}
+d_m %>% select(HLE_2016) %>% bind_cols(Wakayama::pref["pref.J"]) %>% dplyr::arrange(HLE_2016) %>% mutate(rank=row_number()) %>%DT::datatable()
+```
+
+
+```{r}
+jc.dotplot <- function(x) {
+  # x is HLE or LE in c()　vector
+  names(x)<-Wakayama::pref$pref.J
+  x<-x[order(x)]
+
+}
+
+colfunc <- colorRampPalette(c("gray90","black"))
+
+par(family= "HiraKakuProN-W3")
+
+dotchart(
+  main = "健康寿命(2016年, 男性)",
+  jc.dotplot(d_m$HLE_2016),
+  cex = 0.7,
+  lcolor = "gray90",
+  pch = 19,
+  col = colfunc(47),
+  pt.cex = 1.5
+)
+
+abline(v = 79, lty = 2)
+
+```
+
+
+
+## 女性の平均寿命
+
+
+```{r}
+d_f %>% select(LE_2015) %>% bind_cols(Wakayama::pref["pref.J"]) %>% dplyr::arrange(LE_2015) %>% mutate(rank=row_number()) %>%DT::datatable()
+```
+
+
+```{r}
+jc.dotplot <- function(x) {
+  # x is HLE or LE in c()　vector
+  names(x)<-Wakayama::pref$pref.J
+  x<-x[order(x)]
+
+}
+
+colfunc <- colorRampPalette(c("gray90","black"))
+
+par(family= "HiraKakuProN-W3")
+
+dotchart(
+  main = "平均寿命(2015年, 女性)",
+  jc.dotplot(d_f$LE_2015),
+  cex = 0.7,
+  lcolor = "gray90",
+  pch = 19,
+  col = colfunc(47),
+  pt.cex = 1.5
+)
+
+abline(v = 79, lty = 2)
+
+```
+
+
+
+
+
+## 女性の健康寿命
+
+
+```{r}
+d_f %>% select(HLE_2016) %>% bind_cols(Wakayama::pref["pref.J"]) %>% dplyr::arrange(HLE_2016) %>% mutate(rank=row_number()) %>%DT::datatable()
+```
+
+
+```{r}
+jc.dotplot <- function(x) {
+  # x is HLE or LE in c()　vector
+  names(x)<-Wakayama::pref$pref.J
+  x<-x[order(x)]
+
+}
+
+colfunc <- colorRampPalette(c("gray90","black"))
+
+par(family= "HiraKakuProN-W3")
+
+dotchart(
+  main = "平均寿命(2015年, 女性)",
+  jc.dotplot(d_f$HLE_2016),
+  cex = 0.7,
+  lcolor = "gray90",
+  pch = 19,
+  col = colfunc(47),
+  pt.cex = 1.5
+)
+
+abline(v = 79, lty = 2)
+
+```
+
+
+
+
+# 説明変数の順位確認
+
+## `d_common data`
+
+
+# 出典整理
+
+- [x1][aa]
+
+
+[aa]:https://www.keisan.nta.go.jp/kyoutu/ky/sm/top#bsctrl
+
+
+## [][]
+
+[]:https
 
 # d %>% colnames() %>% tbl_df() %>%
 #   write_csv("var_name_Jpn.csv")
@@ -179,7 +493,7 @@ d_f
 
 
 # [1] "d"        
-"d_common" 
+"d_common"
 "d_mf"     
 
 ```
@@ -624,7 +938,3 @@ library(dplyr) # for any data manipulation operations; we used
 
 
 <!-- https://www.ted.com/talks/hans_rosling_the_best_stats_you_ve_ever_seen?referrer=playlist-the_best_hans_rosling_talks_yo#t-213748 -->
-
-
-
-
