@@ -1,5 +1,5 @@
 ---
-title: "和歌山県報告書"
+title: "和歌山県報告書(under working)"
 subtitle: "健康寿命"
 author: "李鍾賛(jc lee, 滋賀大助教、数理統計学博士)"
 date: "最終更新: `r format(Sys.time(), '%Y/%m/%d')`"
@@ -453,7 +453,7 @@ abline(v = 79, lty = 2)
 
 
 
-# 説明変数の順位確認{.tabset .tabset-fade .tabset-pills}
+# `d_common data`の説明変数の順位確認及び正規性検定{.tabset .tabset-fade .tabset-pills}
 
 ## `d_common data`の和歌山県の順位確認
 
@@ -502,7 +502,112 @@ plot_ly(
 ## `d_common data`の連続データの正規性検定
 - shapiro 検定
 
+```{r, warning=FALSE}
+jc_shapiro <- function(x) {
+  shapiro.test(x) %>% broom::tidy() %>% select(p.value) %>% round(3)
+}
 
+
+d_common_normality_test<-d_common %>% dplyr::select_if(is.numeric) %>%
+  select(-key, -pref.id) %>%
+  # scale() %>%
+  tbl_df() %>% purrr::map_df(jc_shapiro)
+
+rownames(d_common_normality_test)<-d_common %>% dplyr::select_if(is.numeric) %>%
+  select(-key, -pref.id) %>% colnames()
+
+DT::datatable(d_common_normality_test)
+```
+
+
+## `d_common data`連続データの正規性を満たさない変数
+- **要対数変換：47個の変数**
+
+```{r}
+d_common_normality_test %>% filter(p.value<0.05) %>% DT::datatable()
+```
+
+# `d_common data` 和歌山,青森,滋賀,長野の説明変数の様子
+
+```{r}
+library(plotly)
+temp<-left_join(d_common_standarize_long, d_common, 
+          by = c("pref.id"="key")) %>% select(pref.J, 2,3)
+
+
+temp %>% filter(pref.J=="和歌山"|
+                pref.J=="青森"|
+                pref.J=="滋賀"|
+                pref.J=="長野") %>% 
+plot_ly(y =  ~ pref.J,
+        x =  ~ value,
+        color =  ~ pref.J) %>%
+  add_bars(frame=~var_name)
+
+```
+
+
+#  ヘルスケア産業の創出や健康経営の推進に係る要因分析??
+
+ヘルスケア産業とは
+
+
+①経済産業省におけるヘルスケア産業政策について
+　https://www.meti.go.jp/policy/mono_info_service/healthcare/01metihealthcarepolicy.pdf
+
+
+②健康経営の推進について
+　https://www.meti.go.jp/policy/mono_info_service/healthcare/downloadfiles/180710kenkoukeiei-gaiyou.pdf
+
+
+③中小企業への健康経営の普及
+　https://www.meti.go.jp/policy/mono_info_service/healthcare/downloadfiles/191030chushohenofukyu.pdf
+
+
+
+〇経済産業省－ヘルスケア産業ホームページ
+　https://www.meti.go.jp/policy/mono_info_service/healthcare/index.html
+
+
+
+利用出来そうなデータ①
+
+〇オープンデータ
+
+
+●わかやま健康推進事業所（和歌山県健康推進課の取組）
+　・「わかやま健康づくりチャレンジ運動サポート企業」登録事業所一覧
+　・「わかやま健康づくりチャレンジ運動」登録事業所一覧
+　・「わかやま健康推進事業所」認定事業所一覧
+　https://www.pref.wakayama.lg.jp/prefg/041200/h_kenkou/d00156483.html
+
+
+●健康経営優良法人2020（大規模法人部門）認定法人一覧 　など（経済産業省の取組）
+　https://www.meti.go.jp/policy/mono_info_service/healthcare/kenkoukeiei_yuryouhouzin.html
+
+
+●健康経営度調査結果集計データ（平成26年度～令和元年度）Excelファイル（経済産業省）
+　https://www.meti.go.jp/policy/mono_info_service/healthcare/kenko_keiei.html
+
+
+分析イメージ（案）
+
+
+〇経済産業省が実施している企業活動基本調査の統計ミクロデータと帝国データバンクや東京商工
+　リサーチの企業データを接続して生産性の分析
+
+〇「わかやま健康推進事業所」に認定されている企業へのアンケート調査の実施
+
+〇健康経営の推進が生産性向上に繋がる一つのファクターでは。生産性を上げるには設備投資や
+　ＩＴ化などがあるが、相関がみられるかも。
+
+〇横軸に「わかやま健康推進事業所」認定にあたっての評価ポイントを、縦軸に従業員あたりの生産性
+　をとり、複数の企業をプロットしてみる。
+
+〇上記の場合、同業種においてプロットする。病院や郵便局などの判定は難しい。
+
+〇近々、経済センサス基礎調査の２０１９が公表される。事業名を含んだ調査票情報を取得できれば
+　分析できるのでは。
 
 
 
@@ -510,7 +615,14 @@ plot_ly(
 # 出典整理{.tabset .tabset-fade .tabset-pills}
 
 ## 出典リンク
-## 出典リンク先
+-
+```
+for i in open("txt"):
+   if re.serach(「」, i)
+   print(i)
+```
+
+## 出典リンク先の詳細
 
 - [受療率_入院_悪性新生物_2017][1]
 - [受療率_入院_心疾患_2017][1]
@@ -759,69 +871,77 @@ plot_ly(
 
 - [一定のバリアフリー化率手すりの設置_2013][501]
 
-- [一定のバリアフリー化率段差のない屋内_2013][]
+- [50一定のバリアフリー化率段差のない屋内_2013][502]
 
-- [高度のバリアフリー化率手すりの設置_2013][]
+- [50高度のバリアフリー化率手すりの設置_2013][503]
 
-- [高度のバリアフリー化率段差のない屋内_2013][]
+- [50高度のバリアフリー化率段差のない屋内_2013][504]
 
-- [高度のバリアフリー廊下等が車いすで通行可能な幅_2013][]
+- [50高度のバリアフリー廊下等が車いすで通行可能な幅_2013][505]
 
-- [総実労働時間_2016][]
+- [50総実労働時間_2016][506]
 
-- [現金給与総額_2016][]
+- [50現金給与総額_2016][507]
 
-- [生鮮肉(世帯数消費支出)_2014][]
+- [50生鮮肉(世帯数消費支出)_2014][508]
 
-- [生鮮肉(世帯数消費支出)_2015][]
+- [50生鮮肉(世帯数消費支出)_2015][509]
 
-- [生鮮肉(世帯数消費支出)_2016][]
+- [50生鮮肉(世帯数消費支出)_2016][510]
 
-- [生鮮肉平均_世帯数消費支出(2014〜2016）][]
+- [50生鮮肉平均_世帯数消費支出(2014〜2016）][511]
 
-- [菓子類(世帯数消費支出)_2014][]
+- [菓子類(世帯数消費支出)_2014][512]
 
-- [菓子類(世帯数消費支出)_2015][]
+- [菓子類(世帯数消費支出)_2015][513]
 
-- [菓子類(世帯数消費支出)_2016][]
+- [菓子類(世帯数消費支出)_2016][514]
 
-- [菓子類平均_世帯数消費支出(2014〜2016）][]
+- [菓子類平均_世帯数消費支出(2014〜2016）][515]
 
-- [果物(世帯数消費支出)_2014][]
+- [果物(世帯数消費支出)_2014][516]
 
-- [果物(世帯数消費支出)_2015][]
+- [果物(世帯数消費支出)_2015][517]
 
-- [果物(世帯数消費支出)_2016][]
+- [果物(世帯数消費支出)_2016][518]
 
-- [果物平均_世帯数消費支出(2014〜2016）][]
+- [果物平均_世帯数消費支出(2014〜2016）][519]
 
-- [全国学力・学習状況(公立学校数)(中学校)_2015][]
+- [全国学力・学習状況(公立学校数)(中学校)_2015][520]
 
-- [全国学力・学習状況(公立学校数)(小学生)_2015][]
+- [全国学力・学習状況(公立学校数)(小学生)_2015][521]
 
-- [う蝕外来総数_2014][]
+- [う蝕外来総数_2014][522]
 
-- [歯周疾患(歯肉炎)外来総数_2014][]
+- [歯周疾患(歯肉炎)外来総数_2014][523]
 
-- [骨の密度障害_2014][]
+- [骨の密度障害_2014][524]
 
-- [骨折_2014][]
+- [骨折_2014][525]
 
-- [歯の補てつ_2014][]
+- [歯の補てつ_2014][526]
 
-- [アルツハイマー等(脳血管疾患)_2014][]
+- [アルツハイマー等(脳血管疾患)_2014][527]
 
-- [ジニ係数総世帯_2014][]
+- [ジニ係数総世帯_2014][528]
 
-- [収入ジニ係数勤労世帯_2014][]
+- [収入ジニ係数勤労世帯_2014][529]
 
-- [野菜摂取量_2012(20歳以上平均値(g/日)][]
+- [野菜摂取量_2012(20歳以上平均値(g/日)][530]
 
 - [食塩摂取量_2012(20歳以上平均値(g/日)][531]
 
 - [BMI平均値_2012(男性20〜69歳)(女性40〜69歳)(単位Kg/㎡)][532]
 
 - [歩数_2012(20歳以上平均値(歩/日)][533]
+
+
+<!-- # 出典 -->
+```{r child="ref.Rmd"}
+
+```
+
+
 
 
 **/Users/jclee/Dropbox/00000健康和歌山県/0 wakayamaPkg/変数説明byJc.txt
@@ -835,56 +955,53 @@ plot_ly(
 
 
 
-# メール
+<!-- # メール -->
 
-> 和歌山
-リンク不備
-...att
+<!-- > 和歌山 -->
+<!-- リンク不備 -->
+<!-- ...att -->
 
 
 
-> vの　FH列に転記
-############################################################
-変数名：野菜摂取量_2012(20歳以上平均値(g/日)
-出典：平成24年国民健康・栄養調査
-取得元：以下のリンク
-https://www.mhlw.go.jp/stf/houdou/...att/2r98520000021c39.pdf
-詳細説明：
-・「第２章 都道府県別の肥満及び主な生活習慣の状況」ダウンロード
-・2.野菜摂取量男性(20歳以上)平均値(g/日)、女性(20歳以上)平均値(g/日)の各都道府県別の数値を取得し、
-・DataFormat.csvの　FI列に転記
-############################################################
-変数名：食塩摂取量_2012(20歳以上平均値(g/日)
-出典：平成24年国民健康・栄養調査
-取得元：以下のリンク
-https://www.mhlw.go.jp/stf/houdou/...att/2r98520000021c39.pdf
-詳細説明：
-・「第２章 都道府県別の肥満及び主な生活習慣の状況」ダウンロード
-・2.食塩摂取量男性(20歳以上)平均値(g/日)、女性(20歳以上)平均値(g/日)の各都道府県別の数値を取得し、
-・DataFormat.csvの　FJ列に転記
-############################################################
-変数名：歩数_2012(20歳以上平均値(歩/日)
-出典：平成24年国民健康・栄養調査
-取得元：以下のリンク
-https://www.mhlw.go.jp/stf/houdou/...att/2r98520000021c39.pdf
-詳細説明：
-・「第２章 都道府県別の肥満及び主な生活習慣の状況」ダウンロード
-・2.歩数男性(20歳以上平均値(歩/日)、女性(20歳以上平均値(歩/日)の各都道府県別の数値を取得し、
-・DataFormat.csvの　FL列に転記
-############################################################
+<!-- > vの　FH列に転記 -->
+<!-- ############################################################ -->
+<!-- 変数名：野菜摂取量_2012(20歳以上平均値(g/日) -->
+<!-- 出典：平成24年国民健康・栄養調査 -->
+<!-- 取得元：以下のリンク -->
+<!-- https://www.mhlw.go.jp/stf/houdou/...att/2r98520000021c39.pdf -->
+<!-- 詳細説明： -->
+<!-- ・「第２章 都道府県別の肥満及び主な生活習慣の状況」ダウンロード -->
+<!-- ・2.野菜摂取量男性(20歳以上)平均値(g/日)、女性(20歳以上)平均値(g/日)の各都道府県別の数値を取得し、 -->
+<!-- ・DataFormat.csvの　FI列に転記 -->
+<!-- ############################################################ -->
+<!-- 変数名：食塩摂取量_2012(20歳以上平均値(g/日) -->
+<!-- 出典：平成24年国民健康・栄養調査 -->
+<!-- 取得元：以下のリンク -->
+<!-- https://www.mhlw.go.jp/stf/houdou/...att/2r98520000021c39.pdf -->
+<!-- 詳細説明： -->
+<!-- ・「第２章 都道府県別の肥満及び主な生活習慣の状況」ダウンロード -->
+<!-- ・2.食塩摂取量男性(20歳以上)平均値(g/日)、女性(20歳以上)平均値(g/日)の各都道府県別の数値を取得し、 -->
+<!-- ・DataFormat.csvの　FJ列に転記 -->
+<!-- ############################################################ -->
+<!-- 変数名：歩数_2012(20歳以上平均値(歩/日) -->
+<!-- 出典：平成24年国民健康・栄養調査 -->
+<!-- 取得元：以下のリンク -->
+<!-- https://www.mhlw.go.jp/stf/houdou/...att/2r98520000021c39.pdf -->
+<!-- 詳細説明： -->
+<!-- ・「第２章 都道府県別の肥満及び主な生活習慣の状況」ダウンロード -->
+<!-- ・2.歩数男性(20歳以上平均値(歩/日)、女性(20歳以上平均値(歩/日)の各都道府県別の数値を取得し、 -->
+<!-- ・DataFormat.csvの　FL列に転記 -->
+<!-- ############################################################ -->
 
 
 
-# 順位確認
+<!-- # 順位確認 -->
 
 
-# 分布確認
+<!-- # 分布確認 -->
 
 
-# 出典
-```{r child="ref.Rmd"}
 
-```
 
 
 
@@ -892,37 +1009,37 @@ https://www.mhlw.go.jp/stf/houdou/...att/2r98520000021c39.pdf
 
 
 
+<!-- # d %>% colnames() %>% tbl_df() %>% -->
+<!-- #   write_csv("var_name_Jpn.csv") -->
 
-# d %>% colnames() %>% tbl_df() %>%
-#   write_csv("var_name_Jpn.csv")
 
+<!-- # ----------------- data varname change -->
+<!-- d -->
 
-# ----------------- data varname change
-d
+<!-- d %>% select(contains("dz")) -->
 
-d %>% select(contains("dz"))
 
+<!-- # -----------------　data Jpn and Eng table -->
 
-# -----------------　data Jpn and Eng table
+<!-- # 連番 -->
 
-# 連番
+<!-- JpnEng <- -->
+<!--   read_csv(file = "var_name_Jpn.csv") %>% bind_cols(., read_csv(file = "var_name_Eng.csv")) %>% -->
+<!--   mutate(id = row_number()) %>% -->
+<!--   select(id, everything()) -->
 
-JpnEng <-
-  read_csv(file = "var_name_Jpn.csv") %>% bind_cols(., read_csv(file = "var_name_Eng.csv")) %>%
-  mutate(id = row_number()) %>%
-  select(id, everything())
+<!-- # write_csv(JpnEng, "JpnEng.csv") -->
 
-# write_csv(JpnEng, "JpnEng.csv")
 
+<!-- # ----------------- descriptve stat -->
 
-# ----------------- descriptve stat
+<!-- # install.packages("DataExplorer") -->
+<!-- library(DataExplorer) -->
 
-# install.packages("DataExplorer")
-library(DataExplorer)
 
+<!-- # d %>% select(Treatment_rate_Hospitalization_Malignant_neoplasm_2017:pop_Double_income_household_ratio_2020) %>% -->
+<!-- # DataExplorer::create_report() -->
 
-# d %>% select(Treatment_rate_Hospitalization_Malignant_neoplasm_2017:pop_Double_income_household_ratio_2020) %>%
-# DataExplorer::create_report()
 
 
 
@@ -930,369 +1047,384 @@ library(DataExplorer)
 
 
 
+<!-- d_m -->
 
-d_m
+<!-- d_f -->
 
-d_f
 
 
 
-
-# [1] "d"        
-"d_common"
-"d_mf"     
-
-```
-
-
-```{r,warning=FALSE}
-# 使用package
-# suppressMessages(library(readxl))
-# suppressMessages(library(dplyr))
-# suppressMessages(library(data.table))
-# suppressMessages(library(kableExtra))
-# suppressMessages(library(curl))
-suppressMessages(library(tidyverse))
-library(gapminder) # to access gapminder dataset
-suppressMessages(library(plotly)) # for plotly charts, pipe % operator
-library(dplyr) # for any data manipulation operations; we used
-# suppressMessages(library(tidyverse))
-```
-
-
-<!-- # 準備：Rの紹介(Quick tutorial of R) -->
-
-<!-- ##  Rとは電卓のようなもの  -->
-
-<!-- - Use symbol `< -` は代入を意味 -->
-
-<!-- ```{r} -->
-<!-- x <- 2 -->
-<!-- x -->
-<!-- x + x -->
-<!-- ``` -->
-
-<!-- - $exp(2)=e^{-2}$ -->
-<!-- ```{r} -->
-<!-- exp(-2) -->
-<!-- log(10) -->
-<!-- ``` -->
-
-
-<!-- ## data とは個体と変数として構成 -->
-<!--   - observation and variable -->
-<!--   - 行と列 -->
-
-<!-- ```{r} -->
-<!-- iris %>% head(2) -->
-<!-- iris %>% tail(2) -->
-<!-- ``` -->
-
-<!-- ## Rの`$`記号  -->
-
-<!-- - `$` は特定の変数（列）を選択   -->
-
-<!-- ```{r} -->
-<!-- iris$Sepal.Length -->
-<!-- ``` -->
-
-
-<!-- # gapminder data -->
-
-<!-- ## gapminder data 概要 -->
-
-<!-- - 平均寿命(life expectancy)、一人当たりGDP(GDP per capita)、国別の人口(population by country)等に関するデータ -->
-
-<!-- - gapminder has **1704** rows and **6** variables -->
-
-<!-- ## gapminder 変数一覧 -->
-
-<!--   - country: factor with 142 levels -->
-<!--   - continent: factor with 5 levels -->
-<!--   - year: ranges from 1952 to 2007 in increments of 5 years -->
-<!--   - lifeExp : life expectancy at birth, in years -->
-<!--   - pop: population -->
-<!--   - gdpPercap: GDP per capita (US$, inflation-adjusted) -->
-
-
-<!-- ## Quick glance of gapminder dataset -->
-
-<!-- - using `str()` and ` %>% ` -->
-
-
-<!-- ```{r} -->
-<!-- gapminder %>% str() -->
-<!-- ``` -->
-
-<!-- ##  gapminder summary -->
-
-<!-- - 次元（行と列の数） -->
-<!-- ```{r} -->
-<!-- gapminder %>% dim() -->
-<!-- ``` -->
-
-
-<!-- - 頻度表 -->
-<!-- ```{r} -->
-<!-- gapminder$year %>% table() -->
-<!-- ``` -->
-
-
-
-<!-- ##  gapminder summary1 -->
-<!-- ```{r} -->
-<!-- gapminder %>% summary() -->
-<!-- ``` -->
-
-<!-- ## gapminderのplot -->
-
-<!-- - 2002年のデータに範囲を絞り、x軸は対数変換を施す -->
-
-<!-- ```{r} -->
-<!-- gapminder2002 <- gapminder %>% filter(year == 2002)  -->
-
-<!-- plot(log(gapminder2002$gdpPercap), gapminder2002$lifeExp) -->
+<!-- # [1] "d"         -->
+<!-- "d_common" -->
+<!-- "d_mf"      -->
 
 <!-- ``` -->
 
 
-
-
-
-<!-- # mtcars data -->
-
-<!-- ## mtcars data 概要: -->
-
-<!-- -  Motor Trend Car Road Tests -->
-<!-- - [motortrend](https://www.motortrend.com)とは  -->
-
-<!-- - The data was extracted from the 1974 Motor Trend US magazine, and comprises fuel consumption and 10 aspects of automobile design and performance for 32 automobiles (1973–74 models). -->
-
-<!-- - 1974年のモータートレンドUSマガジンの記事から -->
-<!-- 32台の自動車（1973〜74モデル）を対象に、燃料消費量、設計、性能など10項目を計測したデータ -->
-
-<!-- ## mtcars 次元と変数の概要: -->
-
-<!--   - 32 observations and  11 variables -->
-
-<!--   - mpg:	Miles/gallon -->
-<!--   - cyl:	Number of cylinders(シリンダーの数) -->
-<!--   - disp:	Displacement(排気量)  -->
-<!--   - hp:	Gross horsepower(馬力) -->
-<!--   - drat:	Rear axle ratio -->
-<!--   - wt:	Weight (1000 lbs) (重量: 1000ポンド) -->
-<!--   - qsec:	1/4 mile time -->
-<!--   - vs:	Engine (0 = V字型, 1 = ストレート) エンジン -->
-<!--   - am:	Transmission (0 = automatic, 1 = manual)  -->
-<!--   - gear:	Number of forward gears(前進ギアの数) -->
-<!--   - carb:	Number of carburetors(キャブレターの数) -->
-
-<!-- ## mtcars の構造:`str()` -->
-<!-- ```{r} -->
-<!-- str(mtcars) -->
-<!-- ``` -->
-
-<!-- ## Create bar chart :`cyl` vs `n` -->
-
-<!-- ```{r, warning=FALSE} -->
-<!-- mtcars %>%  -->
-<!--   mutate(cyl = as.factor(cyl)) %>%  # convert cyl to categorical variable -->
-<!--   count(cyl) %>%  ## count to get the frequency table (from dplyr package) -->
-<!--   plot_ly(x=~cyl,   -->
-<!--           y=~n,  -->
-<!--           color=~cyl, -->
-<!--           text = ~n, -->
-<!--           hoverinfo = "text") %>%  # apply plotly on the frequency data -->
-<!--   add_bars(width=0.3) %>%  # use the width argument to adjust the width of the bars -->
-<!--   layout(title="Bar Chart using mtcars data", -->
-<!--          xaxis = list(title="Cylinder数"), -->
-<!--          yaxis = list(title = "Count n")) -->
+<!-- ```{r,warning=FALSE} -->
+<!-- # 使用package -->
+<!-- # suppressMessages(library(readxl)) -->
+<!-- # suppressMessages(library(dplyr)) -->
+<!-- # suppressMessages(library(data.table)) -->
+<!-- # suppressMessages(library(kableExtra)) -->
+<!-- # suppressMessages(library(curl)) -->
+<!-- suppressMessages(library(tidyverse)) -->
+<!-- library(gapminder) # to access gapminder dataset -->
+<!-- suppressMessages(library(plotly)) # for plotly charts, pipe % operator -->
+<!-- library(dplyr) # for any data manipulation operations; we used -->
+<!-- # suppressMessages(library(tidyverse)) -->
 <!-- ``` -->
 
 
+<!-- <!-- # 準備：Rの紹介(Quick tutorial of R) --> -->
+
+<!-- <!-- ##  Rとは電卓のようなもの  --> -->
+
+<!-- <!-- - Use symbol `< -` は代入を意味 --> -->
+
+<!-- <!-- ```{r} --> -->
+<!-- <!-- x <- 2 --> -->
+<!-- <!-- x --> -->
+<!-- <!-- x + x --> -->
+<!-- <!-- ``` --> -->
+
+<!-- <!-- - $exp(2)=e^{-2}$ --> -->
+<!-- <!-- ```{r} --> -->
+<!-- <!-- exp(-2) --> -->
+<!-- <!-- log(10) --> -->
+<!-- <!-- ``` --> -->
 
 
-<!-- ## Grouped Bar chart(`am` vs `cyl` vs `n`) -->
-<!--   - Using the mtcars dataset -->
-<!--   - Using two categorical variables (Car Cylinder type and Transmission type) -->
+<!-- <!-- ## data とは個体と変数として構成 --> -->
+<!-- <!--   - observation and variable --> -->
+<!-- <!--   - 行と列 --> -->
 
-<!-- ```{r, echo=TRUE, warning=FALSE, fig.width=5} -->
+<!-- <!-- ```{r} --> -->
+<!-- <!-- iris %>% head(2) --> -->
+<!-- <!-- iris %>% tail(2) --> -->
+<!-- <!-- ``` --> -->
 
-<!-- ## Side by Side or Grouped Bar Chart -->
-<!-- mtcars %>%  -->
-<!--   mutate(cyl = as.factor(cyl),  -->
-<!--          am = as.factor(am)) %>% # Data type conversion -->
-<!--   count(cyl, am) %>%  ## count to get the frequency table (from dplyr package) -->
-<!--   plot_ly(x=~cyl,  -->
-<!--           y=~n,  -->
-<!--           color=~am, -->
-<!--           text = ~n, -->
-<!--           hoverinfo = "text") %>%  -->
-<!--   add_bars() %>%  -->
-<!--   layout(title="Plotly Grouped Bar Chart", -->
-<!--          xaxis = list(title="No. of Cylinders"), -->
-<!--          yaxis = list(title = "Count"), -->
-<!--          barmode="group") -->
-<!-- ``` -->
+<!-- <!-- ## Rの`$`記号  --> -->
 
-<!-- ## Stacked Bar chart -->
-<!-- ```{r, warning=FALSE} -->
-<!-- ## Stacked Bar chart -->
-<!-- mtcars %>%  -->
-<!--   mutate(cyl = as.factor(cyl),  -->
-<!--          am = as.factor(am)) %>%  -->
-<!--   count(cyl, am) %>% ## count to get the frequency table (from dplyr package) -->
-<!--   plot_ly(x=~cyl,  -->
-<!--           y=~n,  -->
-<!--           color=~am, -->
-<!--           text = ~paste("No. of cyl=", cyl, "<br>", "Count=", n, "<br>", "Transmission=", am),  -->
-<!--           hoverinfo = "text") %>%  -->
-<!--   add_bars() %>%  -->
-<!--   layout(title="Plotly Stacked Bar Chart", -->
-<!--          xaxis = list(title="No. of Cylinders"), -->
-<!--          yaxis = list(title = "Count"), -->
-<!--          barmode="stack") -->
+<!-- <!-- - `$` は特定の変数（列）を選択   --> -->
+
+<!-- <!-- ```{r} --> -->
+<!-- <!-- iris$Sepal.Length --> -->
+<!-- <!-- ``` --> -->
 
 
-<!-- ``` -->
+<!-- <!-- # gapminder data --> -->
 
-<!-- # diamonds data  -->
+<!-- <!-- ## gapminder data 概要 --> -->
 
-<!-- ## diamonds dataset : -->
+<!-- <!-- - 平均寿命(life expectancy)、一人当たりGDP(GDP per capita)、国別の人口(population by country)等に関するデータ --> -->
 
+<!-- <!-- - gapminder has **1704** rows and **6** variables --> -->
 
-<!-- [diamond](https://ralphjacobs.co.za/why-choose-moissanite/) -->
+<!-- <!-- ## gapminder 変数一覧 --> -->
 
-<!-- [diamond](https://www.wedding-memo.com/ring/003.html) -->
-
-<!-- - 価格のヒストグラム -->
-
-<!-- ```{r} -->
-<!-- library(ggplot2) # for diamonds dataset -->
-
-<!-- diamonds %>%  -->
-<!--   plot_ly() %>%  -->
-<!--   add_histogram(x=~price) -->
-<!-- ``` -->
+<!-- <!--   - country: factor with 142 levels --> -->
+<!-- <!--   - continent: factor with 5 levels --> -->
+<!-- <!--   - year: ranges from 1952 to 2007 in increments of 5 years --> -->
+<!-- <!--   - lifeExp : life expectancy at birth, in years --> -->
+<!-- <!--   - pop: population --> -->
+<!-- <!--   - gdpPercap: GDP per capita (US$, inflation-adjusted) --> -->
 
 
-<!-- ##  Histogram with `cut` -->
-<!-- ```{r} -->
-<!-- # Histogram with categorical variable -->
-<!-- diamonds %>%  -->
-<!--   plot_ly() %>%  -->
-<!--   add_histogram(x=~cut)  -->
-<!-- ``` -->
+<!-- <!-- ## Quick glance of gapminder dataset --> -->
+
+<!-- <!-- - using `str()` and ` %>% ` --> -->
 
 
-<!-- ## Histogram with `cut` and `clarity` -->
-<!-- ```{r} -->
-<!-- diamonds %>%  -->
-<!--   plot_ly() %>%  -->
-<!--   add_histogram(x=~cut, color=~clarity) -->
-<!-- ``` -->
+<!-- <!-- ```{r} --> -->
+<!-- <!-- gapminder %>% str() --> -->
+<!-- <!-- ``` --> -->
 
-<!-- ## Create Heatmap -->
-<!-- ```{r} -->
-<!-- ## Create a heatmap -->
-<!-- diamonds %>%  -->
-<!--   plot_ly() %>%  -->
-<!--   add_heatmap(x=~cut, y=~color, z=~price) -->
-<!-- ``` -->
+<!-- <!-- ##  gapminder summary --> -->
 
-<!-- <!-- ## Animated Charts --> -->
-<!-- <!--   - Animated Scatter Chart with year timeline --> -->
-
-<!-- <!-- ```{r, echo=FALSE} --> -->
-
-<!-- <!-- library(dplyr) # for data manipulation --> -->
-<!-- <!-- library(plotly) # for plotly charts --> -->
-<!-- <!-- library(purrr) # for cumulative dataset --> -->
-<!-- <!-- library(crosstalk) # for plot linking --> -->
-<!-- <!-- library(gapminder) # for gapminder dataset --> -->
+<!-- <!-- - 次元（行と列の数） --> -->
+<!-- <!-- ```{r} --> -->
+<!-- <!-- gapminder %>% dim() --> -->
+<!-- <!-- ``` --> -->
 
 
-<!-- <!-- gapminder %>%  --> -->
-<!-- <!--   plot_ly(x=~gdpPercap, y=~lifeExp) %>%  --> -->
-<!-- <!--   add_markers(frame=~year, ids=~country, showlegend = FALSE) %>%  --> -->
-<!-- <!--   layout(title="Animated Scatter Plotly Chart", --> -->
-<!-- <!--          xaxis=list(title="GDP Per Capita", type="log"), --> -->
-<!-- <!--          yaxis=list(title= "Life Expectancy")) --> -->
+<!-- <!-- - 頻度表 --> -->
+<!-- <!-- ```{r} --> -->
+<!-- <!-- gapminder$year %>% table() --> -->
+<!-- <!-- ``` --> -->
 
+
+
+<!-- <!-- ##  gapminder summary1 --> -->
+<!-- <!-- ```{r} --> -->
+<!-- <!-- gapminder %>% summary() --> -->
+<!-- <!-- ``` --> -->
+
+<!-- <!-- ## gapminderのplot --> -->
+
+<!-- <!-- - 2002年のデータに範囲を絞り、x軸は対数変換を施す --> -->
+
+<!-- <!-- ```{r} --> -->
+<!-- <!-- gapminder2002 <- gapminder %>% filter(year == 2002)  --> -->
+
+<!-- <!-- plot(log(gapminder2002$gdpPercap), gapminder2002$lifeExp) --> -->
 
 <!-- <!-- ``` --> -->
 
 
 
-<!-- # storms data -->
-
-<!-- ## Animated bar chart -->
-
-<!-- [storm](https://twitter.com/USATODAY/status/606188977985605633/photo/1) -->
 
 
-<!-- ```{r} -->
-<!-- storms %>%  -->
-<!--   count(year, status) %>% -->
-<!--   plot_ly(y=~status, x =~n, color=~status) %>%  -->
-<!--   add_bars(frame=~year) %>% -->
-<!--   layout(barmode="stack") -->
-<!-- ``` -->
+<!-- <!-- # mtcars data --> -->
+
+<!-- <!-- ## mtcars data 概要: --> -->
+
+<!-- <!-- -  Motor Trend Car Road Tests --> -->
+<!-- <!-- - [motortrend](https://www.motortrend.com)とは  --> -->
+
+<!-- <!-- - The data was extracted from the 1974 Motor Trend US magazine, and comprises fuel consumption and 10 aspects of automobile design and performance for 32 automobiles (1973–74 models). --> -->
+
+<!-- <!-- - 1974年のモータートレンドUSマガジンの記事から --> -->
+<!-- <!-- 32台の自動車（1973〜74モデル）を対象に、燃料消費量、設計、性能など10項目を計測したデータ --> -->
+
+<!-- <!-- ## mtcars 次元と変数の概要: --> -->
+
+<!-- <!--   - 32 observations and  11 variables --> -->
+
+<!-- <!--   - mpg:	Miles/gallon --> -->
+<!-- <!--   - cyl:	Number of cylinders(シリンダーの数) --> -->
+<!-- <!--   - disp:	Displacement(排気量)  --> -->
+<!-- <!--   - hp:	Gross horsepower(馬力) --> -->
+<!-- <!--   - drat:	Rear axle ratio --> -->
+<!-- <!--   - wt:	Weight (1000 lbs) (重量: 1000ポンド) --> -->
+<!-- <!--   - qsec:	1/4 mile time --> -->
+<!-- <!--   - vs:	Engine (0 = V字型, 1 = ストレート) エンジン --> -->
+<!-- <!--   - am:	Transmission (0 = automatic, 1 = manual)  --> -->
+<!-- <!--   - gear:	Number of forward gears(前進ギアの数) --> -->
+<!-- <!--   - carb:	Number of carburetors(キャブレターの数) --> -->
+
+<!-- <!-- ## mtcars の構造:`str()` --> -->
+<!-- <!-- ```{r} --> -->
+<!-- <!-- str(mtcars) --> -->
+<!-- <!-- ``` --> -->
+
+<!-- <!-- ## Create bar chart :`cyl` vs `n` --> -->
+
+<!-- <!-- ```{r, warning=FALSE} --> -->
+<!-- <!-- mtcars %>%  --> -->
+<!-- <!--   mutate(cyl = as.factor(cyl)) %>%  # convert cyl to categorical variable --> -->
+<!-- <!--   count(cyl) %>%  ## count to get the frequency table (from dplyr package) --> -->
+<!-- <!--   plot_ly(x=~cyl,   --> -->
+<!-- <!--           y=~n,  --> -->
+<!-- <!--           color=~cyl, --> -->
+<!-- <!--           text = ~n, --> -->
+<!-- <!--           hoverinfo = "text") %>%  # apply plotly on the frequency data --> -->
+<!-- <!--   add_bars(width=0.3) %>%  # use the width argument to adjust the width of the bars --> -->
+<!-- <!--   layout(title="Bar Chart using mtcars data", --> -->
+<!-- <!--          xaxis = list(title="Cylinder数"), --> -->
+<!-- <!--          yaxis = list(title = "Count n")) --> -->
+<!-- <!-- ``` --> -->
 
 
 
-<!-- ## Line chart -->
-<!-- ```{r} -->
-<!-- # library(plotly) -->
 
-<!-- # Line chart of storms by year -->
-<!-- storms %>%  -->
-<!--   count(year, status) %>%  -->
-<!--   plot_ly(x=~year, y=~n) %>%  -->
-<!--   add_lines(color=~status) -->
-<!-- ``` -->
+<!-- <!-- ## Grouped Bar chart(`am` vs `cyl` vs `n`) --> -->
+<!-- <!--   - Using the mtcars dataset --> -->
+<!-- <!--   - Using two categorical variables (Car Cylinder type and Transmission type) --> -->
 
+<!-- <!-- ```{r, echo=TRUE, warning=FALSE, fig.width=5} --> -->
 
-<!-- ## 累積頻度 アニメ line plot -->
-<!-- ```{r} -->
-<!-- storms %>% count(year) %>% split(.$year) %>% accumulate(~bind_rows(.x, .y)) %>%  -->
-<!--   set_names(1975:2015) %>% # optional -->
-<!--   bind_rows(.id="年") %>% -->
-<!--   plot_ly(x=~year, y=~n) %>%  -->
-<!--   add_lines(frame=~年) -->
-<!-- ``` -->
+<!-- <!-- ## Side by Side or Grouped Bar Chart --> -->
+<!-- <!-- mtcars %>%  --> -->
+<!-- <!--   mutate(cyl = as.factor(cyl),  --> -->
+<!-- <!--          am = as.factor(am)) %>% # Data type conversion --> -->
+<!-- <!--   count(cyl, am) %>%  ## count to get the frequency table (from dplyr package) --> -->
+<!-- <!--   plot_ly(x=~cyl,  --> -->
+<!-- <!--           y=~n,  --> -->
+<!-- <!--           color=~am, --> -->
+<!-- <!--           text = ~n, --> -->
+<!-- <!--           hoverinfo = "text") %>%  --> -->
+<!-- <!--   add_bars() %>%  --> -->
+<!-- <!--   layout(title="Plotly Grouped Bar Chart", --> -->
+<!-- <!--          xaxis = list(title="No. of Cylinders"), --> -->
+<!-- <!--          yaxis = list(title = "Count"), --> -->
+<!-- <!--          barmode="group") --> -->
+<!-- <!-- ``` --> -->
 
-
-<!-- ## 累積頻度 アニメ line plot by category -->
-
-<!-- ```{r,warning=FALSE} -->
-<!-- storms %>% count(year, category) %>% split(.$year) %>% accumulate(~bind_rows(.x, .y)) %>%  -->
-<!--   set_names(1975:2015) %>% # optional -->
-<!--   bind_rows(.id="frame") %>% -->
-<!--   plot_ly(x=~year, y=~n) %>%  -->
-<!--   add_lines(frame=~frame, color=~category, ids=~category) -->
-
-<!-- ``` -->
-
-
-<!-- ## 累積頻度 アニメ line plot by status -->
-
-<!-- ```{r, echo=FALSE} -->
-<!-- storms %>%  -->
-<!--   count(year, status) %>%  -->
-<!--   split(.$year) %>%  -->
-<!--   accumulate(~bind_rows(.x, .y)) %>%  -->
-<!--   set_names(1975:2015) %>% # optional -->
-<!--   bind_rows(.id="frame") %>% -->
-<!--   plot_ly(x=~year, y=~n) %>%  -->
-<!--   add_lines(frame=~frame, color=~status, ids=~status) -->
-
-<!-- ``` -->
-
-<!-- # よりお洒落なplot - gapminder revisited -->
+<!-- <!-- ## Stacked Bar chart --> -->
+<!-- <!-- ```{r, warning=FALSE} --> -->
+<!-- <!-- ## Stacked Bar chart --> -->
+<!-- <!-- mtcars %>%  --> -->
+<!-- <!--   mutate(cyl = as.factor(cyl),  --> -->
+<!-- <!--          am = as.factor(am)) %>%  --> -->
+<!-- <!--   count(cyl, am) %>% ## count to get the frequency table (from dplyr package) --> -->
+<!-- <!--   plot_ly(x=~cyl,  --> -->
+<!-- <!--           y=~n,  --> -->
+<!-- <!--           color=~am, --> -->
+<!-- <!--           text = ~paste("No. of cyl=", cyl, "<br>", "Count=", n, "<br>", "Transmission=", am),  --> -->
+<!-- <!--           hoverinfo = "text") %>%  --> -->
+<!-- <!--   add_bars() %>%  --> -->
+<!-- <!--   layout(title="Plotly Stacked Bar Chart", --> -->
+<!-- <!--          xaxis = list(title="No. of Cylinders"), --> -->
+<!-- <!--          yaxis = list(title = "Count"), --> -->
+<!-- <!--          barmode="stack") --> -->
 
 
-<!-- <!-- ```{r, eval=FALSE  } --> -->
+<!-- <!-- ``` --> -->
+
+<!-- <!-- # diamonds data  --> -->
+
+<!-- <!-- ## diamonds dataset : --> -->
+
+
+<!-- <!-- [diamond](https://ralphjacobs.co.za/why-choose-moissanite/) --> -->
+
+<!-- <!-- [diamond](https://www.wedding-memo.com/ring/003.html) --> -->
+
+<!-- <!-- - 価格のヒストグラム --> -->
+
+<!-- <!-- ```{r} --> -->
+<!-- <!-- library(ggplot2) # for diamonds dataset --> -->
+
+<!-- <!-- diamonds %>%  --> -->
+<!-- <!--   plot_ly() %>%  --> -->
+<!-- <!--   add_histogram(x=~price) --> -->
+<!-- <!-- ``` --> -->
+
+
+<!-- <!-- ##  Histogram with `cut` --> -->
+<!-- <!-- ```{r} --> -->
+<!-- <!-- # Histogram with categorical variable --> -->
+<!-- <!-- diamonds %>%  --> -->
+<!-- <!--   plot_ly() %>%  --> -->
+<!-- <!--   add_histogram(x=~cut)  --> -->
+<!-- <!-- ``` --> -->
+
+
+<!-- <!-- ## Histogram with `cut` and `clarity` --> -->
+<!-- <!-- ```{r} --> -->
+<!-- <!-- diamonds %>%  --> -->
+<!-- <!--   plot_ly() %>%  --> -->
+<!-- <!--   add_histogram(x=~cut, color=~clarity) --> -->
+<!-- <!-- ``` --> -->
+
+<!-- <!-- ## Create Heatmap --> -->
+<!-- <!-- ```{r} --> -->
+<!-- <!-- ## Create a heatmap --> -->
+<!-- <!-- diamonds %>%  --> -->
+<!-- <!--   plot_ly() %>%  --> -->
+<!-- <!--   add_heatmap(x=~cut, y=~color, z=~price) --> -->
+<!-- <!-- ``` --> -->
+
+<!-- <!-- <!-- ## Animated Charts --> --> -->
+<!-- <!-- <!--   - Animated Scatter Chart with year timeline --> --> -->
+
+<!-- <!-- <!-- ```{r, echo=FALSE} --> --> -->
+
+<!-- <!-- <!-- library(dplyr) # for data manipulation --> --> -->
+<!-- <!-- <!-- library(plotly) # for plotly charts --> --> -->
+<!-- <!-- <!-- library(purrr) # for cumulative dataset --> --> -->
+<!-- <!-- <!-- library(crosstalk) # for plot linking --> --> -->
+<!-- <!-- <!-- library(gapminder) # for gapminder dataset --> --> -->
+
+
+<!-- <!-- <!-- gapminder %>%  --> --> -->
+<!-- <!-- <!--   plot_ly(x=~gdpPercap, y=~lifeExp) %>%  --> --> -->
+<!-- <!-- <!--   add_markers(frame=~year, ids=~country, showlegend = FALSE) %>%  --> --> -->
+<!-- <!-- <!--   layout(title="Animated Scatter Plotly Chart", --> --> -->
+<!-- <!-- <!--          xaxis=list(title="GDP Per Capita", type="log"), --> --> -->
+<!-- <!-- <!--          yaxis=list(title= "Life Expectancy")) --> --> -->
+
+
+<!-- <!-- <!-- ``` --> --> -->
+
+
+
+<!-- <!-- # storms data --> -->
+
+<!-- <!-- ## Animated bar chart --> -->
+
+<!-- <!-- [storm](https://twitter.com/USATODAY/status/606188977985605633/photo/1) --> -->
+
+
+<!-- <!-- ```{r} --> -->
+<!-- <!-- storms %>%  --> -->
+<!-- <!--   count(year, status) %>% --> -->
+<!-- <!--   plot_ly(y=~status, x =~n, color=~status) %>%  --> -->
+<!-- <!--   add_bars(frame=~year) %>% --> -->
+<!-- <!--   layout(barmode="stack") --> -->
+<!-- <!-- ``` --> -->
+
+
+
+<!-- <!-- ## Line chart --> -->
+<!-- <!-- ```{r} --> -->
+<!-- <!-- # library(plotly) --> -->
+
+<!-- <!-- # Line chart of storms by year --> -->
+<!-- <!-- storms %>%  --> -->
+<!-- <!--   count(year, status) %>%  --> -->
+<!-- <!--   plot_ly(x=~year, y=~n) %>%  --> -->
+<!-- <!--   add_lines(color=~status) --> -->
+<!-- <!-- ``` --> -->
+
+
+<!-- <!-- ## 累積頻度 アニメ line plot --> -->
+<!-- <!-- ```{r} --> -->
+<!-- <!-- storms %>% count(year) %>% split(.$year) %>% accumulate(~bind_rows(.x, .y)) %>%  --> -->
+<!-- <!--   set_names(1975:2015) %>% # optional --> -->
+<!-- <!--   bind_rows(.id="年") %>% --> -->
+<!-- <!--   plot_ly(x=~year, y=~n) %>%  --> -->
+<!-- <!--   add_lines(frame=~年) --> -->
+<!-- <!-- ``` --> -->
+
+
+<!-- <!-- ## 累積頻度 アニメ line plot by category --> -->
+
+<!-- <!-- ```{r,warning=FALSE} --> -->
+<!-- <!-- storms %>% count(year, category) %>% split(.$year) %>% accumulate(~bind_rows(.x, .y)) %>%  --> -->
+<!-- <!--   set_names(1975:2015) %>% # optional --> -->
+<!-- <!--   bind_rows(.id="frame") %>% --> -->
+<!-- <!--   plot_ly(x=~year, y=~n) %>%  --> -->
+<!-- <!--   add_lines(frame=~frame, color=~category, ids=~category) --> -->
+
+<!-- <!-- ``` --> -->
+
+
+<!-- <!-- ## 累積頻度 アニメ line plot by status --> -->
+
+<!-- <!-- ```{r, echo=FALSE} --> -->
+<!-- <!-- storms %>%  --> -->
+<!-- <!--   count(year, status) %>%  --> -->
+<!-- <!--   split(.$year) %>%  --> -->
+<!-- <!--   accumulate(~bind_rows(.x, .y)) %>%  --> -->
+<!-- <!--   set_names(1975:2015) %>% # optional --> -->
+<!-- <!--   bind_rows(.id="frame") %>% --> -->
+<!-- <!--   plot_ly(x=~year, y=~n) %>%  --> -->
+<!-- <!--   add_lines(frame=~frame, color=~status, ids=~status) --> -->
+
+<!-- <!-- ``` --> -->
+
+<!-- <!-- # よりお洒落なplot - gapminder revisited --> -->
+
+
+<!-- <!-- <!-- ```{r, eval=FALSE  } --> --> -->
+<!-- <!-- <!-- gapminder %>% --> --> -->
+<!-- <!-- <!--   filter(year == 2002) %>%  # filter data for the year 2002 --> --> -->
+<!-- <!-- <!--   plot_ly() %>% --> --> -->
+<!-- <!-- <!--   add_markers(x =  ~ gdpPercap, y =  ~ lifeExp) %>% --> --> -->
+<!-- <!-- <!--   ## Add title to the plot, and axis. Apply log transformation to the x axis --> --> -->
+<!-- <!-- <!--   layout( --> --> -->
+<!-- <!-- <!--     title = "Plotly Scatter Plot", --> --> -->
+<!-- <!-- <!--     xaxis = list(title = "GDP Per Capita (log scale)", type = "log"), --> --> -->
+<!-- <!-- <!--     yaxis = list(title = "Life Expectancy") --> --> -->
+<!-- <!-- <!--   )  --> --> -->
+
+<!-- <!-- <!-- ``` --> --> -->
+
+<!-- <!-- ##  --> -->
+<!-- <!-- ```{r, warning=FALSE} --> -->
+<!-- <!-- ## Scatter plot for a specific year 2002 --> -->
 <!-- <!-- gapminder %>% --> -->
 <!-- <!--   filter(year == 2002) %>%  # filter data for the year 2002 --> -->
 <!-- <!--   plot_ly() %>% --> -->
@@ -1302,85 +1434,69 @@ library(dplyr) # for any data manipulation operations; we used
 <!-- <!--     title = "Plotly Scatter Plot", --> -->
 <!-- <!--     xaxis = list(title = "GDP Per Capita (log scale)", type = "log"), --> -->
 <!-- <!--     yaxis = list(title = "Life Expectancy") --> -->
-<!-- <!--   )  --> -->
-
+<!-- <!--   ) %>% --> -->
+<!-- <!--   hide_legend() --> -->
 <!-- <!-- ``` --> -->
 
-<!-- ##  -->
-<!-- ```{r, warning=FALSE} -->
-<!-- ## Scatter plot for a specific year 2002 -->
-<!-- gapminder %>% -->
-<!--   filter(year == 2002) %>%  # filter data for the year 2002 -->
-<!--   plot_ly() %>% -->
-<!--   add_markers(x =  ~ gdpPercap, y =  ~ lifeExp) %>% -->
-<!--   ## Add title to the plot, and axis. Apply log transformation to the x axis -->
-<!--   layout( -->
-<!--     title = "Plotly Scatter Plot", -->
-<!--     xaxis = list(title = "GDP Per Capita (log scale)", type = "log"), -->
-<!--     yaxis = list(title = "Life Expectancy") -->
-<!--   ) %>% -->
-<!--   hide_legend() -->
-<!-- ``` -->
+<!-- <!-- ## 年度ごとに変化するアニメーションを作成 --> -->
 
-<!-- ## 年度ごとに変化するアニメーションを作成 -->
-
-<!-- - 年度変数を frame に指定（`frame=~year`） -->
-<!-- -  Frame is transitioned over the years to bring a smooth animation effect -->
-<!-- ```{r,echo=FALSE, warning=FALSE} -->
-<!-- gapminder %>% -->
-<!--   plot_ly() %>% -->
-<!--   # add frame argument for animation and map to the variable needed on the timeline -->
-<!--   add_markers(x=~gdpPercap, y=~lifeExp, -->
-<!--               frame=~year, -->
-<!--               text=~paste("Country:", country), -->
-<!--               hoverinfo= "text") %>% -->
-<!--   layout(title="Animated Plotly Scatter Plot", -->
-<!--          xaxis=list(title="GDP Per Capita (log scale)(一人当たりGDP)", type="log"), -->
-<!--          yaxis=list(title= "Life Expectancy(平均寿命)")) %>% -->
-<!--   hide_legend() -->
-<!-- ``` -->
+<!-- <!-- - 年度変数を frame に指定（`frame=~year`） --> -->
+<!-- <!-- -  Frame is transitioned over the years to bring a smooth animation effect --> -->
+<!-- <!-- ```{r,echo=FALSE, warning=FALSE} --> -->
+<!-- <!-- gapminder %>% --> -->
+<!-- <!--   plot_ly() %>% --> -->
+<!-- <!--   # add frame argument for animation and map to the variable needed on the timeline --> -->
+<!-- <!--   add_markers(x=~gdpPercap, y=~lifeExp, --> -->
+<!-- <!--               frame=~year, --> -->
+<!-- <!--               text=~paste("Country:", country), --> -->
+<!-- <!--               hoverinfo= "text") %>% --> -->
+<!-- <!--   layout(title="Animated Plotly Scatter Plot", --> -->
+<!-- <!--          xaxis=list(title="GDP Per Capita (log scale)(一人当たりGDP)", type="log"), --> -->
+<!-- <!--          yaxis=list(title= "Life Expectancy(平均寿命)")) %>% --> -->
+<!-- <!--   hide_legend() --> -->
+<!-- <!-- ``` --> -->
 
 
-<!-- ## Animated bubble chart with year timeline -->
+<!-- <!-- ## Animated bubble chart with year timeline --> -->
 
-<!-- [You've never seen data presented like this](https://www.ted.com/talks/hans_rosling_the_best_stats_you_ve_ever_seen?referrer=playlist-the_best_hans_rosling_talks_yo#t-213748) -->
+<!-- <!-- [You've never seen data presented like this](https://www.ted.com/talks/hans_rosling_the_best_stats_you_ve_ever_seen?referrer=playlist-the_best_hans_rosling_talks_yo#t-213748) --> -->
 
 
-<!--   - Size of the bubble : the population(人口) -->
-<!--   - Color of the bubble : the continent(大陸) -->
-<!--   - Add text/ Add Pause button -->
+<!-- <!--   - Size of the bubble : the population(人口) --> -->
+<!-- <!--   - Color of the bubble : the continent(大陸) --> -->
+<!-- <!--   - Add text/ Add Pause button --> -->
 
-<!-- ##  -->
+<!-- <!-- ##  --> -->
 
-<!-- ```{r, warning=FALSE} -->
-<!-- gapminder %>%  -->
-<!--   plot_ly(x=~gdpPercap, y=~lifeExp) %>%  -->
-<!--   add_markers(frame=~year,  -->
-<!--               ids=~country, -->
-<!--               size = ~pop, -->
-<!--               color=~continent, -->
-<!--               text = ~country, -->
-<!--               hoverinfo = "text",  -->
-<!--               marker=list(sizemode="diameter")) %>%  -->
-<!--   layout(title="Animated Scatter Plotly Chart",xaxis=list(title="GDP Per Capita", type="log"), -->
-<!--          yaxis=list(title= "Life Expectancy")) %>%  -->
-<!--   animation_button(label = "Click me!", -->
-<!--                    x=1, -->
-<!--                    y=1, -->
-<!--                    xanchor="right", -->
-<!--                    yanchor="bottom") %>%  -->
-<!--   animation_opts(frame = 700,  -->
-<!--                  transition = 350,  -->
-<!--                  easing="linear",  -->
-<!--                  redraw = FALSE) %>%  -->
-<!--   animation_slider(hide=F,  -->
-<!--                    currentvalue=list(prefix=NULL, -->
-<!--                                      font = list(color="GREY", size=30))) -->
-<!-- ``` -->
+<!-- <!-- ```{r, warning=FALSE} --> -->
+<!-- <!-- gapminder %>%  --> -->
+<!-- <!--   plot_ly(x=~gdpPercap, y=~lifeExp) %>%  --> -->
+<!-- <!--   add_markers(frame=~year,  --> -->
+<!-- <!--               ids=~country, --> -->
+<!-- <!--               size = ~pop, --> -->
+<!-- <!--               color=~continent, --> -->
+<!-- <!--               text = ~country, --> -->
+<!-- <!--               hoverinfo = "text",  --> -->
+<!-- <!--               marker=list(sizemode="diameter")) %>%  --> -->
+<!-- <!--   layout(title="Animated Scatter Plotly Chart",xaxis=list(title="GDP Per Capita", type="log"), --> -->
+<!-- <!--          yaxis=list(title= "Life Expectancy")) %>%  --> -->
+<!-- <!--   animation_button(label = "Click me!", --> -->
+<!-- <!--                    x=1, --> -->
+<!-- <!--                    y=1, --> -->
+<!-- <!--                    xanchor="right", --> -->
+<!-- <!--                    yanchor="bottom") %>%  --> -->
+<!-- <!--   animation_opts(frame = 700,  --> -->
+<!-- <!--                  transition = 350,  --> -->
+<!-- <!--                  easing="linear",  --> -->
+<!-- <!--                  redraw = FALSE) %>%  --> -->
+<!-- <!--   animation_slider(hide=F,  --> -->
+<!-- <!--                    currentvalue=list(prefix=NULL, --> -->
+<!-- <!--                                      font = list(color="GREY", size=30))) --> -->
+<!-- <!-- ``` --> -->
 
 
 
 
 
 
-<!-- https://www.ted.com/talks/hans_rosling_the_best_stats_you_ve_ever_seen?referrer=playlist-the_best_hans_rosling_talks_yo#t-213748 -->
+<!-- <!-- https://www.ted.com/talks/hans_rosling_the_best_stats_you_ve_ever_seen?referrer=playlist-the_best_hans_rosling_talks_yo#t-213748 --> -->
