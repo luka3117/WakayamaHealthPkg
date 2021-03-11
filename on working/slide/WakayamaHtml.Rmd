@@ -297,11 +297,22 @@ d_f %>% DT::datatable()
 
 ## `d_common`
 
+```{r}
+d_common %>% colnames() %>% enframe() %>% DT::datatable()
+```
+
 
 ## `d_m`
 
+```{r}
+d_m %>% colnames() %>% enframe() %>% DT::datatable()
+
+```
 
 ## `d_f`
+```{r}
+d_f %>% colnames() %>% enframe() %>% DT::datatable()
+```
 
 
 
@@ -463,7 +474,7 @@ d_common %>% dplyr::select_if(is.numeric) %>% sapply(rank) %>%
 ```
 
 
-## `d_common data`の連続データ分布確認
+## `d_common data`の連続データ分布確認1
 
 ```{r, warning=FALSE}
 
@@ -498,6 +509,51 @@ plot_ly(
 
 
 ```
+
+
+## `d_common data`の連続データ分布確認2
+
+```{r}
+name1 <- function(temp) {
+  temp %>% select(value) %>% .[[1]] %>% density() %>% 
+    broom::tidy()
+}
+  
+d_common_standarize_long_density<-
+d_common_standarize_long %>% group_by(var_name) %>% nest() %>% mutate(dens=map(data, name1)) %>% select(var_name, dens) %>% unnest()
+
+d_common_standarize_long_density %>% DT::datatable()
+
+d_common_standarize_long_density %>% 
+  plot_ly(x=~x, y=~y) %>% 
+  add_lines(frame=~var_name)
+
+# add_lines(color=~status) %>% 
+  # storms %>% 
+
+
+
+```
+
+
+```{r}
+density <- density(diamonds$carat)
+
+# diamonds$carat
+
+
+
+fig <- 
+  plot_ly(x = ~density$x, y = ~density$y, type = 'scatter', mode = 'lines', fill = 'tozeroy')
+fig <- fig %>% layout(xaxis = list(title = 'Carat'),
+                      yaxis = list(title = 'Density'))
+
+fig
+
+
+```
+
+
 
 ## `d_common data`の連続データの正規性検定
 - shapiro 検定
@@ -547,74 +603,13 @@ plot_ly(y =  ~ pref.J,
 ```
 
 
-#  ヘルスケア産業の創出や健康経営の推進に係る要因分析??
-
-ヘルスケア産業とは
-
-
-①経済産業省におけるヘルスケア産業政策について
-　https://www.meti.go.jp/policy/mono_info_service/healthcare/01metihealthcarepolicy.pdf
-
-
-②健康経営の推進について
-　https://www.meti.go.jp/policy/mono_info_service/healthcare/downloadfiles/180710kenkoukeiei-gaiyou.pdf
-
-
-③中小企業への健康経営の普及
-　https://www.meti.go.jp/policy/mono_info_service/healthcare/downloadfiles/191030chushohenofukyu.pdf
-
-
-
-〇経済産業省－ヘルスケア産業ホームページ
-　https://www.meti.go.jp/policy/mono_info_service/healthcare/index.html
-
-
-
-利用出来そうなデータ①
-
-〇オープンデータ
-
-
-●わかやま健康推進事業所（和歌山県健康推進課の取組）
-　・「わかやま健康づくりチャレンジ運動サポート企業」登録事業所一覧
-　・「わかやま健康づくりチャレンジ運動」登録事業所一覧
-　・「わかやま健康推進事業所」認定事業所一覧
-　https://www.pref.wakayama.lg.jp/prefg/041200/h_kenkou/d00156483.html
-
-
-●健康経営優良法人2020（大規模法人部門）認定法人一覧 　など（経済産業省の取組）
-　https://www.meti.go.jp/policy/mono_info_service/healthcare/kenkoukeiei_yuryouhouzin.html
-
-
-●健康経営度調査結果集計データ（平成26年度～令和元年度）Excelファイル（経済産業省）
-　https://www.meti.go.jp/policy/mono_info_service/healthcare/kenko_keiei.html
-
-
-分析イメージ（案）
-
-
-〇経済産業省が実施している企業活動基本調査の統計ミクロデータと帝国データバンクや東京商工
-　リサーチの企業データを接続して生産性の分析
-
-〇「わかやま健康推進事業所」に認定されている企業へのアンケート調査の実施
-
-〇健康経営の推進が生産性向上に繋がる一つのファクターでは。生産性を上げるには設備投資や
-　ＩＴ化などがあるが、相関がみられるかも。
-
-〇横軸に「わかやま健康推進事業所」認定にあたっての評価ポイントを、縦軸に従業員あたりの生産性
-　をとり、複数の企業をプロットしてみる。
-
-〇上記の場合、同業種においてプロットする。病院や郵便局などの判定は難しい。
-
-〇近々、経済センサス基礎調査の２０１９が公表される。事業名を含んだ調査票情報を取得できれば
-　分析できるのでは。
 
 
 
 
 # 出典整理{.tabset .tabset-fade .tabset-pills}
 
-## 出典リンク
+## 出典元
 -
 ```
 for i in open("txt"):
@@ -936,6 +931,45 @@ for i in open("txt"):
 - [歩数_2012(20歳以上平均値(歩/日)][533]
 
 
+## リンク先の修正箇所
+
+＜追記修正箇所等＞
+- V列
+　熊本県の欠損値について、国の示す推定方法により数値を記載
+ー熊本県女性の健康寿命の推定値
+
+
+- FI列、FJ列、FK列、FL列
+　収集元データの年度修正（新しいデータに置き換え）
+
+    - 野菜摂取量_2016(20歳以上平均値(g/日)
+    - 食塩摂取量_2016(20歳以上平均値(g/日)
+    - BMI平均値_2016(男性20〜69歳)(女性40〜69歳)(単位Kg/u)
+    - 歩数_2016(20歳以上平均値(歩/日)
+
+
+- DH列、DI列、DJ列、DK列のデータ収集元URLを修正
+    
+    >  悪性新生物(子宮)_年齢調整死亡率2015
+    - 心疾患_年齢調整死亡率2015
+    - 肺炎_年齢調整死亡率2015
+    - 急性心筋梗塞_年齢調整死亡率2015
+  
+  - （✕「患者調査」から→〇「人口動態統計特殊報告」）
+
+
+
+- EF列、EG列、EH列、EI列、EJ列
+  - バリアフリー化の総数であったものをバリアフリー化率に置き換え
+      - 一定のバリアフリー化率_2018
+      - 高度のバリアフリー化率_2018
+      - バリアフリー_手すりがある2018
+      - バリアフリー_廊下などが車いすで通行可能な幅2018
+      - バリアフリー_段差のない屋内2018
+      -（バリアフリー化率の出典元を発見
+
+
+
 <!-- # 出典 -->
 ```{r child="ref.Rmd"}
 
@@ -951,6 +985,79 @@ for i in open("txt"):
 を比較して記入する！！
 記入完了令和3年2月26日
 **
+
+
+# 説明変数の標準化と計量化(scoring)
+-  variable combining
+
+
+
+#  ヘルスケア産業の創出や健康経営の推進に係る要因分析??
+
+ヘルスケア産業とは
+
+
+①経済産業省におけるヘルスケア産業政策について
+　https://www.meti.go.jp/policy/mono_info_service/healthcare/01metihealthcarepolicy.pdf
+
+
+②健康経営の推進について
+　https://www.meti.go.jp/policy/mono_info_service/healthcare/downloadfiles/180710kenkoukeiei-gaiyou.pdf
+
+
+③中小企業への健康経営の普及
+　https://www.meti.go.jp/policy/mono_info_service/healthcare/downloadfiles/191030chushohenofukyu.pdf
+
+
+
+〇経済産業省－ヘルスケア産業ホームページ
+　https://www.meti.go.jp/policy/mono_info_service/healthcare/index.html
+
+
+
+利用出来そうなデータ①
+
+〇オープンデータ
+
+
+●わかやま健康推進事業所（和歌山県健康推進課の取組）
+　・「わかやま健康づくりチャレンジ運動サポート企業」登録事業所一覧
+　・「わかやま健康づくりチャレンジ運動」登録事業所一覧
+　・「わかやま健康推進事業所」認定事業所一覧
+　https://www.pref.wakayama.lg.jp/prefg/041200/h_kenkou/d00156483.html
+
+
+●健康経営優良法人2020（大規模法人部門）認定法人一覧 　など（経済産業省の取組）
+　https://www.meti.go.jp/policy/mono_info_service/healthcare/kenkoukeiei_yuryouhouzin.html
+
+
+●健康経営度調査結果集計データ（平成26年度～令和元年度）Excelファイル（経済産業省）
+　https://www.meti.go.jp/policy/mono_info_service/healthcare/kenko_keiei.html
+
+
+分析イメージ（案）
+
+
+〇経済産業省が実施している企業活動基本調査の統計ミクロデータと帝国データバンクや東京商工
+　リサーチの企業データを接続して生産性の分析
+
+〇「わかやま健康推進事業所」に認定されている企業へのアンケート調査の実施
+
+〇健康経営の推進が生産性向上に繋がる一つのファクターでは。生産性を上げるには設備投資や
+　ＩＴ化などがあるが、相関がみられるかも。
+
+〇横軸に「わかやま健康推進事業所」認定にあたっての評価ポイントを、縦軸に従業員あたりの生産性
+　をとり、複数の企業をプロットしてみる。
+
+〇上記の場合、同業種においてプロットする。病院や郵便局などの判定は難しい。
+
+〇近々、経済センサス基礎調査の２０１９が公表される。事業名を含んだ調査票情報を取得できれば
+　分析できるのでは。
+
+
+
+
+
 
 
 

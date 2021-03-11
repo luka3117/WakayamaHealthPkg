@@ -1,0 +1,60 @@
+%\documentclass[a4j,11pt,mc, twocolumn]{jreport}
+\documentclass[a4j,11pt,mc]{jreport}
+%\documentclass[a4j,11pt,mc]{jreport}
+\usepackage{style/dsreport}
+%\usepackage[dvipdfmx]{graphicx}
+%\usepackage{time} 
+%\usepackage{kotex, url, color}
+%---------------------------------------------------------------------------
+% Header
+%---------------------------------------------------------------------------
+\setlength{\textwidth}{165mm}
+\pagestyle{fancy}
+\rhead{\leftmark}
+\lhead{\rightmark}
+\renewcommand{\chaptermark}[1]{\markboth{第\ \thechapter\ 章~#1}{}}
+\renewcommand{\sectionmark}[1]{\markright{\thesection #1}{}}
+\setlength{\textwidth}{200mm}
+
+\newcommand{\tr}[1]{\textcolor{red}{\bf#1}}  %% red text
+\newcommand{\bb}[1]{\textcolor{blue}{\bf#1}}  %% red text
+\newgeometry{left=25mm, top=30mm, textheight=247mm, textwidth=165mm}
+
+\setlength{\unitlength}{0.5\linewidth}
+
+
+
+
+
+%---------------------------------------------------------------------------
+\begin{document}
+%---------------------------------------------------------------------------
+\shigads{1}{和歌山県健康寿命延伸のためのデータ活用}
+{和歌山県データ離活センター\\\texttt{www.pref.shiga.lg.jp/e/ef45/}}
+{滋賀大学DS学部, DS Center\\ \texttt{www.ds.shiga-u.ac.jp/}}
+%\the\hour 時 \the\day
+%\maketitle
+%\begin{abstract}
+%本書は....
+%%\keywords{test,test}
+%\end{abstract}
+
+\tableofcontents
+\thispagestyle{empty}
+\newpage
+
+%---------------------------------------------------------------------------
+% Main
+%---------------------------------------------------------------------------
+\input{sub/1.tex}
+%---------------------------------------------------------------------------
+%  References
+%---------------------------------------------------------------------------
+\newpage
+\makeatletter
+\renewcommand{\@biblabel}[1]{[#1]}
+\makeatother
+
+\bibliographystyle{style/misl}
+\bibliography{bib_test}
+\end{document}
