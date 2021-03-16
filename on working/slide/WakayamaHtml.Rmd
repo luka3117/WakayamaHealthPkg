@@ -40,8 +40,41 @@ output:
 ---
 
 
-#  データ情報：
+#  データ情報および変更履歴：
 - "DataFormat.csv" latest version 2021年2月10日
+- "DataFormat.csv" latest version 2021年3月11日受領
+
+
+> ＜追記修正箇所等＞
+
+- V列
+  - 熊本県の欠損値について、国の示す推定方法により数値を記載 -     
+  - 熊本県女性の**健康寿命の推定値**
+
+- FI列、FJ列、FK列、FL列 　収集元データの**年度修正**（新しいデータに置き換え）
+  - 野菜摂取量_2016(20歳以上平均値(g/日)
+  - 食塩摂取量_2016(20歳以上平均値(g/日)
+  - BMI平均値_2016(男性20〜69歳)(女性40〜69歳)(単位Kg/u)
+  - 歩数_2016(20歳以上平均値(歩/日)
+
+
+- DH列、DI列、DJ列、DK列のデータ収集**元URLを修正**
+  - 悪性新生物(子宮)_年齢調整死亡率2015
+  - 心疾患_年齢調整死亡率2015
+  - 肺炎_年齢調整死亡率2015
+  - 急性心筋梗塞_年齢調整死亡率2015
+  - （✕「患者調査」から→〇「人口動態統計特殊報告」）
+
+- EF列、EG列、EH列、EI列、EJ列
+
+  - バリアフリー化の**総数**であったものをバリアフリー化**率に置き換え**
+    - 一定のバリアフリー化率_2018
+    - 高度のバリアフリー化率_2018
+    - バリアフリー_手すりがある2018
+    - バリアフリー_廊下などが車いすで通行可能な幅2018
+    - バリアフリー_段差のない屋内2018
+  - 参考事項：バリアフリー化率の出典元を発見
+
 
 ```{r, warning=FALSE}
 
@@ -54,6 +87,8 @@ suppressMessages(library(data.table))
 suppressMessages(library(kableExtra))
 suppressMessages(library(curl))
 suppressMessages(library(tidyverse))
+suppressMessages(library(plotly))
+
 ```
 
 
@@ -70,6 +105,91 @@ suppressMessages(library(tidyverse))
 -
 
 
+
+# 寿命データの説明
+
+## 平均寿命_2015
+出典：平成27年都道府県別生命表の概況
+取得元：以下のリンク
+
+https://www.mhlw.go.jp/toukei/saikin/hw/life/tdfk15/index.html
+
+詳細説明：
+・「都道府県別にみた平均寿命の推移」をダウンロード
+・男性の平均寿命は「表5-1　平均寿命の推移（男）」より「平成27年」のものを、女性の平均寿命は「表5-2　平均寿命の推移（女）」より「平成27年」のものを取得
+
+## 変数名：健康寿命_2016
+出典：厚生労働科学研究　健康寿命のページ(http://toukei.umin.jp/kenkoujyumyou/)
+
+「都道府県別健康寿命（2010～2016年）」をダウンロード
+・男性の健康寿命はシート「付表1-1」より「I列」の2016年の推定値を、女性の健康寿命はシート「付表1-2」より「日常生活に制限のない期間の平均」を取得。
+
+・国民生活基礎調査は熊本地震により2016年の熊本県の健康情報を調査していないが、熊本県の2016年健康寿命のデータに熊本県の3年次の平均を下式による、2016年の仮定に基づく推定値を用いて算定した
+　(熊本県の2016年の仮定に基づく推定値)＝(熊本県の2013年の推定値)×(全国の2016年の推定値)/(全国の2013年の推定値)
+
+
+
+## 順位
+
+
+-  ggrepel https://ggrepel.slowkow.com/articles/examples.html
+
+
+```{r, eval=FALSE}
+
+Align labels on the left or right edge
+Set direction to “y” and try hjust 0.5, 0, and 1:
+
+set.seed(42)
+
+p <- ggplot(mtcars, aes(y = wt, x = 1, label = rownames(mtcars))) +
+  geom_point(color = "red") +
+  ylim(1, 5.5) +
+  theme(
+    axis.line.x  = element_blank(),
+    axis.ticks.x = element_blank(),
+    axis.text.x  = element_blank(),
+    axis.title.x = element_blank()
+  )
+
+p1 <- p +
+  xlim(1, 1.375) +
+  geom_text_repel(
+    force        = 0.5,
+    nudge_x      = 0.15,
+    direction    = "y",
+    hjust        = 0,
+    segment.size = 0.2
+  ) +
+  ggtitle("hjust = 0")
+
+p2 <- p +
+  xlim(1, 1.375) +
+  geom_text_repel(
+    force        = 0.5,
+    nudge_x      = 0.2,
+    direction    = "y",
+    hjust        = 0.5,
+    segment.size = 0.2
+  ) +
+  ggtitle("hjust = 0.5 (default)")
+
+p3 <- p +
+  xlim(0.25, 1) +
+  scale_y_continuous(position = "right") +
+  geom_text_repel(
+    force        = 0.5,
+    nudge_x      = -0.25,
+    direction    = "y",
+    hjust        = 1,
+    segment.size = 0.2
+  ) +
+  ggtitle("hjust = 1")
+
+gridExtra::grid.arrange(p1, p2, p3, ncol = 3)
+
+
+```
 
 
 
@@ -318,6 +438,85 @@ d_f %>% colnames() %>% enframe() %>% DT::datatable()
 
 # 寿命(目的変数)の都道府県の順位確認{.tabset .tabset-fade .tabset-pills}
 
+## 男性の平均寿命と健康寿命の差
+```{r, warning=FALSE}
+suppressMessages(library(plotly))
+
+t<-d_m %>% select(pref.J,HLE_2016,LE_2015) %>%
+  mutate(pref.J=forcats::fct_reorder(pref.J, LE_2015))
+t$pref.J
+
+t %>%
+  plot_ly() %>%
+    add_segments(
+  x=~HLE_2016,y=~pref.J ,
+  xend=~LE_2015,yend=~pref.J ,
+    # x = ~c, y = ~model,
+    # xend = ~h, yend = ~model,
+    color = I("gray"), showlegend = FALSE
+  ) %>%
+  add_markers(
+    # x = ~c, y = ~model,
+  x=~HLE_2016,y=~pref.J ,
+    color = I("blue"),
+    name = "健康寿命"
+  ) %>%
+  add_markers(
+    # x = ~h, y = ~model,
+  x=~LE_2015,y=~pref.J ,
+    color = I("red"),
+    name  = "平均寿命"
+  ) %>%
+  layout(
+    xaxis = list(
+      range=c(60,83),
+      title="男性の平均寿命と健康寿命の差"
+    )
+  )
+
+```
+
+## 女性の平均寿命と健康寿命の差
+```{r, warning=FALSE}
+
+suppressMessages(library(plotly))
+
+t<-d_f %>% select(pref.J,HLE_2016,LE_2015) %>%
+  mutate(pref.J=forcats::fct_reorder(pref.J, LE_2015))
+t$pref.J
+
+t %>%
+  # plot_ly(width = 600, height = 1000) %>%
+  plot_ly() %>%
+    add_segments(
+  x=~HLE_2016,y=~pref.J ,
+  xend=~LE_2015,yend=~pref.J ,
+    # x = ~c, y = ~model,
+    # xend = ~h, yend = ~model,
+    color = I("gray"), showlegend = FALSE
+  ) %>%
+  add_markers(
+    # x = ~c, y = ~model,
+  x=~HLE_2016,y=~pref.J ,
+    color = I("blue"),
+    name = "健康寿命"
+  ) %>%
+  add_markers(
+    # x = ~h, y = ~model,
+  x=~LE_2015,y=~pref.J ,
+    color = I("red"),
+    name  = "平均寿命"
+  ) %>%
+  layout(
+    xaxis = list(
+      range=c(60,88),
+      title="女性の平均寿命と健康寿命の差"
+    )
+  )
+
+```
+
+
 ## 男性の平均寿命
 
 
@@ -515,21 +714,21 @@ plot_ly(
 
 ```{r}
 name1 <- function(temp) {
-  temp %>% select(value) %>% .[[1]] %>% density() %>% 
+  temp %>% select(value) %>% .[[1]] %>% density() %>%
     broom::tidy()
 }
-  
+
 d_common_standarize_long_density<-
 d_common_standarize_long %>% group_by(var_name) %>% nest() %>% mutate(dens=map(data, name1)) %>% select(var_name, dens) %>% unnest()
 
 d_common_standarize_long_density %>% DT::datatable()
 
-d_common_standarize_long_density %>% 
-  plot_ly(x=~x, y=~y) %>% 
+d_common_standarize_long_density %>%
+  plot_ly(x=~x, y=~y) %>%
   add_lines(frame=~var_name)
 
-# add_lines(color=~status) %>% 
-  # storms %>% 
+# add_lines(color=~status) %>%
+  # storms %>%
 
 
 
@@ -543,7 +742,7 @@ density <- density(diamonds$carat)
 
 
 
-fig <- 
+fig <-
   plot_ly(x = ~density$x, y = ~density$y, type = 'scatter', mode = 'lines', fill = 'tozeroy')
 fig <- fig %>% layout(xaxis = list(title = 'Carat'),
                       yaxis = list(title = 'Density'))
@@ -587,14 +786,14 @@ d_common_normality_test %>% filter(p.value<0.05) %>% DT::datatable()
 
 ```{r}
 library(plotly)
-temp<-left_join(d_common_standarize_long, d_common, 
+temp<-left_join(d_common_standarize_long, d_common,
           by = c("pref.id"="key")) %>% select(pref.J, 2,3)
 
 
 temp %>% filter(pref.J=="和歌山"|
                 pref.J=="青森"|
                 pref.J=="滋賀"|
-                pref.J=="長野") %>% 
+                pref.J=="長野") %>%
 plot_ly(y =  ~ pref.J,
         x =  ~ value,
         color =  ~ pref.J) %>%
@@ -949,18 +1148,18 @@ for i in open("txt"):
 
 
 - DH列、DI列、DJ列、DK列のデータ収集元URLを修正
-    
+
     >  悪性新生物(子宮)_年齢調整死亡率2015
     - 心疾患_年齢調整死亡率2015
     - 肺炎_年齢調整死亡率2015
     - 急性心筋梗塞_年齢調整死亡率2015
-  
+
   - （✕「患者調査」から→〇「人口動態統計特殊報告」）
 
 
 
 - EF列、EG列、EH列、EI列、EJ列
-  - バリアフリー化の総数であったものをバリアフリー化率に置き換え
+  - バリアフリー化の**総数**であったものをバリアフリー化**率に置き換え**
       - 一定のバリアフリー化率_2018
       - 高度のバリアフリー化率_2018
       - バリアフリー_手すりがある2018
