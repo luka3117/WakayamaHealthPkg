@@ -42,7 +42,9 @@ output:
 
 #  データ情報および変更履歴：
 - "DataFormat.csv" latest version 2021年2月10日
-- "DataFormat.csv" latest version 2021年3月11日受領
+- 利用データ"DataFormat.csv" latest version 2021年3月11日受領
+  - location : 
+  - file<-"../../data/DataFormat-32021年3月11日受領/DataFormat.csv"
 
 
 > ＜追記修正箇所等＞
@@ -195,7 +197,12 @@ gridExtra::grid.arrange(p1, p2, p3, ncol = 3)
 
 ```{r, warning=FALSE, message=FALSE}
 getwd()
-d<-read_csv("../..//data/DataFormat.csv", skip=1, locale = readr::locale(encoding = "CP932"))
+
+# d<-read_csv("../..//data/DataFormat.csv", skip=1, locale = readr::locale(encoding = "CP932"))
+
+
+file<-"../../data/DataFormat-32021年3月11日受領/DataFormat.csv"
+d<-read_csv(file, skip=1, locale = readr::locale(encoding = "CP932"))
 
 d<-d[-95,]
 d %>% dim()
