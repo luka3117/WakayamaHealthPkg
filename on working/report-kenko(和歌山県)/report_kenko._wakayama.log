@@ -1,4 +1,4 @@
-This is e-pTeX, Version 3.14159265-p3.8.1-180226-2.6 (utf8.euc) (TeX Live 2018) (preloaded format=platex 2019.4.23)  18 MAR 2021 21:05
+This is e-pTeX, Version 3.14159265-p3.8.1-180226-2.6 (utf8.euc) (TeX Live 2018) (preloaded format=platex 2019.4.23)  20 MAR 2021 20:00
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -473,18 +473,18 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 
 
 
-])
-\tf@toc=\write3
-\openout3 = `report_kenko._wakayama.toc'.
-
-
+]
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
 Make it at least 15.49998pt.
 We now make it that large for the rest of the document.
 This may cause the page layout to be inconsistent, however.
 
-[2] [3] (./sub/wakayama1.tex
+[2])
+\tf@toc=\write3
+\openout3 = `report_kenko._wakayama.toc'.
+
+ [3] (./sub/wakayama1.tex
 第 1 章
 LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <12> not available
 (Font)              Font shape `JT1/gt/m/n' tried instead on input line 9.
@@ -496,121 +496,126 @@ LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <12> not available
 ]
 第 2 章
 LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <10.95> not available
-(Font)              Font shape `JT1/gt/m/n' tried instead on input line 62.
+(Font)              Font shape `JT1/gt/m/n' tried instead on input line 63.
 LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <10.95> not available
-(Font)              Font shape `JY1/gt/m/n' tried instead on input line 62.
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 78.
-(/usr/local/texlive/2018/texmf-dist/tex/latex/base/omscmr.fd
-File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
-)
-LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 78.
+(Font)              Font shape `JY1/gt/m/n' tried instead on input line 63.
 
-Underfull \hbox (badness 10000) in paragraph at lines 79--80
-[]\JY1/mc/m/sc/10.95 順位デ ータの挿入
+Underfull \hbox (badness 10000) in paragraph at lines 95--101
+[]\JY1/mc/m/sc/10.95 図 \OT1/cmr/m/n/10.95 2.3 DALY \JY1/mc/m/sc/10.95 の算出概
+念図 、 出典 ：
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 95--101
+\OT1/cmr/m/n/10.95 wikipedia.org\JY1/mc/m/sc/10.95 、 障害調整生命年健康寿命と
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 115--115
+[]\OT1/cmr/m/n/10.95 Fig. 2.1 DALY \JY1/mc/m/sc/10.95 の算出概念図\OT1/cmr/m/n/
+10.95 , \JY1/mc/m/sc/10.95 出典 ：
  []
 
 [5
 
+]
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 132.
+
+ (/usr/local/texlive/2018/texmf-dist/tex/latex/base/omscmr.fd
+File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 132.
+ [6] [7
 
 ]
 第 3 章
-[6
-
-
-]
-第 4 章
-[7
-
-
-]
-第 5 章
-
-Underfull \hbox (badness 10000) in paragraph at lines 153--153
-[]\OT1/cmr/bx/n/12 3.5 \JY1/gt/m/n/12 男女区別のないデ ータ
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 158--158
-[]\OT1/cmr/bx/n/12 3.6 \JY1/gt/m/n/12 男女区別のあるデ ータ
- []
-
 [8
 
 
 ]
-第 6 章
+第 4 章
+File: fig/WakayamaTrend.pdf Graphic file (type pdf)
+<fig/WakayamaTrend.pdf>
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
 [9
 
-
 ]
-第 7 章
+第 5 章
 [10
 
-
 ]
-第 8 章
+第 6 章
 [11
 
 
 ]
-第 9 章
+第 7 章
+
+Underfull \hbox (badness 10000) in paragraph at lines 480--480
+[]\OT1/cmr/bx/n/12 3.5 \JY1/gt/m/n/12 男女区別のないデ ータ
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 485--485
+[]\OT1/cmr/bx/n/12 3.6 \JY1/gt/m/n/12 男女区別のあるデ ータ
+ []
+
 [12
 
 
 ]
-第 10 章
+第 8 章
 [13
 
 
 ]
-第 11 章
+第 9 章
 [14
 
 
 ]
-第 12 章
+第 10 章
 [15
 
 
 ]
-第 13 章
-
-Underfull \hbox (badness 10000) in paragraph at lines 276--276
-[]\OT1/cmr/m/n/10.95 Fig. 13.1 DALY \JY1/mc/m/sc/10.95 の算出概念図\OT1/cmr/m/n
-/10.95 , \JY1/mc/m/sc/10.95 出典 ：
- []
-
+第 11 章
 [16
 
-] [17] [18]
 
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
+]
+第 12 章
+[17
 
 
-LaTeX Warning: `!h' float specifier changed to `!ht'.
+]
+第 13 章
+[18
 
 
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-[19]
+]
 第 14 章
+[19
+
+
+]
+第 15 章
 [20
 
-] [21])
-No file report_kenko._wakayama.bbl.
+] [21]
+第 16 章
 [22
 
-] (./report_kenko._wakayama.aux)
+]
+第 17 章
+[23
+
+]) [24]
+No file report_kenko._wakayama.bbl.
+(./report_kenko._wakayama.aux)
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
@@ -619,12 +624,12 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 3454 strings out of 493226
- 44494 string characters out of 6144095
- 136121 words of memory out of 5000000
- 7329 multiletter control sequences out of 15000+600000
+ 3458 strings out of 493226
+ 44547 string characters out of 6144095
+ 136109 words of memory out of 5000000
+ 7330 multiletter control sequences out of 15000+600000
  27696 words of font info for 108 fonts, out of 8000000 for 9000
  929 hyphenation exceptions out of 8191
- 41i,11n,47p,578b,389s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 41i,11n,47p,1066b,577s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on report_kenko._wakayama.dvi (23 pages, 122200 bytes).
+Output written on report_kenko._wakayama.dvi (25 pages, 133216 bytes).

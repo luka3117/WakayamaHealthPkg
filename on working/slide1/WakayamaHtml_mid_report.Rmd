@@ -732,7 +732,12 @@ d_common_standarize_long_density %>% DT::datatable()
 
 d_common_standarize_long_density %>%
   plot_ly(x=~x, y=~y) %>%
-  add_lines(frame=~var_name)
+  # add_lines(frame=~var_name)
+  add_lines(frame=~var_name, 
+            text = ~paste(var_name),
+            hoverinfo = "text"
+            ) %>% 
+  layout(title="分布")
 
 # add_lines(color=~status) %>%
   # storms %>%
@@ -804,7 +809,9 @@ temp %>% filter(pref.J=="和歌山"|
 plot_ly(y =  ~ pref.J,
         x =  ~ value,
         color =  ~ pref.J) %>%
-  add_bars(frame=~var_name)
+  add_bars(frame=~var_name, 
+           hoverinfo="text", 
+           text=~paste(var_name))
 
 ```
 
