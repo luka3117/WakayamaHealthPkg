@@ -8,7 +8,7 @@
 \usepackage{style/common}
 \usepackage{style/subfigure}
 \usepackage[a4paper]{geometry}
-%\usepackage{datetime} % for current time 
+%\usepackage{datetime} % for current time
 
 %— line number —
 %\usepackage[right]{lineno} %実行1-1段組み
@@ -46,14 +46,17 @@
 \newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
 \begin{center}
 % Upper part of the page
-\includegraphics[width=0.3\textwidth]{./style/dsreport.png}\\[1cm]    
-\vspace{4cm}	
+\includegraphics[width=0.3\textwidth]{./style/dsreport.png}\\[1cm]
+\vspace{4cm}
 %\textsc{\Huge \bf 滋賀大学データサイエンス学部 資料}\\[1.5cm]
-\textsc{\Large \bf データサイエンス学部, 教育研究センター 研究資料}\\[1.5cm]
+% \textsc{\Large \bf データサイエンス学部, 教育研究センター 研究資料}\\[1.5cm]
+\textsc{\Large \bf 滋賀大学DS教育研究センター 研究資料}\\[1.5cm]
 
 \textsc{\Large Report No. #1}\\[0.5cm]
 %{\large \today}
-{\large Ver: \today(\the\hour 時 \the\minute 分)}
+{\large Ver: \today(\the\hour 時 \the\minute 分)
+\\
+作成：助教　李鍾賛}
 % Title
 \HRule \\[0.4cm]
 { \huge \bfseries #2}\\[0.4cm]

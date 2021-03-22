@@ -1,4 +1,4 @@
-This is e-pTeX, Version 3.14159265-p3.8.1-180226-2.6 (utf8.euc) (TeX Live 2018) (preloaded format=platex 2019.4.23)  20 MAR 2021 20:00
+This is e-pTeX, Version 3.14159265-p3.8.1-180226-2.6 (utf8.euc) (TeX Live 2018) (preloaded format=platex 2019.4.23)  22 MAR 2021 20:06
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -279,7 +279,7 @@ Package: bm 2017/01/16 v1.2c Bold Symbol Support (DPC/FMi)
 \symboldmincho=\mathgroup10
 LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 141.
 LaTeX Info: Redefining \bm on input line 207.
-)
+))
 (/usr/local/texlive/2018/texmf-dist/tex/latex/float/float.sty
 Package: float 2001/11/08 v1.3d Float enhancements (AL)
 \c@float@type=\count116
@@ -287,7 +287,7 @@ Package: float 2001/11/08 v1.3d Float enhancements (AL)
 \float@box=\box81
 \@float@everytoks=\toks25
 \@floatcapt=\box82
-))
+)
 (./style/subfigure.sty
 
 LaTeX Warning: You have requested package `style/subfigure',
@@ -550,70 +550,103 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 第 6 章
 [11
 
+] [12] [13] [14] [15]
+Underfull \hbox (badness 1466) in paragraph at lines 658--659
+[]\JY1/mc/m/sc/10.95 アルツハイマ ー等 \OT1/cmr/m/n/10.95 (\JY1/mc/m/sc/10.95 
+脳血管疾患\OT1/cmr/m/n/10.95 ) 2014 :
+ []
 
-]
+[16]
 第 7 章
+[17
 
-Underfull \hbox (badness 10000) in paragraph at lines 480--480
-[]\OT1/cmr/bx/n/12 3.5 \JY1/gt/m/n/12 男女区別のないデ ータ
+] [18] [19]
+Underfull \hbox (badness 4739) in paragraph at lines 1050--1051
+[]\JY1/mc/m/sc/10.95 一定のバリアフリ ー化率段差のない屋
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 485--485
-[]\OT1/cmr/bx/n/12 3.6 \JY1/gt/m/n/12 男女区別のあるデ ータ
+Underfull \hbox (badness 4739) in paragraph at lines 1052--1053
+[]\JY1/mc/m/sc/10.95 高度のバリアフリ ー化率段差のない屋
  []
 
-[12
 
+Underfull \hbox (badness 4036) in paragraph at lines 1068--1069
+[]\JY1/mc/m/sc/10.95 全国学力 ・ 学習状況 \OT1/cmr/m/n/10.95 (\JY1/mc/m/sc/10.9
+5 公立学校数\OT1/cmr/m/n/10.95 )(\JY1/mc/m/sc/10.95 中学
+ []
+
+
+Underfull \hbox (badness 4036) in paragraph at lines 1069--1070
+[]\JY1/mc/m/sc/10.95 全国学力 ・ 学習状況 \OT1/cmr/m/n/10.95 (\JY1/mc/m/sc/10.9
+5 公立学校数\OT1/cmr/m/n/10.95 )(\JY1/mc/m/sc/10.95 小学
+ []
+
+[20]
+Underfull \hbox (badness 10000) in paragraph at lines 1255--1255
+[]\OT1/cmr/bx/n/12 3.6 \JY1/gt/m/n/12 男女区別のないデ ータ
+ []
+
+[21
 
 ]
 第 8 章
-[13
 
+Overfull \hbox (60.5554pt too wide) in paragraph at lines 1283--1283
+[][]\OT1/cmr/m/n/9 https://www.mhlw.go.jp/toukei/saikin/hw/life/tdfk15/index.ht
+ml| 
+ []
 
-]
+[22
+
+] [23] [24]
 第 9 章
-[14
+[25
 
 
 ]
 第 10 章
-[15
+[26
 
 
 ]
 第 11 章
-[16
+[27
 
 
 ]
 第 12 章
-[17
+[28
 
 
 ]
 第 13 章
-[18
+[29
 
 
 ]
 第 14 章
-[19
+[30
 
 
 ]
 第 15 章
-[20
+[31
 
-] [21]
-第 16 章
-[22
 
 ]
-第 17 章
-[23
+第 16 章
+[32
 
-]) [24]
+] [33]
+第 17 章
+[34
+
+]
+第 18 章
+[35
+
+]) [36]
 No file report_kenko._wakayama.bbl.
 (./report_kenko._wakayama.aux)
 
@@ -624,12 +657,12 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 3458 strings out of 493226
- 44547 string characters out of 6144095
- 136109 words of memory out of 5000000
- 7330 multiletter control sequences out of 15000+600000
+ 3459 strings out of 493226
+ 44557 string characters out of 6144095
+ 173123 words of memory out of 5000000
+ 7331 multiletter control sequences out of 15000+600000
  27696 words of font info for 108 fonts, out of 8000000 for 9000
  929 hyphenation exceptions out of 8191
- 41i,11n,47p,1066b,577s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 41i,12n,47p,1066b,577s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on report_kenko._wakayama.dvi (25 pages, 133216 bytes).
+Output written on report_kenko._wakayama.dvi (37 pages, 200288 bytes).
