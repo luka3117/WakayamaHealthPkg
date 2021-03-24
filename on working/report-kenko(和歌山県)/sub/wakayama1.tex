@@ -59,11 +59,11 @@
 \chapter{平均寿命、健康寿命の概要}
 %------------------------------------------------------------
 
+\section{平均寿命とは}
 
-\subsection{平均寿命とは}
 
-
-\tb{厚生労働省が公表している「生命表」（毎年の「簡易生命表」、5年ごと（国勢調査年）の「生命表」（完全生命表）、「都道府県別生命表」、「市区町村別生命表」）により、平均寿命を調べることができます。平均寿命とは、0歳における平均余命（その年の年齢別死亡率で死亡していくとした場合、0歳の者が生きることとなる平均年数）をいいます。
+\tb{厚生労働省が公表している「生命表」（毎年の「簡易生命表」、5年ごと（国勢調査年）の「生命表」（完全生命表）、「都道府県別生命表」、「市区町村別生命表」）により、平均寿命を調べることができる。
+平均寿命とは、0歳における平均余命（その年の年齢別死亡率で死亡していくとした場合、0歳の者が生きることとなる平均年数）を言う。
 }
 
 
@@ -85,7 +85,7 @@
 
 
 
-\subsection{健康寿命とは}
+\section{健康寿命とは}
 
 
 次に、健康寿命の定義と算定方法について述べる。健康寿命の概念を理解するためには、まず、「疾病負荷(disease burden)」という概念を理解する必要がある。疾病負荷とは疾病により失われた生命や生活の質の期間を意味する。疾病負荷を計量化した指標の内、近年最も広く使われている指標が障害調整生命年(DALYs) である。ある人における障害調整生命年(DALY、disability adjusted life year) の計算は損失生存年数(YLL、years of life lost) と障害生存年数(YLD、years lived with disability)の合計
@@ -110,8 +110,8 @@ DALY = Y LL + Y LD
 
 \begin{figure}[h!]
 	\begin{center}
-		%\includegraphics[ width=0.5\linewidth]{fig/daly.png}
-		\caption{DALYの算出概念図, 出典：wikipedia.org, 障害調整生命年
+	\fbox{\includegraphics[ width=0.5\linewidth]{fig/daly.png}}
+			\caption{DALYの算出概念図, 出典：wikipedia.org, 障害調整生命年
 		}
 	\end{center}
 \end{figure}
@@ -163,11 +163,12 @@ DALY = Y LL + Y LD
 \subsection{介護保険制度と要支援・要介護度}
 健康寿命の要介護度方式による算出方式は, 要介護度を利用するため, 介護保険制度と要介護度の概念を整理しておく.
 
-介護保険制度は社会保険制度\footnote{一般的に医療, 年金, 介護保険を指す. 広義の定義では雇用, 労災保険まで含む.
+介護保険制度は\tb{社会保険制度}\footnote{一般的に医療, 年金, 介護保険を指す. 広義の定義では雇用, 労災保険まで含む.
 	%https : //hoken.azukichi.net/shaho.html#1
 }の一つとして,
 高齢者や, 介護が必要な人に対する保障制度である.
-40歳以上の人に加入が義務付けられている.\footnote{
+40歳以上の人に加入が\tb{義務付けられている}
+.\footnote{
 	現在の介護保険制度は, 1997年に制定され, 2000年4月1日に施行された介護保険法(平成9年法律第123号)に基づいて実施されている.
 }
 %高齢者の介護を保障する制度である.
@@ -191,9 +192,9 @@ DALY = Y LL + Y LD
 市町村は, 介護認定審査会(保健・医療・福祉の専門家により構成)の2次判定結果に基づいて要支援・要介護認定を行う.
 
 \subsection{要支援・要介護認定の結果}
-要支援・要介護認定は7段階で構成されており,  要支援は2段階, 要介護は5段階ある.
+要支援・要介護認定は7段階で構成されており,  要支援は2段階, 要介護は5段階である.
 %要支援・要介護は段階によって分かれており,
-それぞれの段階において利用できる介護サービスの範囲や量, 負担料金の上限が決まる.
+それぞれの段階において利用できる介護サービスの範囲や量, 負担料金の上限が次のように決まる.
 
 \begin{itemize} \setlength{\itemsep}{-0.5mm} \setlength{\parskip}{-0.5mm}
 	\item 要支援1  :  支給限度額 ：5万30円/月
@@ -307,7 +308,7 @@ DALY = Y LL + Y LD
 
 
 \begin{itemize}
-\item 和歌山県の健康に関する取り組みを依頼すること
+\item \tr{和歌山県の健康に関する取り組みを依頼???}
 \end{itemize}
 
 
@@ -320,10 +321,10 @@ DALY = Y LL + Y LD
 %------------------------------------------------------------
 
 
-本事業の研究にあたり、
-前置きとして、
-和歌山県の平均寿命に関して、
-時系列的にその変動具合を確認してみる。
+本共同研究にあたり、
+前置きとして
+和歌山県の平均寿命を
+時系列的な変動具合を確認する。
 
 
 %これまで和歌山県が取り組んで来た保健対策や組織の変遷について, 時系列的に
@@ -392,10 +393,12 @@ DALY = Y LL + Y LD
 本研究に用いられるデータは、
 47都道府県を基本単位とし、平均寿命と健康寿命を目的変数とする。
 説明変数多様なデータ元から収集した公的データを利用することにする。
-データの収集は和歌山県が担当し、滋賀大学に提供される形式をとっており、
-今回のデータの収集においては、統計解析の再現性を重視したため、
-出典を詳しく明記する。
 
+本研究の研究体制は
+和歌山県がデータ収集を担当し、滋賀大学に提供されるデータを分析する。
+
+データの収集においては、統計解析の再現性を重視したため、
+出典を詳しく明記することにした。
 
 
 データのやり取りにおいては、
@@ -406,26 +409,46 @@ DALY = Y LL + Y LD
 入念に厳選した公的データのみを用いることにした。
 
 
+複数回の両者の打ち合わせによる議論の結果、
+本研究に用いられるデータとして絞られた。
 
-\tb{
-情報および変更履歴：
-“DataFormat.csv” latest version 2021年2月10日
-“DataFormat.csv” latest version 2021年3月11日受領
-＜追記修正箇所等＞
-V列
-}
 
-\tb{熊本県の欠損値について、国の示す推定方法により数値を記載 -
+
+
+%\tb{
+%情報および変更履歴：
+%“DataFormat.csv” latest version 2021年2月10日
+%“DataFormat.csv” latest version 2021年3月11日受領
+%＜追記修正箇所等＞
+%V列
+%}
+
+
+
+
+
+両者がそれぞれ同じデータを入念にチェックした結果、
+初回のデータから下記のよう何点の変更がされた。
+
+
+
+\begin{itemize}
+	\item \tb{熊本県の欠損値について、国の示す推定方法により数値を記載 -
 熊本県女性の健康寿命の推定値
 FI列、FJ列、FK列、FL列 　収集元データの年度修正（新しいデータに置き換え）
 }
 
+\item
 \tb{野菜摂取量\_2016(20歳以上平均値(g/日)
 食塩摂取量\_2016(20歳以上平均値(g/日)
 BMI平均値\_2016(男性20〜69歳)(女性40〜69歳)(単位Kg/u)
 歩数\_2016(20歳以上平均値(歩/日)
 DH列、DI列、DJ列、DK列のデータ収集元URLを修正
 }
+
+
+\item
+
 
 \tb{悪性新生物(子宮)\_年齢調整死亡率2015
 心疾患\_年齢調整死亡率2015
@@ -435,6 +458,9 @@ DH列、DI列、DJ列、DK列のデータ収集元URLを修正
 EF列、EG列、EH列、EI列、EJ列
 }
 
+\item
+
+
 \tb{バリアフリー化の総数であったものをバリアフリー化率に置き換え
 一定のバリアフリー化率\_2018
 高度のバリアフリー化率\_2018
@@ -443,6 +469,39 @@ EF列、EG列、EH列、EI列、EJ列
 バリアフリー\_段差のない屋内2018
 参考事項：バリアフリー化率の出典元を発見
 }
+
+\end{itemize}
+
+
+
+最終的に収集したデータをまとめると次のように大分類の変数群として整理できる。
+
+
+\begin{itemize}
+	\item  健康/疾患医療施設
+	\item  医療従事者
+	\item  文化
+	\item  人口
+	\item  自然環境
+	\item  一般経済
+	\item  家計経済
+	\item  教育
+	\item  労働
+	\item  住居
+	\item  疾患
+	\item  食
+	\item  住居
+	\item  施設
+	\item  食
+	\item  消費
+\end{itemize}
+
+
+
+
+
+
+
 
 
 \chapter{本研究に使用するデータの変数名リスト}
@@ -480,17 +539,7 @@ EF列、EG列、EH列、EI列、EJ列
 
 
 
-%
-%
-%\begin{longtable}{rrrrrrrr}
-%\hline
-%word & freq & word & freq & word & freq & word & freq \\
-%\hline\endhead\hline\endfoot
-%ない & 3154 & 忙しい & 97 & 臭い & 39 & やさしい & 18 \\
-%眠い & 101 & 暗い & 39 & はやい & 18 & 淋しい & 10 \\
-%\hline
-%\end{longtable}
-
+\begin{multicols}{2}
 
 
 \begin{enumerate}
@@ -663,6 +712,21 @@ EF列、EG列、EH列、EI列、EJ列
   \item BMI平均値 2012(男性20〜69歳)(女性40〜69歳)(単位Kg/m)  :  BMI 2012
   \item 歩数 2012(20歳以上平均値(歩/日)  :  Num Steps 2012 per day
 \end{enumerate}
+
+
+\end{multicols}
+
+
+%
+%
+%\begin{longtable}{rrrrrrrr}
+%\hline
+%word & freq & word & freq & word & freq & word & freq \\
+%\hline\endhead\hline\endfoot
+%ない & 3154 & 忙しい & 97 & 臭い & 39 & やさしい & 18 \\
+%眠い & 101 & 暗い & 39 & はやい & 18 & 淋しい & 10 \\
+%\hline
+%\end{longtable}
 
 
 
@@ -864,6 +928,8 @@ EF列、EG列、EH列、EI列、EJ列
 
 \subsection{男女区別のあるデータ}
 
+\begin{multicols}{2}
+
 \begin{enumerate}
   \item 人口
   \item 75歳未満調整死亡率\_悪性新生物\_2018
@@ -933,6 +999,11 @@ EF列、EG列、EH列、EI列、EJ列
 \end{enumerate}
 
 
+\end{multicols}
+
+
+
+
 \newpage
 
 \section{男女区別のないデータ}
@@ -982,6 +1053,7 @@ EF列、EG列、EH列、EI列、EJ列
 
 
 
+\begin{multicols}{2}
 \begin{enumerate}
   \item  病院数\_2019
   \item  診療所数\_2019
@@ -1076,6 +1148,9 @@ EF列、EG列、EH列、EI列、EJ列
   \item  ジニ係数総世帯\_2014
   \item  収入ジニ係数勤労世帯\_2014
 \end{enumerate}
+
+\end{multicols}
+
 
 
 %
@@ -1250,26 +1325,26 @@ EF列、EG列、EH列、EI列、EJ列
 
 
 
-
-
-\section{3.6 男女区別のないデータ d\_mf,d\_m,d\_f}
-
-\subsection{3.6.1 d\_mf}
-
-
-
-\subsection{3.6.2 男性データd\_m}
-
-
-\subsection{3.6.3 女性データd\_f}
-
-
-
-\section{3.7 以下分析対象データd\_common, d\_m, d\_f}
-
-
-
-
+%
+%
+%\section{3.6 男女区別のないデータ d\_mf,d\_m,d\_f}
+%
+%\subsection{3.6.1 d\_mf}
+%
+%
+%
+%\subsection{3.6.2 男性データd\_m}
+%
+%
+%\subsection{3.6.3 女性データd\_f}
+%
+%
+%
+%\section{3.7 以下分析対象データd\_common, d\_m, d\_f}
+%
+%
+%
+%
 
 
 
@@ -1331,7 +1406,7 @@ EF列、EG列、EH列、EI列、EJ列
 \footnotesize
 \begin{tabular}{rrlr}
   \hline
- & LE\_2015 & pref.J & rank \\
+ & 平均寿命 2015 & pref.J & rank \\
   \hline
 1 & 78.67 & 青森 &   1 \\
   2 & 79.51 & 秋田 &   2 \\
@@ -1399,7 +1474,7 @@ EF列、EG列、EH列、EI列、EJ列
 \footnotesize
 \begin{tabular}{rrlr}
   \hline
- & LE\_2015 & pref.J & rank \\
+ & 平均寿命 2015 & pref.J & rank \\
   \hline
 1 & 85.93 & 青森 &   1 \\
   2 & 86.24 & 栃木 &   2 \\
@@ -1465,7 +1540,7 @@ EF列、EG列、EH列、EI列、EJ列
 \caption{男性の健康寿命}
 \begin{tabular}{rrlr}
   \hline
- & HLE\_2016 & pref.J & rank \\
+ & 健康寿命 2016 & pref.J & rank \\
   \hline
 1 & 71.21 & 秋田 &   1 \\
   2 & 71.33 & 愛媛 &   2 \\
@@ -1533,7 +1608,7 @@ EF列、EG列、EH列、EI列、EJ列
 \caption{女性の健康寿命}
 \begin{tabular}{rrlr}
   \hline
- & HLE\_2016 & pref.J & rank \\
+ & 健康寿命 2016 & pref.J & rank \\
   \hline
 1 & 73.62 & 広島 &   1 \\
   2 & 73.77 & 北海道 &   2 \\
@@ -1653,63 +1728,7 @@ EF列、EG列、EH列、EI列、EJ列
 
 
 
-Wakayama::d_common %>% dplyr::select_if(is.numeric) %>% sapply(rank) %>%
-
-
-
-
-
-
-\chapter{4 dataの変数属性を確認}
-
-
-
-
-
-以下、
-
-\tb{WakayamaHtml\_mid\_report.html
-}
-
-\tb{/Users/jclee/Dropbox/00000健康和歌山県/0 wakayamaPkg/R/mid\_report\_tex.R
-}
-
-参考
-
-
-
-
-
-
-\section{4.1 d\_common}
-
-\section{4.2 d\_m}
-
-\section{4.3 d\_f}
-
-
-
-\chapter{5 寿命(目的変数)の都道府県の順位確認}
-
-
-
-
-\subsection{5.1 男性の平均寿命と健康寿命の差}
-
-\subsection{5.2 女性の平均寿命と健康寿命の差}
-
-
-\subsection{5.3 男性の平均寿命}
-
-
-\subsection{5.4 男性の健康寿命}
-
-
-\subsection{5.5 女性の平均寿命}
-
-
-
-\subsection{5.6 女性の健康寿命}
+%Wakayama::d_common %>% dplyr::select_if(is.numeric) %>% sapply(rank) %>%
 
 
 
@@ -1717,22 +1736,463 @@ Wakayama::d_common %>% dplyr::select_if(is.numeric) %>% sapply(rank) %>%
 
 
 
-\chapter{6 d\_common dataの説明変数の順位確認及び正規性検定}
+
+
+\chapter{6.1 d\_common dataの和歌山県の順位確認}
+
+\begin{multicols}{2}
+
+\begin{enumerate}
+	\item Household consumption expenditure : 1位
+	\item Household Edu cost ratio : 1位
+	\item Fruits consumption 2015 : 1位
+	\item Residence sewerage ratio : 2位
+	\item Usual barrier free no steps 2013 : 2位
+	\item Bone density disorder 2014 : 2位
+	\item Soybean 2014 : 3位
+	\item Confectionery consumption 2015 : 3位
+	\item Confectionery consumption avg 2014 2016 : 3位
+	\item Residence Num of city parks : 4位
+	\item Confectionery consumption 2014 : 4位
+	\item Fruit consumption avg 2014 2016 : 4位
+	\item Admin base Financial strength index : 5位
+	\item Residence road pavement rate : 5.50 位
+	\item Total Num of caries 2014 : 5.50 位
+	\item High barrier free wheelchairs pass Width : 6位
+	\item Confectionery consumption 2016 : 6位
+	\item Fruits consumption 2016 : 6位
+	\item Volunteer Activity Participant Rate : 6.50 位
+	\item Tooth supplement 2014 : 6.50 位
+	\item Household actual income : 7位
+	\item Dairy 2014 : 7位
+	\item High barrier free no steps 2013 : 7.50 位
+	\item Residential city park area (per pop) : 8位
+	\item Hypertension Hospitalization 2014 : 8位
+	\item Fruits consumption 2014 : 8位
+	\item Total working hours 2016 : 9位
+	\item Income Gini Coeff Working Household 2014 : 9位
+	\item Sports Participant Rate : 10位
+	\item Travel Rate1 : 10位
+	\item Total Num of periodontal 2014 : 10位
+	\item Num of cardiologists 2020 : 11位
+	\item pop Working Age pop Ratio 2020 : 11位
+	\item High barrier free handrails 2013 : 11位
+	\item Num of certified cancer doctors 2020 : 12位
+	\item pop Young pop Ratio 2020 : 12.50 位
+	\item Fracture 2014 : 12.50 位
+	\item Safety Num of traffic accidents per 100k pop : 13位
+	\item Hypertension Outpatient 2014 : 13位
+	\item Total salary 2016 : 13位
+	\item Natural environment annual avg relative humidity : 14位
+	\item Academic ability elementary school 2015 : 14位
+	\item Diabetes hospitalization 2014 : 14.50 位
+	\item Labor secondary industry emp ratio : 15位
+	\item Academic ability middle school 2015 : 15位
+	\item Diabetes Outpatient 2014 : 16位
+	\item Seafood 2014 : 16位
+	\item Household PC ownership quantity : 17位
+	\item Usual barrier free handrails 2013 : 17位
+	\item Edu Ptc of university graduate students with a final academic background : 17.50 位
+	\item Economic pref income : 18位
+	\item pop Double income household ratio 2020 : 19位
+	\item Admin infrastructure Edu cost ratio (prefectural finance) : 19位
+	\item Num of endoscopists 2020 : 20位
+	\item Book purchase price 2019 : 21位
+	\item Natural environment annual Num of snow days : 21位
+	\item Num of libraries : 21位
+	\item Alzheimer dz 2014 : 21.50 位
+	\item HM Num of public health nurses per 100k pop : 22位
+	\item Household Car ownership quantity : 22位
+	\item Household Tablet terminal Ownership quantity : 22位
+	\item Residence simachi pavement rate : 24位
+	\item Milk 2014 : 25位
+	\item Trt rate Hospitalization Cerebrovascular dz 2017 : 25.50 位
+	\item Labor tertiary industry emp ratio : 27位
+	\item HM Num of general hospitals : 27位
+	\item key : 30位
+	\item pref.id : 30位
+	\item Trt rate Hospitalization Malignant neoplasm 2017 : 30位
+	\item Fish meat consumption 2015 : 31位
+	\item Residence water supply pop ratio : 31.50 位
+	\item Household Smartphone ownership quantity : 33位
+	\item Meat 2014 : 33位
+	\item Trt rate hospitalization heart dz 2017 : 33.50 位
+	\item Num of hospitals 2019 : 33.50 位
+	\item Natural environment annual rain : 33.50 位
+	\item Labor Unemp rate : 33.50 位
+	\item Egg 2014 : 34位
+	\item Num of general clinics : 35位
+	\item Gini coeff 2014 : 35.50 位
+	\item Natural environment annual avg temperature : 36位
+	\item Labor primary industry emp ratio : 37.50 位
+	\item Trt rate outpatient heart dz 2017 : 39位
+	\item pop Rough Mortality 2020 : 39位
+	\item Admin infrastructure living protection cost ratio (prefectural finance) : 39位
+	\item HM Num of doctors engaged in medical facilities per 100k pop : 39位
+	\item Admin base balance ratio : 40位
+	\item Residence owner ratio : 40位
+	\item Residence house ratio : 40位
+	\item pop oldElderly pop Ratio 2020 : 41位
+	\item Household Savings : 41位
+	\item Fish meat consumption 2016 : 41位
+	\item Fish meat consumption avg 2014 2016 : 42位
+	\item HM Num of general dental clinics per 100k pop : 43位
+	\item Trt rate Outpatient Cerebrovascular dz 2017 : 44位
+	\item Trt rate Outpatient Malignant neoplasm 2017 : 44.50 位
+	\item Household Liberal Arts and Entertainment Expenditure Ratio : 45位
+	\item pop Household Ratio of elderly single person households : 45位
+	\item Fish meat consumption 2014 : 46位
+	\item Num of clinics 2019 : 47位
+\end{enumerate}
+
+\end{multicols}
+
+
+%
+%
+%
+%% latex table generated in R 3.5.3 by xtable 1.8-4 package
+%% Tue Mar 23 19:23:26 2021
+%\begin{table}[ht]
+%\centering
+%\begin{tabular}{rr}
+%  \hline
+%変数名 & 順位 \\
+%  \hline
+%  Trt\_rate\_Hospitalization\_Malignant\_neoplasm\_2017 & 30.00 \\
+%  Trt\_rate\_hospitalization\_heart\_dz\_2017 & 33.50 \\
+%  Trt\_rate\_Hospitalization\_Cerebrovascular\_dz\_2017 & 25.50 \\
+%  Trt\_rate\_Outpatient\_Malignant\_neoplasm\_2017 & 44.50 \\
+%  Trt\_rate\_outpatient\_heart\_dz\_2017 & 39.00 \\
+%  Trt\_rate\_Outpatient\_Cerebrovascular\_dz\_2017 & 44.00 \\
+%  Num\_of\_hospitals\_2019 & 33.50 \\
+%  Num\_of\_clinics\_2019 & 47.00 \\
+%  Num\_of\_certified\_cancer\_doctors\_2020 & 12.00 \\
+%  Num\_of\_cardiologists\_2020 & 11.00 \\
+%  Num\_of\_endoscopists\_2020 & 20.00 \\
+%  Book\_purchase\_price\_2019 & 21.00 \\
+%  pop\_Young\_pop\_Ratio\_2020 & 12.50 \\
+%  pop\_oldElderly\_pop\_Ratio\_2020 & 41.00 \\
+%  pop\_Working\_Age\_pop\_Ratio\_2020 & 11.00 \\
+%  pop\_Rough\_Mortality\_2020 & 39.00 \\
+%  pop\_Double\_income\_household\_ratio\_2020 & 19.00 \\
+%  Natural\_environment\_annual\_avg\_temperature & 36.00 \\
+%  Natural\_environment\_annual\_avg\_relative\_humidity & 14.00 \\
+%  Natural\_environment\_annual\_rain & 33.50 \\
+%  Natural\_environment\_annual\_Num\_of\_snow\_days & 21.00 \\
+%  Economic\_pref\_income & 18.00 \\
+%  Admin\_base\_Financial\_strength\_index & 5.00 \\
+%  Admin\_base\_balance\_ratio & 40.00 \\
+%  Admin\_infrastructure\_living\_protection\_cost\_ratio\_(prefectural\_finance) & 39.00 \\
+%  Admin\_infrastructure\_Edu\_cost\_ratio\_(prefectural\_finance) & 19.00 \\
+%  Edu\_Ptc\_of\_university\_graduate\_students\_with\_a\_final\_academic\_background & 17.50 \\
+%  Labor\_primary\_industry\_emp\_ratio & 37.50 \\
+%  Labor\_secondary\_industry\_emp\_ratio & 15.00 \\
+%  Labor\_tertiary\_industry\_emp\_ratio & 27.00 \\
+%  Labor\_Unemp\_rate & 33.50 \\
+%  Num\_of\_libraries & 21.00 \\
+%  Num\_of\_general\_clinics & 35.00 \\
+%  Sports\_Participant\_Rate & 10.00 \\
+%  Travel\_Rate1 & 10.00 \\
+%  Residence\_owner\_ratio & 40.00 \\
+%  Residence\_house\_ratio & 40.00 \\
+%  Residence\_water\_supply\_pop\_ratio & 31.50 \\
+%  Residence\_sewerage\_ratio & 2.00 \\
+%  Volunteer\_Activity\_Participant\_Rate & 6.50 \\
+%  Residential\_city\_park\_area\_(per\_pop) & 8.00 \\
+%  Residence\_Num\_of\_city\_parks & 4.00 \\
+%  HM\_Num\_of\_general\_hospitals & 27.00 \\
+%  Residence\_road\_pavement\_rate & 5.50 \\
+%  Residence\_simachi\_pavement\_rate & 24.00 \\
+%  HM\_Num\_of\_general\_dental\_clinics\_per\_100k\_pop & 43.00 \\
+%  HM\_Num\_of\_doctors\_engaged\_in\_medical\_facilities\_per\_100k\_pop & 39.00 \\
+%  HM\_Num\_of\_public\_health\_nurses\_per\_100k\_pop & 22.00 \\
+%  Safety\_Num\_of\_traffic\_accidents\_per\_100k\_pop & 13.00 \\
+%  Household\_actual\_income & 7.00 \\
+%  Household\_consumption\_expenditure & 1.00 \\
+%  Household\_Edu\_cost\_ratio & 1.00 \\
+%  Household\_Liberal\_Arts\_and\_Entertainment\_Expenditure\_Ratio & 45.00 \\
+%  Household\_Savings & 41.00 \\
+%  Household\_Smartphone\_ownership\_quantity & 33.00 \\
+%  Household\_PC\_ownership\_quantity & 17.00 \\
+%  Household\_Car\_ownership\_quantity & 22.00 \\
+%  Household\_Tablet\_terminal\_Ownership\_quantity & 22.00 \\
+%  pop\_Household\_Ratio\_of\_elderly\_single\_person\_households & 45.00 \\
+%  Hypertension\_Hospitalization\_2014 & 8.00 \\
+%  Hypertension\_Outpatient\_2014 & 13.00 \\
+%  Diabetes\_hospitalization\_2014 & 14.50 \\
+%  Diabetes\_Outpatient\_2014 & 16.00 \\
+%  Meat\_2014 & 33.00 \\
+%  Seafood\_2014 & 16.00 \\
+%  Milk\_2014 & 25.00 \\
+%  Dairy\_2014 & 7.00 \\
+%  Egg\_2014 & 34.00 \\
+%  Soybean\_2014 & 3.00 \\
+%  Usual\_barrier\_free\_handrails\_2013 & 17.00 \\
+%  Usual\_barrier\_free\_no\_steps\_2013 & 2.00 \\
+%  High\_barrier\_free\_handrails\_2013 & 11.00 \\
+%  High\_barrier\_free\_no\_steps\_2013 & 7.50 \\
+%  High\_barrier\_free\_wheelchairs\_pass\_Width & 6.00 \\
+%  Total\_working\_hours\_2016 & 9.00 \\
+%  Total\_salary\_2016 & 13.00 \\
+%  Fish\_meat\_consumption\_2014 & 46.00 \\
+%  Fish\_meat\_consumption\_2015 & 31.00 \\
+%  Fish\_meat\_consumption\_2016 & 41.00 \\
+%  Fish\_meat\_consumption\_avg\_2014\_2016 & 42.00 \\
+%  Confectionery\_consumption\_2014 & 4.00 \\
+%  Confectionery\_consumption\_2015 & 3.00 \\
+%  Confectionery\_consumption\_2016 & 6.00 \\
+%  Confectionery\_consumption\_avg\_2014\_2016 & 3.00 \\
+%  Fruits\_consumption\_2014 & 8.00 \\
+%  Fruits\_consumption\_2015 & 1.00 \\
+%  Fruits\_consumption\_2016 & 6.00 \\
+%  Fruit\_consumption\_avg\_2014\_2016 & 4.00 \\
+%  Academic\_ability\_middle\_school\_2015 & 15.00 \\
+%  Academic\_ability\_elementary\_school\_2015 & 14.00 \\
+%  Total\_Num\_of\_caries\_2014 & 5.50 \\
+%  Total\_Num\_of\_periodontal\_2014 & 10.00 \\
+%  Bone\_density\_disorder\_2014 & 2.00 \\
+%  Fracture\_2014 & 12.50 \\
+%  Tooth\_supplement\_2014 & 6.50 \\
+%  Alzheimer\_dz\_2014 & 21.50 \\
+%  Gini\_coeff\_2014 & 35.50 \\
+%  Income\_Gini\_Coeff\_Working\_Household\_2014 & 9.00 \\
+%   \hline
+%\end{tabular}
+%\end{table}
+%
+%
+
+
+\begin{figure}[h!]
+	\begin{center}
+		\includegraphics[ width=0.8\linewidth]{fig/WakayamRank1.pdf}
+		\caption{和歌山県の順位1}
+	\end{center}
+\end{figure}
 
 
 
-\subsection{6.1 d\_common dataの和歌山県の順位確認}
-
-\subsection{6.2 d\_common dataの連続データ分布確認1}
-
-\subsection{6.3 d\_common dataの連続データ分布確認2}
-
-\subsection{6.4 d\_common dataの連続データの正規性検定}
-
-\subsection{6.5 d\_common data連続データの正規性を満たさない変数}
 
 
-\chapter{7 d\_common data 和歌山,青森,滋賀,長野の説明変数の様子}
+\begin{figure}[h!]
+	\begin{center}
+		\includegraphics[ width=0.5\linewidth]{fig/WakayamRank2.pdf}
+		\caption{和歌山県の順位2}
+	\end{center}
+\end{figure}
+
+
+
+
+
+\begin{figure}[h!]
+	\begin{center}
+		\includegraphics[ width=0.5\linewidth]{fig/WakayamRank3.pdf}
+		\caption{和歌山県の順位3}
+	\end{center}
+\end{figure}
+
+
+
+
+
+\chapter{6 d\_common dataの正規性検定と分布確認}
+
+
+%DistCommondVariable.xbb
+
+
+
+
+
+
+\section{6.5 d\_common data連続データの正規性を満たさない変数}
+
+
+
+
+
+
+\begin{figure}[h!]
+	\begin{center}
+		\includegraphics[ width=0.7\linewidth]{fig/DistCommondVariable.pdf}
+		\caption{common データ変数の正規性の検討}
+	\end{center}
+\end{figure}
+
+
+\begin{enumerate}
+  \item   Trt\_rate\_hospitalization\_heart\_dz\_2017  :
+  \item   Trt\_rate\_Hospitalization\_Cerebrovascular\_dz\_2017  :
+  \item   Trt\_rate\_outpatient\_heart\_dz\_2017  :
+  \item   Trt\_rate\_Outpatient\_Cerebrovascular\_dz\_2017  :
+  \item   Num\_of\_hospitals\_2019  :   病院数\_2019
+  \item   Num\_of\_certified\_cancer\_doctors\_2020  :   がん治療認定医数\_2020
+  \item   Num\_of\_cardiologists\_2020  :   循環器専門医数\_2020
+  \item   Num\_of\_endoscopists\_2020  :   内視鏡専門医数\_2020
+  \item   pop\_Young\_pop\_Ratio\_2020  :   人口・世帯\_年少人口割合2020
+  \item   Natural\_environment\_annual\_avg\_temperature  :   自然環境\_年平均気温
+  \item   Natural\_environment\_annual\_Num\_of\_snow\_days  :   自然環境\_雪日数（年間）
+  \item   Economic\_pref\_income  :   経済基盤\_県民所得
+  \item   Admin\_base\_Financial\_strength\_index  :   行政基盤\_財政力指数
+  \item   Admin\_base\_balance\_ratio  :   行政基盤\_収支比率
+  \item   Admin\_infrastructure\_living\_protection\_cost\_ratio\_(prefectural\_finance)  :   行政基盤\_生活保護費割合（県財政）
+  \item   Edu\_Ptc\_of\_university\_graduate\_students\_with\_a\_final\_academic\_background  :   教育\_最終学歴が大学・大学院卒の者の割合
+  \item   Num\_of\_libraries  :   文化・スポーツ\_図書館数（人口100万人当たり）
+  \item   Num\_of\_general\_clinics  :   健康・医療\_一般診療所数(可住地面積100km当たり)
+  \item   Travel\_Rate1  :
+  \item   Residence\_owner\_ratio  :   居住\_持ち家比率
+  \item   Residence\_house\_ratio  :   居住\_一戸建住宅比率
+  \item   Residential\_city\_park\_area\_(per\_pop)  :   居住\_都市公園面積（人口１人当たり）
+  \item   Residence\_Num\_of\_city\_parks  :   居住\_都市公園数(可住地面積100km当たり)
+  \item   HM\_Num\_of\_general\_hospitals  :   健康・医療\_一般病院数(可住地面積100km当たり)
+  \item   Residence\_road\_pavement\_rate  :   居住\_主要道路舗装率
+  \item   Residence\_simachi\_pavement\_rate  :   居住\_市町村舗装率 \item   HM\_Num\_of\_general\_dental\_clinics\_per\_100k\_pop  :   健康・医療\_一般歯科診療所数（人口10万人当たり）
+  \item   Safety\_Num\_of\_traffic\_accidents\_per\_100k\_pop  :   安全\_交通事故発生件数（人口10万人当たり）
+  \item   Household\_Car\_ownership\_quantity  :   家計\_自動車所有数量（千世帯当たり）
+  \item   Hypertension\_Hospitalization\_2014  :   高血圧疾患\_入院2014年
+  \item   Hypertension\_Outpatient\_2014  :   高血圧疾患\_外来2014年
+  \item   Diabetes\_hospitalization\_2014  :   糖尿病\_入院2014年
+  \item   Diabetes\_Outpatient\_2014  :   糖尿病\_外来2014年
+  \item   Usual\_barrier\_free\_handrails\_2013  :   一定のバリアフリー化率手すりの設置\_2013
+  \item   High\_barrier\_free\_handrails\_2013  :   高度のバリアフリー化率手すりの設置\_2013
+  \item   High\_barrier\_free\_no\_steps\_2013  :   高度のバリアフリー化率段差のない屋内\_2013
+  \item   High\_barrier\_free\_wheelchairs\_pass\_Width  :   高度のバリアフリー廊下等が車いすで通行可能な幅\_2013
+  \item   Total\_working\_hours\_2016  :   総実労働時間\_2016
+  \item   Total\_salary\_2016  :   現金給与総額\_2016
+  \item   Academic\_ability\_middle\_school\_2015  :   全国学力・学習状況(公立学校数)(中学校)\_2015
+  \item   Academic\_ability\_elementary\_school\_2015  :   全国学力・学習状況(公立学校数)(小学生)\_2015
+  \item   Total\_Num\_of\_caries\_2014  :   う蝕外来総数\_2014
+  \item   Total\_Num\_of\_periodontal\_2014  :   歯周疾患(歯肉炎)外来総数\_2014
+  \item   Bone\_density\_disorder\_2014  :   骨の密度障害\_2014
+  \item   Fracture\_2014  :   骨折\_2014
+  \item   Tooth\_supplement\_2014  :   歯の補てつ\_2014
+  \item   Alzheimer\_dz\_2014  :   アルツハイマー等(脳血管疾患)\_2014
+
+\end{enumerate}
+
+%
+%
+%
+%8,受療率_入院_悪性新生物_2017,
+%Treatment_rate_Hospitalization_Malignant_neoplasm_2017
+%
+%9,受療率_入院_心疾患_2017,
+%Medical_treatment_rate_hospitalization_heart_dz_2017
+%10,受療率_入院_脳血管疾患_2017,Treatment_rate_Hospitalization_Cerebrovascular_dz_2017
+%11,受療率_外来_悪性新生物_2017,Treatment_rate_Outpatient_Malignant_neoplasm_2017
+%12,受療率_外来_心疾患_2017,Treatment_rate_outpatient_heart_dz_2017
+%13,受療率_外来_脳血管疾患_2017,Treatment_rate_Outpatient_Cerebrovascular_dz_2017
+%
+%
+
+
+
+
+% latex table generated in R 4.0.3 by xtable 1.8-4 package
+% Wed Mar 24 01:23:19 2021
+\begin{table}[ht]
+\centering
+\footnotesize
+\begin{tabular}{rll}
+  \hline
+ & rowname & var\_name\_Jpn \\
+  \hline
+1 & Trt\_rate\_hospitalization\_heart\_dz\_2017 &  受療率 入院 心疾患 2017
+\\
+  2 & Trt\_rate\_Hospitalization\_Cerebrovascular\_dz\_2017 &  受療率 入院 脳血管疾患 2017
+\\
+  3 & Trt\_rate\_outpatient\_heart\_dz\_2017 &  受療率 外来 心疾患 2017
+\\
+  4 & Trt\_rate\_Outpatient\_Cerebrovascular\_dz\_2017 &  受療率 外来 脳血管疾患 2017\\
+  5 & Num\_of\_hospitals\_2019 & 病院数\_2019 \\
+  6 & Num\_of\_certified\_cancer\_doctors\_2020 & がん治療認定医数\_2020 \\
+  7 & Num\_of\_cardiologists\_2020 & 循環器専門医数\_2020 \\
+  8 & Num\_of\_endoscopists\_2020 & 内視鏡専門医数\_2020 \\
+  9 & pop\_Young\_pop\_Ratio\_2020 & 人口・世帯\_年少人口割合2020 \\
+  10 & Natural\_environment\_annual\_avg\_temperature & 自然環境\_年平均気温 \\
+  11 & Natural\_environment\_annual\_Num\_of\_snow\_days & 自然環境\_雪日数（年間） \\
+  12 & Economic\_pref\_income & 経済基盤\_県民所得 \\
+  13 & Admin\_base\_Financial\_strength\_index & 行政基盤\_財政力指数 \\
+  14 & Admin\_base\_balance\_ratio & 行政基盤\_収支比率 \\
+  15 & Admin\_infrastructure\_living\_protection\_cost\_ratio\_(prefectural\_finance) & 行政基盤\_生活保護費割合（県財政） \\
+  16 & Edu\_Ptc\_of\_university\_graduate\_students & 教育\_最終学歴が大学・大学院卒の者の割合 \\
+   & \_with\_a\_final\_academic\_background & \\
+  17 & Num\_of\_libraries & 文化・スポーツ\_図書館数（人口100万人当たり） \\
+  18 & Num\_of\_general\_clinics & 健康・医療\_一般診療所数(可住地面積100km当たり) \\
+  19 & Travel\_Rate1 &  \\
+  20 & Residence\_owner\_ratio & 居住\_持ち家比率 \\
+  21 & Residence\_house\_ratio & 居住\_一戸建住宅比率 \\
+  22 & Residential\_city\_park\_area\_(per\_pop) & 居住\_都市公園面積（人口１人当たり） \\
+  23 & Residence\_Num\_of\_city\_parks & 居住\_都市公園数(可住地面積100km当たり) \\
+  24 & HM\_Num\_of\_general\_hospitals & 健康・医療\_一般病院数(可住地面積100km当たり) \\
+  25 & Residence\_road\_pavement\_rate & 居住\_主要道路舗装率 \\
+  26 & Residence\_simachi\_pavement\_rate & 居住\_市町村舗装率 \\
+  27 & HM\_Num\_of\_general\_dental\_clinics\_per\_100k\_pop & 健康・医療\_一般歯科診療所数（人口10万人当たり） \\
+  28 & Safety\_Num\_of\_traffic\_accidents\_per\_100k\_pop & 安全\_交通事故発生件数（人口10万人当たり） \\
+  29 & Household\_Car\_ownership\_quantity & 家計\_自動車所有数量（千世帯当たり） \\
+  30 & Hypertension\_Hospitalization\_2014 & 高血圧疾患\_入院2014年 \\
+  31 & Hypertension\_Outpatient\_2014 & 高血圧疾患\_外来2014年 \\
+  32 & Diabetes\_hospitalization\_2014 & 糖尿病\_入院2014年 \\
+  33 & Diabetes\_Outpatient\_2014 & 糖尿病\_外来2014年 \\
+  34 & Usual\_barrier\_free\_handrails\_2013 & 一定のバリアフリー化率手すりの設置\_2013 \\
+  35 & High\_barrier\_free\_handrails\_2013 & 高度のバリアフリー化率手すりの設置\_2013 \\
+  36 & High\_barrier\_free\_no\_steps\_2013 & 高度のバリアフリー化率段差のない屋内\_2013 \\
+  37 & High\_barrier\_free\_wheelchairs\_pass\_Width & 高度のバリアフリー \\
+   &  & 廊下等が車いすで通行可能な幅\_2013 \\
+  38 & Total\_working\_hours\_2016 & 総実労働時間\_2016 \\
+  39 & Total\_salary\_2016 & 現金給与総額\_2016 \\
+  40 & Academic\_ability\_middle\_school\_2015 & 全国学力・学習状況(公立学校数)(中学校)\_2015 \\
+  41 & Academic\_ability\_elementary\_school\_2015 & 全国学力・学習状況(公立学校数)(小学生)\_2015 \\
+  42 & Total\_Num\_of\_caries\_2014 & う蝕外来総数\_2014 \\
+  43 & Total\_Num\_of\_periodontal\_2014 & 歯周疾患(歯肉炎)外来総数\_2014 \\
+  44 & Bone\_density\_disorder\_2014 & 骨の密度障害\_2014 \\
+  45 & Fracture\_2014 & 骨折\_2014 \\
+  46 & Tooth\_supplement\_2014 & 歯の補てつ\_2014 \\
+  47 & Alzheimer\_dz\_2014 & アルツハイマー等(脳血管疾患)\_2014 \\
+   \hline
+\end{tabular}
+\end{table}
+
+
+
+
+
+
+
+
+
+\chapter{common dataにおける和歌山,青森,滋賀,長野の説明変数スコアの比較}
+
+
+
+
+
+\begin{figure}[h!]\begin{center}\includegraphics[ width=0.5\linewidth]{fig/WakayamAomoriComp1.pdf}\caption{和歌山県、青森県、滋賀県、長野県のスコア1}\end{center}\end{figure}
+\begin{figure}[h!]\begin{center}\includegraphics[ width=0.5\linewidth]{fig/WakayamAomoriComp2.pdf}\caption{和歌山県、青森県、滋賀県、長野県のスコア2}\end{center}\end{figure}
+\begin{figure}[h!]\begin{center}\includegraphics[ width=0.5\linewidth]{fig/WakayamAomoriComp3.pdf}\caption{和歌山県、青森県、滋賀県、長野県のスコア3}\end{center}\end{figure}
+\begin{figure}[h!]\begin{center}\includegraphics[ width=0.5\linewidth]{fig/WakayamAomoriComp4.pdf}\caption{和歌山県、青森県、滋賀県、長野県のスコア4}\end{center}\end{figure}
+\begin{figure}[h!]\begin{center}\includegraphics[ width=0.5\linewidth]{fig/WakayamAomoriComp5.pdf}\caption{和歌山県、青森県、滋賀県、長野県のスコア5}\end{center}\end{figure}
+\begin{figure}[h!]\begin{center}\includegraphics[ width=0.5\linewidth]{fig/WakayamAomoriComp6.pdf}\caption{和歌山県、青森県、滋賀県、長野県のスコア6}\end{center}\end{figure}
+\begin{figure}[h!]\begin{center}\includegraphics[ width=0.5\linewidth]{fig/WakayamAomoriComp7.pdf}\caption{和歌山県、青森県、滋賀県、長野県のスコア7}\end{center}\end{figure}
+\begin{figure}[h!]\begin{center}\includegraphics[ width=0.5\linewidth]{fig/WakayamAomoriComp8.pdf}\caption{和歌山県、青森県、滋賀県、長野県のスコア8}\end{center}\end{figure}
+\begin{figure}[h!]\begin{center}\includegraphics[ width=0.5\linewidth]{fig/WakayamAomoriComp9.pdf}\caption{和歌山県、青森県、滋賀県、長野県のスコア9}\end{center}\end{figure}
+\begin{figure}[h!]\begin{center}\includegraphics[ width=0.5\linewidth]{fig/WakayamAomoriComp10.pdf}\caption{和歌山県、青森県、滋賀県、長野県のスコア10}\end{center}\end{figure}
+\begin{figure}[h!]\begin{center}\includegraphics[ width=0.5\linewidth]{fig/WakayamAomoriComp11.pdf}\caption{和歌山県、青森県、滋賀県、長野県のスコア11}\end{center}\end{figure}
+
+
+
+
+\begin{figure}[h!]
+	\begin{center}
+		\includegraphics[ width=0.5\linewidth]{fig/WakayamAomoriComp1.pdf}
+		\caption{和歌山県の順位1}
+	\end{center}
+\end{figure}
+
+
+
 
 
 
@@ -1742,23 +2202,19 @@ Wakayama::d_common %>% dplyr::select_if(is.numeric) %>% sapply(rank) %>%
 
 \chapter{令和３年度研究の計画}
 
+
+
+
+
 9 説明変数の標準化と計量化(scoring)
 
 
 
 
 
-\chapter{8 出典整理}
+\chapter{出典}
 
-\section{8.1 出典元}
-
-
-\section{8.2 出典リンク先の詳細}
-
-
-
-\section{8.3 リンク先の修正箇所}
-
+別添：「出典リンク.html」を参照
 
 
 

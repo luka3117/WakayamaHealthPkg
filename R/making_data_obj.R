@@ -44,7 +44,7 @@ colnames(d)<-var$var_name_Eng
 file<-"./data/DataFormat-32021年3月11日受領/JpnEng.csv"
 JpnEng<-read.csv(file)
 
-JpnEng %>% tbl_df()
+# JpnEng %>% tbl_df()
 
 
 # ----------------- make JpnEng 変数対応表 # -----------------

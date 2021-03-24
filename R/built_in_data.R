@@ -29,7 +29,7 @@ d %>% DT::datatable()
 ### 変数名：和英対応表
 
 
-JpnEng<-read.csv("JpnEng.csv") %>% DT::datatable()
+# JpnEng<-read.csv("JpnEng.csv") %>% DT::datatable()
 
 
 
