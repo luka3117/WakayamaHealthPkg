@@ -62,48 +62,41 @@
 \section{平均寿命とは}
 
 
-\tb{厚生労働省が公表している「生命表」（毎年の「簡易生命表」、5年ごと（国勢調査年）の「生命表」（完全生命表）、「都道府県別生命表」、「市区町村別生命表」）により、平均寿命を調べることができる。
-平均寿命とは、0歳における平均余命（その年の年齢別死亡率で死亡していくとした場合、0歳の者が生きることとなる平均年数）を言う。
+平均寿命とは、特定の年の年齢別死亡率で死亡していくと仮定とした場合、0歳の者が生きることとなる平均年数を意味する。通常、0歳における平均余命とも知られている。
+年齢別死亡率を計算するために用いられるのが、
+\tb{厚生労働省が公表している「生命表」である。
+生命表には毎年の「簡易生命表」、5年ごと（国勢調査年）の「完全生命表」、「都道府県別生命表」、「市区町村別生命表」がある。
 }
+したがって、国勢調査が行なった
+翌年に発表される平均寿命は、完全生命表に基づいた結果である。
 
 
-
-平均寿命の算定には、ある年の年齢別死亡率を用いて生命表によって計算される（尾島俊之　2015）。具体的には、10万人が誕生したとして、０歳の死亡率から1歳の誕生日での生存数が計算され、さらに1歳の死亡率から2歳の誕生日での生存数が計算される。そのようにして、図2.1に示す生存数曲線を描くことができる。次に、
-
-図2.2に示すように、
-
-\tb{との面積が}
-等しくなる年齢を求める。言い換えると図2.1の生存数曲線の下の面積を10万人で割り算すると、それが寿命の平均値である平均寿命となる。
-なお、全国の生命表には、完全生命表〔5年に一度の国勢調査人口と人口動態統計（確定数）から作成〕、簡易生命表〔それ以外の年には推計人口と人口動態統計（概数）から作成〕がある。
-
-
-
-図2.1 年齢別死亡率から計算した生存数曲線（尾島俊之　2015より）
-
-図2.2 生存数曲線から寿命の平均値を計算（尾島俊之　2015より）
-
+%
+%平均寿命の算定には、ある年の年齢別死亡率を用いて生命表によって計算される（尾島俊之　2015）。具体的には、10万人が誕生したとして、０歳の死亡率から1歳の誕生日での生存数が計算され、さらに1歳の死亡率から2歳の誕生日での生存数が計算される。そのようにして、図2.1に示す生存数曲線を描くことができる。次に、
+%
+%図2.2に示すように、
+%
+%\tb{との面積が}
+%等しくなる年齢を求める。言い換えると図2.1の生存数曲線の下の面積を10万人で割り算すると、それが寿命の平均値である平均寿命となる。
+%なお、全国の生命表には、完全生命表〔5年に一度の国勢調査人口と人口動態統計（確定数）から作成〕、簡易生命表〔それ以外の年には推計人口と人口動態統計（概数）から作成〕がある。
+%
+%
+%
+%図2.1 年齢別死亡率から計算した生存数曲線（尾島俊之　2015より）
+%
+%図2.2 生存数曲線から寿命の平均値を計算（尾島俊之　2015より）
+%
 
 
 
 \section{健康寿命とは}
 
-
-次に、健康寿命の定義と算定方法について述べる。健康寿命の概念を理解するためには、まず、「疾病負荷(disease burden)」という概念を理解する必要がある。疾病負荷とは疾病により失われた生命や生活の質の期間を意味する。疾病負荷を計量化した指標の内、近年最も広く使われている指標が障害調整生命年(DALYs) である。ある人における障害調整生命年(DALY、disability adjusted life year) の計算は損失生存年数(YLL、years of life lost) と障害生存年数(YLD、years lived with disability)の合計
-DALY = Y LL + Y LD
-で計算され、障害生存年数(YLD)まで考慮した疾病負荷の指標である。
-
-図2.3 DALY の算出概念図、出典：wikipedia.org、障害調整生命年
-健康寿命とは、「健康上の問題で、日常生活が制限されることなく生活できる期間」を意味し,「生存年数(life year)—障害生存年数(YLD)」で定義される.
-今回は3つの方法を採用することにする。
-１．	国民生活基礎調査による項目  に基づく算出（2.4節で詳述）
-２．	介護保険の要介護認定により算出（2.3節で詳述）
-３．	DALYによる算出
-
-
-\section{健康寿命の定義と算出方式}
 \bb{健康寿命の概念を理解するためには, まず, 「疾病負荷（disease burden）」という概念を理解する必要がある. 疾病負荷とは疾病により失われた生命や生活の質の期間を意味する. 疾病負荷を計量化した指標の内, 近年最も広く使われている指標が障害調整生命年 (DALYs) である.
 	ある人における障害調整生命年 (DALY, disability adjusted lit year) の計算は損失生存年数 (YLL, years of life lost) と障害生存年数 (YLD, years lived with disability)の合計
-	$$DALY=YLL+YLD$$
+	\begin{equation}
+	\label{daly}
+	DALY=YLL+YLD
+	\end{equation}
 	%「障害調整生命年 (DALY) = 損失生存年数 (YLL) + 障害生存年数 (YLD)」
 	で計算され, 障害生存年数 (YLD)まで考慮した疾病負荷の指標である.
 }
@@ -117,19 +110,33 @@ DALY = Y LL + Y LD
 \end{figure}
 
 
-\bb{健康寿命はとは, 「健康上の問題で, 日常生活が制限されることなく生活できる期間」を意味し, 「生存年数(life year)- 障害生存年数 (YLD)」で定義される.
+\bb{健康寿命はとは, 「健康上の問題で, 日常生活が制限されることなく生活できる期間」を意味し, 「生存年数(life year)- 障害生存年数 (YLD)」で定義がその一つの算出方式となる.
 }
 
-ある社会構成員における平均健康寿命と平均寿命\footnote{平均寿命は, 5年ごとの国勢調査で確定した人口とその年を含む前後3年間の死亡数をもとに, 厚生労働省により公表. 都道府県別, 市町村別,男女別に公表
-}
-との差を縮めることにより, 医療費や介護給付金の軽減, および個人の生活の質の低下を防ぐことができ, 社会が安定させることが出来る.
-そのため, 健康寿命を延ばすこと, すなわち, 『健康寿命の延伸』が社会的に注目を集めている.
+その他、
+
+\begin{itemize}
+\item 国民生活基礎調査による項目  に基づく算出（\ref{survey}節で詳述）
+\item 介護保険の要介護認定により算出（2.3節で詳述）
+\end{itemize}
+による算出方式もある。
+
+%３．	DALYによる算出
+
+
+\section{健康寿命の定義と算出方式}
+\label{survey}
+%ある社会構成員における平均健康寿命と平均寿命\footnote{平均寿命は, 5年ごとの国勢調査で確定した人口とその年を含む前後3年間の死亡数をもとに, 厚生労働省により公表. 都道府県別, 市町村別,男女別に公表
+%}
+%との差を縮めることにより, 医療費や介護給付金の軽減, および個人の生活の質の低下を防ぐことができ, 社会が安定させることが出来る.
+%そのため, 健康寿命を延ばすこと, すなわち, 『健康寿命の延伸』が社会的に注目を集めている.
 %
 %健康寿命とは, 寿命期間の内, 健康上の問題で日常生活が制限されることなく 自立して生活できる期間をいう.
 
-現在, 健康寿命の算出方式は主に,
+%現在, 健康寿命の算出方式は主に,
 \begin{itemize} \setlength{\itemsep}{-0.5mm} \setlength{\parskip}{-0.5mm}
-	\item 国民生活基礎調査でのアンケート項目\footnote{
+	\item 国民生活基礎調査での\tb{アンケート項目}
+\footnote{
 		      統計調査の調査票(健康表)
 		      \url{http : //www.mhlw.go.jp/toukei/chousahyo/index.html#00450061}.
 	      }
@@ -146,21 +153,22 @@ DALY = Y LL + Y LD
 		      \item 要介護２以上を不健康とするもの
 	      \end{itemize}
 \end{itemize}
-２種類のデータから算出される.\footnote{
+２種類のデータから\tb{算出される}
+.\footnote{
 	健康寿命算出プログラム
 	\url{http : //toukei.umin.jp/kenkoujyumyou/}.
 }
 二つの方法の内, 介護保険に基づいた後者の方式は,
 ほぼすべての県民が介護保険の対象となっていること, 全国同一
-の基準で判定されていることから, 客観的で信頼度の高い数値ととらえる.
+の基準で判定されていることから, 客観的で信頼度の高い数値と考えらる.
 
 
 
 
 %------------------------------------------------------------
-\section{和歌山県の健康寿命(要介護度方式)}
+%\section{和歌山県の健康寿命(要介護度方式)}
 %------------------------------------------------------------
-\subsection{介護保険制度と要支援・要介護度}
+\section{介護保険制度と要支援・要介護度}
 健康寿命の要介護度方式による算出方式は, 要介護度を利用するため, 介護保険制度と要介護度の概念を整理しておく.
 
 介護保険制度は\tb{社会保険制度}\footnote{一般的に医療, 年金, 介護保険を指す. 広義の定義では雇用, 労災保険まで含む.
@@ -191,7 +199,7 @@ DALY = Y LL + Y LD
 \end{itemize}
 市町村は, 介護認定審査会(保健・医療・福祉の専門家により構成)の2次判定結果に基づいて要支援・要介護認定を行う.
 
-\subsection{要支援・要介護認定の結果}
+\subsection{要支援・要介護認定区分と限度額}
 要支援・要介護認定は7段階で構成されており,  要支援は2段階, 要介護は5段階である.
 %要支援・要介護は段階によって分かれており,
 それぞれの段階において利用できる介護サービスの範囲や量, 負担料金の上限が次のように決まる.
@@ -317,37 +325,37 @@ DALY = Y LL + Y LD
 
 
 %------------------------------------------------------------
-\chapter{和歌山県の寿命データの現状}
+\chapter{和歌山県の平均寿命の過去から現在の状況}
 %------------------------------------------------------------
 
 
-本共同研究にあたり、
-前置きとして
+本章では前置きとして
 和歌山県の平均寿命を
-時系列的な変動具合を確認する。
+時系列変動を確認する。
 
 
 %これまで和歌山県が取り組んで来た保健対策や組織の変遷について, 時系列的に
 %どのような変化があったのか調べる必要がある.
 
+\section{和歌山県の平均寿命の時系列変動}
 
-
-\subsection{和歌山県の平均寿命の時系列変動}
-
-\tb{2015年に実施された国勢調査に基づいて算出された平均寿命の結果、
+表\ref{PastRank}は1975年から2015年の間、和歌山県の平均寿命と
+47都道府県の中で順位を表す。
+\tb{2015年に実施された国勢調査に基づいた平均寿命では、
 和歌山県の平均寿命は、男性が79.94歳、女性は86.47歳を示し、
 それぞれ、47都道府県の中で、
 男性44位、女性41位と平均寿命が低いと報告された。
 }
 
-
-
-
+さらに、図\ref{PastRankFig}, 表\ref{PastRank}が示すように、
+平均寿命は10年弱伸びた結果であるが、
+全国の順位は低い水準を維持している。
 
 
 % latex table generated in R 3.5.3 by xtable 1.8-4 package
 % Fri Mar 19 20:17:39 2021
 \begin{table}[ht]
+\label{PastRank}
 \caption{和歌山県の平均寿命と47都道府県の中での順位。順位が大きいほど平均寿命が低いことを意味する。}
 \centering
 \begin{tabular}{r|rr|rr}
@@ -373,6 +381,7 @@ DALY = Y LL + Y LD
 
 
 \begin{figure}[h!]
+\label{PastRankFig}
 	\begin{center}
 		\includegraphics[ width=1\linewidth]{fig/WakayamaTrend.pdf}
 %		\includegraphics[ width=0.49\linewidth]{fig/rankfemale.pdf}
@@ -390,47 +399,33 @@ DALY = Y LL + Y LD
 %------------------------------------------------------------
 
 
-本研究に用いられるデータは、
-47都道府県を基本単位とし、平均寿命と健康寿命を目的変数とする。
-説明変数多様なデータ元から収集した公的データを利用することにする。
-
-本研究の研究体制は
-和歌山県がデータ収集を担当し、滋賀大学に提供されるデータを分析する。
-
-データの収集においては、統計解析の再現性を重視したため、
-出典を詳しく明記することにした。
+本研究に用いるデータは、
+平均寿命と健康寿命を始め、
+ 健康/疾患医療施設, 医療従事者, 文化, 人口, 自然環境, 一般経済, 家計経済, 教育, 労働, 住居, 疾患, 食, 住居, 施設, 食, 消費に関する47都道府県データである。
+目的変数は平均寿命と健康寿命となり、
+それ以外の変数は説明変数の候補になる。
+データの基本単位は47都道府県となる。
+全てのデータは誰でもてすぐ入手できる公的データのみに限定した。
 
 
-データのやり取りにおいては、
-所定の書式(DataFormat.csv”)を用意し、
+データは
+和歌山県の協力の元で
+「和歌山県データ利活用推進センター」が収集し、
+滋賀大学に所定様式に(DataFormat.csv)にて提供された。
+
+
 データの扱いには入力ミスなどが起こらないように、
-十分に注意を払った。
-また、滋賀大と和歌山県の間、double checkを行い、
-入念に厳選した公的データのみを用いることにした。
+十分に注意を払い、
+また、滋賀大と和歌山県それぞれ、
+同様のデータについて、
+相互チェエクを行なった。
 
-
-複数回の両者の打ち合わせによる議論の結果、
+複数回に渡り両担当者のデータに関する会議を通し
+初回のデータの項目に何点が変更がなされ
 本研究に用いられるデータとして絞られた。
 
 
-
-
-%\tb{
-%情報および変更履歴：
-%“DataFormat.csv” latest version 2021年2月10日
-%“DataFormat.csv” latest version 2021年3月11日受領
-%＜追記修正箇所等＞
-%V列
-%}
-
-
-
-
-
-両者がそれぞれ同じデータを入念にチェックした結果、
-初回のデータから下記のよう何点の変更がされた。
-
-
+変更点の例を以下記す。
 
 \begin{itemize}
 	\item \tb{熊本県の欠損値について、国の示す推定方法により数値を記載 -
@@ -474,29 +469,35 @@ EF列、EG列、EH列、EI列、EJ列
 
 
 
-最終的に収集したデータをまとめると次のように大分類の変数群として整理できる。
+本研究は、一般向けの結果の公開を想定し、
+また、統計解析の再現性を重視する立場から
+同様のデータを用いて同じ分析ができるように出典を詳しく明記することにした。
 
 
-\begin{itemize}
-	\item  健康/疾患医療施設
-	\item  医療従事者
-	\item  文化
-	\item  人口
-	\item  自然環境
-	\item  一般経済
-	\item  家計経済
-	\item  教育
-	\item  労働
-	\item  住居
-	\item  疾患
-	\item  食
-	\item  住居
-	\item  施設
-	\item  食
-	\item  消費
-\end{itemize}
 
 
+%\tb{
+%情報および変更履歴：
+%“DataFormat.csv” latest version 2021年2月10日
+%“DataFormat.csv” latest version 2021年3月11日受領
+%＜追記修正箇所等＞
+%V列
+%}
+
+
+%
+%
+%
+%両者がそれぞれ同じデータを入念にチェックした結果、
+%初回のデータから下記のよう何点の変更がされた。
+%
+
+
+%
+%最終的に収集したデータをまとめると次のように大分類の変数群として整理できる。
+%
+%
+%
 
 
 
@@ -916,7 +917,7 @@ EF列、EG列、EH列、EI列、EJ列
 
 
 
-\chapter{性別の有無によるデータ分け}
+\chapter{性別情報の有無によるデータ分け}
 
 
 \ref{datalist}章では全てのデータの変数には
@@ -1006,7 +1007,7 @@ EF列、EG列、EH列、EI列、EJ列
 
 \newpage
 
-\section{男女区別のないデータ}
+\section{男女区別のないデータ(common data)}
 
 
 
@@ -1349,7 +1350,7 @@ EF列、EG列、EH列、EI列、EJ列
 
 
 
-\chapter{寿命データの説明}
+\chapter{寿命データの記述統計}
 
 \section{2015年の平均寿命2016年の健康寿命}
 
@@ -1390,8 +1391,6 @@ EF列、EG列、EH列、EI列、EJ列
 
 和歌山県の男性の平均寿命
 は79.94歳で順位が４位なので全国で４番目に平均寿命が短い。
-
-
 
 
 
@@ -1706,6 +1705,7 @@ EF列、EG列、EH列、EI列、EJ列
 
 
 
+
 \begin{figure}[h!]
 	\begin{center}
 		\includegraphics[ width=0.5\linewidth]{fig/diff_LE_HLE_F.png}
@@ -1738,7 +1738,13 @@ EF列、EG列、EH列、EI列、EJ列
 
 
 
-\chapter{6.1 d\_common dataの和歌山県の順位確認}
+\chapter{common dataの和歌山県の順位確認}
+
+本節では、各説明変数における和歌山県の順位を低い変数から以下に記す。
+変数意味については、
+対応表を\ref{datalist}章を一緒に参考されたい。
+
+
 
 \begin{multicols}{2}
 
@@ -2017,58 +2023,61 @@ EF列、EG列、EH列、EI列、EJ列
 \begin{figure}[h!]
 	\begin{center}
 		\includegraphics[ width=0.7\linewidth]{fig/DistCommondVariable.pdf}
-		\caption{common データ変数の正規性の検討}
+		\caption{common データ変数の正規性の検討、黒い曲線が標準正規分布}
 	\end{center}
 \end{figure}
 
 
 \begin{enumerate}
-  \item   Trt\_rate\_hospitalization\_heart\_dz\_2017  :
-  \item   Trt\_rate\_Hospitalization\_Cerebrovascular\_dz\_2017  :
-  \item   Trt\_rate\_outpatient\_heart\_dz\_2017  :
-  \item   Trt\_rate\_Outpatient\_Cerebrovascular\_dz\_2017  :
-  \item   Num\_of\_hospitals\_2019  :   病院数\_2019
-  \item   Num\_of\_certified\_cancer\_doctors\_2020  :   がん治療認定医数\_2020
-  \item   Num\_of\_cardiologists\_2020  :   循環器専門医数\_2020
-  \item   Num\_of\_endoscopists\_2020  :   内視鏡専門医数\_2020
-  \item   pop\_Young\_pop\_Ratio\_2020  :   人口・世帯\_年少人口割合2020
-  \item   Natural\_environment\_annual\_avg\_temperature  :   自然環境\_年平均気温
-  \item   Natural\_environment\_annual\_Num\_of\_snow\_days  :   自然環境\_雪日数（年間）
-  \item   Economic\_pref\_income  :   経済基盤\_県民所得
-  \item   Admin\_base\_Financial\_strength\_index  :   行政基盤\_財政力指数
-  \item   Admin\_base\_balance\_ratio  :   行政基盤\_収支比率
-  \item   Admin\_infrastructure\_living\_protection\_cost\_ratio\_(prefectural\_finance)  :   行政基盤\_生活保護費割合（県財政）
-  \item   Edu\_Ptc\_of\_university\_graduate\_students\_with\_a\_final\_academic\_background  :   教育\_最終学歴が大学・大学院卒の者の割合
-  \item   Num\_of\_libraries  :   文化・スポーツ\_図書館数（人口100万人当たり）
-  \item   Num\_of\_general\_clinics  :   健康・医療\_一般診療所数(可住地面積100km当たり)
-  \item   Travel\_Rate1  :
-  \item   Residence\_owner\_ratio  :   居住\_持ち家比率
-  \item   Residence\_house\_ratio  :   居住\_一戸建住宅比率
-  \item   Residential\_city\_park\_area\_(per\_pop)  :   居住\_都市公園面積（人口１人当たり）
-  \item   Residence\_Num\_of\_city\_parks  :   居住\_都市公園数(可住地面積100km当たり)
-  \item   HM\_Num\_of\_general\_hospitals  :   健康・医療\_一般病院数(可住地面積100km当たり)
-  \item   Residence\_road\_pavement\_rate  :   居住\_主要道路舗装率
-  \item   Residence\_simachi\_pavement\_rate  :   居住\_市町村舗装率 \item   HM\_Num\_of\_general\_dental\_clinics\_per\_100k\_pop  :   健康・医療\_一般歯科診療所数（人口10万人当たり）
-  \item   Safety\_Num\_of\_traffic\_accidents\_per\_100k\_pop  :   安全\_交通事故発生件数（人口10万人当たり）
-  \item   Household\_Car\_ownership\_quantity  :   家計\_自動車所有数量（千世帯当たり）
-  \item   Hypertension\_Hospitalization\_2014  :   高血圧疾患\_入院2014年
-  \item   Hypertension\_Outpatient\_2014  :   高血圧疾患\_外来2014年
-  \item   Diabetes\_hospitalization\_2014  :   糖尿病\_入院2014年
-  \item   Diabetes\_Outpatient\_2014  :   糖尿病\_外来2014年
-  \item   Usual\_barrier\_free\_handrails\_2013  :   一定のバリアフリー化率手すりの設置\_2013
-  \item   High\_barrier\_free\_handrails\_2013  :   高度のバリアフリー化率手すりの設置\_2013
-  \item   High\_barrier\_free\_no\_steps\_2013  :   高度のバリアフリー化率段差のない屋内\_2013
-  \item   High\_barrier\_free\_wheelchairs\_pass\_Width  :   高度のバリアフリー廊下等が車いすで通行可能な幅\_2013
-  \item   Total\_working\_hours\_2016  :   総実労働時間\_2016
-  \item   Total\_salary\_2016  :   現金給与総額\_2016
-  \item   Academic\_ability\_middle\_school\_2015  :   全国学力・学習状況(公立学校数)(中学校)\_2015
-  \item   Academic\_ability\_elementary\_school\_2015  :   全国学力・学習状況(公立学校数)(小学生)\_2015
-  \item   Total\_Num\_of\_caries\_2014  :   う蝕外来総数\_2014
-  \item   Total\_Num\_of\_periodontal\_2014  :   歯周疾患(歯肉炎)外来総数\_2014
-  \item   Bone\_density\_disorder\_2014  :   骨の密度障害\_2014
-  \item   Fracture\_2014  :   骨折\_2014
-  \item   Tooth\_supplement\_2014  :   歯の補てつ\_2014
-  \item   Alzheimer\_dz\_2014  :   アルツハイマー等(脳血管疾患)\_2014
+
+
+  \item   Trt rate hospitalization heart dz 2017  : 受療率 入院 心疾患 2017
+  \item   Trt rate Hospitalization Cerebrovascular dz 2017  : 受療率 入院 脳血管疾患 2017
+  \item   Trt rate outpatient heart dz 2017  : 受療率 外来 心疾患 2017
+  \item   Trt rate Outpatient Cerebrovascular dz 2017  : 受療率 外来 脳血管疾患 2017
+  \item   Num of hospitals 2019  :   病院数 2019
+  \item   Num of certified cancer doctors 2020  :   がん治療認定医数 2020
+  \item   Num of cardiologists 2020  :   循環器専門医数 2020
+  \item   Num of endoscopists 2020  :   内視鏡専門医数 2020
+  \item   pop Young pop Ratio 2020  :   人口・世帯 年少人口割合2020
+  \item   Natural environment annual avg temperature  :   自然環境 年平均気温
+  \item   Natural environment annual Num of snow days  :   自然環境 雪日数（年間）
+  \item   Economic pref income  :   経済基盤 県民所得
+  \item   Admin base Financial strength index  :   行政基盤 財政力指数
+  \item   Admin base balance ratio  :   行政基盤 収支比率
+  \item   Admin infrastructure living protection cost ratio (prefectural finance)  :   行政基盤 生活保護費割合（県財政）
+  \item   Edu Ptc of university graduate students with a final academic background  :   教育 最終学歴が大学・大学院卒の者の割合
+  \item   Num of libraries  :   文化・スポーツ 図書館数（人口100万人当たり）
+  \item   Num of general clinics  :   健康・医療 一般診療所数(可住地面積100km当たり)
+  \item   Travel Rate1  :
+  \item   Residence owner ratio  :   居住 持ち家比率
+  \item   Residence house ratio  :   居住 一戸建住宅比率
+  \item   Residential city park area (per pop)  :   居住 都市公園面積（人口１人当たり）
+  \item   Residence Num of city parks  :   居住 都市公園数(可住地面積100km当たり)
+  \item   HM Num of general hospitals  :   健康・医療 一般病院数(可住地面積100km当たり)
+  \item   Residence road pavement rate  :   居住 主要道路舗装率
+  \item   Residence simachi pavement rate  :   居住 市町村舗装率
+  \item   HM Num of general dental clinics per 100k pop  :   健康・医療 一般歯科診療所数（人口10万人当たり）
+  \item   Safety Num of traffic accidents per 100k pop  :   安全 交通事故発生件数（人口10万人当たり）
+  \item   Household Car ownership quantity  :   家計 自動車所有数量（千世帯当たり）
+  \item   Hypertension Hospitalization 2014  :   高血圧疾患 入院2014年
+  \item   Hypertension Outpatient 2014  :   高血圧疾患 外来2014年
+  \item   Diabetes hospitalization 2014  :   糖尿病 入院2014年
+  \item   Diabetes Outpatient 2014  :   糖尿病 外来2014年
+  \item   Usual barrier free handrails 2013  :   一定のバリアフリー化率手すりの設置 2013
+  \item   High barrier free handrails 2013  :   高度のバリアフリー化率手すりの設置 2013
+  \item   High barrier free no steps 2013  :   高度のバリアフリー化率段差のない屋内 2013
+  \item   High barrier free wheelchairs pass Width  :   高度のバリアフリー廊下等が車いすで通行可能な幅 2013
+  \item   Total working hours 2016  :   総実労働時間 2016
+  \item   Total salary 2016  :   現金給与総額 2016
+  \item   Academic ability middle school 2015  :   全国学力・学習状況(公立学校数)(中学校) 2015
+  \item   Academic ability elementary school 2015  :   全国学力・学習状況(公立学校数)(小学生) 2015
+  \item   Total Num of caries 2014  :   う蝕外来総数 2014
+  \item   Total Num of periodontal 2014  :   歯周疾患(歯肉炎)外来総数 2014
+  \item   Bone density disorder 2014  :   骨の密度障害 2014
+  \item   Fracture 2014  :   骨折 2014
+  \item   Tooth supplement 2014  :   歯の補てつ 2014
+  \item   Alzheimer dz 2014  :   アルツハイマー等(脳血管疾患) 2014
 
 \end{enumerate}
 
@@ -2092,71 +2101,71 @@ EF列、EG列、EH列、EI列、EJ列
 
 % latex table generated in R 4.0.3 by xtable 1.8-4 package
 % Wed Mar 24 01:23:19 2021
-\begin{table}[ht]
-\centering
-\footnotesize
-\begin{tabular}{rll}
-  \hline
- & rowname & var\_name\_Jpn \\
-  \hline
-1 & Trt\_rate\_hospitalization\_heart\_dz\_2017 &  受療率 入院 心疾患 2017
-\\
-  2 & Trt\_rate\_Hospitalization\_Cerebrovascular\_dz\_2017 &  受療率 入院 脳血管疾患 2017
-\\
-  3 & Trt\_rate\_outpatient\_heart\_dz\_2017 &  受療率 外来 心疾患 2017
-\\
-  4 & Trt\_rate\_Outpatient\_Cerebrovascular\_dz\_2017 &  受療率 外来 脳血管疾患 2017\\
-  5 & Num\_of\_hospitals\_2019 & 病院数\_2019 \\
-  6 & Num\_of\_certified\_cancer\_doctors\_2020 & がん治療認定医数\_2020 \\
-  7 & Num\_of\_cardiologists\_2020 & 循環器専門医数\_2020 \\
-  8 & Num\_of\_endoscopists\_2020 & 内視鏡専門医数\_2020 \\
-  9 & pop\_Young\_pop\_Ratio\_2020 & 人口・世帯\_年少人口割合2020 \\
-  10 & Natural\_environment\_annual\_avg\_temperature & 自然環境\_年平均気温 \\
-  11 & Natural\_environment\_annual\_Num\_of\_snow\_days & 自然環境\_雪日数（年間） \\
-  12 & Economic\_pref\_income & 経済基盤\_県民所得 \\
-  13 & Admin\_base\_Financial\_strength\_index & 行政基盤\_財政力指数 \\
-  14 & Admin\_base\_balance\_ratio & 行政基盤\_収支比率 \\
-  15 & Admin\_infrastructure\_living\_protection\_cost\_ratio\_(prefectural\_finance) & 行政基盤\_生活保護費割合（県財政） \\
-  16 & Edu\_Ptc\_of\_university\_graduate\_students & 教育\_最終学歴が大学・大学院卒の者の割合 \\
-   & \_with\_a\_final\_academic\_background & \\
-  17 & Num\_of\_libraries & 文化・スポーツ\_図書館数（人口100万人当たり） \\
-  18 & Num\_of\_general\_clinics & 健康・医療\_一般診療所数(可住地面積100km当たり) \\
-  19 & Travel\_Rate1 &  \\
-  20 & Residence\_owner\_ratio & 居住\_持ち家比率 \\
-  21 & Residence\_house\_ratio & 居住\_一戸建住宅比率 \\
-  22 & Residential\_city\_park\_area\_(per\_pop) & 居住\_都市公園面積（人口１人当たり） \\
-  23 & Residence\_Num\_of\_city\_parks & 居住\_都市公園数(可住地面積100km当たり) \\
-  24 & HM\_Num\_of\_general\_hospitals & 健康・医療\_一般病院数(可住地面積100km当たり) \\
-  25 & Residence\_road\_pavement\_rate & 居住\_主要道路舗装率 \\
-  26 & Residence\_simachi\_pavement\_rate & 居住\_市町村舗装率 \\
-  27 & HM\_Num\_of\_general\_dental\_clinics\_per\_100k\_pop & 健康・医療\_一般歯科診療所数（人口10万人当たり） \\
-  28 & Safety\_Num\_of\_traffic\_accidents\_per\_100k\_pop & 安全\_交通事故発生件数（人口10万人当たり） \\
-  29 & Household\_Car\_ownership\_quantity & 家計\_自動車所有数量（千世帯当たり） \\
-  30 & Hypertension\_Hospitalization\_2014 & 高血圧疾患\_入院2014年 \\
-  31 & Hypertension\_Outpatient\_2014 & 高血圧疾患\_外来2014年 \\
-  32 & Diabetes\_hospitalization\_2014 & 糖尿病\_入院2014年 \\
-  33 & Diabetes\_Outpatient\_2014 & 糖尿病\_外来2014年 \\
-  34 & Usual\_barrier\_free\_handrails\_2013 & 一定のバリアフリー化率手すりの設置\_2013 \\
-  35 & High\_barrier\_free\_handrails\_2013 & 高度のバリアフリー化率手すりの設置\_2013 \\
-  36 & High\_barrier\_free\_no\_steps\_2013 & 高度のバリアフリー化率段差のない屋内\_2013 \\
-  37 & High\_barrier\_free\_wheelchairs\_pass\_Width & 高度のバリアフリー \\
-   &  & 廊下等が車いすで通行可能な幅\_2013 \\
-  38 & Total\_working\_hours\_2016 & 総実労働時間\_2016 \\
-  39 & Total\_salary\_2016 & 現金給与総額\_2016 \\
-  40 & Academic\_ability\_middle\_school\_2015 & 全国学力・学習状況(公立学校数)(中学校)\_2015 \\
-  41 & Academic\_ability\_elementary\_school\_2015 & 全国学力・学習状況(公立学校数)(小学生)\_2015 \\
-  42 & Total\_Num\_of\_caries\_2014 & う蝕外来総数\_2014 \\
-  43 & Total\_Num\_of\_periodontal\_2014 & 歯周疾患(歯肉炎)外来総数\_2014 \\
-  44 & Bone\_density\_disorder\_2014 & 骨の密度障害\_2014 \\
-  45 & Fracture\_2014 & 骨折\_2014 \\
-  46 & Tooth\_supplement\_2014 & 歯の補てつ\_2014 \\
-  47 & Alzheimer\_dz\_2014 & アルツハイマー等(脳血管疾患)\_2014 \\
-   \hline
-\end{tabular}
-\end{table}
-
-
-
+%\begin{table}[ht]
+%\centering
+%\footnotesize
+%\begin{tabular}{rll}
+%  \hline
+% & rowname & var\_name\_Jpn \\
+%  \hline
+%1 & Trt\_rate\_hospitalization\_heart\_dz\_2017 &  受療率 入院 心疾患 2017
+%\\
+%  2 & Trt\_rate\_Hospitalization\_Cerebrovascular\_dz\_2017 &  受療率 入院 脳血管疾患 2017
+%\\
+%  3 & Trt\_rate\_outpatient\_heart\_dz\_2017 &  受療率 外来 心疾患 2017
+%\\
+%  4 & Trt\_rate\_Outpatient\_Cerebrovascular\_dz\_2017 &  受療率 外来 脳血管疾患 2017\\
+%  5 & Num\_of\_hospitals\_2019 & 病院数\_2019 \\
+%  6 & Num\_of\_certified\_cancer\_doctors\_2020 & がん治療認定医数\_2020 \\
+%  7 & Num\_of\_cardiologists\_2020 & 循環器専門医数\_2020 \\
+%  8 & Num\_of\_endoscopists\_2020 & 内視鏡専門医数\_2020 \\
+%  9 & pop\_Young\_pop\_Ratio\_2020 & 人口・世帯\_年少人口割合2020 \\
+%  10 & Natural\_environment\_annual\_avg\_temperature & 自然環境\_年平均気温 \\
+%  11 & Natural\_environment\_annual\_Num\_of\_snow\_days & 自然環境\_雪日数（年間） \\
+%  12 & Economic\_pref\_income & 経済基盤\_県民所得 \\
+%  13 & Admin\_base\_Financial\_strength\_index & 行政基盤\_財政力指数 \\
+%  14 & Admin\_base\_balance\_ratio & 行政基盤\_収支比率 \\
+%  15 & Admin\_infrastructure\_living\_protection\_cost\_ratio\_(prefectural\_finance) & 行政基盤\_生活保護費割合（県財政） \\
+%  16 & Edu\_Ptc\_of\_university\_graduate\_students & 教育\_最終学歴が大学・大学院卒の者の割合 \\
+%   & \_with\_a\_final\_academic\_background & \\
+%  17 & Num\_of\_libraries & 文化・スポーツ\_図書館数（人口100万人当たり） \\
+%  18 & Num\_of\_general\_clinics & 健康・医療\_一般診療所数(可住地面積100km当たり) \\
+%  19 & Travel\_Rate1 &  \\
+%  20 & Residence\_owner\_ratio & 居住\_持ち家比率 \\
+%  21 & Residence\_house\_ratio & 居住\_一戸建住宅比率 \\
+%  22 & Residential\_city\_park\_area\_(per\_pop) & 居住\_都市公園面積（人口１人当たり） \\
+%  23 & Residence\_Num\_of\_city\_parks & 居住\_都市公園数(可住地面積100km当たり) \\
+%  24 & HM\_Num\_of\_general\_hospitals & 健康・医療\_一般病院数(可住地面積100km当たり) \\
+%  25 & Residence\_road\_pavement\_rate & 居住\_主要道路舗装率 \\
+%  26 & Residence\_simachi\_pavement\_rate & 居住\_市町村舗装率 \\
+%  27 & HM\_Num\_of\_general\_dental\_clinics\_per\_100k\_pop & 健康・医療\_一般歯科診療所数（人口10万人当たり） \\
+%  28 & Safety\_Num\_of\_traffic\_accidents\_per\_100k\_pop & 安全\_交通事故発生件数（人口10万人当たり） \\
+%  29 & Household\_Car\_ownership\_quantity & 家計\_自動車所有数量（千世帯当たり） \\
+%  30 & Hypertension\_Hospitalization\_2014 & 高血圧疾患\_入院2014年 \\
+%  31 & Hypertension\_Outpatient\_2014 & 高血圧疾患\_外来2014年 \\
+%  32 & Diabetes\_hospitalization\_2014 & 糖尿病\_入院2014年 \\
+%  33 & Diabetes\_Outpatient\_2014 & 糖尿病\_外来2014年 \\
+%  34 & Usual\_barrier\_free\_handrails\_2013 & 一定のバリアフリー化率手すりの設置\_2013 \\
+%  35 & High\_barrier\_free\_handrails\_2013 & 高度のバリアフリー化率手すりの設置\_2013 \\
+%  36 & High\_barrier\_free\_no\_steps\_2013 & 高度のバリアフリー化率段差のない屋内\_2013 \\
+%  37 & High\_barrier\_free\_wheelchairs\_pass\_Width & 高度のバリアフリー \\
+%   &  & 廊下等が車いすで通行可能な幅\_2013 \\
+%  38 & Total\_working\_hours\_2016 & 総実労働時間\_2016 \\
+%  39 & Total\_salary\_2016 & 現金給与総額\_2016 \\
+%  40 & Academic\_ability\_middle\_school\_2015 & 全国学力・学習状況(公立学校数)(中学校)\_2015 \\
+%  41 & Academic\_ability\_elementary\_school\_2015 & 全国学力・学習状況(公立学校数)(小学生)\_2015 \\
+%  42 & Total\_Num\_of\_caries\_2014 & う蝕外来総数\_2014 \\
+%  43 & Total\_Num\_of\_periodontal\_2014 & 歯周疾患(歯肉炎)外来総数\_2014 \\
+%  44 & Bone\_density\_disorder\_2014 & 骨の密度障害\_2014 \\
+%  45 & Fracture\_2014 & 骨折\_2014 \\
+%  46 & Tooth\_supplement\_2014 & 歯の補てつ\_2014 \\
+%  47 & Alzheimer\_dz\_2014 & アルツハイマー等(脳血管疾患)\_2014 \\
+%   \hline
+%\end{tabular}
+%\end{table}
+%
+%
+%
 
 
 
