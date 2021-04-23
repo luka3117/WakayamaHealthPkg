@@ -8,10 +8,10 @@ output:
   html_document:
    number_section: true
    toc: true
-   # code_folding: hide
-   # toc_float:
-   #   smooth_scroll: false
-   #   collapsed: false
+   code_folding: hide
+   toc_float:
+     smooth_scroll: false
+     collapsed: false
 
 # output:
 #   ioslides_presentation:
