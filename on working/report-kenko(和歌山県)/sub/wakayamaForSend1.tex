@@ -516,6 +516,8 @@ BMI平均値\_2016(男性20〜69歳)(女性40〜69歳)(単位Kg/u)
 
 以下, 全ての168個の変数のリストの詳細を
 「日本語:英語」に示す.
+以下、一部のデータは県庁所在地のデータである(例えば、以下の130番目の卵など).
+県庁所在地のデータについては. 次年度の研究では分析の対象から外す予定である.
 
 
 %和歌山県の協力の元で以下のデータを集計した.
@@ -561,7 +563,20 @@ BMI平均値\_2016(男性20〜69歳)(女性40〜69歳)(単位Kg/u)
   \item 都道府県(英語略表記) : pref.A
   \item 都道府県(日本語) : pref.J
   \item 人口 : pop
-  \item 受療率 入院 悪性新生物 2017  :  Treatment rate Hospitalization Malignant neoplasm 2017
+  \begin{itemize}
+  \item
+%  人口_(単位：万人)
+%出典：統計でみる都道府県のすがた2020
+%取得元：以下のリンク
+%
+%https://www.e-stat.go.jp/stat-search/files?page=1&layout=datalist&toukei=00200502&tstat=000001137306&cycle=0&year=20200&month=0&tclass1=000001137307
+%
+%詳細説明：
+2018年都道府県別、男女別の総人口(単位：万人)
+%男性はN列「総人口(男)」、総人口女性はP列「総人口(女)」のを取得し、
+%・DataFormat.csvのG列に転記
+  \end{itemize}
+    \item 受療率 入院 悪性新生物 2017  :  Treatment rate Hospitalization Malignant neoplasm 2017
   \item 受療率 入院 心疾患 2017  :  Medical treatment rate hospitalization heart dz 2017
   \item 受療率 入院 脳血管疾患 2017  :  Treatment rate Hospitalization Cerebrovascular dz 2017
   \item 受療率 外来 悪性新生物 2017  :  Treatment rate Outpatient Malignant neoplasm 2017
@@ -717,6 +732,11 @@ BMI平均値\_2016(男性20〜69歳)(女性40〜69歳)(単位Kg/u)
   \item 歯の補てつ 2014  :  Tooth supplement 2014
   \item アルツハイマー等(脳血管疾患) 2014  :  Alzheimer dz 2014
   \item ジニ係数総世帯 2014  :  Gini coeff 2014
+  \begin{enumerate}
+  \item ジニ係数（Gini coefficient）とはある社会における所得の不平等さを測る指標であり, 
+値の範囲は 0 から 1 である.
+係数の値が大きいほどその集団における格差が大きい状態であることを意味する.
+  \end{enumerate}
   \item 収入ジニ係数勤労世帯 2014  :  Income Gini Coeff Working Household 2014
   \item 野菜摂取量 2012(20歳以上平均値(g/日)  :  Vegetable intake 2012
   \item 食塩摂取量 2012(20歳以上平均値(g/日)  :  Salt intake 2012
@@ -927,104 +947,107 @@ BMI平均値\_2016(男性20〜69歳)(女性40〜69歳)(単位Kg/u)
 
 
 
-\chapter{性別情報の有無によるデータ分け}
+
+%\section{}
+\chapter{男女の区別がないデータ(common data)}
 
 
-\ref{datalist}章で示した全変数のリストは
-性別の情報がある変数とない変数に分けられる.
-寿命研究における
-性別変数は重要な変数であり,
-今後, 性別ごとに数値が存在する変数とそれ以外の変数を分けて分析を進める.
+%\ref{datalist}章で示した全変数のリストは
+%性別の情報がある変数とない変数に分けられる.
+%寿命研究における
+%性別変数は重要な変数であり,
+%今後, 性別ごとに数値が存在する変数とそれ以外の変数を分けて分析を進める.
+%今年度は男女の区別がないデータを探索することに範囲を絞った.
 
-\section{男女の区別があるデータ}
+%\section{男女の区別があるデータ}
+%
+%男女の区別があるデータは以下の通りである.
+%
+%\begin{multicols}{2}
+%
+%\begin{enumerate}
+%  \item 人口
+%  \item 75歳未満調整死亡率\_悪性新生物\_2018
+%  \item 平均寿命\_2015
+%  \item 健康寿命\_2016
+%  \item 75歳未満調整死亡率\_悪政新生物\_2019
+%  \item 年齢調整死亡率\_心疾患\_2015
+%  \item 年齢調整死亡率\_脳血管疾患\_2015
+%  \item 60歳以上人口\_2015
+%  \item 学習率\_2016
+%  \item 読書率\_2016
+%  \item スポーツ総行動率
+%  \item スポーツ総行動率-器具を使ったトレーニング
+%  \item スポーツ行動率−ウォーキング
+%  \item 旅行・行楽−旅行・行楽・観光総行動率
+%  \item 文化・スポーツ\_旅行・行楽行動者率
+%  \item 旅行・行楽−旅行率
+%  \item 旅行・行楽−行楽率
+%  \item 旅行・行楽−観光率
+%  \item ボランティア総行動率−総数
+%  \item ボランティア総行動率−まちづくり活動
+%  \item ボランティア総行動率−国際協力活動
+%  \item ボランティア総行動率−健康や医療サービスに関係した活動
+%  \item ボランティア総行動率−高齢者を対象とした活動
+%  \item ボランティア総行動率−障害者を対象とした活動
+%  \item ボランティア総行動率−子供を対象とした活動
+%  \item 趣味・娯楽−趣味娯楽総行動率
+%  \item 趣味・娯楽−園芸・庭いじり・ガーデニング
+%  \item 趣味・娯楽−スポーツ観覧
+%  \item 趣味・娯楽−読書
+%  \item 自己啓発・訓練−学習・自己啓発・訓練率
+%  \item 自己啓発・訓練−芸術・文化
+%  \item 自己啓発・訓練−英語
+%  \item 自己啓発・訓練−英語以外の外国語
+%  \item 自己啓発・訓練−パソコンなどの情報処理
+%  \item ボランティア活動−安全な生活のための活動
+%  \item ボランティア活動−自然や環境の活動
+%  \item ボランティア活動−災害活動
+%  \item 脳血管疾患\_年齢調整死亡率2015
+%  \item 悪性新生物(胃)\_年齢調整死亡率2015
+%  \item 悪性新生物(大腸)\_年齢調整死亡率2015
+%  \item 悪性新生物(肝及び肝内胆管)\_年齢調整死亡率2015
+%  \item 悪性新生物(気管, 気管支及び肺)\_年齢調整死亡率2015
+%  \item 悪性新生物(乳房)\_年齢調整死亡率2015
+%  \item 悪性新生物(子宮)\_年齢調整死亡率2015
+%  \item 心疾患\_年齢調整死亡率2015
+%  \item 肺炎\_年齢調整死亡率2015
+%  \item 急性心筋梗塞\_年齢調整死亡率2015
+%  \item 血圧を下げる薬の使用\_回答・はい(40〜64歳)2014
+%  \item インシュリン注射, 血糖を下げる薬の使用\_回答・はい(40〜74歳)2014
+%  \item コレステロールを下げる薬の使用\_回答・はい(40〜74歳)2014
+%  \item 就寝前の2時間以内に夕食\_回答・はい(40〜74歳)2014
+%  \item 日常生活において歩行等の身体活動(1日1時間以上実施)\_回答・はい(40〜74歳)2014
+%  \item 軽く汗をかく運動週2回\_回答・はい(40〜74歳)2014
+%  \item 喫煙率(計100本以上,6ヵ月以上\&直近1ヵ月)\_回答・はい(40〜74歳)2014
+%  \item 20歳に比べて10kg体重増加.回答\_はい(40〜74歳)2014
+%  \item 歩く速度が速い(同年齢と比較).回答\_はい(40〜74歳)2014
+%  \item 飲酒日1日当たり2合以上飲む割合(頻度)\_回答・はい(40〜74歳)2014
+%  \item 毎日酒を飲む割合(頻度)\_回答・はい(40〜74歳)2014
+%  \item 睡眠休養が十分とれている.回答\_はい(40〜74歳)2014
+%  \item 朝食を抜くことが週3回ある.回答\_はい(40〜74歳)2014
+%  \item 夕食後に間食することが週3回ある.回答\_はい(40〜74歳)2014
+%  \item 野菜摂取量\_2012(20歳以上平均値(g/日)
+%  \item 食塩摂取量\_2012(20歳以上平均値(g/日)
+%  \item BMI平均値\_2012(男性20〜69歳)(女性40〜69歳)(単位Kg)
+%  \item 歩数\_2012(20歳以上平均値(歩/日)
+%\end{enumerate}
+%
+%
+%\end{multicols}
+%
+%
+%
+%
+%\newpage
 
-男女の区別があるデータは以下の通りである.
 
-\begin{multicols}{2}
-
-\begin{enumerate}
-  \item 人口
-  \item 75歳未満調整死亡率\_悪性新生物\_2018
-  \item 平均寿命\_2015
-  \item 健康寿命\_2016
-  \item 75歳未満調整死亡率\_悪政新生物\_2019
-  \item 年齢調整死亡率\_心疾患\_2015
-  \item 年齢調整死亡率\_脳血管疾患\_2015
-  \item 60歳以上人口\_2015
-  \item 学習率\_2016
-  \item 読書率\_2016
-  \item スポーツ総行動率
-  \item スポーツ総行動率-器具を使ったトレーニング
-  \item スポーツ行動率−ウォーキング
-  \item 旅行・行楽−旅行・行楽・観光総行動率
-  \item 文化・スポーツ\_旅行・行楽行動者率
-  \item 旅行・行楽−旅行率
-  \item 旅行・行楽−行楽率
-  \item 旅行・行楽−観光率
-  \item ボランティア総行動率−総数
-  \item ボランティア総行動率−まちづくり活動
-  \item ボランティア総行動率−国際協力活動
-  \item ボランティア総行動率−健康や医療サービスに関係した活動
-  \item ボランティア総行動率−高齢者を対象とした活動
-  \item ボランティア総行動率−障害者を対象とした活動
-  \item ボランティア総行動率−子供を対象とした活動
-  \item 趣味・娯楽−趣味娯楽総行動率
-  \item 趣味・娯楽−園芸・庭いじり・ガーデニング
-  \item 趣味・娯楽−スポーツ観覧
-  \item 趣味・娯楽−読書
-  \item 自己啓発・訓練−学習・自己啓発・訓練率
-  \item 自己啓発・訓練−芸術・文化
-  \item 自己啓発・訓練−英語
-  \item 自己啓発・訓練−英語以外の外国語
-  \item 自己啓発・訓練−パソコンなどの情報処理
-  \item ボランティア活動−安全な生活のための活動
-  \item ボランティア活動−自然や環境の活動
-  \item ボランティア活動−災害活動
-  \item 脳血管疾患\_年齢調整死亡率2015
-  \item 悪性新生物(胃)\_年齢調整死亡率2015
-  \item 悪性新生物(大腸)\_年齢調整死亡率2015
-  \item 悪性新生物(肝及び肝内胆管)\_年齢調整死亡率2015
-  \item 悪性新生物(気管, 気管支及び肺)\_年齢調整死亡率2015
-  \item 悪性新生物(乳房)\_年齢調整死亡率2015
-  \item 悪性新生物(子宮)\_年齢調整死亡率2015
-  \item 心疾患\_年齢調整死亡率2015
-  \item 肺炎\_年齢調整死亡率2015
-  \item 急性心筋梗塞\_年齢調整死亡率2015
-  \item 血圧を下げる薬の使用\_回答・はい(40〜64歳)2014
-  \item インシュリン注射, 血糖を下げる薬の使用\_回答・はい(40〜74歳)2014
-  \item コレステロールを下げる薬の使用\_回答・はい(40〜74歳)2014
-  \item 就寝前の2時間以内に夕食\_回答・はい(40〜74歳)2014
-  \item 日常生活において歩行等の身体活動(1日1時間以上実施)\_回答・はい(40〜74歳)2014
-  \item 軽く汗をかく運動週2回\_回答・はい(40〜74歳)2014
-  \item 喫煙率(計100本以上,6ヵ月以上\&直近1ヵ月)\_回答・はい(40〜74歳)2014
-  \item 20歳に比べて10kg体重増加.回答\_はい(40〜74歳)2014
-  \item 歩く速度が速い(同年齢と比較).回答\_はい(40〜74歳)2014
-  \item 飲酒日1日当たり2合以上飲む割合(頻度)\_回答・はい(40〜74歳)2014
-  \item 毎日酒を飲む割合(頻度)\_回答・はい(40〜74歳)2014
-  \item 睡眠休養が十分とれている.回答\_はい(40〜74歳)2014
-  \item 朝食を抜くことが週3回ある.回答\_はい(40〜74歳)2014
-  \item 夕食後に間食することが週3回ある.回答\_はい(40〜74歳)2014
-  \item 野菜摂取量\_2012(20歳以上平均値(g/日)
-  \item 食塩摂取量\_2012(20歳以上平均値(g/日)
-  \item BMI平均値\_2012(男性20〜69歳)(女性40〜69歳)(単位Kg)
-  \item 歩数\_2012(20歳以上平均値(歩/日)
-\end{enumerate}
-
-
-\end{multicols}
-
-
-
-
-\newpage
-
-\section{男女の区別がないデータ(common data)}
 
 
 
 {今年度の研究では
 「男女区別のないデータ(以下, common データと呼ぶ)」
-を中心に探索する.
+に限定して探索する.
 }
 
 
@@ -1744,124 +1767,124 @@ BMI平均値\_2016(男性20〜69歳)(女性40〜69歳)(単位Kg/u)
 
 
 
-
-
-\chapter{common dataの和歌山県の順位確認}
-
-本章では, 各説明変数における和歌山県の順位を低い変数から以下に記す.
-日本語変数名については,
-\pageref{datalist}ページの
-\ref{datalist}章の対応表を一緒に参考されたい.
-また、同率順位がある場合は小数点で記載した。
-
-
-\begin{multicols}{2}
-
-\begin{enumerate}
-	\item Household consumption expenditure : 1位
-	\item Household Edu cost ratio : 1位
-	\item Fruits consumption 2015 : 1位
-	\item Residence sewerage ratio : 2位
-	\item Usual barrier free no steps 2013 : 2位
-	\item Bone density disorder 2014 : 2位
-	\item Soybean 2014 : 3位
-	\item Confectionery consumption 2015 : 3位
-	\item Confectionery consumption avg 2014 2016 : 3位
-	\item Residence Num of city parks : 4位
-	\item Confectionery consumption 2014 : 4位
-	\item Fruit consumption avg 2014 2016 : 4位
-	\item Admin base Financial strength index : 5位
-	\item Residence road pavement rate : 5.50 位
-	\item Total Num of caries 2014 : 5.50 位
-	\item High barrier free wheelchairs pass Width : 6位
-	\item Confectionery consumption 2016 : 6位
-	\item Fruits consumption 2016 : 6位
-	\item Volunteer Activity Participant Rate : 6.50 位
-	\item Tooth supplement 2014 : 6.50 位
-	\item Household actual income : 7位
-	\item Dairy 2014 : 7位
-	\item High barrier free no steps 2013 : 7.50 位
-	\item Residential city park area (per pop) : 8位
-	\item Hypertension Hospitalization 2014 : 8位
-	\item Fruits consumption 2014 : 8位
-	\item Total working hours 2016 : 9位
-	\item Income Gini Coeff Working Household 2014 : 9位
-	\item Sports Participant Rate : 10位
-	\item Travel Rate1 : 10位
-	\item Total Num of periodontal 2014 : 10位
-	\item Num of cardiologists 2020 : 11位
-	\item pop Working Age pop Ratio 2020 : 11位
-	\item High barrier free handrails 2013 : 11位
-	\item Num of certified cancer doctors 2020 : 12位
-	\item pop Young pop Ratio 2020 : 12.50 位
-	\item Fracture 2014 : 12.50 位
-	\item Safety Num of traffic accidents per 100k pop : 13位
-	\item Hypertension Outpatient 2014 : 13位
-	\item Total salary 2016 : 13位
-	\item Natural environment annual avg relative humidity : 14位
-	\item Academic ability elementary school 2015 : 14位
-	\item Diabetes hospitalization 2014 : 14.50 位
-	\item Labor secondary industry emp ratio : 15位
-	\item Academic ability middle school 2015 : 15位
-	\item Diabetes Outpatient 2014 : 16位
-	\item Seafood 2014 : 16位
-	\item Household PC ownership quantity : 17位
-	\item Usual barrier free handrails 2013 : 17位
-	\item Edu Ptc of university graduate students with a final academic background : 17.50 位
-	\item Economic pref income : 18位
-	\item pop Double income household ratio 2020 : 19位
-	\item Admin infrastructure Edu cost ratio (prefectural finance) : 19位
-	\item Num of endoscopists 2020 : 20位
-	\item Book purchase price 2019 : 21位
-	\item Natural environment annual Num of snow days : 21位
-	\item Num of libraries : 21位
-	\item Alzheimer dz 2014 : 21.50 位
-	\item HM Num of public health nurses per 100k pop : 22位
-	\item Household Car ownership quantity : 22位
-	\item Household Tablet terminal Ownership quantity : 22位
-	\item Residence simachi pavement rate : 24位
-	\item Milk 2014 : 25位
-	\item Trt rate Hospitalization Cerebrovascular dz 2017 : 25.50 位
-	\item Labor tertiary industry emp ratio : 27位
-	\item HM Num of general hospitals : 27位
-%	\item key : 30位
-%	\item pref.id : 30位
-	\item Trt rate Hospitalization Malignant neoplasm 2017 : 30位
-	\item Fish meat consumption 2015 : 31位
-	\item Residence water supply pop ratio : 31.50 位
-	\item Household Smartphone ownership quantity : 33位
-	\item Meat 2014 : 33位
-	\item Trt rate hospitalization heart dz 2017 : 33.50 位
-	\item Num of hospitals 2019 : 33.50 位
-	\item Natural environment annual rain : 33.50 位
-	\item Labor Unemp rate : 33.50 位
-	\item Egg 2014 : 34位
-	\item Num of general clinics : 35位
-	\item Gini coeff 2014 : 35.50 位
-	\item Natural environment annual avg temperature : 36位
-	\item Labor primary industry emp ratio : 37.50 位
-	\item Trt rate outpatient heart dz 2017 : 39位
-	\item pop Rough Mortality 2020 : 39位
-	\item Admin infrastructure living protection cost ratio (prefectural finance) : 39位
-	\item HM Num of doctors engaged in medical facilities per 100k pop : 39位
-	\item Admin base balance ratio : 40位
-	\item Residence owner ratio : 40位
-	\item Residence house ratio : 40位
-	\item pop oldElderly pop Ratio 2020 : 41位
-	\item Household Savings : 41位
-	\item Fish meat consumption 2016 : 41位
-	\item Fish meat consumption avg 2014 2016 : 42位
-	\item HM Num of general dental clinics per 100k pop : 43位
-	\item Trt rate Outpatient Cerebrovascular dz 2017 : 44位
-	\item Trt rate Outpatient Malignant neoplasm 2017 : 44.50 位
-	\item Household Liberal Arts and Entertainment Expenditure Ratio : 45位
-	\item pop Household Ratio of elderly single person households : 45位
-	\item Fish meat consumption 2014 : 46位
-	\item Num of clinics 2019 : 47位
-\end{enumerate}
-
-\end{multicols}
-
+%
+%
+%\chapter{common dataの和歌山県の順位確認}
+%
+%本章では, 各説明変数における和歌山県の順位が低い、あるいは、順位が高い変数を一部示す。
+%日本語変数名については,
+%\pageref{datalist}ページの
+%\ref{datalist}章の対応表を一緒に参考されたい.
+%また、同率順位がある場合は小数点で記載した。
+%
+%
+%\begin{multicols}{2}
+%
+%\begin{enumerate}
+%	\item Household consumption expenditure : 1位
+%	\item Household Edu cost ratio : 1位
+%	\item Fruits consumption 2015 : 1位
+%	\item Residence sewerage ratio : 2位
+%	\item Usual barrier free no steps 2013 : 2位
+%	\item Bone density disorder 2014 : 2位
+%	\item Soybean 2014 : 3位
+%%	\item Confectionery consumption 2015 : 3位
+%%	\item Confectionery consumption avg 2014 2016 : 3位
+%%	\item Residence Num of city parks : 4位
+%%	\item Confectionery consumption 2014 : 4位
+%%	\item Fruit consumption avg 2014 2016 : 4位
+%%	\item Admin base Financial strength index : 5位
+%%	\item Residence road pavement rate : 5.50 位
+%%	\item Total Num of caries 2014 : 5.50 位
+%%	\item High barrier free wheelchairs pass Width : 6位
+%%	\item Confectionery consumption 2016 : 6位
+%%	\item Fruits consumption 2016 : 6位
+%%	\item Volunteer Activity Participant Rate : 6.50 位
+%%	\item Tooth supplement 2014 : 6.50 位
+%%	\item Household actual income : 7位
+%%	\item Dairy 2014 : 7位
+%%	\item High barrier free no steps 2013 : 7.50 位
+%%	\item Residential city park area (per pop) : 8位
+%%	\item Hypertension Hospitalization 2014 : 8位
+%%	\item Fruits consumption 2014 : 8位
+%%	\item Total working hours 2016 : 9位
+%%	\item Income Gini Coeff Working Household 2014 : 9位
+%%	\item Sports Participant Rate : 10位
+%%	\item Travel Rate1 : 10位
+%%	\item Total Num of periodontal 2014 : 10位
+%%	\item Num of cardiologists 2020 : 11位
+%%	\item pop Working Age pop Ratio 2020 : 11位
+%%	\item High barrier free handrails 2013 : 11位
+%%	\item Num of certified cancer doctors 2020 : 12位
+%%	\item pop Young pop Ratio 2020 : 12.50 位
+%%	\item Fracture 2014 : 12.50 位
+%%	\item Safety Num of traffic accidents per 100k pop : 13位
+%%	\item Hypertension Outpatient 2014 : 13位
+%%	\item Total salary 2016 : 13位
+%%	\item Natural environment annual avg relative humidity : 14位
+%%	\item Academic ability elementary school 2015 : 14位
+%%	\item Diabetes hospitalization 2014 : 14.50 位
+%%	\item Labor secondary industry emp ratio : 15位
+%%	\item Academic ability middle school 2015 : 15位
+%%	\item Diabetes Outpatient 2014 : 16位
+%%	\item Seafood 2014 : 16位
+%%	\item Household PC ownership quantity : 17位
+%%	\item Usual barrier free handrails 2013 : 17位
+%%	\item Edu Ptc of university graduate students with a final academic background : 17.50 位
+%%	\item Economic pref income : 18位
+%%	\item pop Double income household ratio 2020 : 19位
+%%	\item Admin infrastructure Edu cost ratio (prefectural finance) : 19位
+%%	\item Num of endoscopists 2020 : 20位
+%%	\item Book purchase price 2019 : 21位
+%%	\item Natural environment annual Num of snow days : 21位
+%%	\item Num of libraries : 21位
+%%	\item Alzheimer dz 2014 : 21.50 位
+%%	\item HM Num of public health nurses per 100k pop : 22位
+%%	\item Household Car ownership quantity : 22位
+%%	\item Household Tablet terminal Ownership quantity : 22位
+%%	\item Residence simachi pavement rate : 24位
+%%	\item Milk 2014 : 25位
+%%	\item Trt rate Hospitalization Cerebrovascular dz 2017 : 25.50 位
+%%	\item Labor tertiary industry emp ratio : 27位
+%%	\item HM Num of general hospitals : 27位
+%%%	\item key : 30位
+%%%	\item pref.id : 30位
+%%	\item Trt rate Hospitalization Malignant neoplasm 2017 : 30位
+%%	\item Fish meat consumption 2015 : 31位
+%%	\item Residence water supply pop ratio : 31.50 位
+%%	\item Household Smartphone ownership quantity : 33位
+%%	\item Meat 2014 : 33位
+%%	\item Trt rate hospitalization heart dz 2017 : 33.50 位
+%%	\item Num of hospitals 2019 : 33.50 位
+%%	\item Natural environment annual rain : 33.50 位
+%%	\item Labor Unemp rate : 33.50 位
+%%	\item Egg 2014 : 34位
+%%	\item Num of general clinics : 35位
+%%	\item Gini coeff 2014 : 35.50 位
+%%	\item Natural environment annual avg temperature : 36位
+%%	\item Labor primary industry emp ratio : 37.50 位
+%%	\item Trt rate outpatient heart dz 2017 : 39位
+%%	\item pop Rough Mortality 2020 : 39位
+%%	\item Admin infrastructure living protection cost ratio (prefectural finance) : 39位
+%%	\item HM Num of doctors engaged in medical facilities per 100k pop : 39位
+%%	\item Admin base balance ratio : 40位
+%%	\item Residence owner ratio : 40位
+%%	\item Residence house ratio : 40位
+%%	\item pop oldElderly pop Ratio 2020 : 41位
+%%	\item Household Savings : 41位
+%%	\item Fish meat consumption 2016 : 41位
+%	\item Fish meat consumption avg 2014 2016 : 42位
+%	\item HM Num of general dental clinics per 100k pop : 43位
+%	\item Trt rate Outpatient Cerebrovascular dz 2017 : 44位
+%	\item Trt rate Outpatient Malignant neoplasm 2017 : 44.50 位
+%	\item Household Liberal Arts and Entertainment Expenditure Ratio : 45位
+%	\item pop Household Ratio of elderly single person households : 45位
+%	\item Fish meat consumption 2014 : 46位
+%	\item Num of clinics 2019 : 47位
+%\end{enumerate}
+%
+%\end{multicols}
+%
 
 %
 %
@@ -1977,37 +2000,37 @@ BMI平均値\_2016(男性20〜69歳)(女性40〜69歳)(単位Kg/u)
 %\end{table}
 %
 %
-
-
-\begin{figure}[h!]
-	\begin{center}
-		\includegraphics[ width=0.8\linewidth]{fig/WakayamRank1.pdf}
-		\caption{和歌山県の順位1}
-	\end{center}
-\end{figure}
-
-
-
-
-
-\begin{figure}[h!]
-	\begin{center}
-		\includegraphics[ width=0.8\linewidth]{fig/WakayamRank2.pdf}
-		\caption{和歌山県の順位2}
-	\end{center}
-\end{figure}
-
-
-
-
-
-\begin{figure}[h!]
-	\begin{center}
-		\includegraphics[ width=0.8\linewidth]{fig/WakayamRank3.pdf}
-		\caption{和歌山県の順位3}
-	\end{center}
-\end{figure}
-
+%
+%
+%\begin{figure}[h!]
+%	\begin{center}
+%		\includegraphics[ width=0.8\linewidth]{fig/WakayamRank1.pdf}
+%		\caption{和歌山県の順位1}
+%	\end{center}
+%\end{figure}
+%
+%
+%
+%
+%
+%\begin{figure}[h!]
+%	\begin{center}
+%		\includegraphics[ width=0.8\linewidth]{fig/WakayamRank2.pdf}
+%		\caption{和歌山県の順位2}
+%	\end{center}
+%\end{figure}
+%
+%
+%
+%
+%
+%\begin{figure}[h!]
+%	\begin{center}
+%		\includegraphics[ width=0.8\linewidth]{fig/WakayamRank3.pdf}
+%		\caption{和歌山県の順位3}
+%	\end{center}
+%\end{figure}
+%
 
 
 
@@ -2115,9 +2138,7 @@ BMI平均値\_2016(男性20〜69歳)(女性40〜69歳)(単位Kg/u)
 変数変換が必要とする変数については変換を行うとともに,
 最終的に, データの次元を縮約を通していくつかの変数に絞り,
 寿命との関連を調べる.
-
-
-
+なお、ヘルスケア産業に関するデータついては, 記述統計を示す.
 
 
 

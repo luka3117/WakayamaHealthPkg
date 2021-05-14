@@ -1,4 +1,4 @@
-This is e-pTeX, Version 3.14159265-p3.8.3-191112-2.6 (utf8.euc) (TeX Live 2020) (preloaded format=platex 2021.2.25)  23 APR 2021 11:30
+This is e-pTeX, Version 3.14159265-p3.8.3-191112-2.6 (utf8.euc) (TeX Live 2020) (preloaded format=platex 2021.2.25)  28 APR 2021 20:26
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -542,68 +542,38 @@ This may cause the page layout to be inconsistent, however.
 第 5 章
 [13
 
-] [14] [15]
-Underfull \hbox (badness 10000) in paragraph at lines 1132--1133
+]
+Underfull \hbox (badness 10000) in paragraph at lines 1155--1156
 []\JY1/mc/m/sc/10.95 一定のバリアフリ ー化率手すりの設
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1134--1135
+Underfull \hbox (badness 10000) in paragraph at lines 1157--1158
 []\JY1/mc/m/sc/10.95 高度のバリアフリ ー化率手すりの設
  []
 
-
-Overfull \vbox (6.12991pt too high) has occurred while \output is active []
-
-
-[16]
+[14] [15]
 第 6 章
-[17
+[16
 
 ]
 LaTeX Font Info:    Font shape `JT1/mc/b/n' in size <9> not available
-(Font)              Font shape `JT1/mc/bx/n' tried instead on input line 1421.
+(Font)              Font shape `JT1/mc/bx/n' tried instead on input line 1444.
 LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <9> not available
-(Font)              Font shape `JT1/gt/m/n' tried instead on input line 1421.
+(Font)              Font shape `JT1/gt/m/n' tried instead on input line 1444.
 LaTeX Font Info:    Font shape `JY1/mc/b/n' in size <9> not available
-(Font)              Font shape `JY1/mc/bx/n' tried instead on input line 1421.
+(Font)              Font shape `JY1/mc/bx/n' tried instead on input line 1444.
 LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <9> not available
-(Font)              Font shape `JY1/gt/m/n' tried instead on input line 1421.
- [18] [19] [20] [21] [22]
+(Font)              Font shape `JY1/gt/m/n' tried instead on input line 1444.
+ [17] [18] [19] [20] [21]
 第 7 章
-
-Underfull \hbox (badness 5105) in paragraph at lines 1769--1770
-[]\OT1/cmr/m/n/10.95 Confectionery con-sump-tion avg 2014
- []
-
-[23
-
-] [24]
-File: fig/WakayamRank1.pdf Graphic file (type pdf)
-<fig/WakayamRank1.pdf>
-
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-File: fig/WakayamRank2.pdf Graphic file (type pdf)
-<fig/WakayamRank2.pdf>
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-File: fig/WakayamRank3.pdf Graphic file (type pdf)
-<fig/WakayamRank3.pdf>
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-[25] [26] [27] [28]
-第 8 章
 File: fig/DistCommondVariable.pdf Graphic file (type pdf)
 <fig/DistCommondVariable.pdf>
-[29
+[22
 
-] [30] [31]
-第 9 章
-) [32
+] [23] [24]
+第 8 章
+) [25
 
 ]
 No file report_kenko._wakayama.bbl.
@@ -613,12 +583,12 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
  ) 
 Here is how much of TeX's memory you used:
- 3916 strings out of 481140
- 51598 string characters out of 5917417
+ 3907 strings out of 481140
+ 51430 string characters out of 5917417
  342452 words of memory out of 5000000
- 19845 multiletter control sequences out of 15000+600000
+ 19839 multiletter control sequences out of 15000+600000
  556924 words of font info for 120 fonts, out of 8000000 for 9000
  929 hyphenation exceptions out of 8191
  46i,11n,53p,4510b,586s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on report_kenko._wakayama.dvi (33 pages, 139428 bytes).
+Output written on report_kenko._wakayama.dvi (26 pages, 113292 bytes).

@@ -13,7 +13,7 @@ date: "最終更新: `r format(Sys.time(), '%Y/%m/%d')`"
 #      smooth_scroll: false
 #      collapsed: false
   # fig_width: 18
-  # fig_height: 12
+  # fig_height: 12sys
 
 output:
   ioslides_presentation:
@@ -41,7 +41,6 @@ output:
 
 
 
-
 <!-- # ----------------- -->
 <!-- # -----------------中間プレゼン# ----------------- -->
 
@@ -62,6 +61,10 @@ suppressMessages(library(plotly))
 
 ## data loading
 
+- [data link](https://raw.githubusercontent.com/luka3117/ClassData/master/Wakayama/DataFormat.csv)
+
+- 94行と168変数
+
 ```{r, warning=FALSE, message=FALSE}
 addr="https://raw.githubusercontent.com/luka3117/ClassData/master/Wakayama/DataFormat.csv"
 d<-read_csv(url(addr),skip=1, locale = readr::locale(encoding = "CP932"))
@@ -75,21 +78,21 @@ d %>% dim()
 d %>% head()
 ```
 
-##  変数
+<!-- ##  変数 -->
 
-```{r, echo=FALSE, warning=FALSE}
-d %>% colnames() %>% cat()
-```
-
+<!-- ```{r, echo=FALSE, warning=FALSE} -->
+<!-- d %>% colnames() %>% cat() -->
+<!-- ``` -->
 
 
 ## ヘルスケアーデータ
+
 ```{r, warning=FALSE, message=FALSE}
 addr="https://raw.githubusercontent.com/luka3117/ClassData/master/Wakayama/DataFormat3(HealthCare).csv"
 d_health_care<-read_csv(url(addr),skip=1, locale = readr::locale(encoding = "CP932"))%>% rename(key=X1) %>%
   select(1:5,7) %>% filter(!is.na(関係団体会員数))
 
-d_health_care %>% head()
+d_health_care
 ```
 
 
@@ -136,9 +139,10 @@ JpnEng %>% head()
 
 
 # データ確認
-# 変数名を英語に変換 :data名d
 
-```{r}
+## (前処理)変数名を英語に変換 :data名d
+
+```{r, echo=FALSE, warning=FALSE}
 d %>% dim()
 d %>% head()
 d %>% colnames()
@@ -147,13 +151,13 @@ colnames(d)<-JpnEng$var_name_Eng
 
 
 ##
-```{r}
+```{r, echo=FALSE, warning=FALSE}
 JpnEng %>% .[5:168, ]
 ```
 
 
 
-# 男女区別のないデータ d_common
+# 男女区別のないデータ：d_common
 
 ## d_common data
 
@@ -162,9 +166,9 @@ d_common<-d[, sapply(d[48,], is.na)]
 
 d_common<-d_common[1:47, ]
 
-# d_common<-d %>% select(1:6) %>% .[1:47,] %>% bind_cols(d_common)
+d_common<-d %>% select(1:6) %>% .[1:47,] %>% bind_cols(d_common)
 
-# d_common %>% DT::datatable()
+d_common %>% DT::datatable()
 
 ```
 
@@ -177,10 +181,9 @@ d_common%>% head()
 
 
 
-## d_common data 変数名
+# d_common data 変数名(小分類)
 
-
-##   健康/疾患
+## 健康/疾患
 
 - Trt_rate_Hospitalization_Malignant_neoplasm_2017
 - Trt_rate_hospitalization_heart_dz_2017
@@ -190,7 +193,7 @@ d_common%>% head()
 - Trt_rate_Outpatient_Cerebrovascular_dz_2017
 
 
-##  医療施設
+## 医療施設
 
 - Num_of_hospitals_2019
 - Num_of_clinics_2019
@@ -202,7 +205,7 @@ d_common%>% head()
 
 
 
-## 3.5.1.4 医療従事者
+## 医療従事者
 
 -  Num_of_certified_cancer_doctors_2020
 -  Num_of_cardiologists_2020
@@ -228,7 +231,7 @@ d_common%>% head()
 
 
 
-## 3.5.1.7 自然環境
+## 自然環境
 
 
 - Natural_environment_annual_avg_temperature
@@ -236,7 +239,7 @@ d_common%>% head()
 - Natural_environment_annual_rain
 - Natural_environment_annual_Num_of_snow_days
 
-## 3.5.1.8 経済
+## 経済
 
 - Economic_pref_income
 - Admin_base_Financial_strength_index
@@ -255,7 +258,7 @@ d_common%>% head()
 - Academic_ability_elementary_school_2015
 
 
-##  労働
+## 労働
 
 - Labor_primary_industry_emp_ratio
 - Labor_secondary_industry_emp_ratio
@@ -345,11 +348,11 @@ d_common%>% head()
 - Fruit_consumption_avg_2014_2016
 
 
-## 男女区別のあるデータ d_mf,d_m,d_f
 
+# 男女区別のあるデータ d_mf,d_m,d_f
 
+## 男女区別のあるデータ前処理
 ```{r}
-
 name <- function(x) {
   !is.na(x)
 }
@@ -365,30 +368,33 @@ d_f<-d_mf %>% filter(sex=="F")
 
 ## 男性データd_m
 
-
 ```{r}
 d_m %>% head()
-
 ```
 
 
-## 寿命(目的変数)の都道府県の順位確認
-
-# 5.1 男性の平均寿命と健康寿命の差
+## 女性データd_f
 
 ```{r}
+d_f %>% head()
+```
+
+
+# 寿命(目的変数)の都道府県の順位確認
+
+
+```{r, echo=FALSE, warning=FALSE}
 suppressMessages(library(plotly))
 
 t<-d_m %>% select(pref.J,HLE_2016,LE_2015) %>%
   mutate(pref.J=forcats::fct_reorder(pref.J, LE_2015))
-t$pref.J
+# t$pref.J 
 
 ```
 
 
-## 
+## 男性の平均寿命と健康寿命の差
 ```{r,echo=F, warning=F}
-
 t %>%
   plot_ly() %>%
     add_segments(
@@ -422,22 +428,16 @@ t %>%
 
 
 
-# 5.2 女性の平均寿命と健康寿命の差
-<!-- Hide -->
-
-```{r}
+```{r, echo=FALSE, warning=FALSE}
 suppressMessages(library(plotly))
 
 t<-d_f %>% select(pref.J,HLE_2016,LE_2015) %>%
   mutate(pref.J=forcats::fct_reorder(pref.J, LE_2015))
-t$pref.J
+# t$pref.J
 
 ```
 
-
-
-
-##
+## 女性の平均寿命と健康寿命の差
 ```{r, echo=FALSE, warning=FALSE}
 t %>%
   # plot_ly(width = 600, height = 1000) %>%
@@ -471,10 +471,7 @@ t %>%
 ```
 
 
-
-
 ## 男性の平均寿命
-
 ```{r, echo=FALSE, warning=FALSE}
 jc.dotplot <- function(x) {
   # x is HLE or LE in c()　vector
@@ -501,8 +498,7 @@ abline(v = mean(d_m$LE_2015), lty = 2)
 
 
 
-##  5.4 男性の健康寿命
-<!-- # Hide -->
+## 男性の健康寿命
 
 ```{r}
 d_m %>% select(HLE_2016) %>% bind_cols(Wakayama::pref["pref.J"]) %>% dplyr::arrange(HLE_2016) %>% mutate(rank=row_number()) %>%DT::datatable()
@@ -537,11 +533,7 @@ abline(v = mean(d_m$HLE_2016), lty = 2)
 ```
 
 
-
-
-
-## 5.5 女性の平均寿命
-<!-- Hide -->
+## 女性の平均寿命
 
 ```{r}
 d_f %>% select(LE_2015) %>% bind_cols(Wakayama::pref["pref.J"]) %>% dplyr::arrange(LE_2015) %>% mutate(rank=row_number()) %>%DT::datatable()
@@ -578,8 +570,7 @@ abline(v = mean(d_f$LE_2015), lty = 2)
 ```
 
 
-
-## 5.6 女性の健康寿命
+## 女性の健康寿命
 <!-- # Hide -->
 
 ```{r}
@@ -613,15 +604,12 @@ abline(v = mean(d_f$HLE_2016), lty = 2)
 ```
 
 
+# d_common dataの説明変数の順位確認及び正規性検定
+
+## d_common dataの和歌山県の順位確認
 
 
-## 6 d_common dataの説明変数の順位確認及び正規性検定
-<!-- # {.tabset .tabset-fade .tabset-pills} -->
-
-##  6.1 d_common dataの和歌山県の順位確認
-
-
-```{r}
+```{r, echo=FALSE, warning=FALSE}
 d_common %>% dplyr::select_if(is.numeric) %>% sapply(rank) %>%
   tbl_df() %>% mutate(key=row_number()) %>% dplyr::filter(key==30) %>% t() %>% as.data.frame() %>% DT::datatable()
 ```
@@ -629,93 +617,152 @@ d_common %>% dplyr::select_if(is.numeric) %>% sapply(rank) %>%
 
 
 
-<!-- # .2 d_common dataの連続データ分布確認1 -->
+## d_common dataの連続データ分布確認1
+
+
+```{r, echo=FALSE, warning=FALSE}
+# purrr::map(iris[,-5], ~hist(.x))
+
+suppressMessages(library(plotly))
+
+d_common_standarize<-
+d_common %>% 
+  mutate(key=row_number()) %>% 
+  dplyr::select_if(is.numeric) %>%
+  select(-key, -pref.id) %>% 
+  scale() %>% tbl_df()
+
+d_common_standarize<-bind_cols(d_common["pref.id"], d_common_standarize)
+
+d_common_standarize_long<-
+  d_common_standarize %>% dplyr::select_if(is.numeric) %>%
+  pivot_longer(
+       cols = -pref.id,
+    names_to ="var_name" ,
+    values_to ="value"
+  )
+
+d_common_standarize_long<-
+d_common_standarize_long %>% left_join(JpnEng, c("var_name"="var_name_Eng"))
+
+plot_ly(
+  x =d_common_standarize_long$value,
+  type = "histogram",
+  name = "Histogram",
+  # frame =  ~d_common_standarize_long$var_name,
+  frame =  ~d_common_standarize_long$var_name_Jpn,
+  text=d_common_standarize_long$var_name_Jpn
+)
+
+
+```
+
+
+
+
+
+## d_common dataの連続データ分布確認2
 <!-- # Hide -->
-<!-- # purrr::map(iris[,-5], ~hist(.x)) -->
 
-<!-- suppressMessages(library(plotly)) -->
+```{r, echo=FALSE, warning=FALSE}
 
+name1 <- function(temp) {
+  temp %>% select(value) %>% .[[1]] %>% density() %>%
+    broom::tidy()
+}
 
-<!-- d_common_standarize<- -->
-<!-- d_common %>% dplyr::select_if(is.numeric) %>% -->
-<!--   select(-key, -pref.id) %>% scale() %>% tbl_df() -->
-
-<!-- d_common_standarize<-bind_cols(d_common["pref.id"], d_common_standarize) -->
-
-
-<!-- d_common_standarize_long<- -->
-
-<!--   d_common_standarize %>% dplyr::select_if(is.numeric) %>% -->
-<!--   pivot_longer( -->
-<!--        cols = -pref.id, -->
-<!--     names_to ="var_name" , -->
-<!--     values_to ="value" -->
-<!--   ) -->
-<!-- d_common_standarize_long<- -->
-<!-- d_common_standarize_long %>% left_join(JpnEng, c("var_name"="var_name_Eng")) -->
-
-<!-- plot_ly( -->
-<!--   x =d_common_standarize_long$value, -->
-<!--   type = "histogram", -->
-<!--   name = "Histogram", -->
-<!--   # frame =  ~d_common_standarize_long$var_name, -->
-<!--   frame =  ~d_common_standarize_long$var_name_Jpn, -->
-<!--   text=d_common_standarize_long$var_name_Jpn -->
-<!-- ) -->
+d_common_standarize_long_density<-
+d_common_standarize_long %>%
+  group_by(var_name_Jpn) %>% nest() %>%
+  mutate(dens=map(data, name1)) %>%
+  select(var_name_Jpn, dens) %>% unnest()
 
 
 
-<!-- # 6.3 d_common dataの連続データ分布確認2 -->
+d_common_standarize_long_density %>%
+  plot_ly(x=~x, y=~y) %>%
+  # add_lines(frame=~var_name)
+  add_lines(frame=~var_name_Jpn,
+            text = ~paste(var_name_Jpn),
+            hoverinfo = "text"
+            ) %>%
+  layout(title="分布")
+```
+
+
+
+
+## d_common dataの連続データの正規性検定
+- shapiro 検定
+
 <!-- # Hide -->
-<!-- name1 <- function(temp) { -->
-<!--   temp %>% select(value) %>% .[[1]] %>% density() %>% -->
-<!--     broom::tidy() -->
-<!-- } -->
 
-<!-- d_common_standarize_long_density<- -->
-<!-- d_common_standarize_long %>% -->
-<!--   group_by(var_name_Jpn) %>% nest() %>% -->
-<!--   mutate(dens=map(data, name1)) %>% -->
-<!--   select(var_name_Jpn, dens) %>% unnest() -->
+```{r, echo=FALSE, warning=FALSE}
+jc_shapiro <- function(x) {
+  shapiro.test(x) %>% broom::tidy() %>% select(p.value) %>% round(3)
+}
 
+d_common_normality_test <-
+  d_common %>% dplyr::select_if(is.numeric) %>%
+  select(-key,-pref.id) %>%
+  # scale() %>%
+  tbl_df() %>% purrr::map_df(jc_shapiro)
 
+rownames(d_common_normality_test) <-
+  d_common %>% dplyr::select_if(is.numeric) %>%
+  select(-key,-pref.id) %>% colnames()
 
-<!-- d_common_standarize_long_density %>% -->
-<!--   plot_ly(x=~x, y=~y) %>% -->
-<!--   # add_lines(frame=~var_name) -->
-<!--   add_lines(frame=~var_name_Jpn, -->
-<!--             text = ~paste(var_name_Jpn), -->
-<!--             hoverinfo = "text" -->
-<!--             ) %>% -->
-<!--   layout(title="分布") -->
+d_common_normality_test %>% 
+  # rownames_to_column() %>% 
+DT::datatable(d_common_normality_test
+) 
 
+# %>% 
+#     DT::formatStyle(c(1,2), fontSize = '30%')
 
-
-<!-- # 6.4 d_common dataの連続データの正規性検定 -->
-<!-- # shapiro 検定 -->
-<!-- # Hide -->
-<!-- jc_shapiro <- function(x) { -->
-<!--   shapiro.test(x) %>% broom::tidy() %>% select(p.value) %>% round(3) -->
-<!-- } -->
+```
 
 
-<!-- d_common_normality_test<-d_common %>% dplyr::select_if(is.numeric) %>% -->
-<!--   select(-key, -pref.id) %>% -->
-<!--   # scale() %>% -->
-<!--   tbl_df() %>% purrr::map_df(jc_shapiro) -->
 
-<!-- rownames(d_common_normality_test)<-d_common %>% dplyr::select_if(is.numeric) %>% -->
-<!--   select(-key, -pref.id) %>% colnames() -->
 
-<!-- DT::datatable(d_common_normality_test) -->
 
 <!-- # -->
-<!-- # 6.5 d_common data連続データの正規性を満たさない変数 -->
-<!-- # 要対数変換：47個の変数 -->
+##  d_common data連続データの正規性を満たさない変数
+- 変数変換を必要とする変数：47個の変数
+
+```{r, echo=FALSE, include=FALSE}
+d_common_normality_test %>% rownames_to_column() %>%
+  filter(p.value < 0.05) %>%  left_join(JpnEng, c("rowname" = "var_name_Eng")) %>%
+  DT::datatable()
+```
+
+
 <!-- # Hide -->
 <!-- # d_common_normality_test %>% -->
 <!-- #   %>% DT::datatable() -->
 
-<!-- d_common_normality_test %>% rownames_to_column() %>% -->
-<!--   filter(p.value < 0.05) %>%  left_join(JpnEng, c("rowname" = "var_name_Eng")) %>% -->
-<!--   DT::datatable() -->
+
+
+# 令和2年度の分析のまとめ
+## 
+- データの収集
+- 寿命データに関する和歌山県の位置を確認
+- 収集データの確認作業
+  - 男性の平均寿命は低い順で4位
+  - 女性の平均寿命は低い順で7位
+  - 男性の健康寿命は低い順で4位
+  - 女性の健康寿命は低い順で10位
+
+- 幾つかの変数について追加で前処理が必要であることを確認
+  - 収集したデータ項目の中では正規性を満たさない変数
+    - 例えば、
+    - 受療率 入院 心疾患 2017, 
+    - 受療率 入院 脳血管疾患2017
+    - 47項目以上
+
+# 令和3年度の研究の計画
+## 
+
+- 変数変換が必要とする変数の探索
+- データの次元を縮約し,寿命との関連を分析
+

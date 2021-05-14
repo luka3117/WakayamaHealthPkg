@@ -733,10 +733,10 @@ d_common_standarize_long_density %>% DT::datatable()
 d_common_standarize_long_density %>%
   plot_ly(x=~x, y=~y) %>%
   # add_lines(frame=~var_name)
-  add_lines(frame=~var_name, 
+  add_lines(frame=~var_name,
             text = ~paste(var_name),
             hoverinfo = "text"
-            ) %>% 
+            ) %>%
   layout(title="分布")
 
 # add_lines(color=~status) %>%
@@ -809,8 +809,8 @@ temp %>% filter(pref.J=="和歌山"|
 plot_ly(y =  ~ pref.J,
         x =  ~ value,
         color =  ~ pref.J) %>%
-  add_bars(frame=~var_name, 
-           hoverinfo="text", 
+  add_bars(frame=~var_name,
+           hoverinfo="text",
            text=~paste(var_name))
 
 ```
@@ -839,6 +839,9 @@ for i in open("txt"):
 - [受療率_外来_悪性新生物_2017][1]
 - [受療率_外来_心疾患_2017][1]
 - [受療率_外来_脳血管疾患_2017][1]
+
+
+
 - [病院数_2019][2]
 - [診療所数_2019][2]
 
@@ -1136,13 +1139,13 @@ for i in open("txt"):
 
 - [収入ジニ係数勤労世帯_2014][529]
 
-- [野菜摂取量_2012(20歳以上平均値(g/日)][530]
+- [野菜摂取量_2016(20歳以上平均値(g/日)][530]
 
-- [食塩摂取量_2012(20歳以上平均値(g/日)][531]
+- [食塩摂取量_2016(20歳以上平均値(g/日)][531]
 
-- [BMI平均値_2012(男性20〜69歳)(女性40〜69歳)(単位Kg/㎡)][532]
+- [BMI平均値_2016(男性20〜69歳)(女性40〜69歳)(単位Kg/㎡)][532]
 
-- [歩数_2012(20歳以上平均値(歩/日)][533]
+- [歩数_2016(20歳以上平均値(歩/日)][533]
 
 
 ## リンク先の修正箇所

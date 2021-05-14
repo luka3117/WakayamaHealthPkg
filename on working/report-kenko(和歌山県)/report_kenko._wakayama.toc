@@ -13,14 +13,11 @@
 \contentsline {subsection}{\numberline {2.4.1}要支援・要介護認定区分と限度額}{4}%
 \contentsline {chapter}{\numberline {第3章}データの収集および変更履歴}{6}%
 \contentsline {chapter}{\numberline {第4章}本研究に使用するデータの変数名リスト}{7}%
-\contentsline {chapter}{\numberline {第5章}性別情報の有無によるデータ分け}{13}%
-\contentsline {section}{\numberline {5.1}男女の区別があるデータ}{13}%
-\contentsline {section}{\numberline {5.2}男女の区別がないデータ(common data)}{15}%
-\contentsline {chapter}{\numberline {第6章}寿命データの記述統計}{17}%
-\contentsline {section}{\numberline {6.1}2015年の平均寿命2016年の健康寿命のデータ元}{17}%
-\contentsline {section}{\numberline {6.2}寿命データに関する都道府県の順位}{18}%
-\contentsline {chapter}{\numberline {第7章}common dataの和歌山県の順位確認}{23}%
-\contentsline {chapter}{\numberline {第8章}common dataの正規性検定と分布確認}{29}%
-\contentsline {section}{\numberline {8.1}連続データの正規性を満たさない変数}{29}%
-\contentsline {chapter}{\numberline {第9章}まとめ}{32}%
+\contentsline {chapter}{\numberline {第5章}男女の区別がないデータ(common data)}{13}%
+\contentsline {chapter}{\numberline {第6章}寿命データの記述統計}{16}%
+\contentsline {section}{\numberline {6.1}2015年の平均寿命2016年の健康寿命のデータ元}{16}%
+\contentsline {section}{\numberline {6.2}寿命データに関する都道府県の順位}{17}%
+\contentsline {chapter}{\numberline {第7章}common dataの正規性検定と分布確認}{22}%
+\contentsline {section}{\numberline {7.1}連続データの正規性を満たさない変数}{22}%
+\contentsline {chapter}{\numberline {第8章}まとめ}{25}%
 \contentsfinish 
