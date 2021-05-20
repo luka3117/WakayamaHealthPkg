@@ -157,20 +157,32 @@ d_common_standarize<-bind_cols(d_common["pref.id"], d_common_standarize)
 #            |___/
 # ----------------- ----------------- ----------------- -----------------
 #
+
+
 # d_f data 変数選択　and regression
+# 変数選択のためのデータ分割
+
+# LE_d_m_1,HLE_d_m_1,LE_d_f_1,HLE_d_f_1,LE_d_m_2,HLE_d_m_2,LE_d_f_2,HLE_d_f_2
+# の8のデータセット生成
 
 
-aa=d_f %>% select(-key, -pref.id,  -pref.E, -pref.A, -pref.J, -sex, -pop) %>%
-  select(LE_2015,everything()) %>% select(-HLE_2016)
+LE_d_m <-  d_m %>% select(-1:-6) %>% select(LE_2015,-HLE_2016, everything())
+HLE_d_m <-  d_m %>% select(-1:-6) %>% select(HLE_2016, -LE_2015,  everything())
+LE_d_f <-  d_f %>% select(-1:-6) %>% select(LE_2015,-HLE_2016, everything())
+HLE_d_f <-  d_f %>% select(-1:-6) %>% select(HLE_2016,-LE_2015,  everything())
 
 
-bbb=glm(LE_2015~., data=aa[,1:30])
+for (i in c("LE_d_m", "HLE_d_m", "LE_d_f", "HLE_d_f")) {
+  assign(paste0(i, "_1"), eval(parse(text = i)) %>% select(1, 2:32))
+  assign(paste0(i, "_2"), eval(parse(text = i)) %>% select(1, 33:64))
+}
 
-cc=step(bbb, direction = "backward")
 
-cc %>% broom::tidy()
 
-#
+# rm(LE_d_m_1,HLE_d_m_1,LE_d_f_1,HLE_d_f_1,LE_d_m_2,HLE_d_m_2,LE_d_f_2,HLE_d_f_2)
+
+
+
 #  _____           _
 # |_   _|__     __| | ___
 #   | |/ _ \   / _` |/ _ \
