@@ -476,10 +476,110 @@ HLE_d_f_with_selected %>% dim()
 LE_d_m_with_selected %>% dim()
 HLE_d_m_with_selected %>% dim()
 
-
-#
+# ----------------- ----------------- ----------------- -----------------
+#  ____            _   ____                           _
+# |___ \ _ __   __| | / ___|  ___ _ __ ___  ___ _ __ (_)_ __   __ _
+#   __) | '_ \ / _` | \___ \ / __| '__/ _ \/ _ \ '_ \| | '_ \ / _` |
+#  / __/| | | | (_| |  ___) | (__| | |  __/  __/ | | | | | | | (_| |
+# |_____|_| |_|\__,_| |____/ \___|_|  \___|\___|_| |_|_|_| |_|\__, |
+#                                                             |___/
+# ----------------- ----------------- ----------------- -----------------
+# ----------------- ----------------- ----------------- -----------------
+# __     ___    ____    ____  _____ _                _ _   _
+# \ \   / / \  |  _ \  / ___|| ____| |     __      _(_) |_| |__
+#  \ \ / / _ \ | |_) | \___ \|  _| | |     \ \ /\ / / | __| '_ \
+#   \ V / ___ \|  _ <   ___) | |___| |___   \ V  V /| | |_| | | |
+#   \_/_/   \_\_| \_\ |____/|_____|_____|   \_/\_/ |_|\__|_| |_|
+# ----------------- ----------------- ----------------- -----------------
 # LE_d_common_f$
 # bind_rows(t1,t2,t3,t4,t5,t6) %>% unique() %>% .$term %>% c()
+
+
+#  _____ _____ __  __    _    _     _____
+# |  ___| ____|  \/  |  / \  | |   | ____|
+# | |_  |  _| | |\/| | / _ \ | |   |  _|
+# |  _| | |___| |  | |/ ___ \| |___| |___
+# |_|   |_____|_|  |_/_/   \_\_____|_____|
+#
+
+# p value less than .01 is deleted
+lm(LE_2015~., data=LE_d_f_with_selected[,c(1, 2:30)]) %>% MASS::stepAIC() %>% broom::tidy() %>% filter(p.value<0.01)
+lm(LE_2015~., data=LE_d_f_with_selected[,c(1, 31:62)]) %>% MASS::stepAIC() %>% broom::tidy()%>% filter(p.value<0.01)
+lm(HLE_2016~., data=HLE_d_f_with_selected[,c(1, 2:30)]) %>% MASS::stepAIC() %>% broom::tidy() %>% filter(p.value<0.01)
+lm(HLE_2016~., data=HLE_d_f_with_selected[,c(1, 31:62)]) %>% MASS::stepAIC() %>% broom::tidy()%>% filter(p.value<0.01)
+
+temp1 <- lm(LE_2015~., data=LE_d_f_with_selected[,c(1, 2:30)]) %>% MASS::stepAIC() %>% broom::tidy() %>% filter(p.value<0.01)%>%select(term)
+temp2 <- lm(LE_2015~., data=LE_d_f_with_selected[,c(1, 31:62)]) %>% MASS::stepAIC() %>% broom::tidy()%>% filter(p.value<0.01)%>%select(term)
+temp3 <- lm(HLE_2016~., data=HLE_d_f_with_selected[,c(1, 2:30)]) %>% MASS::stepAIC() %>% broom::tidy() %>% filter(p.value<0.01)%>%select(term)
+temp4 <- lm(HLE_2016~., data=HLE_d_f_with_selected[,c(1, 31:62)]) %>% MASS::stepAIC() %>% broom::tidy()%>% filter(p.value<0.01)%>%select(term)
+
+
+tt<-bind_rows(temp1, temp2, temp3, temp4) %>% unique() %>% .[-1, ] %>% .$term %>% as.vector()
+
+LE_d_f_with_selected_2nd_screen <- LE_d_common_f %>% bind_cols(LE_d_f[,-1]) %>% select(LE_2015, tt)
+HLE_d_f_with_selected_2nd_screen <- HLE_d_common_f %>% bind_cols(HLE_d_f[,-1]) %>% select(HLE_2016, tt)
+
+
+#  __  __    _    _     _____
+# |  \/  |  / \  | |   | ____|
+# | |\/| | / _ \ | |   |  _|
+# | |  | |/ ___ \| |___| |___
+# |_|  |_/_/   \_\_____|_____|
+#
+
+
+# p value less than .01 is deleted
+lm(LE_2015~., data=LE_d_m_with_selected[,c(1, 2:32)]) %>% MASS::stepAIC() %>% broom::tidy() %>% filter(p.value<0.01)
+lm(LE_2015~., data=LE_d_m_with_selected[,c(1, 33:65)]) %>% MASS::stepAIC() %>% broom::tidy()%>% filter(p.value<0.01)
+lm(HLE_2016~., data=HLE_d_m_with_selected[,c(1, 2:32)]) %>% MASS::stepAIC() %>% broom::tidy() %>% filter(p.value<0.01)
+lm(HLE_2016~., data=HLE_d_m_with_selected[,c(1, 33:65)]) %>% MASS::stepAIC() %>% broom::tidy()%>% filter(p.value<0.01)
+
+temp1 <- lm(LE_2015~., data=LE_d_m_with_selected[,c(1, 2:32)]) %>% MASS::stepAIC() %>% broom::tidy() %>% filter(p.value<0.01)%>%select(term)
+temp2 <- lm(LE_2015~., data=LE_d_m_with_selected[,c(1, 33:65)]) %>% MASS::stepAIC() %>% broom::tidy()%>% filter(p.value<0.01)%>%select(term)
+temp3 <- lm(HLE_2016~., data=HLE_d_m_with_selected[,c(1, 2:32)]) %>% MASS::stepAIC() %>% broom::tidy() %>% filter(p.value<0.01)%>%select(term)
+temp4 <- lm(HLE_2016~., data=HLE_d_m_with_selected[,c(1, 33:65)]) %>% MASS::stepAIC() %>% broom::tidy()%>% filter(p.value<0.01)%>%select(term)
+
+
+tt<-bind_rows(temp1, temp2, temp3, temp4) %>% unique() %>% .[-1, ] %>% c()
+
+tt<-tt %>% as.vector()
+
+LE_d_m_with_selected_2nd_screen <- LE_d_common_m %>% left_join(LE_d_m[,-1]) %>% select(LE_2015, tt)
+HLE_d_m_with_selected_2nd_screen <-HLE_d_common_m %>% left_join(HLE_d_m[,-1]) %>% select(HLE_2016, tt)
+
+
+LE_d_f_with_selected_2nd_screen %>% colnames()
+LE_d_m_with_selected_2nd_screen %>% colnames()
+
+HLE_d_f_with_selected_2nd_screen %>% colnames()
+HLE_d_m_with_selected_2nd_screen %>% colnames()
+
+
+# ----------------- ----------------- ----------------- -----------------
+#  ____            _   ____                           _
+# |___ \ _ __   __| | / ___|  ___ _ __ ___  ___ _ __ (_)_ __   __ _
+#   __) | '_ \ / _` | \___ \ / __| '__/ _ \/ _ \ '_ \| | '_ \ / _` |
+#  / __/| | | | (_| |  ___) | (__| | |  __/  __/ | | | | | | | (_| |
+# |_____|_| |_|\__,_| |____/ \___|_|  \___|\___|_| |_|_|_| |_|\__, |
+#                                                             |___/
+# ----------------- ----------------- ----------------- -----------------
+# ----------------- ----------------- ----------------- -----------------
+# __     ___    ____    ____  _____ _                _ _   _
+# \ \   / / \  |  _ \  / ___|| ____| |     __      _(_) |_| |__
+#  \ \ / / _ \ | |_) | \___ \|  _| | |     \ \ /\ / / | __| '_ \
+#   \ V / ___ \|  _ <   ___) | |___| |___   \ V  V /| | |_| | | |
+#   \_/_/   \_\_| \_\ |____/|_____|_____|   \_/\_/ |_|\__|_| |_|
+# ----------------- ----------------- ----------------- -----------------
+
+# _____ _   _ ____
+#| ____| \ | |  _ \
+#|  _| |  \| | | | |
+#| |___| |\  | |_| |
+#|_____|_| \_|____/
+#
+# ----------------- ----------------- ----------------- -----------------
+
+
 
 
 #  _____           _
@@ -488,6 +588,21 @@ HLE_d_m_with_selected %>% dim()
 #   | | (_) | | (_| | (_) |  _ _
 #   |_|\___/   \__,_|\___/  (_|_)
 #
+
+
+
+# Work with this for obj
+# 令和3年5月21日
+
+
+LE_d_f_with_selected_2nd_screen
+LE_d_m_with_selected_2nd_screen
+
+HLE_d_f_with_selected_2nd_screen
+HLE_d_m_with_selected_2nd_screen
+
+
+
 
 
 ## ---- warning=FALSE--------------------------------
