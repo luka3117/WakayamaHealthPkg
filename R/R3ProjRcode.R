@@ -165,16 +165,22 @@ d_common_standarize<-bind_cols(d_common["pref.id"], d_common_standarize)
 # LE_d_m_1,HLE_d_m_1,LE_d_f_1,HLE_d_f_1,LE_d_m_2,HLE_d_m_2,LE_d_f_2,HLE_d_f_2
 # の8のデータセット生成
 
+#
+# LE_d_m <-  d_m %>% select(-1:-6) %>% select(LE_2015,-HLE_2016, everything())
+# HLE_d_m <-  d_m %>% select(-1:-6) %>% select(HLE_2016, -LE_2015,  everything())
+# LE_d_f <-  d_f %>% select(-1:-6) %>% select(LE_2015,-HLE_2016, everything())
+# HLE_d_f <-  d_f %>% select(-1:-6) %>% select(HLE_2016,-LE_2015,  everything())
+#
 
-LE_d_m <-  d_m %>% select(-1:-6) %>% select(LE_2015,-HLE_2016, everything())
-HLE_d_m <-  d_m %>% select(-1:-6) %>% select(HLE_2016, -LE_2015,  everything())
-LE_d_f <-  d_f %>% select(-1:-6) %>% select(LE_2015,-HLE_2016, everything())
-HLE_d_f <-  d_f %>% select(-1:-6) %>% select(HLE_2016,-LE_2015,  everything())
+LE_d_m <-  d_m %>% select(-1:-6) %>% select(LE_2015,  everything())  %>% select(-HLE_2016)
+HLE_d_m <-  d_m %>% select(-1:-6) %>% select(HLE_2016, everything())  %>% select(-LE_2015)
+LE_d_f <-  d_f %>% select(-1:-6) %>% select(LE_2015,  everything())  %>% select(-HLE_2016)
+HLE_d_f <-  d_f %>% select(-1:-6) %>% select(HLE_2016, everything())  %>% select(-LE_2015)
 
 
 for (i in c("LE_d_m", "HLE_d_m", "LE_d_f", "HLE_d_f")) {
   assign(paste0(i, "_1"), eval(parse(text = i)) %>% select(1, 2:32))
-  assign(paste0(i, "_2"), eval(parse(text = i)) %>% select(1, 33:64))
+  assign(paste0(i, "_2"), eval(parse(text = i)) %>% select(1, 33:63))
 }
 
 
@@ -225,47 +231,48 @@ t6<-lm(HLE_2016~. , data = HLE_d_common_f_3) %>% MASS::stepAIC() %>% broom::tidy
 
 bind_rows(t1,t2,t3,t4,t5,t6) %>% unique() %>% .$term %>% c()
 # selected 40 variables lists with female data
+#
+# [2] "Treatment_rate_Hospitalization_Malignant_neoplasm_2017"
+# [3] "Treatment_rate_outpatient_heart_dz_2017"
+# [4] "Treatment_rate_Outpatient_Cerebrovascular_dz_2017"
+# [5] "Num_of_hospitals_2019"
+# [6] "Num_of_clinics_2019"
+# [7] "pop_oldElderly_pop_Ratio_2020"
+# [8] "pop_Working_Age_pop_Ratio_2020"
+# [9] "Natural_environment_annual_avg_temperature"
+# [10] "Admin_base_balance_ratio"
+# [11] "Admin_infrastructure_Edu_cost_ratio_prefectural_finance"
+# [12] "Labor_secondary_industry_emp_ratio"
+# [13] "Labor_Unemp_rate"
+# [14] "Num_of_libraries"
+# [15] "Residence_house_ratio"
+# [16] "Volunteer_Activity_Participant_Rate"
+# [17] "Residence_Num_of_city_parks"
+# [18] "Residence_road_pavement_rate"
+# [19] "HM_Num_of_public_health_nurses_per_100k_pop"
+# [20] "Household_PC_ownership_quantity"
+# [21] "Hypertension_Outpatient_2014"
+# [22] "Dairy_2014"
+# [23] "High_barrier_free_handrails_2018"
+# [24] "barrier_free_wheelchairs_pass_Width"
+# [25] "Total_salary_2016"
+# [26] "Fish_meat_consumption_avg_2014_2016"
+# [27] "Bone_density_disorder_2014"
+# [28] "Num_of_cardiologists_2020"
+# [29] "pop_Rough_Mortality_2020"
+# [30] "Residence_sewerage_ratio"
+# [31] "Residence_simachi_pavement_rate"
+# [32] "Safety_Num_of_traffic_accidents_per_100k_pop"
+# [33] "Household_actual_income"
+# [34] "Household_consumption_expenditure"
+# [35] "Household_Smartphone_ownership_quantity"
+# [36] "Household_Tablet_terminal_Ownership_quantity"
+# [37] "Diabetes_hospitalization_2014"
+# [38] "High_barrier_free_rate_2018"
+# [39] "Academic_ability_middle_school_2015"
+# [40] "Academic_ability_elementary_school_2015"
+# [41] "Alzheimer_dz_2014"
 
-# Treatment_rate_Hospitalization_Malignant_neoplasm_2017
-# Treatment_rate_outpatient_heart_dz_2017
-# Treatment_rate_Outpatient_Cerebrovascular_dz_2017
-# Num_of_hospitals_2019
-# Num_of_clinics_2019
-# pop_oldElderly_pop_Ratio_2020
-# pop_Working_Age_pop_Ratio_2020
-# Natural_environment_annual_avg_temperature
-# Admin_base_balance_ratio
-# `Admin_infrastructure_Edu_cost_ratio_(prefectural_finance)`
-# Labor_secondary_industry_emp_ratio
-# Labor_Unemp_rate
-# Num_of_libraries
-# Residence_house_ratio
-# Volunteer_Activity_Participant_Rate
-# Residence_Num_of_city_parks
-# Residence_road_pavement_rate
-# HM_Num_of_public_health_nurses_per_100k_pop
-# Household_PC_ownership_quantity
-# Hypertension_Outpatient_2014
-# Dairy_2014
-# High_barrier_free_handrails_2018
-# barrier_free_wheelchairs_pass_Width
-# Total_salary_2016
-# Fish_meat_consumption_avg_2014_2016
-# Bone_density_disorder_2014
-# Num_of_cardiologists_2020
-# pop_Rough_Mortality_2020
-# Residence_sewerage_ratio
-# Residence_simachi_pavement_rate
-# Safety_Num_of_traffic_accidents_per_100k_pop
-# Household_actual_income
-# Household_consumption_expenditure
-# Household_Smartphone_ownership_quantity
-# Household_Tablet_terminal_Ownership_quantity
-# Diabetes_hospitalization_2014
-# High_barrier_free_rate_2018
-# Academic_ability_middle_school_2015
-# Academic_ability_elementary_school_2015
-# Alzheimer_dz_2014
 
 
 
@@ -274,29 +281,31 @@ t8<-lm(LE_2015~. , data = LE_d_f_2) %>% MASS::stepAIC() %>% broom::tidy() %>% fi
 t9<-lm(HLE_2016~. , data = HLE_d_f_1) %>% MASS::stepAIC() %>% broom::tidy() %>% filter(p.value<.01) %>% select(term)
 t10<-lm(HLE_2016~. , data = HLE_d_f_2) %>% MASS::stepAIC() %>% broom::tidy() %>% filter(p.value<.01) %>% select(term)
 
-bind_rows(t7,t8,t9,t10) %>% unique() %>% .$term %>% cat()
-# selected 20 variables lists with female data
+bind_rows(t7,t8,t9,t10) %>% unique() %>% .$term %>% c()
+# selected 21 variables lists with female data
+#
+# [2] "Under_75_Adjusted_Mortality_Evil_Neoplasms_2019"
+# [3] "mortality_heart_dz_2015"
+# [4] "mortality_cerebrovascular_dz_2015"
+# [5] "Read_rate_2016"
+# [6] "Sports_Activity_rate_walking"
+# [7] "Volunteer_town_development"
+# [8] "Self_development_languages_other_than_Eng"
+# [9] "Cerebrovascular_mortality_2015"
+# [10] "Malignant_neoplasm_intestine_mortality_rate_2015"
+# [11] "Heart_dz_mortality_2015"
+# [12] "Pneumonia_mortality_2015"
+# [13] "Eat_within_2_hours_before_sleep_binary_2014"
+# [14] "Gain_10kg_Wt_compared_to_20yr_binary_2014"
+# [15] "Travel_Traveling_Tourism_Activity_Rate"
+# [16] "Volunteer_Activity_Rate_total"
+# [17] "Volunteer_for_the_Elderly"
+# [18] "Volunteer_for_Persons_with_Disabilities"
+# [19] "Self_development_PC_etc"
+# [20] "Malignant_neoplasm_lungs_mortality_2015"
+# [21] "Use_Insulin_binary_2014"
+# [22] "Physical_activity_walking_binary_2014"
 
-# Under_75_Adjusted_Mortality_Evil_Neoplasms_2019
-# mortality_heart_dz_2015
-# mortality_cerebrovascular_dz_2015
-# Read_rate_2016
-# Sports_Activity_rate_walking
-# Volunteer_town_development
-# `Self_development_languages_other_than_English`
-# `Malignant_neoplasm_(intestine)_mortality_rate_2015`
-# Heart_dz_mortality_2015
-# Pneumonia_mortality_2015
-# Gain_10kg_Wt_compared_to_20yr_binary_2014
-# Enough_sleep_binary_2014
-# Travel_Traveling_Tourism_Activity_Rate
-# Volunteer_for_the_Elderly
-# Volunteer_environmental_activities
-# `Malignant_neoplasm_(stomach)_mortality_rate_2015`
-# `Malignant_neoplasm_(lungs)_mortality_2015`
-# Use_Insulin_binary_2014
-# Eat_within_2_hours_before_sleep_binary_2014
-# Physical_activity_walking_binary_2014
 
 #
 #
@@ -323,52 +332,53 @@ t15<-lm(HLE_2016~. , data = HLE_d_common_m_2) %>% MASS::stepAIC() %>% broom::tid
 t16<-lm(HLE_2016~. , data = HLE_d_common_m_3) %>% MASS::stepAIC() %>% broom::tidy() %>% filter(p.value<.01) %>% select(term)
 
 
-bind_rows(t11,t12,t13,t14,t15,t16) %>% unique() %>% .$term %>% cat()
+bind_rows(t11,t12,t13,t14,t15,t16) %>% unique() %>% .$term %>% c()
 # selected 37 variables lists with male data
-
-# Treatment_rate_Hospitalization_Malignant_neoplasm_2017
-# Medical_treatment_rate_hospitalization_heart_dz_2017
-# Treatment_rate_Outpatient_Malignant_neoplasm_2017
-# Num_of_clinics_2019
-# Book_purchase_price_2019
-# pop_Rough_Mortality_2020
-# pop_Double_income_household_ratio_2020
-# Natural_environment_annual_avg_temperature
-# Admin_base_Financial_strength_index
-# Edu_Ptc_of_university_graduate_students_with_a_final_academic_background
-# Num_of_general_clinics
-# Travel_Rate
-# HM_Num_of_public_health_nurses_per_100k_pop
-# Household_Savings
-# Household_Car_ownership_quantity
-# pop_Household_Ratio_of_elderly_single_person_households
-# Meat_2014
-# barrier_free_wheelchairs_pass_Width
-# Total_working_hours_2016
-# Total_salary_2016
-# Fish_meat_consumption_avg_2014_2016
-# Bone_density_disorder_2014
-# Treatment_rate_Hospitalization_Cerebrovascular_dz_2017
-# Treatment_rate_outpatient_heart_dz_2017
-# Num_of_hospitals_2019
-# Labor_primary_industry_emp_ratio
-# Residence_sewerage_ratio
-# Residence_Num_of_city_parks
-# Residence_simachi_pavement_rate
-# Household_Tablet_terminal_Ownership_quantity
-# Hypertension_Outpatient_2014
-# Diabetes_hospitalization_2014
-# Usual_barrier_free_rate_2018
-# High_barrier_free_rate_2018
-# High_barrier_free_handrails_2018
-# Academic_ability_middle_school_2015
-# Alzheimer_dz_2014
-
-
+#
+# [2] "Treatment_rate_Hospitalization_Malignant_neoplasm_2017"
+# [3] "Medical_treatment_rate_hospitalization_heart_dz_2017"
+# [4] "Treatment_rate_Outpatient_Malignant_neoplasm_2017"
+# [5] "Num_of_clinics_2019"
+# [6] "Book_purchase_price_2019"
+# [7] "pop_Rough_Mortality_2020"
+# [8] "pop_Double_income_household_ratio_2020"
+# [9] "Natural_environment_annual_avg_temperature"
+# [10] "Admin_base_Financial_strength_index"
+# [11] "Edu_Ptc_of_university_graduate_students_with_a_final_academic_background"
+# [12] "Num_of_general_clinics"
+# [13] "Travel_Rate"
+# [14] "HM_Num_of_public_health_nurses_per_100k_pop"
+# [15] "Household_Savings"
+# [16] "Household_Car_ownership_quantity"
+# [17] "pop_Household_Ratio_of_elderly_single_person_households"
+# [18] "Meat_2014"
+# [19] "barrier_free_wheelchairs_pass_Width"
+# [20] "Total_working_hours_2016"
+# [21] "Total_salary_2016"
+# [22] "Fish_meat_consumption_avg_2014_2016"
+# [23] "Bone_density_disorder_2014"
+# [24] "Treatment_rate_Hospitalization_Cerebrovascular_dz_2017"
+# [25] "Treatment_rate_outpatient_heart_dz_2017"
+# [26] "Num_of_hospitals_2019"
+# [27] "Labor_primary_industry_emp_ratio"
+# [28] "Residence_sewerage_ratio"
+# [29] "Residence_Num_of_city_parks"
+# [30] "Residence_simachi_pavement_rate"
+# [31] "Household_Tablet_terminal_Ownership_quantity"
+# [32] "Hypertension_Outpatient_2014"
+# [33] "Diabetes_hospitalization_2014"
+# [34] "Usual_barrier_free_rate_2018"
+# [35] "High_barrier_free_rate_2018"
+# [36] "High_barrier_free_handrails_2018"
+# [37] "Academic_ability_middle_school_2015"
+# [38] "Alzheimer_dz_2014"
 
 
-LE_d_m_2<-LE_d_m_2 %>% select(-`Malignant_neoplasm_(breast)_mortality_rate_2015`,-`Malignant_neoplasm_(uterus)_mortality_rate_2015`)
-HLE_d_m_2<-HLE_d_m_2 %>% select(-`Malignant_neoplasm_(breast)_mortality_rate_2015`,-`Malignant_neoplasm_(uterus)_mortality_rate_2015`)
+
+
+
+LE_d_m_2<-LE_d_m_2 %>% select(-Malignant_neoplasm_breast_mortality_rate_2015,-Malignant_neoplasm_uterus_mortality_rate_2015)
+HLE_d_m_2<-HLE_d_m_2 %>% select(-Malignant_neoplasm_breast_mortality_rate_2015,-Malignant_neoplasm_uterus_mortality_rate_2015)
 
 
 t17<-lm(LE_2015~. , data = LE_d_m_1) %>% MASS::stepAIC() %>% broom::tidy() %>% filter(p.value<.01) %>% select(term)
@@ -376,33 +386,41 @@ t18<-lm(LE_2015~. , data = LE_d_m_2) %>% MASS::stepAIC() %>% broom::tidy() %>% f
 t19<-lm(HLE_2016~. , data = HLE_d_m_1) %>% MASS::stepAIC() %>% broom::tidy() %>% filter(p.value<.01) %>% select(term)
 t20<-lm(HLE_2016~. , data = HLE_d_m_2) %>% MASS::stepAIC() %>% broom::tidy() %>% filter(p.value<.01) %>% select(term)
 
-bind_rows(t17,t18,t19,t20) %>% unique() %>% .$term %>% cat()
+bind_rows(t17,t18,t19,t20) %>% unique() %>% .$term %>% c()
 
-# selected 23 variables lists with male data
+# selected 28 variables lists with male data
 
-# Mortality_Malignant_Neoplasm_2018_Under_75
-# Under_75_Adjusted_Mortality_Evil_Neoplasms_2019
-# mortality_cerebrovascular_dz_2015
-# Learn_rate_2016
-# Sports_Activity_rate_walking
-# Traveling_rate
-# Tourism_Rate
-# Self_development_art_culture
-# Cerebrovascular_mortality_2015
-# `Malignant_neoplasm_(stomach)_mortality_rate_2015`
-# `Malignant_neoplasm_(intestine)_mortality_rate_2015`
-# `Malignant_neoplasm_(liver)_mortality_rate_2015`
-# Pneumonia_mortality_2015
-# Use_blood_pressure_binary_2014
-# Sweat_exercise_twice_a_week_binary_2014
-# Smoking_over_100_binary_2014
-# Vegetable_intake_2016
-# BMI_2016
-# LE_2015
-# Volunteer_town_development
-# Volunteer_for_Children
-# Hobbies_Total
-# Volunteer_environmental_activities
+#
+# [2] "Mortality_Malignant_Neoplasm_2018_Under_75"
+# [3] "Under_75_Adjusted_Mortality_Evil_Neoplasms_2019"
+# [4] "mortality_heart_dz_2015"
+# [5] "Sports_Activity_rate_walking"
+# [6] "Tourism_Rate"
+# [7] "Volunteer_for_Persons_with_Disabilities"
+# [8] "Cerebrovascular_mortality_2015"
+# [9] "Malignant_neoplasm_intestine_mortality_rate_2015"
+# [10] "Malignant_neoplasm_liver_mortality_rate_2015"
+# [11] "Pneumonia_mortality_2015"
+# [12] "Use_blood_pressure_binary_2014"
+# [13] "Physical_activity_walking_binary_2014"
+# [14] "Sweat_exercise_twice_a_week_binary_2014"
+# [15] "Smoking_over_100_binary_2014"
+# [16] "Drinking_2_or_more_per_day_binary_2014"
+# [17] "Skip_breakfast_three_times_a_week_binary_2014"
+# [18] "Vegetable_intake_2016"
+# [19] "BMI_2016"
+# [20] "mortality_cerebrovascular_dz_2015"
+# [21] "Read_rate_2016"
+# [22] "Volunteer_health_and_medical"
+# [23] "Volunteer_for_Children"
+# [24] "Hobbies_Total"
+# [25] "Self_development_art_culture"
+# [26] "Self_development_languages_other_than_Eng"
+# [27] "Self_development_PC_etc"
+# [28] "Volunteer_environmental_activities"
+
+
+
 
 # ----------------- ----------------- ----------------- -----------------
 #  __     __         _       _     _
@@ -424,7 +442,44 @@ bind_rows(t17,t18,t19,t20) %>% unique() %>% .$term %>% cat()
 # |_____|_| \_|____/
 # ----------------- ----------------- ----------------- -----------------
 
+#  女性データ処理
+tt<-bind_rows(t1,t2,t3,t4,t5,t6) %>% unique() %>% .$term %>% .[-1]
+LE_d_common_f_selected<-LE_d_common_f %>% select(LE_2015, tt)
+HLE_d_common_f_selected<-HLE_d_common_f %>% select(HLE_2016, tt)
 
+tt<-bind_rows(t7,t8,t9,t10)%>% unique() %>% .$term %>% .[-1]
+LE_d_f_selected<-LE_d_f %>% select(LE_2015, tt)
+HLE_d_f_selected<-HLE_d_f %>% select(HLE_2016, tt)
+
+#  男性データ処理
+
+tt<-bind_rows(t11,t12,t13,t14,t15,t16) %>% unique() %>% .$term %>% .[-1]
+LE_d_common_m_selected<-LE_d_common_m %>% select(LE_2015, tt)
+HLE_d_common_m_selected<-HLE_d_common_m %>% select(HLE_2016, tt)
+
+tt<-bind_rows(t17,t18,t19,t20)%>% unique() %>% .$term %>% .[-1]
+LE_d_m_selected<-LE_d_m %>% select(LE_2015, tt)
+HLE_d_m_selected<-HLE_d_m %>% select(HLE_2016, tt)
+
+
+LE_d_f_with_selected <- bind_cols(LE_d_common_f_selected, LE_d_f_selected[,-1])
+HLE_d_f_with_selected <- bind_cols(HLE_d_common_f_selected, HLE_d_f_selected[,-1])
+
+
+LE_d_m_with_selected <- bind_cols(LE_d_common_m_selected, LE_d_m_selected[,-1])
+HLE_d_m_with_selected <- bind_cols(HLE_d_common_m_selected, HLE_d_m_selected[,-1])
+
+
+
+LE_d_f_with_selected %>% dim()
+HLE_d_f_with_selected %>% dim()
+LE_d_m_with_selected %>% dim()
+HLE_d_m_with_selected %>% dim()
+
+
+#
+# LE_d_common_f$
+# bind_rows(t1,t2,t3,t4,t5,t6) %>% unique() %>% .$term %>% c()
 
 
 #  _____           _
