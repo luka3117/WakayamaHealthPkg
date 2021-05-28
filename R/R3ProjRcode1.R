@@ -31,8 +31,23 @@ load("ScreenEnd.RData")
 # Q1:Do the final regression and interprete : with 4 data
 # -----------------
 
+var$var_name_Jpn
+lm(LE_2015~. , data = LE_d_f_final) %>%
+  broom::tidy() %>%
+  left_join(var, by=c("term"="var_name_Eng")) %>%
+  select(term, var_name_Jpn, everything()) %>% DT::datatable()
 
-# LE_d_f_final, HLE_d_f_final, LE_d_m_final, HLE_d_m_final
+  left_join(var, by=c("rowname"="var_name_Eng")) %>%
+ %>% left_join()
+lm(LE_2015~. , data = LE_d_f_final) %>% broom::glance()
+
+
+system("open .")
+
+
+LE_d_m_final,
+HLE_d_f_final,
+ HLE_d_m_final
 
 
 
@@ -44,7 +59,6 @@ load("ScreenEnd.RData")
 
 
 # try glmm and  interprete
-
 
 # find correlated variable
 
