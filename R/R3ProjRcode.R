@@ -675,6 +675,32 @@ HLE_d_m_with_selected_3rd_screen %>% colnames() %>% cat()
 
 
 
+pref_id<- d_m %>% select(pref.E:pref.J)
+
+d_f_merge_X<-d_common[, 7:104] %>% bind_cols(d_f[, 7:70]) %>% select(-HLE_2016, -LE_2015)
+d_m_merge_X<-d_common[, 7:104] %>% bind_cols(d_m[, 7:70]) %>% select(-HLE_2016, -LE_2015)
+
+y_f <- d_f %>% select(LE_2015, HLE_2016)
+y_m <- d_m %>% select(LE_2015, HLE_2016)
+
+
+LE_d_f_final<-LE_d_f_with_selected_3rd_screen
+HLE_d_f_final<-HLE_d_f_with_selected_3rd_screen
+LE_d_m_final<-LE_d_m_with_selected_3rd_screen
+HLE_d_m_final<-HLE_d_m_with_selected_3rd_screen
+
+
+# save.image("ScreenEnd.RData")
+
+
+#     ____         _____                       _     ____     __ _ _
+#   / ___| ___   |_   _|__    _ __   _____  _| |_  |  _ \   / _(_) | ___
+# | |  _ / _ \    | |/ _ \  | '_ \ / _ \ \/ / __| | |_) | | |_| | |/ _ \
+# | |_| | (_) |   | | (_) | | | | |  __/>  <| |_  |  _ <  |  _| | |  __/
+#  \____|\___/    |_|\___/  |_| |_|\___/_/\_\\__| |_| \_\ |_| |_|_|\___|
+#
+
+
 # ----------------- ----------------- ----------------- -----------------
 #  _____           _
 # |_   _|__     __| | ___
@@ -794,6 +820,3 @@ temp %>% filter(pref.J=="和歌山"|
            hoverinfo="text",
            text=~paste(var_name))
 
-
-
-ls()

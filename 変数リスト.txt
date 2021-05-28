@@ -1,0 +1,58 @@
+---
+title: "来店解析 : no_profile_20200330.csv"
+subtitle: "来店確率解析 "
+author: "滋賀大学 佐藤、李"
+date: "最終更新: 2021/05/28"
+# date: "最終更新: 2019/07/16"
+
+output:
+  # word_document:
+  html_document:
+  # html_notebook:
+   number_section: true
+   toc: true
+  # fig_width: 18
+  # fig_height: 12
+---
+
+
+```r
+# 使用package
+suppressMessages(library(readxl))
+suppressMessages(library(dplyr))
+suppressMessages(library(data.table))
+suppressMessages(library(kableExtra))
+```
+
+```
+## Warning in init_libxml2(): '.Random.seed[1]' が有効な整数値ではないため、無
+## 視されました
+```
+
+```r
+suppressMessages(library(curl))
+suppressMessages(library(tidyverse))
+suppressMessages(library(plotly))
+library(DT)
+DT::datatable(var)
+```
+
+```
+## PhantomJS not found. You can install it with webshot::install_phantomjs(). If it is installed, please make sure the phantomjs executable can be found via the PATH variable.
+```
+
+```
+## Warning in normalizePath(f2): path[1]="webshot1797453f74591.png": No such
+## file or directory
+```
+
+```
+## Warning in file(con, "rb"): ファイル 'webshot1797453f74591.png' を開くこと
+## ができません: No such file or directory
+```
+
+```
+## Error in file(con, "rb"):  コネクションを開くことができません
+```
+
+
