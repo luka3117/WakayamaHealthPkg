@@ -9,9 +9,9 @@ output:
    number_section: true
    toc: true
    code_folding: hide
-   toc_float:
-     smooth_scroll: false
-     collapsed: false
+   # toc_float:
+   #   smooth_scroll: false
+   #   collapsed: false
 
 # output:
 #   ioslides_presentation:
@@ -36,8 +36,11 @@ output:
 #
 # 'p': show presenter notes
 ---
+```{r}
+```
 
 
+# 
 ```{r}
 
 # devtools::install_github(repo = "luka3117/JcPackage/OsakaUniv2020")
@@ -55,14 +58,22 @@ suppressMessages(library(ggrepel))
 load("../ScreenEnd.RData")
 ```
 
+# regression{.tabset .tabset-fade .tabset-pills}
 
-# only the followings are valid obj
-# d , var, pref_id
-# d_f_merge_X, d_m_merge_X, y_f , y_m
-# LE_d_f_final, HLE_d_f_final, LE_d_m_final, HLE_d_m_final
+  - only the followings are valid obj
+  - d , var, pref_id
+  - d_f_merge_X, d_m_merge_X, y_f , y_m
+  - LE_d_f_final, HLE_d_f_final, LE_d_m_final, HLE_d_m_final
+
+
+<!-- ```{r child="ref1.Rmd"} -->
+<!-- ``` -->
+
+## regression `LE_d_f_final`: 女性、平均寿命
 ```{r}
-
-
+# -----------------
+# Q1:Do the final regression and interprete : with 4 data
+# -----------------
 # ----------------- ----------------- ----------------- -----------------
 #  _____ _             _   _     __  __
 # |  ___(_)_ __   __ _| | | |   |  \/  |
@@ -71,18 +82,13 @@ load("../ScreenEnd.RData")
 # |_|   |_|_| |_|\__,_|_| |_____|_|  |_|
 # ----------------- ----------------- ----------------- -----------------
 
-# -----------------
-# Q1:Do the final regression and interprete : with 4 data
-# -----------------
-
-var$var_name_Jpn %>% tbl_df() %>% 
-  DT::datatable()
-
+options(digits = 5)              # Modify global options
 
 lm(LE_2015~. , data = LE_d_f_final) %>%
   broom::tidy() %>%
   left_join(var, by=c("term"="var_name_Eng")) %>%
-  select(term, var_name_Jpn, everything()) %>% DT::datatable()
+  select(term, var_name_Jpn, everything(), -id,- address, -std.error, -columm_letter ) %>% DT::datatable() %>% DT::formatRound(columns=c('estimate', 'statistic', "p.value"), digits=3)
+
 ```
 
 
@@ -96,6 +102,12 @@ lm(LE_2015~. , data = LE_d_f_final) %>%
 # try glmm and  interprete
 
 # find correlated variable
+
+# data 標準化
+<!-- d_common_standarize<- -->
+<!-- d_common %>% dplyr::select_if(is.numeric) %>% -->
+<!--   select(-key, -pref.id) %>% scale() %>% tbl_df() -->
+
 
 
 
