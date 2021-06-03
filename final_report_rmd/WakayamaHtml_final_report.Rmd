@@ -88,6 +88,10 @@ lm(LE_2015~. , data = LE_d_f_final) %>%
   left_join(var, by=c("term"="var_name_Eng")) %>%
   select(term, var_name_Jpn, everything(), -id,- address, -std.error, -columm_letter ) %>% DT::datatable() %>% DT::formatRound(columns=c('estimate', 'statistic', "p.value"), digits=3)
 
+lm(LE_2015~. , data = LE_d_f_final) %>% MASS::stepAIC() %>%
+  broom::tidy() %>%
+  left_join(var, by=c("term"="var_name_Eng")) %>%
+  select(term, var_name_Jpn, everything(), -id,- address, -std.error, -columm_letter ) %>% DT::datatable() %>% DT::formatRound(columns=c('estimate', 'statistic', "p.value"), digits=3)
 ```
 
 ## regression `HLE_d_f_final`: 女性、健康寿命
@@ -163,6 +167,104 @@ lm(HLE_2016~. , data = HLE_d_m_final) %>%
 ```
 
 
+# -----------------# -----------------# -----------------# -----------------# -----------------
+
+
+## regression `LE_d_f_final`: 女性、平均寿命
+```{r}
+# -----------------
+# Q1:Do the final regression and interprete : with 4 data
+# -----------------
+# ----------------- ----------------- ----------------- -----------------
+#  _____ _             _   _     __  __
+# |  ___(_)_ __   __ _| | | |   |  \/  |
+# | |_  | | '_ \ / _` | | | |   | |\/| |
+# |  _| | | | | | (_| | | | |___| |  | |
+# |_|   |_|_| |_|\__,_|_| |_____|_|  |_|
+# ----------------- ----------------- ----------------- -----------------
+
+options(digits = 5)              # Modify global options
+
+lm(LE_2015~. , data = LE_d_f_final) %>% MASS::stepAIC() %>%
+  broom::tidy() %>%
+  left_join(var, by=c("term"="var_name_Eng")) %>%
+  select(term, var_name_Jpn, everything(), -id,- address, -std.error, -columm_letter ) %>% DT::datatable() %>% DT::formatRound(columns=c('estimate', 'statistic', "p.value"), digits=3)
+```
+
+## regression `HLE_d_f_final`: 女性、健康寿命
+```{r}
+# -----------------
+# Q1:Do the final regression and interprete : with 4 data
+# -----------------
+# ----------------- ----------------- ----------------- -----------------
+#  _____ _             _   _     __  __
+# |  ___(_)_ __   __ _| | | |   |  \/  |
+# | |_  | | '_ \ / _` | | | |   | |\/| |
+# |  _| | | | | | (_| | | | |___| |  | |
+# |_|   |_|_| |_|\__,_|_| |_____|_|  |_|
+# ----------------- ----------------- ----------------- -----------------
+
+options(digits = 5)              # Modify global options
+
+
+lm(HLE_2016~. , data = HLE_d_f_final) %>% MASS::stepAIC() %>%
+  broom::tidy() %>%
+  left_join(var, by=c("term"="var_name_Eng")) %>%
+  select(term, var_name_Jpn, everything(), -id,- address, -std.error, -columm_letter ) %>% DT::datatable() %>% DT::formatRound(columns=c('estimate', 'statistic', "p.value"), digits=3)  
+
+```
+
+
+
+
+
+## regression `LE_d_m_final`: 男性、平均寿命
+```{r}
+# -----------------
+# Q1:Do the final regression and interprete : with 4 data
+# -----------------
+# ----------------- ----------------- ----------------- -----------------
+#  _____ _             _   _     __  __
+# |  ___(_)_ __   __ _| | | |   |  \/  |
+# | |_  | | '_ \ / _` | | | |   | |\/| |
+# |  _| | | | | | (_| | | | |___| |  | |
+# |_|   |_|_| |_|\__,_|_| |_____|_|  |_|
+# ----------------- ----------------- ----------------- -----------------
+
+options(digits = 5)              # Modify global options
+
+lm(LE_2015~. , data = LE_d_m_final) %>% MASS::stepAIC() %>%
+  broom::tidy() %>%
+  left_join(var, by=c("term"="var_name_Eng")) %>%
+  select(term, var_name_Jpn, everything(), -id,- address, -std.error, -columm_letter ) %>% DT::datatable() %>% DT::formatRound(columns=c('estimate', 'statistic', "p.value"), digits=3)  
+
+```
+
+
+
+## regression `HLE_d_m_final`: 男性、健康寿命
+```{r}
+# -----------------
+# Q1:Do the final regression and interprete : with 4 data
+# -----------------
+# ----------------- ----------------- ----------------- -----------------
+#  _____ _             _   _     __  __
+# |  ___(_)_ __   __ _| | | |   |  \/  |
+# | |_  | | '_ \ / _` | | | |   | |\/| |
+# |  _| | | | | | (_| | | | |___| |  | |
+# |_|   |_|_| |_|\__,_|_| |_____|_|  |_|
+# ----------------- ----------------- ----------------- -----------------
+
+options(digits = 5)              # Modify global options
+
+lm(HLE_2016~. , data = HLE_d_m_final) %>% MASS::stepAIC() %>%
+  broom::tidy() %>%
+  left_join(var, by=c("term"="var_name_Eng")) %>%
+  select(term, var_name_Jpn, everything(), -id,- address, -std.error, -columm_letter ) %>% DT::datatable() %>% DT::formatRound(columns=c('estimate', 'statistic', "p.value"), digits=3)
+
+```
+
+
 
 
 
@@ -184,9 +286,9 @@ df$category[df$a > 0.6] <- "high"
 
 
 To convert from numeric to categorical, use cut. In your particular case, you want:
-  
-  df$category <- cut(df$a, 
-                     breaks=c(-Inf, 0.5, 0.6, Inf), 
+
+  df$category <- cut(df$a,
+                     breaks=c(-Inf, 0.5, 0.6, Inf),
                      labels=c("low","middle","high"))
 
 

@@ -1,0 +1,189 @@
+---
+title: "自主ゼミ：因子分析"
+subtitle: "因子分析 "
+author: "滋賀大学 李"
+date: "最終更新: `r format(Sys.time(), '%Y/%m/%d')`"
+# date: "最終更新: 2019/07/16"
+
+output:
+  # word_document:
+  html_document:
+  # ioslides_presentation:
+  # html_notebook:
+   number_section: true
+   toc: true
+   code_folding: hide
+   toc_float: true
+  # fig_width: 18
+  # fig_height: 12
+
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Factor Analysis - data : US Crime Data
+```{r}
+suppressMessages(library(dplyr))
+X <- zemi::USCrime
+X %>% DT::datatable()
+rownames(X) <- abbreviate(rownames(X))
+```
+
+# 標準化
+```{r, warning=F}
+n <- nrow(X)
+p <- ncol(X)
+Z <- scale(X)
+Z %>% round(2) %>% DT::datatable()
+```
+
+
+
+```{r}
+R <- t(Z)%*%Z/(n-1)
+print("Correlation matrix");
+print(round(R,3))
+
+```
+
+
+# FA by SVD
+
+## unrotated 
+- $Z = (\sqrt{n}U)DV'$
+    - $OBS = F=(\sqrt{n}U)$
+    - $VAR = L'=VD'$
+```{r}
+svd.Z <- svd(Z/sqrt(n-1))
+OBS <- svd.Z$u*sqrt(n-1) 
+OBS %>% round(2) %>% as.data.frame() %>% tbl_df()
+
+VAR <- svd.Z$v%*%diag(svd.Z$d)
+VAR %>% round(2)
+
+rownames(OBS) <- rownames(X)
+rownames(VAR) <- colnames(X)
+```
+
+
+```{r}
+OBS %>% as.data.frame() %>% tbl_df()
+```
+- F
+```{r}
+round(OBS,3) %>% head()
+```
+
+- L
+```{r}
+round(VAR,3)
+round(svd.Z$d^2,3)
+```
+
+
+```{r}
+biplot(OBS,VAR,cex=0.75,xlab="First Dimension",ylab="Second Dimension",xlim=c(-3,3),ylim=c(-3,3),main="Not Rotated")
+```
+
+
+
+## Varimax rotationの適用
+```{r}
+
+rotate <- function(VAR, theta)
+{
+G <- matrix(c(cos(theta), -sin(theta), sin(theta), cos(theta)), nrow = 2)
+VAR.rotate <- VAR[, 1:2] %*% G
+return(VAR.rotate)
+}
+object.max <- function(theta)
+{
+D <- rotate(VAR[, 1:2], theta)
+D2 <- D * D
+norm <- apply(D2, 1, sum)
+temp <- scale(D2 / norm, scale = F)
+return(sum(temp * temp))
+}
+```
+
+
+## 
+```{r}
+theta.optim <- optimize(object.max, c(-pi,pi), maximum=T)
+theta <- theta.optim$maximum
+VAR.rotate <- rotate(VAR[,1:2],theta)
+OBS.rotate <- rotate(OBS[,1:2],theta)
+c("optimum rotation in degrees"); round(theta*180/pi,1)
+c("rotated loading matrix"); round(VAR.rotate,3)
+c("rotated factor scores"); 
+round(OBS.rotate,3) %>% head()
+```
+
+x11()
+
+```{r}
+biplot(
+  OBS.rotate,
+  VAR.rotate,
+  cex = 0.75,
+  xlab = "First Dimension",
+  ylab = "Second Dimension",
+  xlim = c(-3, 3),
+  ylim = c(-3, 3),
+  main = "Varimax Rotated"
+  )
+  
+```
+
+
+# FA by `psych:: principal`
+## unrotated
+
+```{r}
+library(psych)
+prin.psych.none <- principal(R,nfactors=2,rotate="none")
+summary(prin.psych.none)
+round(prin.psych.none$loadings[,1:2],3)
+
+principal(R,nfactors=2,rotate="none")
+```
+
+##  Varimax rotationの適用
+
+```{r}
+prin.psych.rotate <- principal(R,nfactors=2,rotate="varimax")
+summary(prin.psych.rotate)
+round(prin.psych.rotate$loadings[,1:2],3)
+
+principal(Z, nfactors = 2)$scores %>% head()
+principal(Z, nfactors = 2)$loadings
+
+
+
+```
+
+
+# FA by `factanal()`
+
+```{r}
+
+fact.X <- factanal(X,factors=2,rotation="none",scores="regression")
+rownames(fact.X$scores) <- rownames(X)
+rownames(fact.X$loadings) <- colnames(X)
+round(fact.X$loadings,3)
+round(fact.X$scores,3) %>% head()
+biplot(fact.X$scores,fact.X$loadings,cex=0.75,main="Unrotated ML Factor Solution")
+```
+
+```{r}
+
+fact.R <- factanal(X,factors=2,rotation="varimax",scores="regression")
+rownames(fact.R$scores) <- rownames(X)
+rownames(fact.R$loadings) <- colnames(X)
+round(fact.R$loadings,3)
+round(fact.R$scores,3) %>% head()
+biplot(fact.R$scores,fact.R$loadings,cex=0.75,main="Varimax Rotated ML Solution")
+```

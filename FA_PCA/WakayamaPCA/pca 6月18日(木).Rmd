@@ -1,0 +1,108 @@
+---
+title: "自主ゼミ多変量解析"
+subtitle: "主成分分析"
+author: "滋賀大学 李"
+# date: "2020/06/18"
+date: "最終更新: `r format(Sys.time(), '%Y/%m/%d')`"
+output:
+  # word_document:
+  html_document:
+  # html_notebook:
+   number_section: true
+   toc: true
+   code_folding: hide
+   toc_float:
+     smooth_scroll: false
+     collapsed: false
+---
+
+# pkg load
+```{r, warning=FALSE, message=FALSE}
+library(zemi)
+library(magrittr)
+library(tidyverse)
+```
+
+# data load
+
+## 男性疾患データ確認
+
+```{r}
+m.dz %>% DT::datatable()
+```
+
+
+## 主成分分析結果の保存
+```{r}
+temp <- zemi::m.dz
+temp %<>% scale()
+temp <- zemi::JcPCA(temp)
+temp %>% str()
+```
+
+
+:::: {style="display: flex;"}
+:::{}
+## 都道府県の座標
+
+```{r, warning=FALSE}
+obs <- temp$OBS[, 1:2] %>% as.data.frame() %>% tbl_df()%>% 
+  tibble::add_column(aa=zemi::Pref) %>%  tibble::column_to_rownames(.data = ., var = "aa")
+
+obs %>% round(2) %>% DT::datatable()
+
+sapply(obs, sd)
+```
+:::
+:::{}
+## 疾患座標
+
+```{r, warning=FALSE}
+var <- temp$VAR[, 1:2]
+rownames(var) <- colnames(zemi::m.dz)
+   
+var %>% as.tibble() %>% add_column(aa=colnames(zemi::m.dz)) %>% 
+   column_to_rownames("aa") %>% round(2) %>% DT::datatable()
+
+```
+:::
+::::
+
+
+
+
+m.dz %>% colnames()
+zemi::Pref
+
+
+
+var  
+
+
+
+plot(obs)
+plot(var)
+
+par(family = "HiraKakuProN-W3")
+biplot(obs, var)
+
+temp$eigen
+
+
+zemi::JcPCA
+
+aa<-princomp(zemi::m.dz %>% scale())
+
+((aa$sdev^2)/sum(aa$sdev^2)) %>% round(3)
+temp$eigen/100
+
+
+
+aa$scores[,1:2] %>% head()
+
+obs %>% head()
+
+
+
+
+<!-- <iframe width="560" height="315" src="https://www.youtube.com/embed/6A5EpqqDOdk" frameborder="0" allowfullscreen> -->
