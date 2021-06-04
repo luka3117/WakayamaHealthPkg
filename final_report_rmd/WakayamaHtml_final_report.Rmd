@@ -53,6 +53,8 @@ suppressMessages(library(curl))
 suppressMessages(library(tidyverse))
 suppressMessages(library(plotly))
 suppressMessages(library(ggrepel))
+suppressMessages(library(magrittr))
+
 
 load("../ScreenEnd.RData")
 ```
@@ -63,6 +65,7 @@ load("../ScreenEnd.RData")
   - d , var, pref_id
   - d_f_merge_X, d_m_merge_X, y_f , y_m
   - LE_d_f_final, HLE_d_f_final, LE_d_m_final, HLE_d_m_final
+  - 女性：18変数、男性：11変数
 
 
 <!-- ```{r child="ref1.Rmd"} -->
@@ -88,10 +91,6 @@ lm(LE_2015~. , data = LE_d_f_final) %>%
   left_join(var, by=c("term"="var_name_Eng")) %>%
   select(term, var_name_Jpn, everything(), -id,- address, -std.error, -columm_letter ) %>% DT::datatable() %>% DT::formatRound(columns=c('estimate', 'statistic', "p.value"), digits=3)
 
-lm(LE_2015~. , data = LE_d_f_final) %>% MASS::stepAIC() %>%
-  broom::tidy() %>%
-  left_join(var, by=c("term"="var_name_Eng")) %>%
-  select(term, var_name_Jpn, everything(), -id,- address, -std.error, -columm_letter ) %>% DT::datatable() %>% DT::formatRound(columns=c('estimate', 'statistic', "p.value"), digits=3)
 ```
 
 ## regression `HLE_d_f_final`: 女性、健康寿命
@@ -167,112 +166,28 @@ lm(HLE_2016~. , data = HLE_d_m_final) %>%
 ```
 
 
-# -----------------# -----------------# -----------------# -----------------# -----------------
-
-
-## regression `LE_d_f_final`: 女性、平均寿命
+# Q1:FA and interprete
+  - 女性説明変数 : X_f
 ```{r}
-# -----------------
-# Q1:Do the final regression and interprete : with 4 data
-# -----------------
-# ----------------- ----------------- ----------------- -----------------
-#  _____ _             _   _     __  __
-# |  ___(_)_ __   __ _| | | |   |  \/  |
-# | |_  | | '_ \ / _` | | | |   | |\/| |
-# |  _| | | | | | (_| | | | |___| |  | |
-# |_|   |_|_| |_|\__,_|_| |_____|_|  |_|
-# ----------------- ----------------- ----------------- -----------------
-
-options(digits = 5)              # Modify global options
-
-lm(LE_2015~. , data = LE_d_f_final) %>% MASS::stepAIC() %>%
-  broom::tidy() %>%
-  left_join(var, by=c("term"="var_name_Eng")) %>%
-  select(term, var_name_Jpn, everything(), -id,- address, -std.error, -columm_letter ) %>% DT::datatable() %>% DT::formatRound(columns=c('estimate', 'statistic', "p.value"), digits=3)
-```
-
-## regression `HLE_d_f_final`: 女性、健康寿命
-```{r}
-# -----------------
-# Q1:Do the final regression and interprete : with 4 data
-# -----------------
-# ----------------- ----------------- ----------------- -----------------
-#  _____ _             _   _     __  __
-# |  ___(_)_ __   __ _| | | |   |  \/  |
-# | |_  | | '_ \ / _` | | | |   | |\/| |
-# |  _| | | | | | (_| | | | |___| |  | |
-# |_|   |_|_| |_|\__,_|_| |_____|_|  |_|
-# ----------------- ----------------- ----------------- -----------------
-
-options(digits = 5)              # Modify global options
-
-
-lm(HLE_2016~. , data = HLE_d_f_final) %>% MASS::stepAIC() %>%
-  broom::tidy() %>%
-  left_join(var, by=c("term"="var_name_Eng")) %>%
-  select(term, var_name_Jpn, everything(), -id,- address, -std.error, -columm_letter ) %>% DT::datatable() %>% DT::formatRound(columns=c('estimate', 'statistic', "p.value"), digits=3)  
+LE_d_f_final.reg<-lm(LE_2015~. , data = LE_d_f_final)
+LE_d_f_final.reg$model[,-1] %>%DT::datatable()
+X_f<-LE_d_f_final.reg$model[,-1]
+X_f %>% dim()
 
 ```
 
 
 
-
-
-## regression `LE_d_m_final`: 男性、平均寿命
+ - 男性説明変数
 ```{r}
-# -----------------
-# Q1:Do the final regression and interprete : with 4 data
-# -----------------
-# ----------------- ----------------- ----------------- -----------------
-#  _____ _             _   _     __  __
-# |  ___(_)_ __   __ _| | | |   |  \/  |
-# | |_  | | '_ \ / _` | | | |   | |\/| |
-# |  _| | | | | | (_| | | | |___| |  | |
-# |_|   |_|_| |_|\__,_|_| |_____|_|  |_|
-# ----------------- ----------------- ----------------- -----------------
-
-options(digits = 5)              # Modify global options
-
-lm(LE_2015~. , data = LE_d_m_final) %>% MASS::stepAIC() %>%
-  broom::tidy() %>%
-  left_join(var, by=c("term"="var_name_Eng")) %>%
-  select(term, var_name_Jpn, everything(), -id,- address, -std.error, -columm_letter ) %>% DT::datatable() %>% DT::formatRound(columns=c('estimate', 'statistic', "p.value"), digits=3)  
-
+LE_d_m_final.reg<-lm(LE_2015~. , data = LE_d_m_final)
+LE_d_m_final.reg$model[,-1] %>%DT::datatable()
+X_m<-LE_d_m_final.reg$model[,-1]
 ```
 
 
 
-## regression `HLE_d_m_final`: 男性、健康寿命
-```{r}
-# -----------------
-# Q1:Do the final regression and interprete : with 4 data
-# -----------------
-# ----------------- ----------------- ----------------- -----------------
-#  _____ _             _   _     __  __
-# |  ___(_)_ __   __ _| | | |   |  \/  |
-# | |_  | | '_ \ / _` | | | |   | |\/| |
-# |  _| | | | | | (_| | | | |___| |  | |
-# |_|   |_|_| |_|\__,_|_| |_____|_|  |_|
-# ----------------- ----------------- ----------------- -----------------
-
-options(digits = 5)              # Modify global options
-
-lm(HLE_2016~. , data = HLE_d_m_final) %>% MASS::stepAIC() %>%
-  broom::tidy() %>%
-  left_join(var, by=c("term"="var_name_Eng")) %>%
-  select(term, var_name_Jpn, everything(), -id,- address, -std.error, -columm_letter ) %>% DT::datatable() %>% DT::formatRound(columns=c('estimate', 'statistic', "p.value"), digits=3)
-
-```
-
-
-
-
-
-
-
-# -----------------
 # Q2:logistic regression the final regression and interprete
-# -----------------
 
 want to create a new variable with 3 arbitrary categories based on continuous data.
 
@@ -308,6 +223,9 @@ boxplot(df1$a~df1$category,col=3:5)
 
 
 # try glmm and  interprete
+
+glmmML
+
 
 # find correlated variable
 

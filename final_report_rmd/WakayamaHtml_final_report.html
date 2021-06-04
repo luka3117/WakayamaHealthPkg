@@ -2756,7 +2756,7 @@ summary {
 <h1 class="title toc-ignore">和歌山県報告書(under working for final report)</h1>
 <h3 class="subtitle">健康寿命</h3>
 <h4 class="author">李鍾賛(jc lee, 滋賀大助教、数理統計学博士)</h4>
-<h4 class="date">最終更新: 2021/06/03</h4>
+<h4 class="date">最終更新: 2021/06/04</h4>
 
 </div>
 
@@ -2770,19 +2770,11 @@ summary {
 <li><a href="#regression-le_d_m_final-男性平均寿命"><span class="toc-section-number">2.3</span> regression <code>LE_d_m_final</code>: 男性、平均寿命</a></li>
 <li><a href="#regression-hle_d_m_final-男性健康寿命"><span class="toc-section-number">2.4</span> regression <code>HLE_d_m_final</code>: 男性、健康寿命</a></li>
 </ul></li>
-<li><a href="#section"><span class="toc-section-number">3</span> —————–# —————–# —————–# —————–# —————–</a>
-<ul>
-<li><a href="#regression-le_d_f_final-女性平均寿命-1"><span class="toc-section-number">3.1</span> regression <code>LE_d_f_final</code>: 女性、平均寿命</a></li>
-<li><a href="#regression-hle_d_f_final-女性健康寿命-1"><span class="toc-section-number">3.2</span> regression <code>HLE_d_f_final</code>: 女性、健康寿命</a></li>
-<li><a href="#regression-le_d_m_final-男性平均寿命-1"><span class="toc-section-number">3.3</span> regression <code>LE_d_m_final</code>: 男性、平均寿命</a></li>
-<li><a href="#regression-hle_d_m_final-男性健康寿命-1"><span class="toc-section-number">3.4</span> regression <code>HLE_d_m_final</code>: 男性、健康寿命</a></li>
-</ul></li>
-<li><a href="#section-1"><span class="toc-section-number">4</span> —————–</a></li>
-<li><a href="#q2logistic-regression-the-final-regression-and-interprete"><span class="toc-section-number">5</span> Q2:logistic regression the final regression and interprete</a></li>
-<li><a href="#section-2"><span class="toc-section-number">6</span> —————–</a></li>
-<li><a href="#try-glmm-and-interprete"><span class="toc-section-number">7</span> try glmm and interprete</a></li>
-<li><a href="#find-correlated-variable"><span class="toc-section-number">8</span> find correlated variable</a></li>
-<li><a href="#data-標準化"><span class="toc-section-number">9</span> data 標準化</a></li>
+<li><a href="#q1fa-and-interprete"><span class="toc-section-number">3</span> Q1:FA and interprete</a></li>
+<li><a href="#q2logistic-regression-the-final-regression-and-interprete"><span class="toc-section-number">4</span> Q2:logistic regression the final regression and interprete</a></li>
+<li><a href="#try-glmm-and-interprete"><span class="toc-section-number">5</span> try glmm and interprete</a></li>
+<li><a href="#find-correlated-variable"><span class="toc-section-number">6</span> find correlated variable</a></li>
+<li><a href="#data-標準化"><span class="toc-section-number">7</span> data 標準化</a></li>
 </ul>
 </div>
 
@@ -2799,6 +2791,8 @@ suppressMessages(library(curl))
 suppressMessages(library(tidyverse))
 suppressMessages(library(plotly))
 suppressMessages(library(ggrepel))
+suppressMessages(library(magrittr))
+
 
 load(&quot;../ScreenEnd.RData&quot;)</code></pre>
 </div>
@@ -2809,6 +2803,7 @@ load(&quot;../ScreenEnd.RData&quot;)</code></pre>
 <li>d , var, pref_id</li>
 <li>d_f_merge_X, d_m_merge_X, y_f , y_m</li>
 <li>LE_d_f_final, HLE_d_f_final, LE_d_m_final, HLE_d_m_final</li>
+<li>女性：18変数、男性：11変数</li>
 </ul>
 <!-- ```{r child="ref1.Rmd"} -->
 <!-- ``` -->
@@ -2833,237 +2828,6 @@ lm(LE_2015~. , data = LE_d_f_final) %&gt;%
   select(term, var_name_Jpn, everything(), -id,- address, -std.error, -columm_letter ) %&gt;% DT::datatable() %&gt;% DT::formatRound(columns=c(&#39;estimate&#39;, &#39;statistic&#39;, &quot;p.value&quot;), digits=3)</code></pre>
 <div id="htmlwidget-c0aeb4553487d1edaec5" style="width:100%;height:auto;" class="datatables html-widget"></div>
 <script type="application/json" data-for="htmlwidget-c0aeb4553487d1edaec5">{"x":{"filter":"none","data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18"],["(Intercept)","Treatment_rate_Outpatient_Cerebrovascular_dz_2017","pop_oldElderly_pop_Ratio_2020","pop_Working_Age_pop_Ratio_2020","Natural_environment_annual_avg_temperature","Labor_Unemp_rate","Residence_Num_of_city_parks","Hypertension_Outpatient_2014","Malignant_neoplasm_intestine_mortality_rate_2015","Volunteer_Activity_Rate_total","Treatment_rate_outpatient_heart_dz_2017","Residence_house_ratio","Under_75_Adjusted_Mortality_Evil_Neoplasms_2019","Num_of_clinics_2019","High_barrier_free_handrails_2018","Num_of_cardiologists_2020","Household_Smartphone_ownership_quantity","Volunteer_for_the_Elderly"],[null,"受療率_外来_脳血管疾患_2017","人口・世帯_老年人口割合2020","人口・世帯_生産年齢人口割合2020","自然環境_年平均気温","労働_完全失業率","居住_都市公園数(可住地面積100k㎡当たり)","高血圧疾患_外来2014年","悪性新生物(大腸)_年齢調整死亡率2015","ボランティア総行動率−総数","受療率_外来_心疾患_2017","居住_一戸建住宅比率","75歳未満調整死亡率_悪政新生物_2019","診療所数_2019","バリアフリー_手すりがある2018","循環器専門医数_2020","家計_スマートフォン所有数量（千世帯当たり）","ボランティア総行動率−高齢者を対象とした活動"],[111.807245603276,-0.00328817612228131,-0.163692261447259,-0.253278325131858,-0.0507404460031984,-0.246500271832179,0.00100656039566588,-0.0234520052926041,-0.0928421946088827,-0.0382975008752421,-0.00240127510073634,-0.028362975882631,-0.00148718448728056,-0.000944467375739929,2.21982730662241e-07,-5.37898973751783e-05,0.000699713669891942,0.135579069597454],[17.7867794524537,-2.80151287263479,-2.3960192074278,-3.25541136992517,-2.0039010977108,-2.97172034170298,1.78557710681867,-1.38816346004063,-3.22301659420163,-1.71100391013971,-1.86278643727085,-3.01236290163702,-0.112665281285764,-0.224748862407674,0.197374007968931,-0.201976668002907,1.16257924044978,1.94667246110011],[3.8407840656058e-17,0.00896537899407908,0.0232480015680503,0.00287925659095179,0.0545009422698874,0.00590050935047794,0.0846305690011294,0.175660008196936,0.00312873297852315,0.0977585261273549,0.0726505824038334,0.00533201145476126,0.911072213986921,0.823750766795789,0.844911770293,0.841345162943845,0.254478406633475,0.0613187494924285]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>term<\/th>\n      <th>var_name_Jpn<\/th>\n      <th>estimate<\/th>\n      <th>statistic<\/th>\n      <th>p.value<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[3,4,5]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false,"rowCallback":"function(row, data) {\nDTWidget.formatRound(this, row, data, 3, 3, 3, ',', '.');\nDTWidget.formatRound(this, row, data, 4, 3, 3, ',', '.');\nDTWidget.formatRound(this, row, data, 5, 3, 3, ',', '.');\n}"}},"evals":["options.rowCallback"],"jsHooks":[]}</script>
-<pre class="r"><code>lm(LE_2015~. , data = LE_d_f_final) %&gt;% MASS::stepAIC() %&gt;%
-  broom::tidy() %&gt;%
-  left_join(var, by=c(&quot;term&quot;=&quot;var_name_Eng&quot;)) %&gt;%
-  select(term, var_name_Jpn, everything(), -id,- address, -std.error, -columm_letter ) %&gt;% DT::datatable() %&gt;% DT::formatRound(columns=c(&#39;estimate&#39;, &#39;statistic&#39;, &quot;p.value&quot;), digits=3)</code></pre>
-<pre><code>## Start:  AIC=-145.98
-## LE_2015 ~ Treatment_rate_Outpatient_Cerebrovascular_dz_2017 + 
-##     pop_oldElderly_pop_Ratio_2020 + pop_Working_Age_pop_Ratio_2020 + 
-##     Natural_environment_annual_avg_temperature + Labor_Unemp_rate + 
-##     Residence_Num_of_city_parks + Hypertension_Outpatient_2014 + 
-##     Malignant_neoplasm_intestine_mortality_rate_2015 + Volunteer_Activity_Rate_total + 
-##     Treatment_rate_outpatient_heart_dz_2017 + Residence_house_ratio + 
-##     Under_75_Adjusted_Mortality_Evil_Neoplasms_2019 + Num_of_clinics_2019 + 
-##     High_barrier_free_handrails_2018 + Num_of_cardiologists_2020 + 
-##     Household_Smartphone_ownership_quantity + Volunteer_for_the_Elderly
-## 
-##                                                     Df Sum of Sq   RSS
-## - Under_75_Adjusted_Mortality_Evil_Neoplasms_2019    1     0.000 0.979
-## - High_barrier_free_handrails_2018                   1     0.001 0.980
-## - Num_of_cardiologists_2020                          1     0.001 0.980
-## - Num_of_clinics_2019                                1     0.002 0.980
-## &lt;none&gt;                                                           0.978
-## - Household_Smartphone_ownership_quantity            1     0.046 1.024
-## - Hypertension_Outpatient_2014                       1     0.065 1.043
-## - Volunteer_Activity_Rate_total                      1     0.099 1.077
-## - Residence_Num_of_city_parks                        1     0.108 1.086
-## - Treatment_rate_outpatient_heart_dz_2017            1     0.117 1.096
-## - Volunteer_for_the_Elderly                          1     0.128 1.106
-## - Natural_environment_annual_avg_temperature         1     0.135 1.114
-## - pop_oldElderly_pop_Ratio_2020                      1     0.194 1.172
-## - Treatment_rate_Outpatient_Cerebrovascular_dz_2017  1     0.265 1.243
-## - Labor_Unemp_rate                                   1     0.298 1.276
-## - Residence_house_ratio                              1     0.306 1.285
-## - Malignant_neoplasm_intestine_mortality_rate_2015   1     0.350 1.329
-## - pop_Working_Age_pop_Ratio_2020                     1     0.358 1.336
-##                                                      AIC
-## - Under_75_Adjusted_Mortality_Evil_Neoplasms_2019   -148
-## - High_barrier_free_handrails_2018                  -148
-## - Num_of_cardiologists_2020                         -148
-## - Num_of_clinics_2019                               -148
-## &lt;none&gt;                                              -146
-## - Household_Smartphone_ownership_quantity           -146
-## - Hypertension_Outpatient_2014                      -145
-## - Volunteer_Activity_Rate_total                     -144
-## - Residence_Num_of_city_parks                       -143
-## - Treatment_rate_outpatient_heart_dz_2017           -143
-## - Volunteer_for_the_Elderly                         -142
-## - Natural_environment_annual_avg_temperature        -142
-## - pop_oldElderly_pop_Ratio_2020                     -140
-## - Treatment_rate_Outpatient_Cerebrovascular_dz_2017 -137
-## - Labor_Unemp_rate                                  -136
-## - Residence_house_ratio                             -135
-## - Malignant_neoplasm_intestine_mortality_rate_2015  -134
-## - pop_Working_Age_pop_Ratio_2020                    -133
-## 
-## Step:  AIC=-147.96
-## LE_2015 ~ Treatment_rate_Outpatient_Cerebrovascular_dz_2017 + 
-##     pop_oldElderly_pop_Ratio_2020 + pop_Working_Age_pop_Ratio_2020 + 
-##     Natural_environment_annual_avg_temperature + Labor_Unemp_rate + 
-##     Residence_Num_of_city_parks + Hypertension_Outpatient_2014 + 
-##     Malignant_neoplasm_intestine_mortality_rate_2015 + Volunteer_Activity_Rate_total + 
-##     Treatment_rate_outpatient_heart_dz_2017 + Residence_house_ratio + 
-##     Num_of_clinics_2019 + High_barrier_free_handrails_2018 + 
-##     Num_of_cardiologists_2020 + Household_Smartphone_ownership_quantity + 
-##     Volunteer_for_the_Elderly
-## 
-##                                                     Df Sum of Sq   RSS
-## - High_barrier_free_handrails_2018                   1     0.001 0.980
-## - Num_of_clinics_2019                                1     0.002 0.980
-## - Num_of_cardiologists_2020                          1     0.002 0.981
-## &lt;none&gt;                                                           0.979
-## - Hypertension_Outpatient_2014                       1     0.065 1.044
-## - Household_Smartphone_ownership_quantity            1     0.066 1.045
-## - Residence_Num_of_city_parks                        1     0.110 1.089
-## - Treatment_rate_outpatient_heart_dz_2017            1     0.117 1.096
-## - Volunteer_Activity_Rate_total                      1     0.130 1.109
-## - Natural_environment_annual_avg_temperature         1     0.138 1.117
-## - Volunteer_for_the_Elderly                          1     0.192 1.171
-## - pop_oldElderly_pop_Ratio_2020                      1     0.210 1.189
-## - Treatment_rate_Outpatient_Cerebrovascular_dz_2017  1     0.265 1.244
-## - Residence_house_ratio                              1     0.306 1.285
-## - Labor_Unemp_rate                                   1     0.355 1.334
-## - pop_Working_Age_pop_Ratio_2020                     1     0.375 1.354
-## - Malignant_neoplasm_intestine_mortality_rate_2015   1     0.455 1.433
-##                                                      AIC
-## - High_barrier_free_handrails_2018                  -150
-## - Num_of_clinics_2019                               -150
-## - Num_of_cardiologists_2020                         -150
-## &lt;none&gt;                                              -148
-## - Hypertension_Outpatient_2014                      -147
-## - Household_Smartphone_ownership_quantity           -147
-## - Residence_Num_of_city_parks                       -145
-## - Treatment_rate_outpatient_heart_dz_2017           -145
-## - Volunteer_Activity_Rate_total                     -144
-## - Natural_environment_annual_avg_temperature        -144
-## - Volunteer_for_the_Elderly                         -142
-## - pop_oldElderly_pop_Ratio_2020                     -141
-## - Treatment_rate_Outpatient_Cerebrovascular_dz_2017 -139
-## - Residence_house_ratio                             -137
-## - Labor_Unemp_rate                                  -135
-## - pop_Working_Age_pop_Ratio_2020                    -135
-## - Malignant_neoplasm_intestine_mortality_rate_2015  -132
-## 
-## Step:  AIC=-149.89
-## LE_2015 ~ Treatment_rate_Outpatient_Cerebrovascular_dz_2017 + 
-##     pop_oldElderly_pop_Ratio_2020 + pop_Working_Age_pop_Ratio_2020 + 
-##     Natural_environment_annual_avg_temperature + Labor_Unemp_rate + 
-##     Residence_Num_of_city_parks + Hypertension_Outpatient_2014 + 
-##     Malignant_neoplasm_intestine_mortality_rate_2015 + Volunteer_Activity_Rate_total + 
-##     Treatment_rate_outpatient_heart_dz_2017 + Residence_house_ratio + 
-##     Num_of_clinics_2019 + Num_of_cardiologists_2020 + Household_Smartphone_ownership_quantity + 
-##     Volunteer_for_the_Elderly
-## 
-##                                                     Df Sum of Sq   RSS
-## - Num_of_cardiologists_2020                          1     0.001 0.981
-## - Num_of_clinics_2019                                1     0.004 0.985
-## &lt;none&gt;                                                           0.980
-## - Household_Smartphone_ownership_quantity            1     0.070 1.051
-## - Residence_Num_of_city_parks                        1     0.112 1.092
-## - Treatment_rate_outpatient_heart_dz_2017            1     0.129 1.109
-## - Natural_environment_annual_avg_temperature         1     0.138 1.118
-## - Volunteer_Activity_Rate_total                      1     0.156 1.136
-## - Volunteer_for_the_Elderly                          1     0.218 1.198
-## - pop_oldElderly_pop_Ratio_2020                      1     0.236 1.217
-## - Treatment_rate_Outpatient_Cerebrovascular_dz_2017  1     0.268 1.248
-## - Hypertension_Outpatient_2014                       1     0.275 1.256
-## - Residence_house_ratio                              1     0.354 1.334
-## - pop_Working_Age_pop_Ratio_2020                     1     0.402 1.382
-## - Malignant_neoplasm_intestine_mortality_rate_2015   1     0.460 1.440
-## - Labor_Unemp_rate                                   1     0.598 1.578
-##                                                      AIC
-## - Num_of_cardiologists_2020                         -152
-## - Num_of_clinics_2019                               -152
-## &lt;none&gt;                                              -150
-## - Household_Smartphone_ownership_quantity           -149
-## - Residence_Num_of_city_parks                       -147
-## - Treatment_rate_outpatient_heart_dz_2017           -146
-## - Natural_environment_annual_avg_temperature        -146
-## - Volunteer_Activity_Rate_total                     -145
-## - Volunteer_for_the_Elderly                         -142
-## - pop_oldElderly_pop_Ratio_2020                     -142
-## - Treatment_rate_Outpatient_Cerebrovascular_dz_2017 -140
-## - Hypertension_Outpatient_2014                      -140
-## - Residence_house_ratio                             -137
-## - pop_Working_Age_pop_Ratio_2020                    -136
-## - Malignant_neoplasm_intestine_mortality_rate_2015  -134
-## - Labor_Unemp_rate                                  -130
-## 
-## Step:  AIC=-151.85
-## LE_2015 ~ Treatment_rate_Outpatient_Cerebrovascular_dz_2017 + 
-##     pop_oldElderly_pop_Ratio_2020 + pop_Working_Age_pop_Ratio_2020 + 
-##     Natural_environment_annual_avg_temperature + Labor_Unemp_rate + 
-##     Residence_Num_of_city_parks + Hypertension_Outpatient_2014 + 
-##     Malignant_neoplasm_intestine_mortality_rate_2015 + Volunteer_Activity_Rate_total + 
-##     Treatment_rate_outpatient_heart_dz_2017 + Residence_house_ratio + 
-##     Num_of_clinics_2019 + Household_Smartphone_ownership_quantity + 
-##     Volunteer_for_the_Elderly
-## 
-##                                                     Df Sum of Sq   RSS
-## - Num_of_clinics_2019                                1     0.007 0.988
-## &lt;none&gt;                                                           0.981
-## - Household_Smartphone_ownership_quantity            1     0.071 1.052
-## - Residence_Num_of_city_parks                        1     0.111 1.092
-## - Treatment_rate_outpatient_heart_dz_2017            1     0.128 1.109
-## - Natural_environment_annual_avg_temperature         1     0.138 1.119
-## - Volunteer_Activity_Rate_total                      1     0.159 1.140
-## - Volunteer_for_the_Elderly                          1     0.236 1.217
-## - pop_oldElderly_pop_Ratio_2020                      1     0.254 1.236
-## - Treatment_rate_Outpatient_Cerebrovascular_dz_2017  1     0.275 1.256
-## - Residence_house_ratio                              1     0.370 1.351
-## - Hypertension_Outpatient_2014                       1     0.403 1.385
-## - pop_Working_Age_pop_Ratio_2020                     1     0.461 1.442
-## - Malignant_neoplasm_intestine_mortality_rate_2015   1     0.471 1.452
-## - Labor_Unemp_rate                                   1     0.627 1.608
-##                                                      AIC
-## - Num_of_clinics_2019                               -154
-## &lt;none&gt;                                              -152
-## - Household_Smartphone_ownership_quantity           -151
-## - Residence_Num_of_city_parks                       -149
-## - Treatment_rate_outpatient_heart_dz_2017           -148
-## - Natural_environment_annual_avg_temperature        -148
-## - Volunteer_Activity_Rate_total                     -147
-## - Volunteer_for_the_Elderly                         -144
-## - pop_oldElderly_pop_Ratio_2020                     -143
-## - Treatment_rate_Outpatient_Cerebrovascular_dz_2017 -142
-## - Residence_house_ratio                             -139
-## - Hypertension_Outpatient_2014                      -138
-## - pop_Working_Age_pop_Ratio_2020                    -136
-## - Malignant_neoplasm_intestine_mortality_rate_2015  -135
-## - Labor_Unemp_rate                                  -131
-## 
-## Step:  AIC=-153.52
-## LE_2015 ~ Treatment_rate_Outpatient_Cerebrovascular_dz_2017 + 
-##     pop_oldElderly_pop_Ratio_2020 + pop_Working_Age_pop_Ratio_2020 + 
-##     Natural_environment_annual_avg_temperature + Labor_Unemp_rate + 
-##     Residence_Num_of_city_parks + Hypertension_Outpatient_2014 + 
-##     Malignant_neoplasm_intestine_mortality_rate_2015 + Volunteer_Activity_Rate_total + 
-##     Treatment_rate_outpatient_heart_dz_2017 + Residence_house_ratio + 
-##     Household_Smartphone_ownership_quantity + Volunteer_for_the_Elderly
-## 
-##                                                     Df Sum of Sq   RSS
-## &lt;none&gt;                                                           0.988
-## - Household_Smartphone_ownership_quantity            1     0.064 1.052
-## - Residence_Num_of_city_parks                        1     0.107 1.095
-## - Treatment_rate_outpatient_heart_dz_2017            1     0.128 1.116
-## - Volunteer_Activity_Rate_total                      1     0.153 1.141
-## - Natural_environment_annual_avg_temperature         1     0.174 1.162
-## - Volunteer_for_the_Elderly                          1     0.229 1.218
-## - Treatment_rate_Outpatient_Cerebrovascular_dz_2017  1     0.273 1.261
-## - pop_oldElderly_pop_Ratio_2020                      1     0.302 1.291
-## - Residence_house_ratio                              1     0.385 1.373
-## - Hypertension_Outpatient_2014                       1     0.400 1.388
-## - pop_Working_Age_pop_Ratio_2020                     1     0.459 1.447
-## - Malignant_neoplasm_intestine_mortality_rate_2015   1     0.530 1.519
-## - Labor_Unemp_rate                                   1     0.627 1.615
-##                                                      AIC
-## &lt;none&gt;                                              -154
-## - Household_Smartphone_ownership_quantity           -153
-## - Residence_Num_of_city_parks                       -151
-## - Treatment_rate_outpatient_heart_dz_2017           -150
-## - Volunteer_Activity_Rate_total                     -149
-## - Natural_environment_annual_avg_temperature        -148
-## - Volunteer_for_the_Elderly                         -146
-## - Treatment_rate_Outpatient_Cerebrovascular_dz_2017 -144
-## - pop_oldElderly_pop_Ratio_2020                     -143
-## - Residence_house_ratio                             -140
-## - Hypertension_Outpatient_2014                      -140
-## - pop_Working_Age_pop_Ratio_2020                    -138
-## - Malignant_neoplasm_intestine_mortality_rate_2015  -135
-## - Labor_Unemp_rate                                  -132</code></pre>
-<div id="htmlwidget-19b9be5b0a7610d4ac45" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-19b9be5b0a7610d4ac45">{"x":{"filter":"none","data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14"],["(Intercept)","Treatment_rate_Outpatient_Cerebrovascular_dz_2017","pop_oldElderly_pop_Ratio_2020","pop_Working_Age_pop_Ratio_2020","Natural_environment_annual_avg_temperature","Labor_Unemp_rate","Residence_Num_of_city_parks","Hypertension_Outpatient_2014","Malignant_neoplasm_intestine_mortality_rate_2015","Volunteer_Activity_Rate_total","Treatment_rate_outpatient_heart_dz_2017","Residence_house_ratio","Household_Smartphone_ownership_quantity","Volunteer_for_the_Elderly"],[null,"受療率_外来_脳血管疾患_2017","人口・世帯_老年人口割合2020","人口・世帯_生産年齢人口割合2020","自然環境_年平均気温","労働_完全失業率","居住_都市公園数(可住地面積100k㎡当たり)","高血圧疾患_外来2014年","悪性新生物(大腸)_年齢調整死亡率2015","ボランティア総行動率−総数","受療率_外来_心疾患_2017","居住_一戸建住宅比率","家計_スマートフォン所有数量（千世帯当たり）","ボランティア総行動率−高齢者を対象とした活動"],[111.916533699421,-0.00331170247124334,-0.169677397750907,-0.253327117138818,-0.0534243795469408,-0.251081080444542,0.000985463831624263,-0.0203463400537668,-0.0966364342684172,-0.0389347236520692,-0.00245118642995372,-0.0271409838576055,0.000673646494410042,0.1343657833261],[20.5210097636132,-3.0178220428614,-3.1778895176958,-3.91659409056478,-2.40850847507536,-4.57518178005187,1.89101488810073,-3.65411416479276,-4.20883592326749,-2.26218960345903,-2.06969628148003,-3.58479048088008,1.46324947370801,2.76781262306675],[2.32863918749064e-20,0.0048781671535293,0.00321504639634223,0.000426066889071519,0.0217629083261675,6.41296950473287e-05,0.0674285636948969,0.000887546171439227,0.000185298443849895,0.0303949586639162,0.0463832532347599,0.00107456073497579,0.152859635130392,0.00918135203749451]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>term<\/th>\n      <th>var_name_Jpn<\/th>\n      <th>estimate<\/th>\n      <th>statistic<\/th>\n      <th>p.value<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[3,4,5]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false,"rowCallback":"function(row, data) {\nDTWidget.formatRound(this, row, data, 3, 3, 3, ',', '.');\nDTWidget.formatRound(this, row, data, 4, 3, 3, ',', '.');\nDTWidget.formatRound(this, row, data, 5, 3, 3, ',', '.');\n}"}},"evals":["options.rowCallback"],"jsHooks":[]}</script>
 </div>
 <div id="regression-hle_d_f_final-女性健康寿命" class="section level2" number="2.2">
 <h2 number="2.2"><span class="header-section-number">2.2</span> regression <code>HLE_d_f_final</code>: 女性、健康寿命</h2>
@@ -3084,8 +2848,8 @@ lm(HLE_2016~. , data = HLE_d_f_final) %&gt;%
   broom::tidy() %&gt;%
   left_join(var, by=c(&quot;term&quot;=&quot;var_name_Eng&quot;)) %&gt;%
   select(term, var_name_Jpn, everything(), -id,- address, -std.error, -columm_letter ) %&gt;% DT::datatable() %&gt;% DT::formatRound(columns=c(&#39;estimate&#39;, &#39;statistic&#39;, &quot;p.value&quot;), digits=3)</code></pre>
-<div id="htmlwidget-291d8983ce3dc66a0460" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-291d8983ce3dc66a0460">{"x":{"filter":"none","data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18"],["(Intercept)","Treatment_rate_Outpatient_Cerebrovascular_dz_2017","pop_oldElderly_pop_Ratio_2020","pop_Working_Age_pop_Ratio_2020","Natural_environment_annual_avg_temperature","Labor_Unemp_rate","Residence_Num_of_city_parks","Hypertension_Outpatient_2014","Malignant_neoplasm_intestine_mortality_rate_2015","Volunteer_Activity_Rate_total","Treatment_rate_outpatient_heart_dz_2017","Residence_house_ratio","Under_75_Adjusted_Mortality_Evil_Neoplasms_2019","Num_of_clinics_2019","High_barrier_free_handrails_2018","Num_of_cardiologists_2020","Household_Smartphone_ownership_quantity","Volunteer_for_the_Elderly"],[null,"受療率_外来_脳血管疾患_2017","人口・世帯_老年人口割合2020","人口・世帯_生産年齢人口割合2020","自然環境_年平均気温","労働_完全失業率","居住_都市公園数(可住地面積100k㎡当たり)","高血圧疾患_外来2014年","悪性新生物(大腸)_年齢調整死亡率2015","ボランティア総行動率−総数","受療率_外来_心疾患_2017","居住_一戸建住宅比率","75歳未満調整死亡率_悪政新生物_2019","診療所数_2019","バリアフリー_手すりがある2018","循環器専門医数_2020","家計_スマートフォン所有数量（千世帯当たり）","ボランティア総行動率−高齢者を対象とした活動"],[52.2637203255258,-0.00535461318304195,0.254332360908348,0.354091526628453,0.294431825112213,-0.290529200621696,-7.05304008526463e-05,0.138094624956156,0.172034809850287,0.0164376165266271,-0.00435845215284577,0.0703337109232855,-0.0963760216719681,-0.0319773160302875,-8.59247536830326e-06,0.00192832848989347,-0.00599650242519185,-0.188184683786997],[5.02356204850369,-2.75644754416905,2.24930240475937,2.74984023922685,7.02571991181712,-2.11623748074829,-0.0755960669435441,4.93880043941028,3.60842392590712,0.443714366115951,-2.04285485235739,4.51339252337524,-4.41141922849397,-4.59765763732139,-4.61607806519561,4.37487434425603,-6.01983097198267,-1.63255788072977],[2.37581266900569e-05,0.00999851337168197,0.0322559772002784,0.0101590502164271,9.99546139009014e-08,0.0430287657010402,0.940259566868707,3.00699571293915e-05,0.00114499968094956,0.66054220084539,0.0502494697639545,9.78452211073869e-05,0.000129662795496436,7.74979202726055e-05,7.36436451441353e-05,0.000143403172109549,1.50846872470843e-06,0.113374757233178]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>term<\/th>\n      <th>var_name_Jpn<\/th>\n      <th>estimate<\/th>\n      <th>statistic<\/th>\n      <th>p.value<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[3,4,5]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false,"rowCallback":"function(row, data) {\nDTWidget.formatRound(this, row, data, 3, 3, 3, ',', '.');\nDTWidget.formatRound(this, row, data, 4, 3, 3, ',', '.');\nDTWidget.formatRound(this, row, data, 5, 3, 3, ',', '.');\n}"}},"evals":["options.rowCallback"],"jsHooks":[]}</script>
+<div id="htmlwidget-19b9be5b0a7610d4ac45" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-19b9be5b0a7610d4ac45">{"x":{"filter":"none","data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18"],["(Intercept)","Treatment_rate_Outpatient_Cerebrovascular_dz_2017","pop_oldElderly_pop_Ratio_2020","pop_Working_Age_pop_Ratio_2020","Natural_environment_annual_avg_temperature","Labor_Unemp_rate","Residence_Num_of_city_parks","Hypertension_Outpatient_2014","Malignant_neoplasm_intestine_mortality_rate_2015","Volunteer_Activity_Rate_total","Treatment_rate_outpatient_heart_dz_2017","Residence_house_ratio","Under_75_Adjusted_Mortality_Evil_Neoplasms_2019","Num_of_clinics_2019","High_barrier_free_handrails_2018","Num_of_cardiologists_2020","Household_Smartphone_ownership_quantity","Volunteer_for_the_Elderly"],[null,"受療率_外来_脳血管疾患_2017","人口・世帯_老年人口割合2020","人口・世帯_生産年齢人口割合2020","自然環境_年平均気温","労働_完全失業率","居住_都市公園数(可住地面積100k㎡当たり)","高血圧疾患_外来2014年","悪性新生物(大腸)_年齢調整死亡率2015","ボランティア総行動率−総数","受療率_外来_心疾患_2017","居住_一戸建住宅比率","75歳未満調整死亡率_悪政新生物_2019","診療所数_2019","バリアフリー_手すりがある2018","循環器専門医数_2020","家計_スマートフォン所有数量（千世帯当たり）","ボランティア総行動率−高齢者を対象とした活動"],[52.2637203255258,-0.00535461318304195,0.254332360908348,0.354091526628453,0.294431825112213,-0.290529200621696,-7.05304008526463e-05,0.138094624956156,0.172034809850287,0.0164376165266271,-0.00435845215284577,0.0703337109232855,-0.0963760216719681,-0.0319773160302875,-8.59247536830326e-06,0.00192832848989347,-0.00599650242519185,-0.188184683786997],[5.02356204850369,-2.75644754416905,2.24930240475937,2.74984023922685,7.02571991181712,-2.11623748074829,-0.0755960669435441,4.93880043941028,3.60842392590712,0.443714366115951,-2.04285485235739,4.51339252337524,-4.41141922849397,-4.59765763732139,-4.61607806519561,4.37487434425603,-6.01983097198267,-1.63255788072977],[2.37581266900569e-05,0.00999851337168197,0.0322559772002784,0.0101590502164271,9.99546139009014e-08,0.0430287657010402,0.940259566868707,3.00699571293915e-05,0.00114499968094956,0.66054220084539,0.0502494697639545,9.78452211073869e-05,0.000129662795496436,7.74979202726055e-05,7.36436451441353e-05,0.000143403172109549,1.50846872470843e-06,0.113374757233178]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>term<\/th>\n      <th>var_name_Jpn<\/th>\n      <th>estimate<\/th>\n      <th>statistic<\/th>\n      <th>p.value<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[3,4,5]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false,"rowCallback":"function(row, data) {\nDTWidget.formatRound(this, row, data, 3, 3, 3, ',', '.');\nDTWidget.formatRound(this, row, data, 4, 3, 3, ',', '.');\nDTWidget.formatRound(this, row, data, 5, 3, 3, ',', '.');\n}"}},"evals":["options.rowCallback"],"jsHooks":[]}</script>
 </div>
 <div id="regression-le_d_m_final-男性平均寿命" class="section level2" number="2.3">
 <h2 number="2.3"><span class="header-section-number">2.3</span> regression <code>LE_d_m_final</code>: 男性、平均寿命</h2>
@@ -3106,8 +2870,8 @@ lm(LE_2015~. , data = LE_d_m_final) %&gt;%
   broom::tidy() %&gt;%
   left_join(var, by=c(&quot;term&quot;=&quot;var_name_Eng&quot;)) %&gt;%
   select(term, var_name_Jpn, everything(), -id,- address, -std.error, -columm_letter ) %&gt;% DT::datatable() %&gt;% DT::formatRound(columns=c(&#39;estimate&#39;, &#39;statistic&#39;, &quot;p.value&quot;), digits=3)</code></pre>
-<div id="htmlwidget-303ceee3ab12da1255d9" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-303ceee3ab12da1255d9">{"x":{"filter":"none","data":[["1","2","3","4","5","6","7","8","9","10","11"],["(Intercept)","Medical_treatment_rate_hospitalization_heart_dz_2017","Natural_environment_annual_avg_temperature","HM_Num_of_public_health_nurses_per_100k_pop","Household_Savings","pop_Household_Ratio_of_elderly_single_person_households","Malignant_neoplasm_intestine_mortality_rate_2015","Self_development_PC_etc","Usual_barrier_free_rate_2018","Self_development_art_culture","Self_development_languages_other_than_Eng"],[null,"受療率_入院_心疾患_2017","自然環境_年平均気温","健康・医療_保健師数（人口10万人当たり）","家計_貯蓄現在高","人口・世帯_高齢単身者世帯の割合","悪性新生物(大腸)_年齢調整死亡率2015","自己啓発・訓練−パソコンなどの情報処理","一定のバリアフリー化率_2018","自己啓発・訓練−芸術・文化","自己啓発・訓練−英語以外の外国語"],[79.5637694584989,0.00372299483013298,0.0607854151276084,0.0115606394425348,3.78937782101947e-05,-0.100663956600129,-0.104834182353147,0.0844954380419265,0.0131653005190781,0.00650705874862777,0.0998521502813722],[58.0128701941276,1.39849658204012,3.16587216302918,2.767336707047,2.36744229383996,-3.83254785526818,-5.42835719798518,2.660585319777,0.798654997890558,0.148338758682199,1.70434036801624],[3.68429024372824e-37,0.170519963209665,0.00314259816537182,0.0088683397560366,0.0234063048013033,0.000489980865018537,4.03753594796222e-06,0.0115766394739077,0.429728118891827,0.882903221425994,0.0969353096351666]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>term<\/th>\n      <th>var_name_Jpn<\/th>\n      <th>estimate<\/th>\n      <th>statistic<\/th>\n      <th>p.value<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[3,4,5]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false,"rowCallback":"function(row, data) {\nDTWidget.formatRound(this, row, data, 3, 3, 3, ',', '.');\nDTWidget.formatRound(this, row, data, 4, 3, 3, ',', '.');\nDTWidget.formatRound(this, row, data, 5, 3, 3, ',', '.');\n}"}},"evals":["options.rowCallback"],"jsHooks":[]}</script>
+<div id="htmlwidget-291d8983ce3dc66a0460" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-291d8983ce3dc66a0460">{"x":{"filter":"none","data":[["1","2","3","4","5","6","7","8","9","10","11"],["(Intercept)","Medical_treatment_rate_hospitalization_heart_dz_2017","Natural_environment_annual_avg_temperature","HM_Num_of_public_health_nurses_per_100k_pop","Household_Savings","pop_Household_Ratio_of_elderly_single_person_households","Malignant_neoplasm_intestine_mortality_rate_2015","Self_development_PC_etc","Usual_barrier_free_rate_2018","Self_development_art_culture","Self_development_languages_other_than_Eng"],[null,"受療率_入院_心疾患_2017","自然環境_年平均気温","健康・医療_保健師数（人口10万人当たり）","家計_貯蓄現在高","人口・世帯_高齢単身者世帯の割合","悪性新生物(大腸)_年齢調整死亡率2015","自己啓発・訓練−パソコンなどの情報処理","一定のバリアフリー化率_2018","自己啓発・訓練−芸術・文化","自己啓発・訓練−英語以外の外国語"],[79.5637694584989,0.00372299483013298,0.0607854151276084,0.0115606394425348,3.78937782101947e-05,-0.100663956600129,-0.104834182353147,0.0844954380419265,0.0131653005190781,0.00650705874862777,0.0998521502813722],[58.0128701941276,1.39849658204012,3.16587216302918,2.767336707047,2.36744229383996,-3.83254785526818,-5.42835719798518,2.660585319777,0.798654997890558,0.148338758682199,1.70434036801624],[3.68429024372824e-37,0.170519963209665,0.00314259816537182,0.0088683397560366,0.0234063048013033,0.000489980865018537,4.03753594796222e-06,0.0115766394739077,0.429728118891827,0.882903221425994,0.0969353096351666]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>term<\/th>\n      <th>var_name_Jpn<\/th>\n      <th>estimate<\/th>\n      <th>statistic<\/th>\n      <th>p.value<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[3,4,5]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false,"rowCallback":"function(row, data) {\nDTWidget.formatRound(this, row, data, 3, 3, 3, ',', '.');\nDTWidget.formatRound(this, row, data, 4, 3, 3, ',', '.');\nDTWidget.formatRound(this, row, data, 5, 3, 3, ',', '.');\n}"}},"evals":["options.rowCallback"],"jsHooks":[]}</script>
 </div>
 <div id="regression-hle_d_m_final-男性健康寿命" class="section level2" number="2.4">
 <h2 number="2.4"><span class="header-section-number">2.4</span> regression <code>HLE_d_m_final</code>: 男性、健康寿命</h2>
@@ -3128,742 +2892,31 @@ lm(HLE_2016~. , data = HLE_d_m_final) %&gt;%
   broom::tidy() %&gt;%
   left_join(var, by=c(&quot;term&quot;=&quot;var_name_Eng&quot;)) %&gt;%
   select(term, var_name_Jpn, everything(), -id,- address, -std.error, -columm_letter ) %&gt;% DT::datatable() %&gt;% DT::formatRound(columns=c(&#39;estimate&#39;, &#39;statistic&#39;, &quot;p.value&quot;), digits=3)</code></pre>
+<div id="htmlwidget-303ceee3ab12da1255d9" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-303ceee3ab12da1255d9">{"x":{"filter":"none","data":[["1","2","3","4","5","6","7","8","9","10","11"],["(Intercept)","Medical_treatment_rate_hospitalization_heart_dz_2017","Natural_environment_annual_avg_temperature","HM_Num_of_public_health_nurses_per_100k_pop","Household_Savings","pop_Household_Ratio_of_elderly_single_person_households","Malignant_neoplasm_intestine_mortality_rate_2015","Self_development_PC_etc","Usual_barrier_free_rate_2018","Self_development_art_culture","Self_development_languages_other_than_Eng"],[null,"受療率_入院_心疾患_2017","自然環境_年平均気温","健康・医療_保健師数（人口10万人当たり）","家計_貯蓄現在高","人口・世帯_高齢単身者世帯の割合","悪性新生物(大腸)_年齢調整死亡率2015","自己啓発・訓練−パソコンなどの情報処理","一定のバリアフリー化率_2018","自己啓発・訓練−芸術・文化","自己啓発・訓練−英語以外の外国語"],[75.9619377137128,0.000212949783241076,0.00306488640883872,0.00494957537171087,4.8830256942874e-05,-0.155731274640903,-0.0634261731506629,-0.0158474262224288,-0.0253239929474241,-0.1243760362056,0.204782419386962],[28.7981137885383,0.0415915575838279,0.0829979521173881,0.616037423285712,1.58620570982543,-3.08282189362351,-1.7076270287095,-0.259454778427491,-0.798766103713094,-1.47423131133857,1.81740025567499],[1.87787517190299e-26,0.967054126420919,0.93431295959797,0.541745652859099,0.121438610863519,0.00392123976543047,0.0963172011673007,0.796762377133173,0.429664507698035,0.149111151151662,0.0774870635281317]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>term<\/th>\n      <th>var_name_Jpn<\/th>\n      <th>estimate<\/th>\n      <th>statistic<\/th>\n      <th>p.value<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[3,4,5]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false,"rowCallback":"function(row, data) {\nDTWidget.formatRound(this, row, data, 3, 3, 3, ',', '.');\nDTWidget.formatRound(this, row, data, 4, 3, 3, ',', '.');\nDTWidget.formatRound(this, row, data, 5, 3, 3, ',', '.');\n}"}},"evals":["options.rowCallback"],"jsHooks":[]}</script>
+</div>
+</div>
+<div id="q1fa-and-interprete" class="section level1" number="3">
+<h1 number="3"><span class="header-section-number">3</span> Q1:FA and interprete</h1>
+<ul>
+<li>女性説明変数 : X_f</li>
+</ul>
+<pre class="r"><code>LE_d_f_final.reg&lt;-lm(LE_2015~. , data = LE_d_f_final)
+LE_d_f_final.reg$model[,-1] %&gt;%DT::datatable()</code></pre>
 <div id="htmlwidget-17bc4c74729246334bab" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-17bc4c74729246334bab">{"x":{"filter":"none","data":[["1","2","3","4","5","6","7","8","9","10","11"],["(Intercept)","Medical_treatment_rate_hospitalization_heart_dz_2017","Natural_environment_annual_avg_temperature","HM_Num_of_public_health_nurses_per_100k_pop","Household_Savings","pop_Household_Ratio_of_elderly_single_person_households","Malignant_neoplasm_intestine_mortality_rate_2015","Self_development_PC_etc","Usual_barrier_free_rate_2018","Self_development_art_culture","Self_development_languages_other_than_Eng"],[null,"受療率_入院_心疾患_2017","自然環境_年平均気温","健康・医療_保健師数（人口10万人当たり）","家計_貯蓄現在高","人口・世帯_高齢単身者世帯の割合","悪性新生物(大腸)_年齢調整死亡率2015","自己啓発・訓練−パソコンなどの情報処理","一定のバリアフリー化率_2018","自己啓発・訓練−芸術・文化","自己啓発・訓練−英語以外の外国語"],[75.9619377137128,0.000212949783241076,0.00306488640883872,0.00494957537171087,4.8830256942874e-05,-0.155731274640903,-0.0634261731506629,-0.0158474262224288,-0.0253239929474241,-0.1243760362056,0.204782419386962],[28.7981137885383,0.0415915575838279,0.0829979521173881,0.616037423285712,1.58620570982543,-3.08282189362351,-1.7076270287095,-0.259454778427491,-0.798766103713094,-1.47423131133857,1.81740025567499],[1.87787517190299e-26,0.967054126420919,0.93431295959797,0.541745652859099,0.121438610863519,0.00392123976543047,0.0963172011673007,0.796762377133173,0.429664507698035,0.149111151151662,0.0774870635281317]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>term<\/th>\n      <th>var_name_Jpn<\/th>\n      <th>estimate<\/th>\n      <th>statistic<\/th>\n      <th>p.value<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[3,4,5]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false,"rowCallback":"function(row, data) {\nDTWidget.formatRound(this, row, data, 3, 3, 3, ',', '.');\nDTWidget.formatRound(this, row, data, 4, 3, 3, ',', '.');\nDTWidget.formatRound(this, row, data, 5, 3, 3, ',', '.');\n}"}},"evals":["options.rowCallback"],"jsHooks":[]}</script>
-</div>
-</div>
-<div id="section" class="section level1" number="3">
-<h1 number="3"><span class="header-section-number">3</span> —————–# —————–# —————–# —————–# —————–</h1>
-<div id="regression-le_d_f_final-女性平均寿命-1" class="section level2" number="3.1">
-<h2 number="3.1"><span class="header-section-number">3.1</span> regression <code>LE_d_f_final</code>: 女性、平均寿命</h2>
-<pre class="r"><code># -----------------
-# Q1:Do the final regression and interprete : with 4 data
-# -----------------
-# ----------------- ----------------- ----------------- -----------------
-#  _____ _             _   _     __  __
-# |  ___(_)_ __   __ _| | | |   |  \/  |
-# | |_  | | &#39;_ \ / _` | | | |   | |\/| |
-# |  _| | | | | | (_| | | | |___| |  | |
-# |_|   |_|_| |_|\__,_|_| |_____|_|  |_|
-# ----------------- ----------------- ----------------- -----------------
-
-options(digits = 5)              # Modify global options
-
-lm(LE_2015~. , data = LE_d_f_final) %&gt;% MASS::stepAIC() %&gt;%
-  broom::tidy() %&gt;%
-  left_join(var, by=c(&quot;term&quot;=&quot;var_name_Eng&quot;)) %&gt;%
-  select(term, var_name_Jpn, everything(), -id,- address, -std.error, -columm_letter ) %&gt;% DT::datatable() %&gt;% DT::formatRound(columns=c(&#39;estimate&#39;, &#39;statistic&#39;, &quot;p.value&quot;), digits=3)</code></pre>
-<pre><code>## Start:  AIC=-145.98
-## LE_2015 ~ Treatment_rate_Outpatient_Cerebrovascular_dz_2017 + 
-##     pop_oldElderly_pop_Ratio_2020 + pop_Working_Age_pop_Ratio_2020 + 
-##     Natural_environment_annual_avg_temperature + Labor_Unemp_rate + 
-##     Residence_Num_of_city_parks + Hypertension_Outpatient_2014 + 
-##     Malignant_neoplasm_intestine_mortality_rate_2015 + Volunteer_Activity_Rate_total + 
-##     Treatment_rate_outpatient_heart_dz_2017 + Residence_house_ratio + 
-##     Under_75_Adjusted_Mortality_Evil_Neoplasms_2019 + Num_of_clinics_2019 + 
-##     High_barrier_free_handrails_2018 + Num_of_cardiologists_2020 + 
-##     Household_Smartphone_ownership_quantity + Volunteer_for_the_Elderly
-## 
-##                                                     Df Sum of Sq   RSS
-## - Under_75_Adjusted_Mortality_Evil_Neoplasms_2019    1     0.000 0.979
-## - High_barrier_free_handrails_2018                   1     0.001 0.980
-## - Num_of_cardiologists_2020                          1     0.001 0.980
-## - Num_of_clinics_2019                                1     0.002 0.980
-## &lt;none&gt;                                                           0.978
-## - Household_Smartphone_ownership_quantity            1     0.046 1.024
-## - Hypertension_Outpatient_2014                       1     0.065 1.043
-## - Volunteer_Activity_Rate_total                      1     0.099 1.077
-## - Residence_Num_of_city_parks                        1     0.108 1.086
-## - Treatment_rate_outpatient_heart_dz_2017            1     0.117 1.096
-## - Volunteer_for_the_Elderly                          1     0.128 1.106
-## - Natural_environment_annual_avg_temperature         1     0.135 1.114
-## - pop_oldElderly_pop_Ratio_2020                      1     0.194 1.172
-## - Treatment_rate_Outpatient_Cerebrovascular_dz_2017  1     0.265 1.243
-## - Labor_Unemp_rate                                   1     0.298 1.276
-## - Residence_house_ratio                              1     0.306 1.285
-## - Malignant_neoplasm_intestine_mortality_rate_2015   1     0.350 1.329
-## - pop_Working_Age_pop_Ratio_2020                     1     0.358 1.336
-##                                                      AIC
-## - Under_75_Adjusted_Mortality_Evil_Neoplasms_2019   -148
-## - High_barrier_free_handrails_2018                  -148
-## - Num_of_cardiologists_2020                         -148
-## - Num_of_clinics_2019                               -148
-## &lt;none&gt;                                              -146
-## - Household_Smartphone_ownership_quantity           -146
-## - Hypertension_Outpatient_2014                      -145
-## - Volunteer_Activity_Rate_total                     -144
-## - Residence_Num_of_city_parks                       -143
-## - Treatment_rate_outpatient_heart_dz_2017           -143
-## - Volunteer_for_the_Elderly                         -142
-## - Natural_environment_annual_avg_temperature        -142
-## - pop_oldElderly_pop_Ratio_2020                     -140
-## - Treatment_rate_Outpatient_Cerebrovascular_dz_2017 -137
-## - Labor_Unemp_rate                                  -136
-## - Residence_house_ratio                             -135
-## - Malignant_neoplasm_intestine_mortality_rate_2015  -134
-## - pop_Working_Age_pop_Ratio_2020                    -133
-## 
-## Step:  AIC=-147.96
-## LE_2015 ~ Treatment_rate_Outpatient_Cerebrovascular_dz_2017 + 
-##     pop_oldElderly_pop_Ratio_2020 + pop_Working_Age_pop_Ratio_2020 + 
-##     Natural_environment_annual_avg_temperature + Labor_Unemp_rate + 
-##     Residence_Num_of_city_parks + Hypertension_Outpatient_2014 + 
-##     Malignant_neoplasm_intestine_mortality_rate_2015 + Volunteer_Activity_Rate_total + 
-##     Treatment_rate_outpatient_heart_dz_2017 + Residence_house_ratio + 
-##     Num_of_clinics_2019 + High_barrier_free_handrails_2018 + 
-##     Num_of_cardiologists_2020 + Household_Smartphone_ownership_quantity + 
-##     Volunteer_for_the_Elderly
-## 
-##                                                     Df Sum of Sq   RSS
-## - High_barrier_free_handrails_2018                   1     0.001 0.980
-## - Num_of_clinics_2019                                1     0.002 0.980
-## - Num_of_cardiologists_2020                          1     0.002 0.981
-## &lt;none&gt;                                                           0.979
-## - Hypertension_Outpatient_2014                       1     0.065 1.044
-## - Household_Smartphone_ownership_quantity            1     0.066 1.045
-## - Residence_Num_of_city_parks                        1     0.110 1.089
-## - Treatment_rate_outpatient_heart_dz_2017            1     0.117 1.096
-## - Volunteer_Activity_Rate_total                      1     0.130 1.109
-## - Natural_environment_annual_avg_temperature         1     0.138 1.117
-## - Volunteer_for_the_Elderly                          1     0.192 1.171
-## - pop_oldElderly_pop_Ratio_2020                      1     0.210 1.189
-## - Treatment_rate_Outpatient_Cerebrovascular_dz_2017  1     0.265 1.244
-## - Residence_house_ratio                              1     0.306 1.285
-## - Labor_Unemp_rate                                   1     0.355 1.334
-## - pop_Working_Age_pop_Ratio_2020                     1     0.375 1.354
-## - Malignant_neoplasm_intestine_mortality_rate_2015   1     0.455 1.433
-##                                                      AIC
-## - High_barrier_free_handrails_2018                  -150
-## - Num_of_clinics_2019                               -150
-## - Num_of_cardiologists_2020                         -150
-## &lt;none&gt;                                              -148
-## - Hypertension_Outpatient_2014                      -147
-## - Household_Smartphone_ownership_quantity           -147
-## - Residence_Num_of_city_parks                       -145
-## - Treatment_rate_outpatient_heart_dz_2017           -145
-## - Volunteer_Activity_Rate_total                     -144
-## - Natural_environment_annual_avg_temperature        -144
-## - Volunteer_for_the_Elderly                         -142
-## - pop_oldElderly_pop_Ratio_2020                     -141
-## - Treatment_rate_Outpatient_Cerebrovascular_dz_2017 -139
-## - Residence_house_ratio                             -137
-## - Labor_Unemp_rate                                  -135
-## - pop_Working_Age_pop_Ratio_2020                    -135
-## - Malignant_neoplasm_intestine_mortality_rate_2015  -132
-## 
-## Step:  AIC=-149.89
-## LE_2015 ~ Treatment_rate_Outpatient_Cerebrovascular_dz_2017 + 
-##     pop_oldElderly_pop_Ratio_2020 + pop_Working_Age_pop_Ratio_2020 + 
-##     Natural_environment_annual_avg_temperature + Labor_Unemp_rate + 
-##     Residence_Num_of_city_parks + Hypertension_Outpatient_2014 + 
-##     Malignant_neoplasm_intestine_mortality_rate_2015 + Volunteer_Activity_Rate_total + 
-##     Treatment_rate_outpatient_heart_dz_2017 + Residence_house_ratio + 
-##     Num_of_clinics_2019 + Num_of_cardiologists_2020 + Household_Smartphone_ownership_quantity + 
-##     Volunteer_for_the_Elderly
-## 
-##                                                     Df Sum of Sq   RSS
-## - Num_of_cardiologists_2020                          1     0.001 0.981
-## - Num_of_clinics_2019                                1     0.004 0.985
-## &lt;none&gt;                                                           0.980
-## - Household_Smartphone_ownership_quantity            1     0.070 1.051
-## - Residence_Num_of_city_parks                        1     0.112 1.092
-## - Treatment_rate_outpatient_heart_dz_2017            1     0.129 1.109
-## - Natural_environment_annual_avg_temperature         1     0.138 1.118
-## - Volunteer_Activity_Rate_total                      1     0.156 1.136
-## - Volunteer_for_the_Elderly                          1     0.218 1.198
-## - pop_oldElderly_pop_Ratio_2020                      1     0.236 1.217
-## - Treatment_rate_Outpatient_Cerebrovascular_dz_2017  1     0.268 1.248
-## - Hypertension_Outpatient_2014                       1     0.275 1.256
-## - Residence_house_ratio                              1     0.354 1.334
-## - pop_Working_Age_pop_Ratio_2020                     1     0.402 1.382
-## - Malignant_neoplasm_intestine_mortality_rate_2015   1     0.460 1.440
-## - Labor_Unemp_rate                                   1     0.598 1.578
-##                                                      AIC
-## - Num_of_cardiologists_2020                         -152
-## - Num_of_clinics_2019                               -152
-## &lt;none&gt;                                              -150
-## - Household_Smartphone_ownership_quantity           -149
-## - Residence_Num_of_city_parks                       -147
-## - Treatment_rate_outpatient_heart_dz_2017           -146
-## - Natural_environment_annual_avg_temperature        -146
-## - Volunteer_Activity_Rate_total                     -145
-## - Volunteer_for_the_Elderly                         -142
-## - pop_oldElderly_pop_Ratio_2020                     -142
-## - Treatment_rate_Outpatient_Cerebrovascular_dz_2017 -140
-## - Hypertension_Outpatient_2014                      -140
-## - Residence_house_ratio                             -137
-## - pop_Working_Age_pop_Ratio_2020                    -136
-## - Malignant_neoplasm_intestine_mortality_rate_2015  -134
-## - Labor_Unemp_rate                                  -130
-## 
-## Step:  AIC=-151.85
-## LE_2015 ~ Treatment_rate_Outpatient_Cerebrovascular_dz_2017 + 
-##     pop_oldElderly_pop_Ratio_2020 + pop_Working_Age_pop_Ratio_2020 + 
-##     Natural_environment_annual_avg_temperature + Labor_Unemp_rate + 
-##     Residence_Num_of_city_parks + Hypertension_Outpatient_2014 + 
-##     Malignant_neoplasm_intestine_mortality_rate_2015 + Volunteer_Activity_Rate_total + 
-##     Treatment_rate_outpatient_heart_dz_2017 + Residence_house_ratio + 
-##     Num_of_clinics_2019 + Household_Smartphone_ownership_quantity + 
-##     Volunteer_for_the_Elderly
-## 
-##                                                     Df Sum of Sq   RSS
-## - Num_of_clinics_2019                                1     0.007 0.988
-## &lt;none&gt;                                                           0.981
-## - Household_Smartphone_ownership_quantity            1     0.071 1.052
-## - Residence_Num_of_city_parks                        1     0.111 1.092
-## - Treatment_rate_outpatient_heart_dz_2017            1     0.128 1.109
-## - Natural_environment_annual_avg_temperature         1     0.138 1.119
-## - Volunteer_Activity_Rate_total                      1     0.159 1.140
-## - Volunteer_for_the_Elderly                          1     0.236 1.217
-## - pop_oldElderly_pop_Ratio_2020                      1     0.254 1.236
-## - Treatment_rate_Outpatient_Cerebrovascular_dz_2017  1     0.275 1.256
-## - Residence_house_ratio                              1     0.370 1.351
-## - Hypertension_Outpatient_2014                       1     0.403 1.385
-## - pop_Working_Age_pop_Ratio_2020                     1     0.461 1.442
-## - Malignant_neoplasm_intestine_mortality_rate_2015   1     0.471 1.452
-## - Labor_Unemp_rate                                   1     0.627 1.608
-##                                                      AIC
-## - Num_of_clinics_2019                               -154
-## &lt;none&gt;                                              -152
-## - Household_Smartphone_ownership_quantity           -151
-## - Residence_Num_of_city_parks                       -149
-## - Treatment_rate_outpatient_heart_dz_2017           -148
-## - Natural_environment_annual_avg_temperature        -148
-## - Volunteer_Activity_Rate_total                     -147
-## - Volunteer_for_the_Elderly                         -144
-## - pop_oldElderly_pop_Ratio_2020                     -143
-## - Treatment_rate_Outpatient_Cerebrovascular_dz_2017 -142
-## - Residence_house_ratio                             -139
-## - Hypertension_Outpatient_2014                      -138
-## - pop_Working_Age_pop_Ratio_2020                    -136
-## - Malignant_neoplasm_intestine_mortality_rate_2015  -135
-## - Labor_Unemp_rate                                  -131
-## 
-## Step:  AIC=-153.52
-## LE_2015 ~ Treatment_rate_Outpatient_Cerebrovascular_dz_2017 + 
-##     pop_oldElderly_pop_Ratio_2020 + pop_Working_Age_pop_Ratio_2020 + 
-##     Natural_environment_annual_avg_temperature + Labor_Unemp_rate + 
-##     Residence_Num_of_city_parks + Hypertension_Outpatient_2014 + 
-##     Malignant_neoplasm_intestine_mortality_rate_2015 + Volunteer_Activity_Rate_total + 
-##     Treatment_rate_outpatient_heart_dz_2017 + Residence_house_ratio + 
-##     Household_Smartphone_ownership_quantity + Volunteer_for_the_Elderly
-## 
-##                                                     Df Sum of Sq   RSS
-## &lt;none&gt;                                                           0.988
-## - Household_Smartphone_ownership_quantity            1     0.064 1.052
-## - Residence_Num_of_city_parks                        1     0.107 1.095
-## - Treatment_rate_outpatient_heart_dz_2017            1     0.128 1.116
-## - Volunteer_Activity_Rate_total                      1     0.153 1.141
-## - Natural_environment_annual_avg_temperature         1     0.174 1.162
-## - Volunteer_for_the_Elderly                          1     0.229 1.218
-## - Treatment_rate_Outpatient_Cerebrovascular_dz_2017  1     0.273 1.261
-## - pop_oldElderly_pop_Ratio_2020                      1     0.302 1.291
-## - Residence_house_ratio                              1     0.385 1.373
-## - Hypertension_Outpatient_2014                       1     0.400 1.388
-## - pop_Working_Age_pop_Ratio_2020                     1     0.459 1.447
-## - Malignant_neoplasm_intestine_mortality_rate_2015   1     0.530 1.519
-## - Labor_Unemp_rate                                   1     0.627 1.615
-##                                                      AIC
-## &lt;none&gt;                                              -154
-## - Household_Smartphone_ownership_quantity           -153
-## - Residence_Num_of_city_parks                       -151
-## - Treatment_rate_outpatient_heart_dz_2017           -150
-## - Volunteer_Activity_Rate_total                     -149
-## - Natural_environment_annual_avg_temperature        -148
-## - Volunteer_for_the_Elderly                         -146
-## - Treatment_rate_Outpatient_Cerebrovascular_dz_2017 -144
-## - pop_oldElderly_pop_Ratio_2020                     -143
-## - Residence_house_ratio                             -140
-## - Hypertension_Outpatient_2014                      -140
-## - pop_Working_Age_pop_Ratio_2020                    -138
-## - Malignant_neoplasm_intestine_mortality_rate_2015  -135
-## - Labor_Unemp_rate                                  -132</code></pre>
+<script type="application/json" data-for="htmlwidget-17bc4c74729246334bab">{"x":{"filter":"none","data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34","35","36","37","38","39","40","41","42","43","44","45","46","47"],[58,132,153,56,96,92,124,92,87,90,57,43,43,51,76,81,60,55,58,76,58,39,47,37,65,62,81,75,59,127,98,80,63,117,81,84,76,98,181,46,122,67,67,92,104,105,50],[31.3,32.6,32.5,27.8,36.4,32.9,30.9,28.9,28,29.4,26.4,27.5,23.1,25.1,31.9,32,29.2,30.2,30.3,31.5,29.8,29.5,24.9,29.4,25.7,28.9,27.5,28.8,30.9,32.7,31.6,34,30.1,29,33.9,33.1,31.5,32.6,34.8,27.6,29.7,32,30.6,32.4,31.7,31.4,21.6],[57.7,56.6,56.2,60.3,53.6,55.5,57.5,58.9,59.6,58.5,61.5,60.5,65.7,62.8,56.5,56.4,58.3,57,57.8,56.1,57.5,58,61.8,58.2,60.3,59.4,60.6,58.8,57.2,55.6,55.8,53.7,57.3,58.1,54.3,55.7,56.1,55.4,54.1,59.2,56.6,55.3,56,55.2,54.9,55.3,61.4],[9.5,11,11,13.6,12.3,12.6,14.2,15.3,15.2,16.1,16.4,17.2,16.8,17.1,14.3,15,15.5,15.3,16,13,16.9,17.7,16.9,16.9,15.7,16.9,17.4,17.4,16.2,17.3,15.7,15.6,16.3,16.8,16,17.1,17,17.1,17.4,17.7,17.4,17.7,17.5,17.1,17.8,19,23.5],[4.6,5.3,4,4.9,4.3,3.6,4.4,4.5,4.3,4.3,4.3,4.1,3.9,3.9,3.7,3.1,3.4,3.3,4.4,3.4,3.4,4,3.4,3.4,3.5,4.4,5.3,4.6,4.9,4.5,3.9,2.9,4.1,3.7,4,5,4,4.4,4.9,5.3,4.1,4.4,4.5,4.5,4.6,4.7,6.3],[34.09,26.63,33.66,96.8,18.35,29.46,27.74,51.77,73.86,64.36,203.82,199.14,577.38,514.3,52.41,111.24,80.76,85.21,21.27,30.01,65.58,92.42,158.49,133.26,46.74,203.18,488.66,215.17,281.81,25.47,34.75,31.18,73.87,135.95,66.73,26.13,49.42,35.92,72.56,219.84,19.47,71.05,62.26,62.65,54.22,39.24,68.35],[27.5,8,7.2,15.8,5.8,8.1,10.7,14.1,10.5,10.3,32.7,27.8,49.6,37,10.5,4.9,4.5,3.8,4.2,9.3,11.7,16.9,37.9,9.9,7.3,10.3,49.1,28.5,6.8,6.5,3.2,4.9,11,13.7,8.7,6.3,6.6,8.1,4.6,26.5,5.2,10.4,12.6,6.1,7.5,12.1,5.9],[13.4,16.1,14.6,10.9,13.4,11.9,12.2,14.1,12.4,12.6,11,11.2,12.2,13.1,11.8,12.4,11.2,11.2,12.1,11.2,13.3,11.4,12.9,11.5,10.9,11.7,13.1,12.5,10.1,13.7,10.2,10.7,9,11.3,11.8,10.1,9.6,11.2,8.6,13.2,10.5,12.3,10.5,9.6,11.5,10.8,12.3],[23,22.3,31,28.9,24.2,29.7,27.3,25.9,27.3,29.3,26.6,26.2,24.2,29.9,21.8,31.6,30.6,30.9,27.8,30.8,33.7,28,26.3,28.2,31.8,26.2,22.6,27,27.1,24.4,30.7,29,29.5,25.5,28.3,26.2,29.2,28,21,29.5,33,27.1,31.9,29.2,28.8,30.5,24.5],[134,95,105,109,145,135,175,108,79,80,77,78,75,95,82,121,88,96,103,95,164,108,113,110,104,101,105,122,105,138,126,114,98,145,136,164,148,117,132,89,92,129,114,89,145,203,92],[52,75.2,72.9,55.3,79.8,77.6,70.1,72.3,71.6,73.9,54.8,53.1,26.8,41.4,74.3,77.1,69.8,76.7,73.8,73.2,74.4,66,51,72.9,67.4,55.3,40.7,50.4,67.6,74.1,70.9,71.7,66.6,55.5,67.5,70.7,67.6,68.3,67.6,44.3,69.2,64.4,63.1,63.1,68.4,67.9,38.8],[62.9,71.5,61,56.4,65.9,48,55.4,57.6,56.2,57.7,55,54.2,53.5,54.9,54.8,52.4,53.6,47.9,51.7,50.8,55.9,55.3,54.2,49.4,47.8,52.7,57.4,51.5,50.5,53.2,61.3,55,50.7,53.2,59.5,58.2,56,58.6,58.8,59.3,53.4,58.7,55.7,51.5,54,53.8,58.6],[64.7,70.4,71.6,72.5,83,85.3,72.9,61.2,75.5,79.9,59.6,61,98.5,74.1,75.2,73,76.6,74.6,86.1,76.8,79.9,75,72.2,85.3,77.2,94.9,96.9,93.8,91.4,110.8,89.4,106.1,87.3,91.4,91.3,99.9,86.3,91.6,78.7,92.3,84.8,103.3,84,83.6,83.8,85.8,62],[548800,127900,141300,228200,121500,131500,199300,271900,180700,196400,632600,544700,1096700,765600,260700,120800,116900,85100,83900,242500,211300,376000,642000,180800,136500,253700,826600,580800,144500,104100,63800,84800,190800,285100,154900,76800,101500,143600,79800,437900,82500,143800,171200,120400,101700,155200,64000],[640,84,117,210,94,107,160,228,193,203,567,508,2422,908,160,123,166,94,85,214,251,326,818,192,175,454,1316,797,183,115,59,69,245,308,190,121,143,168,93,847,93,163,203,147,102,181,125],[865,848,909,1048,921,1061,992,1166,1041,1084,1178,1133,1275,1175,1050,1070,1065,1160,1072,989,1143,1070,1216,1121,1281,1208,1171,1104,1230,1100,944,826,1043,1051,849,1052,998,1046,873,1052,1093,970,1026,892,969,1017,954],[4.1,3.1,6.2,5.2,4.6,6.7,4.6,4.1,5,5.7,3.9,4.2,4.6,4.7,3.3,7,5.1,6.4,5.4,7.2,6.1,5.3,3.6,4.8,5.9,5.2,3.7,5.9,5.1,4.9,6.2,6.1,6.6,4.7,5,4.9,5,5.5,4,5.8,5.7,4.9,5.4,6,6.4,6.7,4.3]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Treatment_rate_Outpatient_Cerebrovascular_dz_2017<\/th>\n      <th>pop_oldElderly_pop_Ratio_2020<\/th>\n      <th>pop_Working_Age_pop_Ratio_2020<\/th>\n      <th>Natural_environment_annual_avg_temperature<\/th>\n      <th>Labor_Unemp_rate<\/th>\n      <th>Residence_Num_of_city_parks<\/th>\n      <th>Hypertension_Outpatient_2014<\/th>\n      <th>Malignant_neoplasm_intestine_mortality_rate_2015<\/th>\n      <th>Volunteer_Activity_Rate_total<\/th>\n      <th>Treatment_rate_outpatient_heart_dz_2017<\/th>\n      <th>Residence_house_ratio<\/th>\n      <th>Under_75_Adjusted_Mortality_Evil_Neoplasms_2019<\/th>\n      <th>Num_of_clinics_2019<\/th>\n      <th>High_barrier_free_handrails_2018<\/th>\n      <th>Num_of_cardiologists_2020<\/th>\n      <th>Household_Smartphone_ownership_quantity<\/th>\n      <th>Volunteer_for_the_Elderly<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+<pre class="r"><code>X_f&lt;-LE_d_f_final.reg$model[,-1]</code></pre>
+<ul>
+<li>男性説明変数</li>
+</ul>
+<pre class="r"><code>LE_d_m_final.reg&lt;-lm(LE_2015~. , data = LE_d_m_final)
+LE_d_m_final.reg$model[,-1] %&gt;%DT::datatable()</code></pre>
 <div id="htmlwidget-31db10bfea509715f622" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-31db10bfea509715f622">{"x":{"filter":"none","data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14"],["(Intercept)","Treatment_rate_Outpatient_Cerebrovascular_dz_2017","pop_oldElderly_pop_Ratio_2020","pop_Working_Age_pop_Ratio_2020","Natural_environment_annual_avg_temperature","Labor_Unemp_rate","Residence_Num_of_city_parks","Hypertension_Outpatient_2014","Malignant_neoplasm_intestine_mortality_rate_2015","Volunteer_Activity_Rate_total","Treatment_rate_outpatient_heart_dz_2017","Residence_house_ratio","Household_Smartphone_ownership_quantity","Volunteer_for_the_Elderly"],[null,"受療率_外来_脳血管疾患_2017","人口・世帯_老年人口割合2020","人口・世帯_生産年齢人口割合2020","自然環境_年平均気温","労働_完全失業率","居住_都市公園数(可住地面積100k㎡当たり)","高血圧疾患_外来2014年","悪性新生物(大腸)_年齢調整死亡率2015","ボランティア総行動率−総数","受療率_外来_心疾患_2017","居住_一戸建住宅比率","家計_スマートフォン所有数量（千世帯当たり）","ボランティア総行動率−高齢者を対象とした活動"],[111.916533699421,-0.00331170247124334,-0.169677397750907,-0.253327117138818,-0.0534243795469408,-0.251081080444542,0.000985463831624263,-0.0203463400537668,-0.0966364342684172,-0.0389347236520692,-0.00245118642995372,-0.0271409838576055,0.000673646494410042,0.1343657833261],[20.5210097636132,-3.0178220428614,-3.1778895176958,-3.91659409056478,-2.40850847507536,-4.57518178005187,1.89101488810073,-3.65411416479276,-4.20883592326749,-2.26218960345903,-2.06969628148003,-3.58479048088008,1.46324947370801,2.76781262306675],[2.32863918749064e-20,0.0048781671535293,0.00321504639634223,0.000426066889071519,0.0217629083261675,6.41296950473287e-05,0.0674285636948969,0.000887546171439227,0.000185298443849895,0.0303949586639162,0.0463832532347599,0.00107456073497579,0.152859635130392,0.00918135203749451]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>term<\/th>\n      <th>var_name_Jpn<\/th>\n      <th>estimate<\/th>\n      <th>statistic<\/th>\n      <th>p.value<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[3,4,5]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false,"rowCallback":"function(row, data) {\nDTWidget.formatRound(this, row, data, 3, 3, 3, ',', '.');\nDTWidget.formatRound(this, row, data, 4, 3, 3, ',', '.');\nDTWidget.formatRound(this, row, data, 5, 3, 3, ',', '.');\n}"}},"evals":["options.rowCallback"],"jsHooks":[]}</script>
+<script type="application/json" data-for="htmlwidget-31db10bfea509715f622">{"x":{"filter":"none","data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34","35","36","37","38","39","40","41","42","43","44","45","46","47"],[97,43,49,41,49,51,53,37,44,45,33,36,33,34,49,73,86,73,52,46,50,41,33,42,48,58,56,51,50,62,54,50,57,52,69,98,61,69,125,68,62,81,80,74,61,89,51],[9.5,11,11,13.6,12.3,12.6,14.2,15.3,15.2,16.1,16.4,17.2,16.8,17.1,14.3,15,15.5,15.3,16,13,16.9,17.7,16.9,16.9,15.7,16.9,17.4,17.4,16.2,17.3,15.7,15.6,16.3,16.8,16,17.1,17,17.1,17.4,17.7,17.4,17.7,17.5,17.1,17.8,19,23.5],[59.3,54.2,60,47.5,59.6,57.2,56.9,40.1,49,51.2,30.3,33.3,28.4,23.5,54.3,59.1,49.7,61.6,76.5,77.2,49.5,47,36.2,40.9,50.6,45.8,25.9,32.1,41,52.9,59.3,79.3,53.6,46.1,55.5,55.8,58.5,51.9,73.9,35.8,60.2,56.2,56.5,58.7,62.3,58.3,53],[11918,8624,12689,12154,10419,12640,12491,15211,15311,12811,16489,17479,19669,19035,14208,17170,16152,18562,13074,15486,16864,15552,18551,17209,16607,14190,15017,16778,17849,17629,14759,16640,16645,17106,16659,14739,18215,12627,12597,11804,13004,10173,11865,11336,10136,9477,5747],[13.1,12.09,10.91,9.06,12.34,9.42,10.63,8.92,9.16,10.35,9.29,9.91,11.05,10.06,9.73,10.22,10.12,9.74,11.31,10.45,9.73,9.76,9.18,10.79,8.26,11.86,13.28,12.38,11.19,15,11.12,11.98,11.19,11.91,14.55,12.9,12.12,13.77,16.49,11.84,10.41,13.18,11.88,12.94,13.55,15.33,9.25],[22.4,28.3,21.1,18.3,23.5,18,23.8,25.4,23.8,22.6,21.7,20.9,22,21.2,21.3,19.4,17.8,19.6,19.9,17.3,19.1,20.6,20.4,19.6,17.4,20.3,22.3,20.3,17.5,23,22.9,20,17.9,18,20.3,22.8,19.6,20,21.4,20.6,17,22.1,17.5,17.4,17.6,18.2,25.8],[13.6,10.1,11.8,15.5,11.6,12.4,12.1,16,12.2,14.9,18.7,18.3,19.5,17.7,12.8,12.3,15,13.6,14,15.2,13.8,12.5,14.2,14.9,18.1,17.8,16.1,15.6,18.4,13.9,13.2,11.8,13.5,12.8,12.7,13.7,11.7,13.6,10.9,14,12.9,13.8,13,11.8,12.4,10.6,13.3],[42.2,37.4,43.9,46.5,42.8,45.9,43.2,39.2,41.1,42.1,39,38.8,42.9,41.9,46.8,47.5,44.6,45.1,40.4,48.7,44.5,45.4,43.5,41.9,45.8,39.9,41.1,47,42.6,41.2,46.8,48,43.4,44.3,40.7,39.8,42,39.7,39.5,41.1,45.9,43.7,42.5,43.2,40.8,40.9,28.1],[7.2,5.1,7,8.6,6.1,7.7,7.8,8.7,7.6,7.9,10.3,11.9,14.9,11.6,7.2,8.7,9.8,7.7,8.7,10.1,8.9,8,7.5,8.6,10.2,14.1,9.6,10.3,10.6,7.5,8.3,9.4,8.9,8.8,8.4,8.1,8,8.4,6.3,9.5,7.9,6.2,8,8.1,6.3,7.1,6.1],[2.7,1.4,1.8,3.2,1.6,1.8,1.5,2.7,3,2.8,3.3,3.7,5.7,5.1,1.1,2.7,2.9,1.9,2.4,2.3,2.7,2.6,2.5,1.8,2.9,6.2,4.6,3,3.2,1.2,2.3,1.4,2.3,2.4,2.1,1.8,3.1,1.6,1.6,2.1,1.5,2.1,3.1,2.1,2.3,1.3,2.3]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Medical_treatment_rate_hospitalization_heart_dz_2017<\/th>\n      <th>Natural_environment_annual_avg_temperature<\/th>\n      <th>HM_Num_of_public_health_nurses_per_100k_pop<\/th>\n      <th>Household_Savings<\/th>\n      <th>pop_Household_Ratio_of_elderly_single_person_households<\/th>\n      <th>Malignant_neoplasm_intestine_mortality_rate_2015<\/th>\n      <th>Self_development_PC_etc<\/th>\n      <th>Usual_barrier_free_rate_2018<\/th>\n      <th>Self_development_art_culture<\/th>\n      <th>Self_development_languages_other_than_Eng<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[1,2,3,4,5,6,7,8,9,10]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+<pre class="r"><code>X_m&lt;-LE_d_m_final.reg$model[,-1]</code></pre>
 </div>
-<div id="regression-hle_d_f_final-女性健康寿命-1" class="section level2" number="3.2">
-<h2 number="3.2"><span class="header-section-number">3.2</span> regression <code>HLE_d_f_final</code>: 女性、健康寿命</h2>
-<pre class="r"><code># -----------------
-# Q1:Do the final regression and interprete : with 4 data
-# -----------------
-# ----------------- ----------------- ----------------- -----------------
-#  _____ _             _   _     __  __
-# |  ___(_)_ __   __ _| | | |   |  \/  |
-# | |_  | | &#39;_ \ / _` | | | |   | |\/| |
-# |  _| | | | | | (_| | | | |___| |  | |
-# |_|   |_|_| |_|\__,_|_| |_____|_|  |_|
-# ----------------- ----------------- ----------------- -----------------
-
-options(digits = 5)              # Modify global options
-
-
-lm(HLE_2016~. , data = HLE_d_f_final) %&gt;% MASS::stepAIC() %&gt;%
-  broom::tidy() %&gt;%
-  left_join(var, by=c(&quot;term&quot;=&quot;var_name_Eng&quot;)) %&gt;%
-  select(term, var_name_Jpn, everything(), -id,- address, -std.error, -columm_letter ) %&gt;% DT::datatable() %&gt;% DT::formatRound(columns=c(&#39;estimate&#39;, &#39;statistic&#39;, &quot;p.value&quot;), digits=3)  </code></pre>
-<pre><code>## Start:  AIC=-98.62
-## HLE_2016 ~ Treatment_rate_Outpatient_Cerebrovascular_dz_2017 + 
-##     pop_oldElderly_pop_Ratio_2020 + pop_Working_Age_pop_Ratio_2020 + 
-##     Natural_environment_annual_avg_temperature + Labor_Unemp_rate + 
-##     Residence_Num_of_city_parks + Hypertension_Outpatient_2014 + 
-##     Malignant_neoplasm_intestine_mortality_rate_2015 + Volunteer_Activity_Rate_total + 
-##     Treatment_rate_outpatient_heart_dz_2017 + Residence_house_ratio + 
-##     Under_75_Adjusted_Mortality_Evil_Neoplasms_2019 + Num_of_clinics_2019 + 
-##     High_barrier_free_handrails_2018 + Num_of_cardiologists_2020 + 
-##     Household_Smartphone_ownership_quantity + Volunteer_for_the_Elderly
-## 
-##                                                     Df Sum of Sq  RSS
-## - Residence_Num_of_city_parks                        1      0.00 2.68
-## - Volunteer_Activity_Rate_total                      1      0.02 2.70
-## &lt;none&gt;                                                           2.68
-## - Volunteer_for_the_Elderly                          1      0.25 2.93
-## - Treatment_rate_outpatient_heart_dz_2017            1      0.39 3.07
-## - Labor_Unemp_rate                                   1      0.41 3.09
-## - pop_oldElderly_pop_Ratio_2020                      1      0.47 3.15
-## - pop_Working_Age_pop_Ratio_2020                     1      0.70 3.38
-## - Treatment_rate_Outpatient_Cerebrovascular_dz_2017  1      0.70 3.38
-## - Malignant_neoplasm_intestine_mortality_rate_2015   1      1.20 3.88
-## - Num_of_cardiologists_2020                          1      1.77 4.45
-## - Under_75_Adjusted_Mortality_Evil_Neoplasms_2019    1      1.80 4.48
-## - Residence_house_ratio                              1      1.88 4.56
-## - Num_of_clinics_2019                                1      1.95 4.63
-## - High_barrier_free_handrails_2018                   1      1.97 4.65
-## - Hypertension_Outpatient_2014                       1      2.25 4.93
-## - Household_Smartphone_ownership_quantity            1      3.35 6.03
-## - Natural_environment_annual_avg_temperature         1      4.56 7.24
-##                                                        AIC
-## - Residence_Num_of_city_parks                       -100.6
-## - Volunteer_Activity_Rate_total                     -100.3
-## &lt;none&gt;                                               -98.6
-## - Volunteer_for_the_Elderly                          -96.5
-## - Treatment_rate_outpatient_heart_dz_2017            -94.3
-## - Labor_Unemp_rate                                   -93.9
-## - pop_oldElderly_pop_Ratio_2020                      -93.1
-## - pop_Working_Age_pop_Ratio_2020                     -89.7
-## - Treatment_rate_Outpatient_Cerebrovascular_dz_2017  -89.7
-## - Malignant_neoplasm_intestine_mortality_rate_2015   -83.2
-## - Num_of_cardiologists_2020                          -76.8
-## - Under_75_Adjusted_Mortality_Evil_Neoplasms_2019    -76.5
-## - Residence_house_ratio                              -75.6
-## - Num_of_clinics_2019                                -74.9
-## - High_barrier_free_handrails_2018                   -74.7
-## - Hypertension_Outpatient_2014                       -71.9
-## - Household_Smartphone_ownership_quantity            -62.5
-## - Natural_environment_annual_avg_temperature         -53.9
-## 
-## Step:  AIC=-100.61
-## HLE_2016 ~ Treatment_rate_Outpatient_Cerebrovascular_dz_2017 + 
-##     pop_oldElderly_pop_Ratio_2020 + pop_Working_Age_pop_Ratio_2020 + 
-##     Natural_environment_annual_avg_temperature + Labor_Unemp_rate + 
-##     Hypertension_Outpatient_2014 + Malignant_neoplasm_intestine_mortality_rate_2015 + 
-##     Volunteer_Activity_Rate_total + Treatment_rate_outpatient_heart_dz_2017 + 
-##     Residence_house_ratio + Under_75_Adjusted_Mortality_Evil_Neoplasms_2019 + 
-##     Num_of_clinics_2019 + High_barrier_free_handrails_2018 + 
-##     Num_of_cardiologists_2020 + Household_Smartphone_ownership_quantity + 
-##     Volunteer_for_the_Elderly
-## 
-##                                                     Df Sum of Sq  RSS
-## - Volunteer_Activity_Rate_total                      1      0.02 2.70
-## &lt;none&gt;                                                           2.68
-## - Volunteer_for_the_Elderly                          1      0.25 2.93
-## - Treatment_rate_outpatient_heart_dz_2017            1      0.41 3.09
-## - Labor_Unemp_rate                                   1      0.41 3.09
-## - pop_oldElderly_pop_Ratio_2020                      1      0.56 3.24
-## - Treatment_rate_Outpatient_Cerebrovascular_dz_2017  1      0.71 3.39
-## - pop_Working_Age_pop_Ratio_2020                     1      0.78 3.46
-## - Malignant_neoplasm_intestine_mortality_rate_2015   1      1.23 3.91
-## - Num_of_cardiologists_2020                          1      1.79 4.47
-## - Under_75_Adjusted_Mortality_Evil_Neoplasms_2019    1      1.81 4.49
-## - Num_of_clinics_2019                                1      1.96 4.64
-## - High_barrier_free_handrails_2018                   1      1.97 4.66
-## - Residence_house_ratio                              1      2.15 4.83
-## - Hypertension_Outpatient_2014                       1      2.25 4.94
-## - Household_Smartphone_ownership_quantity            1      3.51 6.19
-## - Natural_environment_annual_avg_temperature         1      5.10 7.78
-##                                                        AIC
-## - Volunteer_Activity_Rate_total                     -102.3
-## &lt;none&gt;                                              -100.6
-## - Volunteer_for_the_Elderly                          -98.5
-## - Treatment_rate_outpatient_heart_dz_2017            -95.9
-## - Labor_Unemp_rate                                   -95.9
-## - pop_oldElderly_pop_Ratio_2020                      -93.8
-## - Treatment_rate_Outpatient_Cerebrovascular_dz_2017  -91.5
-## - pop_Working_Age_pop_Ratio_2020                     -90.6
-## - Malignant_neoplasm_intestine_mortality_rate_2015   -84.9
-## - Num_of_cardiologists_2020                          -78.6
-## - Under_75_Adjusted_Mortality_Evil_Neoplasms_2019    -78.3
-## - Num_of_clinics_2019                                -76.8
-## - High_barrier_free_handrails_2018                   -76.7
-## - Residence_house_ratio                              -74.9
-## - Hypertension_Outpatient_2014                       -73.9
-## - Household_Smartphone_ownership_quantity            -63.3
-## - Natural_environment_annual_avg_temperature         -52.5
-## 
-## Step:  AIC=-102.3
-## HLE_2016 ~ Treatment_rate_Outpatient_Cerebrovascular_dz_2017 + 
-##     pop_oldElderly_pop_Ratio_2020 + pop_Working_Age_pop_Ratio_2020 + 
-##     Natural_environment_annual_avg_temperature + Labor_Unemp_rate + 
-##     Hypertension_Outpatient_2014 + Malignant_neoplasm_intestine_mortality_rate_2015 + 
-##     Treatment_rate_outpatient_heart_dz_2017 + Residence_house_ratio + 
-##     Under_75_Adjusted_Mortality_Evil_Neoplasms_2019 + Num_of_clinics_2019 + 
-##     High_barrier_free_handrails_2018 + Num_of_cardiologists_2020 + 
-##     Household_Smartphone_ownership_quantity + Volunteer_for_the_Elderly
-## 
-##                                                     Df Sum of Sq  RSS
-## &lt;none&gt;                                                           2.70
-## - Treatment_rate_outpatient_heart_dz_2017            1      0.42 3.12
-## - Volunteer_for_the_Elderly                          1      0.44 3.14
-## - pop_oldElderly_pop_Ratio_2020                      1      0.54 3.24
-## - Labor_Unemp_rate                                   1      0.68 3.38
-## - Treatment_rate_Outpatient_Cerebrovascular_dz_2017  1      0.74 3.44
-## - pop_Working_Age_pop_Ratio_2020                     1      0.77 3.47
-## - Malignant_neoplasm_intestine_mortality_rate_2015   1      1.21 3.91
-## - Num_of_cardiologists_2020                          1      1.78 4.47
-## - Num_of_clinics_2019                                1      2.03 4.73
-## - Under_75_Adjusted_Mortality_Evil_Neoplasms_2019    1      2.04 4.74
-## - Residence_house_ratio                              1      2.13 4.83
-## - High_barrier_free_handrails_2018                   1      2.25 4.95
-## - Hypertension_Outpatient_2014                       1      2.69 5.39
-## - Household_Smartphone_ownership_quantity            1      3.69 6.38
-## - Natural_environment_annual_avg_temperature         1      5.13 7.83
-##                                                        AIC
-## &lt;none&gt;                                              -102.3
-## - Treatment_rate_outpatient_heart_dz_2017            -97.5
-## - Volunteer_for_the_Elderly                          -97.2
-## - pop_oldElderly_pop_Ratio_2020                      -95.7
-## - Labor_Unemp_rate                                   -93.7
-## - Treatment_rate_Outpatient_Cerebrovascular_dz_2017  -93.0
-## - pop_Working_Age_pop_Ratio_2020                     -92.4
-## - Malignant_neoplasm_intestine_mortality_rate_2015   -86.9
-## - Num_of_cardiologists_2020                          -80.5
-## - Num_of_clinics_2019                                -77.9
-## - Under_75_Adjusted_Mortality_Evil_Neoplasms_2019    -77.8
-## - Residence_house_ratio                              -76.9
-## - High_barrier_free_handrails_2018                   -75.8
-## - Hypertension_Outpatient_2014                       -71.8
-## - Household_Smartphone_ownership_quantity            -63.8
-## - Natural_environment_annual_avg_temperature         -54.2</code></pre>
-<div id="htmlwidget-53f33c03da31bebd84c7" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-53f33c03da31bebd84c7">{"x":{"filter":"none","data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16"],["(Intercept)","Treatment_rate_Outpatient_Cerebrovascular_dz_2017","pop_oldElderly_pop_Ratio_2020","pop_Working_Age_pop_Ratio_2020","Natural_environment_annual_avg_temperature","Labor_Unemp_rate","Hypertension_Outpatient_2014","Malignant_neoplasm_intestine_mortality_rate_2015","Treatment_rate_outpatient_heart_dz_2017","Residence_house_ratio","Under_75_Adjusted_Mortality_Evil_Neoplasms_2019","Num_of_clinics_2019","High_barrier_free_handrails_2018","Num_of_cardiologists_2020","Household_Smartphone_ownership_quantity","Volunteer_for_the_Elderly"],[null,"受療率_外来_脳血管疾患_2017","人口・世帯_老年人口割合2020","人口・世帯_生産年齢人口割合2020","自然環境_年平均気温","労働_完全失業率","高血圧疾患_外来2014年","悪性新生物(大腸)_年齢調整死亡率2015","受療率_外来_心疾患_2017","居住_一戸建住宅比率","75歳未満調整死亡率_悪政新生物_2019","診療所数_2019","バリアフリー_手すりがある2018","循環器専門医数_2020","家計_スマートフォン所有数量（千世帯当たり）","ボランティア総行動率−高齢者を対象とした活動"],[52.8462528279598,-0.00543728335597532,0.246765851411365,0.34986192733721,0.294021281441404,-0.320908546852061,0.142179251149464,0.168827615889016,-0.00435192580445747,0.0702319565718604,-0.0920914833712647,-0.0323666619165243,-8.82126785523884e-06,0.00189587065823415,-0.00588635498785558,-0.146900725904048],[5.71222199076081,-2.90918306322352,2.49632809133952,2.9831598512202,7.67847238132459,-2.79589551705665,5.55725201134735,3.72809438544378,-2.19441398125511,4.9500487516657,-4.84521537985223,-4.83408833645127,-5.08222967515302,4.51764890047439,-6.50709245845141,-2.24909420958111],[2.78886906158226e-06,0.00664812580360284,0.0180746846032337,0.00551910727313257,1.16478272338009e-08,0.00880667466322285,4.34558459077978e-06,0.000772956197764834,0.0358248489905851,2.47823735492767e-05,3.34557731618636e-05,3.45377096998207e-05,1.69675925805176e-05,8.51447866739038e-05,2.92403939266867e-07,0.0317536740339844]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>term<\/th>\n      <th>var_name_Jpn<\/th>\n      <th>estimate<\/th>\n      <th>statistic<\/th>\n      <th>p.value<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[3,4,5]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false,"rowCallback":"function(row, data) {\nDTWidget.formatRound(this, row, data, 3, 3, 3, ',', '.');\nDTWidget.formatRound(this, row, data, 4, 3, 3, ',', '.');\nDTWidget.formatRound(this, row, data, 5, 3, 3, ',', '.');\n}"}},"evals":["options.rowCallback"],"jsHooks":[]}</script>
-</div>
-<div id="regression-le_d_m_final-男性平均寿命-1" class="section level2" number="3.3">
-<h2 number="3.3"><span class="header-section-number">3.3</span> regression <code>LE_d_m_final</code>: 男性、平均寿命</h2>
-<pre class="r"><code># -----------------
-# Q1:Do the final regression and interprete : with 4 data
-# -----------------
-# ----------------- ----------------- ----------------- -----------------
-#  _____ _             _   _     __  __
-# |  ___(_)_ __   __ _| | | |   |  \/  |
-# | |_  | | &#39;_ \ / _` | | | |   | |\/| |
-# |  _| | | | | | (_| | | | |___| |  | |
-# |_|   |_|_| |_|\__,_|_| |_____|_|  |_|
-# ----------------- ----------------- ----------------- -----------------
-
-options(digits = 5)              # Modify global options
-
-lm(LE_2015~. , data = LE_d_m_final) %&gt;% MASS::stepAIC() %&gt;%
-  broom::tidy() %&gt;%
-  left_join(var, by=c(&quot;term&quot;=&quot;var_name_Eng&quot;)) %&gt;%
-  select(term, var_name_Jpn, everything(), -id,- address, -std.error, -columm_letter ) %&gt;% DT::datatable() %&gt;% DT::formatRound(columns=c(&#39;estimate&#39;, &#39;statistic&#39;, &quot;p.value&quot;), digits=3)  </code></pre>
-<pre><code>## Start:  AIC=-128.23
-## LE_2015 ~ Medical_treatment_rate_hospitalization_heart_dz_2017 + 
-##     Natural_environment_annual_avg_temperature + HM_Num_of_public_health_nurses_per_100k_pop + 
-##     Household_Savings + pop_Household_Ratio_of_elderly_single_person_households + 
-##     Malignant_neoplasm_intestine_mortality_rate_2015 + Self_development_PC_etc + 
-##     Usual_barrier_free_rate_2018 + Self_development_art_culture + 
-##     Self_development_languages_other_than_Eng
-## 
-##                                                           Df Sum of Sq
-## - Self_development_art_culture                             1     0.001
-## - Usual_barrier_free_rate_2018                             1     0.034
-## &lt;none&gt;                                                                
-## - Medical_treatment_rate_hospitalization_heart_dz_2017     1     0.104
-## - Self_development_languages_other_than_Eng                1     0.155
-## - Household_Savings                                        1     0.299
-## - Self_development_PC_etc                                  1     0.378
-## - HM_Num_of_public_health_nurses_per_100k_pop              1     0.409
-## - Natural_environment_annual_avg_temperature               1     0.535
-## - pop_Household_Ratio_of_elderly_single_person_households  1     0.784
-## - Malignant_neoplasm_intestine_mortality_rate_2015         1     1.574
-##                                                            RSS  AIC
-## - Self_development_art_culture                            1.92 -130
-## - Usual_barrier_free_rate_2018                            1.96 -129
-## &lt;none&gt;                                                    1.92 -128
-## - Medical_treatment_rate_hospitalization_heart_dz_2017    2.03 -128
-## - Self_development_languages_other_than_Eng               2.08 -127
-## - Household_Savings                                       2.22 -123
-## - Self_development_PC_etc                                 2.30 -122
-## - HM_Num_of_public_health_nurses_per_100k_pop             2.33 -121
-## - Natural_environment_annual_avg_temperature              2.46 -119
-## - pop_Household_Ratio_of_elderly_single_person_households 2.71 -114
-## - Malignant_neoplasm_intestine_mortality_rate_2015        3.50 -102
-## 
-## Step:  AIC=-130.2
-## LE_2015 ~ Medical_treatment_rate_hospitalization_heart_dz_2017 + 
-##     Natural_environment_annual_avg_temperature + HM_Num_of_public_health_nurses_per_100k_pop + 
-##     Household_Savings + pop_Household_Ratio_of_elderly_single_person_households + 
-##     Malignant_neoplasm_intestine_mortality_rate_2015 + Self_development_PC_etc + 
-##     Usual_barrier_free_rate_2018 + Self_development_languages_other_than_Eng
-## 
-##                                                           Df Sum of Sq
-## - Usual_barrier_free_rate_2018                             1     0.037
-## &lt;none&gt;                                                                
-## - Medical_treatment_rate_hospitalization_heart_dz_2017     1     0.104
-## - Self_development_languages_other_than_Eng                1     0.262
-## - Household_Savings                                        1     0.344
-## - HM_Num_of_public_health_nurses_per_100k_pop              1     0.436
-## - Natural_environment_annual_avg_temperature               1     0.547
-## - Self_development_PC_etc                                  1     0.576
-## - pop_Household_Ratio_of_elderly_single_person_households  1     0.816
-## - Malignant_neoplasm_intestine_mortality_rate_2015         1     1.613
-##                                                            RSS  AIC
-## - Usual_barrier_free_rate_2018                            1.96 -131
-## &lt;none&gt;                                                    1.92 -130
-## - Medical_treatment_rate_hospitalization_heart_dz_2017    2.03 -130
-## - Self_development_languages_other_than_Eng               2.19 -126
-## - Household_Savings                                       2.27 -124
-## - HM_Num_of_public_health_nurses_per_100k_pop             2.36 -123
-## - Natural_environment_annual_avg_temperature              2.47 -120
-## - Self_development_PC_etc                                 2.50 -120
-## - pop_Household_Ratio_of_elderly_single_person_households 2.74 -116
-## - Malignant_neoplasm_intestine_mortality_rate_2015        3.54 -104
-## 
-## Step:  AIC=-131.31
-## LE_2015 ~ Medical_treatment_rate_hospitalization_heart_dz_2017 + 
-##     Natural_environment_annual_avg_temperature + HM_Num_of_public_health_nurses_per_100k_pop + 
-##     Household_Savings + pop_Household_Ratio_of_elderly_single_person_households + 
-##     Malignant_neoplasm_intestine_mortality_rate_2015 + Self_development_PC_etc + 
-##     Self_development_languages_other_than_Eng
-## 
-##                                                           Df Sum of Sq
-## &lt;none&gt;                                                                
-## - Medical_treatment_rate_hospitalization_heart_dz_2017     1     0.096
-## - Self_development_languages_other_than_Eng                1     0.251
-## - HM_Num_of_public_health_nurses_per_100k_pop              1     0.447
-## - Self_development_PC_etc                                  1     0.542
-## - Natural_environment_annual_avg_temperature               1     0.567
-## - Household_Savings                                        1     0.568
-## - pop_Household_Ratio_of_elderly_single_person_households  1     0.862
-## - Malignant_neoplasm_intestine_mortality_rate_2015         1     2.933
-##                                                            RSS    AIC
-## &lt;none&gt;                                                    1.96 -131.3
-## - Medical_treatment_rate_hospitalization_heart_dz_2017    2.06 -131.1
-## - Self_development_languages_other_than_Eng               2.21 -127.7
-## - HM_Num_of_public_health_nurses_per_100k_pop             2.41 -123.6
-## - Self_development_PC_etc                                 2.50 -121.8
-## - Natural_environment_annual_avg_temperature              2.53 -121.4
-## - Household_Savings                                       2.53 -121.3
-## - pop_Household_Ratio_of_elderly_single_person_households 2.82 -116.2
-## - Malignant_neoplasm_intestine_mortality_rate_2015        4.89  -90.3</code></pre>
-<div id="htmlwidget-006fcd9f6314c0e03ee4" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-006fcd9f6314c0e03ee4">{"x":{"filter":"none","data":[["1","2","3","4","5","6","7","8","9"],["(Intercept)","Medical_treatment_rate_hospitalization_heart_dz_2017","Natural_environment_annual_avg_temperature","HM_Num_of_public_health_nurses_per_100k_pop","Household_Savings","pop_Household_Ratio_of_elderly_single_person_households","Malignant_neoplasm_intestine_mortality_rate_2015","Self_development_PC_etc","Self_development_languages_other_than_Eng"],[null,"受療率_入院_心疾患_2017","自然環境_年平均気温","健康・医療_保健師数（人口10万人当たり）","家計_貯蓄現在高","人口・世帯_高齢単身者世帯の割合","悪性新生物(大腸)_年齢調整死亡率2015","自己啓発・訓練−パソコンなどの情報処理","自己啓発・訓練−英語以外の外国語"],[80.4471108567098,0.00351641773190221,0.052610040701485,0.0118267948986611,4.43243126412163e-05,-0.101968314908618,-0.11459889179671,0.082982322796238,0.102530560845515],[103.011935549737,1.36493406509414,3.31416593370865,2.94440861073063,3.31850187499741,-4.08717912170265,-7.53905984837414,3.24029243052737,2.20346916610257],[4.04197674698502e-48,0.180301422071858,0.00202710454980775,0.00549491567172063,0.00200292440754245,0.000217839077609573,4.64135727400938e-09,0.00248438088610657,0.0336952566982813]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>term<\/th>\n      <th>var_name_Jpn<\/th>\n      <th>estimate<\/th>\n      <th>statistic<\/th>\n      <th>p.value<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[3,4,5]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false,"rowCallback":"function(row, data) {\nDTWidget.formatRound(this, row, data, 3, 3, 3, ',', '.');\nDTWidget.formatRound(this, row, data, 4, 3, 3, ',', '.');\nDTWidget.formatRound(this, row, data, 5, 3, 3, ',', '.');\n}"}},"evals":["options.rowCallback"],"jsHooks":[]}</script>
-</div>
-<div id="regression-hle_d_m_final-男性健康寿命-1" class="section level2" number="3.4">
-<h2 number="3.4"><span class="header-section-number">3.4</span> regression <code>HLE_d_m_final</code>: 男性、健康寿命</h2>
-<pre class="r"><code># -----------------
-# Q1:Do the final regression and interprete : with 4 data
-# -----------------
-# ----------------- ----------------- ----------------- -----------------
-#  _____ _             _   _     __  __
-# |  ___(_)_ __   __ _| | | |   |  \/  |
-# | |_  | | &#39;_ \ / _` | | | |   | |\/| |
-# |  _| | | | | | (_| | | | |___| |  | |
-# |_|   |_|_| |_|\__,_|_| |_____|_|  |_|
-# ----------------- ----------------- ----------------- -----------------
-
-options(digits = 5)              # Modify global options
-
-lm(HLE_2016~. , data = HLE_d_m_final) %&gt;% MASS::stepAIC() %&gt;%
-  broom::tidy() %&gt;%
-  left_join(var, by=c(&quot;term&quot;=&quot;var_name_Eng&quot;)) %&gt;%
-  select(term, var_name_Jpn, everything(), -id,- address, -std.error, -columm_letter ) %&gt;% DT::datatable() %&gt;% DT::formatRound(columns=c(&#39;estimate&#39;, &#39;statistic&#39;, &quot;p.value&quot;), digits=3)</code></pre>
-<pre><code>## Start:  AIC=-66.75
-## HLE_2016 ~ Medical_treatment_rate_hospitalization_heart_dz_2017 + 
-##     Natural_environment_annual_avg_temperature + HM_Num_of_public_health_nurses_per_100k_pop + 
-##     Household_Savings + pop_Household_Ratio_of_elderly_single_person_households + 
-##     Malignant_neoplasm_intestine_mortality_rate_2015 + Self_development_PC_etc + 
-##     Usual_barrier_free_rate_2018 + Self_development_art_culture + 
-##     Self_development_languages_other_than_Eng
-## 
-##                                                           Df Sum of Sq
-## - Medical_treatment_rate_hospitalization_heart_dz_2017     1     0.000
-## - Natural_environment_annual_avg_temperature               1     0.001
-## - Self_development_PC_etc                                  1     0.013
-## - HM_Num_of_public_health_nurses_per_100k_pop              1     0.075
-## - Usual_barrier_free_rate_2018                             1     0.126
-## &lt;none&gt;                                                                
-## - Self_development_art_culture                             1     0.429
-## - Household_Savings                                        1     0.497
-## - Malignant_neoplasm_intestine_mortality_rate_2015         1     0.576
-## - Self_development_languages_other_than_Eng                1     0.653
-## - pop_Household_Ratio_of_elderly_single_person_households  1     1.878
-##                                                            RSS   AIC
-## - Medical_treatment_rate_hospitalization_heart_dz_2017    7.11 -68.7
-## - Natural_environment_annual_avg_temperature              7.11 -68.7
-## - Self_development_PC_etc                                 7.13 -68.7
-## - HM_Num_of_public_health_nurses_per_100k_pop             7.19 -68.3
-## - Usual_barrier_free_rate_2018                            7.24 -67.9
-## &lt;none&gt;                                                    7.11 -66.8
-## - Self_development_art_culture                            7.54 -66.0
-## - Household_Savings                                       7.61 -65.6
-## - Malignant_neoplasm_intestine_mortality_rate_2015        7.69 -65.1
-## - Self_development_languages_other_than_Eng               7.76 -64.6
-## - pop_Household_Ratio_of_elderly_single_person_households 8.99 -57.7
-## 
-## Step:  AIC=-68.75
-## HLE_2016 ~ Natural_environment_annual_avg_temperature + HM_Num_of_public_health_nurses_per_100k_pop + 
-##     Household_Savings + pop_Household_Ratio_of_elderly_single_person_households + 
-##     Malignant_neoplasm_intestine_mortality_rate_2015 + Self_development_PC_etc + 
-##     Usual_barrier_free_rate_2018 + Self_development_art_culture + 
-##     Self_development_languages_other_than_Eng
-## 
-##                                                           Df Sum of Sq
-## - Natural_environment_annual_avg_temperature               1     0.001
-## - Self_development_PC_etc                                  1     0.013
-## - HM_Num_of_public_health_nurses_per_100k_pop              1     0.083
-## - Usual_barrier_free_rate_2018                             1     0.127
-## &lt;none&gt;                                                                
-## - Self_development_art_culture                             1     0.445
-## - Household_Savings                                        1     0.497
-## - Malignant_neoplasm_intestine_mortality_rate_2015         1     0.609
-## - Self_development_languages_other_than_Eng                1     0.665
-## - pop_Household_Ratio_of_elderly_single_person_households  1     2.880
-##                                                            RSS   AIC
-## - Natural_environment_annual_avg_temperature              7.11 -70.7
-## - Self_development_PC_etc                                 7.13 -70.7
-## - HM_Num_of_public_health_nurses_per_100k_pop             7.20 -70.2
-## - Usual_barrier_free_rate_2018                            7.24 -69.9
-## &lt;none&gt;                                                    7.11 -68.7
-## - Self_development_art_culture                            7.56 -67.9
-## - Household_Savings                                       7.61 -67.6
-## - Malignant_neoplasm_intestine_mortality_rate_2015        7.72 -66.9
-## - Self_development_languages_other_than_Eng               7.78 -66.6
-## - pop_Household_Ratio_of_elderly_single_person_households 9.99 -54.8
-## 
-## Step:  AIC=-70.74
-## HLE_2016 ~ HM_Num_of_public_health_nurses_per_100k_pop + Household_Savings + 
-##     pop_Household_Ratio_of_elderly_single_person_households + 
-##     Malignant_neoplasm_intestine_mortality_rate_2015 + Self_development_PC_etc + 
-##     Usual_barrier_free_rate_2018 + Self_development_art_culture + 
-##     Self_development_languages_other_than_Eng
-## 
-##                                                           Df Sum of Sq
-## - Self_development_PC_etc                                  1     0.014
-## - HM_Num_of_public_health_nurses_per_100k_pop              1     0.082
-## - Usual_barrier_free_rate_2018                             1     0.201
-## &lt;none&gt;                                                                
-## - Self_development_art_culture                             1     0.445
-## - Household_Savings                                        1     0.506
-## - Self_development_languages_other_than_Eng                1     0.664
-## - Malignant_neoplasm_intestine_mortality_rate_2015         1     0.787
-## - pop_Household_Ratio_of_elderly_single_person_households  1     2.883
-##                                                             RSS   AIC
-## - Self_development_PC_etc                                  7.13 -72.6
-## - HM_Num_of_public_health_nurses_per_100k_pop              7.20 -72.2
-## - Usual_barrier_free_rate_2018                             7.31 -71.4
-## &lt;none&gt;                                                     7.11 -70.7
-## - Self_development_art_culture                             7.56 -69.9
-## - Household_Savings                                        7.62 -69.5
-## - Self_development_languages_other_than_Eng                7.78 -68.5
-## - Malignant_neoplasm_intestine_mortality_rate_2015         7.90 -67.8
-## - pop_Household_Ratio_of_elderly_single_person_households 10.00 -56.7
-## 
-## Step:  AIC=-72.65
-## HLE_2016 ~ HM_Num_of_public_health_nurses_per_100k_pop + Household_Savings + 
-##     pop_Household_Ratio_of_elderly_single_person_households + 
-##     Malignant_neoplasm_intestine_mortality_rate_2015 + Usual_barrier_free_rate_2018 + 
-##     Self_development_art_culture + Self_development_languages_other_than_Eng
-## 
-##                                                           Df Sum of Sq
-## - HM_Num_of_public_health_nurses_per_100k_pop              1     0.122
-## - Usual_barrier_free_rate_2018                             1     0.187
-## &lt;none&gt;                                                                
-## - Household_Savings                                        1     0.501
-## - Self_development_languages_other_than_Eng                1     0.659
-## - Self_development_art_culture                             1     0.764
-## - Malignant_neoplasm_intestine_mortality_rate_2015         1     0.776
-## - pop_Household_Ratio_of_elderly_single_person_households  1     3.082
-##                                                             RSS   AIC
-## - HM_Num_of_public_health_nurses_per_100k_pop              7.25 -73.8
-## - Usual_barrier_free_rate_2018                             7.32 -73.4
-## &lt;none&gt;                                                     7.13 -72.6
-## - Household_Savings                                        7.63 -71.5
-## - Self_development_languages_other_than_Eng                7.79 -70.5
-## - Self_development_art_culture                             7.89 -69.9
-## - Malignant_neoplasm_intestine_mortality_rate_2015         7.90 -69.8
-## - pop_Household_Ratio_of_elderly_single_person_households 10.21 -57.8
-## 
-## Step:  AIC=-73.85
-## HLE_2016 ~ Household_Savings + pop_Household_Ratio_of_elderly_single_person_households + 
-##     Malignant_neoplasm_intestine_mortality_rate_2015 + Usual_barrier_free_rate_2018 + 
-##     Self_development_art_culture + Self_development_languages_other_than_Eng
-## 
-##                                                           Df Sum of Sq
-## - Usual_barrier_free_rate_2018                             1     0.129
-## &lt;none&gt;                                                                
-## - Household_Savings                                        1     0.406
-## - Self_development_languages_other_than_Eng                1     0.550
-## - Self_development_art_culture                             1     0.795
-## - Malignant_neoplasm_intestine_mortality_rate_2015         1     0.898
-## - pop_Household_Ratio_of_elderly_single_person_households  1     2.960
-##                                                             RSS   AIC
-## - Usual_barrier_free_rate_2018                             7.38 -75.0
-## &lt;none&gt;                                                     7.25 -73.8
-## - Household_Savings                                        7.66 -73.3
-## - Self_development_languages_other_than_Eng                7.80 -72.4
-## - Self_development_art_culture                             8.05 -71.0
-## - Malignant_neoplasm_intestine_mortality_rate_2015         8.15 -70.4
-## - pop_Household_Ratio_of_elderly_single_person_households 10.21 -59.8
-## 
-## Step:  AIC=-75.02
-## HLE_2016 ~ Household_Savings + pop_Household_Ratio_of_elderly_single_person_households + 
-##     Malignant_neoplasm_intestine_mortality_rate_2015 + Self_development_art_culture + 
-##     Self_development_languages_other_than_Eng
-## 
-##                                                           Df Sum of Sq
-## - Household_Savings                                        1     0.298
-## &lt;none&gt;                                                                
-## - Self_development_languages_other_than_Eng                1     0.703
-## - Malignant_neoplasm_intestine_mortality_rate_2015         1     0.781
-## - Self_development_art_culture                             1     0.797
-## - pop_Household_Ratio_of_elderly_single_person_households  1     2.832
-##                                                             RSS   AIC
-## - Household_Savings                                        7.68 -75.2
-## &lt;none&gt;                                                     7.38 -75.0
-## - Self_development_languages_other_than_Eng                8.08 -72.7
-## - Malignant_neoplasm_intestine_mortality_rate_2015         8.16 -72.3
-## - Self_development_art_culture                             8.18 -72.2
-## - pop_Household_Ratio_of_elderly_single_person_households 10.21 -61.7
-## 
-## Step:  AIC=-75.16
-## HLE_2016 ~ pop_Household_Ratio_of_elderly_single_person_households + 
-##     Malignant_neoplasm_intestine_mortality_rate_2015 + Self_development_art_culture + 
-##     Self_development_languages_other_than_Eng
-## 
-##                                                           Df Sum of Sq
-## &lt;none&gt;                                                                
-## - Self_development_art_culture                             1      0.52
-## - Self_development_languages_other_than_Eng                1      0.56
-## - Malignant_neoplasm_intestine_mortality_rate_2015         1      0.89
-## - pop_Household_Ratio_of_elderly_single_person_households  1      3.23
-##                                                             RSS   AIC
-## &lt;none&gt;                                                     7.68 -75.2
-## - Self_development_art_culture                             8.20 -74.1
-## - Self_development_languages_other_than_Eng                8.24 -73.8
-## - Malignant_neoplasm_intestine_mortality_rate_2015         8.57 -72.0
-## - pop_Household_Ratio_of_elderly_single_person_households 10.91 -60.7</code></pre>
-<div id="htmlwidget-0502f06e1a28c9502b0d" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-0502f06e1a28c9502b0d">{"x":{"filter":"none","data":[["1","2","3","4","5"],["(Intercept)","pop_Household_Ratio_of_elderly_single_person_households","Malignant_neoplasm_intestine_mortality_rate_2015","Self_development_art_culture","Self_development_languages_other_than_Eng"],[null,"人口・世帯_高齢単身者世帯の割合","悪性新生物(大腸)_年齢調整死亡率2015","自己啓発・訓練−芸術・文化","自己啓発・訓練−英語以外の外国語"],[75.3604031717715,-0.146836081186995,-0.0594054832750537,-0.098464792141723,0.172817638310585],[85.4810414570373,-4.20216299053245,-2.20418156971657,-1.68275437128014,1.75734455633599],[9.69058165096307e-49,0.000134969852011383,0.0330447168824272,0.099843467765014,0.0861467383022489]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>term<\/th>\n      <th>var_name_Jpn<\/th>\n      <th>estimate<\/th>\n      <th>statistic<\/th>\n      <th>p.value<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[3,4,5]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false,"rowCallback":"function(row, data) {\nDTWidget.formatRound(this, row, data, 3, 3, 3, ',', '.');\nDTWidget.formatRound(this, row, data, 4, 3, 3, ',', '.');\nDTWidget.formatRound(this, row, data, 5, 3, 3, ',', '.');\n}"}},"evals":["options.rowCallback"],"jsHooks":[]}</script>
-</div>
-</div>
-<div id="section-1" class="section level1" number="4">
-<h1 number="4"><span class="header-section-number">4</span> —————–</h1>
-</div>
-<div id="q2logistic-regression-the-final-regression-and-interprete" class="section level1" number="5">
-<h1 number="5"><span class="header-section-number">5</span> Q2:logistic regression the final regression and interprete</h1>
-</div>
-<div id="section-2" class="section level1" number="6">
-<h1 number="6"><span class="header-section-number">6</span> —————–</h1>
+<div id="q2logistic-regression-the-final-regression-and-interprete" class="section level1" number="4">
+<h1 number="4"><span class="header-section-number">4</span> Q2:logistic regression the final regression and interprete</h1>
 <p>want to create a new variable with 3 arbitrary categories based on continuous data.</p>
 <p>set.seed(123) df &lt;- data.frame(a = rnorm(100)) Using base I would</p>
 <p>df<span class="math inline">\(category[df\)</span>a &lt; 0.5] &lt;- “low” df<span class="math inline">\(category[df\)</span>a &gt; 0.5 &amp; df<span class="math inline">\(a &lt; 0.6] &lt;- &quot;middle&quot; df\)</span>category[df$a &gt; 0.6] &lt;- “high”</p>
@@ -3872,14 +2925,15 @@ lm(HLE_2016~. , data = HLE_d_m_final) %&gt;% MASS::stepAIC() %&gt;%
 <p>using quantiles for cut</p>
 <p>xs=quantile(df<span class="math inline">\(a,c(0,1/3,2/3,1)) xs[1]=xs[1]-.00005 df1 &lt;- df %&gt;% mutate(category=cut(a, breaks=xs, labels=c(&quot;low&quot;,&quot;middle&quot;,&quot;high&quot;))) boxplot(df1\)</span>a~df1$category,col=3:5)</p>
 </div>
-<div id="try-glmm-and-interprete" class="section level1" number="7">
-<h1 number="7"><span class="header-section-number">7</span> try glmm and interprete</h1>
+<div id="try-glmm-and-interprete" class="section level1" number="5">
+<h1 number="5"><span class="header-section-number">5</span> try glmm and interprete</h1>
+<p>glmmML</p>
 </div>
-<div id="find-correlated-variable" class="section level1" number="8">
-<h1 number="8"><span class="header-section-number">8</span> find correlated variable</h1>
+<div id="find-correlated-variable" class="section level1" number="6">
+<h1 number="6"><span class="header-section-number">6</span> find correlated variable</h1>
 </div>
-<div id="data-標準化" class="section level1" number="9">
-<h1 number="9"><span class="header-section-number">9</span> data 標準化</h1>
+<div id="data-標準化" class="section level1" number="7">
+<h1 number="7"><span class="header-section-number">7</span> data 標準化</h1>
 <!-- d_common_standarize<- -->
 <!-- d_common %>% dplyr::select_if(is.numeric) %>% -->
 <!--   select(-key, -pref.id) %>% scale() %>% tbl_df() -->
