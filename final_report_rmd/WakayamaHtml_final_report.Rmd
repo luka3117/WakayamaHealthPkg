@@ -166,52 +166,109 @@ lm(HLE_2016~. , data = HLE_d_m_final) %>%
 ```
 
 
-# Q1:FA and interprete{.tabset .tabset-fade .tabset-pills}
+# FA and interprete{.tabset .tabset-fade .tabset-pills}
 ## 女性説明変数 : X_f
+
 ```{r}
 LE_d_f_final.reg<-lm(LE_2015~. , data = LE_d_f_final)
 d_f_.FA<-LE_d_f_final.reg$model[,-1] %>% zemi::JcFA()
 rownames(d_f_.FA$VAR.rotate)<-colnames(LE_d_f_final.reg$model[,-1] )
-d_f_.FA$VAR.rotate %>% data.frame() %>% rownames_to_column() %>% 
-    left_join(var, by=c("rowname"="var_name_Eng")) %>% 
-  select(rowname,var_name_Jpn,X1,X2) %>% 
-  DT::datatable() %>% DT::formatRound(columns=c('X1', 'X2'), digits=3)
+d_f_.FA$VAR.rotate %>% data.frame() %>% rownames_to_column() %>%
+    left_join(var, by=c("rowname"="var_name_Eng")) %>%
+  select(rowname,var_name_Jpn,X1,X2) %>% rename(F1=X1, F2=X2) %>%
+  DT::datatable() %>% DT::formatRound(columns=c('F1', 'F2'), digits=3)
+```
 
-# 
-# 
+
+```{r}
+d_f_.FA$OBS.rotate %>% as.data.frame() %>% tbl_df() %>%
+  rename(F1=V1, F2=V2) %>%
+  mutate(pref.J=d_common$pref.J)%>% select(pref.J, everything()) %>%
+  DT::datatable() %>% DT::formatRound(columns=c('F1', 'F2'), digits=3)
+```
+
+```{r}
+#
+#
 # aa$VAR[,c(1:3)] %>% round(2)
-# 
-# 
-# plot(aa$OBS.rotate, 
+#
+#
+# plot(aa$OBS.rotate,
 #   aa$VAR.rotate)
 # DT::datatable()
 # aa=zemi::JcFA(zemi::USCrime)
-# 
+#
 # X_f<-LE_d_f_final.reg$model[,-1]
 # X_f %>% dim()
-# 
+#
 #  
-# 
+#
 # aa$d
 # aa=zemi::JcFA(LE_d_f_final[,-1])
-# 
+#
 # HLE_d_f_final %>% colnames()
-# # 
+# #
 # # aa$d
 # # aa$OBS
 # # aa$VAR
-# 
+#
 
 
 ```
 
 
 
-## 男性説明変数
+## 男性説明変数　X_m
+
 ```{r}
 LE_d_m_final.reg<-lm(LE_2015~. , data = LE_d_m_final)
-LE_d_m_final.reg$model[,-1] %>%DT::datatable()
-X_m<-LE_d_m_final.reg$model[,-1]
+d_m_.FA<-LE_d_m_final.reg$model[,-1] %>% zemi::JcFA()
+rownames(d_m_.FA$VAR.rotate)<-colnames(LE_d_m_final.reg$model[,-1] )
+d_m_.FA$VAR.rotate %>% data.frame() %>% rownames_to_column() %>%
+    left_join(var, by=c("rowname"="var_name_Eng")) %>%
+  select(rowname,var_name_Jpn,X1,X2) %>% rename(F1=X1, F2=X2) %>%
+  DT::datatable() %>% DT::formatRound(columns=c('F1', 'F2'), digits=3)
+```
+
+
+```{r}
+d_m_.FA$OBS.rotate %>% as.data.frame() %>% tbl_df() %>%
+  rename(F1=V1, F2=V2) %>%
+  mutate(pref.J=d_common$pref.J)%>% select(pref.J, everything()) %>%   
+  DT::datatable() %>% DT::formatRound(columns=c('F1', 'F2'), digits=3)
+```
+
+
+
+
+# Regression : 寿命＜ーF1, F2, and interprete{.tabset .tabset-fade .tabset-pills}
+
+## regression : 女性、平均寿命
+
+```{r}
+lm(LE_d_f_final$LE_2015~d_f_.FA$OBS.rotate) %>% broom::tidy() %>% DT::datatable() %>% DT::formatRound(columns=c('estimate', 'std.error', 'statistic', 'p.value'), digits=3)
+lm(LE_d_f_final$LE_2015~d_f_.FA$OBS.rotate) %>% broom::glance()
+```
+
+## regression : 女性、健康寿命
+```{r}
+lm(HLE_d_f_final$HLE_2016~d_f_.FA$OBS.rotate) %>% broom::tidy()%>% DT::datatable() %>% DT::formatRound(columns=c('estimate', 'std.error', 'statistic', 'p.value'), digits=3)
+lm(HLE_d_f_final$HLE_2016~d_f_.FA$OBS.rotate) %>% broom::glance()
+```
+
+
+## regression : 男性、平均寿命
+
+```{r}
+lm(LE_d_m_final$LE_2015~d_m_.FA$OBS.rotate) %>% broom::tidy()%>% DT::datatable() %>% DT::formatRound(columns=c('estimate', 'std.error', 'statistic', 'p.value'), digits=3)
+lm(LE_d_m_final$LE_2015~d_m_.FA$OBS.rotate) %>% broom::glance()
+```
+
+## regression : 男性、健康寿命
+
+```{r}
+lm(HLE_d_m_final$HLE_2016~d_m_.FA$OBS.rotate) %>% broom::tidy()%>% DT::datatable() %>% DT::formatRound(columns=c('estimate', 'std.error', 'statistic', 'p.value'), digits=3)
+lm(HLE_d_m_final$HLE_2016~d_m_.FA$OBS.rotate) %>% broom::glance()
 ```
 
 

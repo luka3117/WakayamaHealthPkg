@@ -187,7 +187,7 @@ pre code {
 <h1 class="title toc-ignore">和歌山県報告書(under working for final report)</h1>
 <h3 class="subtitle">健康寿命</h3>
 <h4 class="author">李鍾賛(jc lee, 滋賀大助教、数理統計学博士)</h4>
-<h4 class="date">最終更新: 2021/06/05</h4>
+<h4 class="date">最終更新: 2021/06/09</h4>
 
 </div>
 
@@ -201,15 +201,22 @@ pre code {
 <li><a href="#regression-le_d_m_final-男性平均寿命"><span class="toc-section-number">2.3</span> regression <code>LE_d_m_final</code>: 男性、平均寿命</a></li>
 <li><a href="#regression-hle_d_m_final-男性健康寿命"><span class="toc-section-number">2.4</span> regression <code>HLE_d_m_final</code>: 男性、健康寿命</a></li>
 </ul></li>
-<li><a href="#q1fa-and-interprete"><span class="toc-section-number">3</span> Q1:FA and interprete</a>
+<li><a href="#fa-and-interprete"><span class="toc-section-number">3</span> FA and interprete</a>
 <ul>
 <li><a href="#女性説明変数-x_f"><span class="toc-section-number">3.1</span> 女性説明変数 : X_f</a></li>
-<li><a href="#男性説明変数"><span class="toc-section-number">3.2</span> 男性説明変数</a></li>
+<li><a href="#男性説明変数-x_m"><span class="toc-section-number">3.2</span> 男性説明変数　X_m</a></li>
 </ul></li>
-<li><a href="#q2logistic-regression-the-final-regression-and-interprete"><span class="toc-section-number">4</span> Q2:logistic regression the final regression and interprete</a></li>
-<li><a href="#try-glmm-and-interprete"><span class="toc-section-number">5</span> try glmm and interprete</a></li>
-<li><a href="#find-correlated-variable"><span class="toc-section-number">6</span> find correlated variable</a></li>
-<li><a href="#data-標準化"><span class="toc-section-number">7</span> data 標準化</a></li>
+<li><a href="#regression-寿命ーf1-f2-and-interprete"><span class="toc-section-number">4</span> Regression : 寿命＜ーF1, F2, and interprete</a>
+<ul>
+<li><a href="#regression-女性平均寿命"><span class="toc-section-number">4.1</span> regression : 女性、平均寿命</a></li>
+<li><a href="#regression-女性健康寿命"><span class="toc-section-number">4.2</span> regression : 女性、健康寿命</a></li>
+<li><a href="#regression-男性平均寿命"><span class="toc-section-number">4.3</span> regression : 男性、平均寿命</a></li>
+<li><a href="#regression-男性健康寿命"><span class="toc-section-number">4.4</span> regression : 男性、健康寿命</a></li>
+</ul></li>
+<li><a href="#q2logistic-regression-the-final-regression-and-interprete"><span class="toc-section-number">5</span> Q2:logistic regression the final regression and interprete</a></li>
+<li><a href="#try-glmm-and-interprete"><span class="toc-section-number">6</span> try glmm and interprete</a></li>
+<li><a href="#find-correlated-variable"><span class="toc-section-number">7</span> find correlated variable</a></li>
+<li><a href="#data-標準化"><span class="toc-section-number">8</span> data 標準化</a></li>
 </ul>
 </div>
 
@@ -331,55 +338,124 @@ lm(HLE_2016~. , data = HLE_d_m_final) %&gt;%
 <script type="application/json" data-for="htmlwidget-303ceee3ab12da1255d9">{"x":{"filter":"none","data":[["1","2","3","4","5","6","7","8","9","10","11"],["(Intercept)","Medical_treatment_rate_hospitalization_heart_dz_2017","Natural_environment_annual_avg_temperature","HM_Num_of_public_health_nurses_per_100k_pop","Household_Savings","pop_Household_Ratio_of_elderly_single_person_households","Malignant_neoplasm_intestine_mortality_rate_2015","Self_development_PC_etc","Usual_barrier_free_rate_2018","Self_development_art_culture","Self_development_languages_other_than_Eng"],[null,"受療率_入院_心疾患_2017","自然環境_年平均気温","健康・医療_保健師数（人口10万人当たり）","家計_貯蓄現在高","人口・世帯_高齢単身者世帯の割合","悪性新生物(大腸)_年齢調整死亡率2015","自己啓発・訓練−パソコンなどの情報処理","一定のバリアフリー化率_2018","自己啓発・訓練−芸術・文化","自己啓発・訓練−英語以外の外国語"],[75.9619377137128,0.000212949783241076,0.00306488640883872,0.00494957537171087,4.8830256942874e-05,-0.155731274640903,-0.0634261731506629,-0.0158474262224288,-0.0253239929474241,-0.1243760362056,0.204782419386962],[28.7981137885383,0.0415915575838279,0.0829979521173881,0.616037423285712,1.58620570982543,-3.08282189362351,-1.7076270287095,-0.259454778427491,-0.798766103713094,-1.47423131133857,1.81740025567499],[1.87787517190299e-26,0.967054126420919,0.93431295959797,0.541745652859099,0.121438610863519,0.00392123976543047,0.0963172011673007,0.796762377133173,0.429664507698035,0.149111151151662,0.0774870635281317]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>term<\/th>\n      <th>var_name_Jpn<\/th>\n      <th>estimate<\/th>\n      <th>statistic<\/th>\n      <th>p.value<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"targets":3,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\");\n  }"},{"targets":4,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\");\n  }"},{"targets":5,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\");\n  }"},{"className":"dt-right","targets":[3,4,5]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":["options.columnDefs.0.render","options.columnDefs.1.render","options.columnDefs.2.render"],"jsHooks":[]}</script>
 </div>
 </div>
-<div id="q1fa-and-interprete" class="section level1 tabset tabset-fade tabset-pills" number="3">
-<h1 class="tabset tabset-fade tabset-pills" number="3"><span class="header-section-number">3</span> Q1:FA and interprete</h1>
+<div id="fa-and-interprete" class="section level1 tabset tabset-fade tabset-pills" number="3">
+<h1 class="tabset tabset-fade tabset-pills" number="3"><span class="header-section-number">3</span> FA and interprete</h1>
 <div id="女性説明変数-x_f" class="section level2" number="3.1">
 <h2 number="3.1"><span class="header-section-number">3.1</span> 女性説明変数 : X_f</h2>
 <pre class="r"><code>LE_d_f_final.reg&lt;-lm(LE_2015~. , data = LE_d_f_final)
 d_f_.FA&lt;-LE_d_f_final.reg$model[,-1] %&gt;% zemi::JcFA()
 rownames(d_f_.FA$VAR.rotate)&lt;-colnames(LE_d_f_final.reg$model[,-1] )
-d_f_.FA$VAR.rotate %&gt;% data.frame() %&gt;% rownames_to_column() %&gt;% 
-    left_join(var, by=c(&quot;rowname&quot;=&quot;var_name_Eng&quot;)) %&gt;% 
-  select(rowname,var_name_Jpn,X1,X2) %&gt;% 
-  DT::datatable() %&gt;% DT::formatRound(columns=c(&#39;X1&#39;, &#39;X2&#39;), digits=3)</code></pre>
+d_f_.FA$VAR.rotate %&gt;% data.frame() %&gt;% rownames_to_column() %&gt;%
+    left_join(var, by=c(&quot;rowname&quot;=&quot;var_name_Eng&quot;)) %&gt;%
+  select(rowname,var_name_Jpn,X1,X2) %&gt;% rename(F1=X1, F2=X2) %&gt;%
+  DT::datatable() %&gt;% DT::formatRound(columns=c(&#39;F1&#39;, &#39;F2&#39;), digits=3)</code></pre>
 <div id="htmlwidget-17bc4c74729246334bab" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-17bc4c74729246334bab">{"x":{"filter":"none","data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17"],["Treatment_rate_Outpatient_Cerebrovascular_dz_2017","pop_oldElderly_pop_Ratio_2020","pop_Working_Age_pop_Ratio_2020","Natural_environment_annual_avg_temperature","Labor_Unemp_rate","Residence_Num_of_city_parks","Hypertension_Outpatient_2014","Malignant_neoplasm_intestine_mortality_rate_2015","Volunteer_Activity_Rate_total","Treatment_rate_outpatient_heart_dz_2017","Residence_house_ratio","Under_75_Adjusted_Mortality_Evil_Neoplasms_2019","Num_of_clinics_2019","High_barrier_free_handrails_2018","Num_of_cardiologists_2020","Household_Smartphone_ownership_quantity","Volunteer_for_the_Elderly"],["受療率_外来_脳血管疾患_2017","人口・世帯_老年人口割合2020","人口・世帯_生産年齢人口割合2020","自然環境_年平均気温","労働_完全失業率","居住_都市公園数(可住地面積100k㎡当たり)","高血圧疾患_外来2014年","悪性新生物(大腸)_年齢調整死亡率2015","ボランティア総行動率−総数","受療率_外来_心疾患_2017","居住_一戸建住宅比率","75歳未満調整死亡率_悪政新生物_2019","診療所数_2019","バリアフリー_手すりがある2018","循環器専門医数_2020","家計_スマートフォン所有数量（千世帯当たり）","ボランティア総行動率−高齢者を対象とした活動"],[0.2810190536608,0.0133019588195933,0.131665806654907,-0.245452373979631,0.581545173436247,0.165493305796674,0.361968982073231,0.55610118227027,-0.796268657894155,-0.0244831966966077,-0.31326804130149,0.803329453593861,-0.185808705646522,0.330629885180973,0.274195849547236,-0.322277003172049,-0.767887111946615],[0.642434819449489,0.864590065869961,-0.917898424923785,-0.342059028665738,-0.0102831306932167,-0.8534318210609,-0.838725167005935,-0.0726820741536221,0.0840500246300652,0.467641404118357,0.82095569391287,0.327763419958416,0.0788777940579974,-0.855538583545181,-0.844149302551764,-0.730053591595642,0.238266544034608]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>rowname<\/th>\n      <th>var_name_Jpn<\/th>\n      <th>X1<\/th>\n      <th>X2<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"targets":3,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\");\n  }"},{"targets":4,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\");\n  }"},{"className":"dt-right","targets":[3,4]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":["options.columnDefs.0.render","options.columnDefs.1.render"],"jsHooks":[]}</script>
-<pre class="r"><code># 
-# 
+<script type="application/json" data-for="htmlwidget-17bc4c74729246334bab">{"x":{"filter":"none","data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17"],["Treatment_rate_Outpatient_Cerebrovascular_dz_2017","pop_oldElderly_pop_Ratio_2020","pop_Working_Age_pop_Ratio_2020","Natural_environment_annual_avg_temperature","Labor_Unemp_rate","Residence_Num_of_city_parks","Hypertension_Outpatient_2014","Malignant_neoplasm_intestine_mortality_rate_2015","Volunteer_Activity_Rate_total","Treatment_rate_outpatient_heart_dz_2017","Residence_house_ratio","Under_75_Adjusted_Mortality_Evil_Neoplasms_2019","Num_of_clinics_2019","High_barrier_free_handrails_2018","Num_of_cardiologists_2020","Household_Smartphone_ownership_quantity","Volunteer_for_the_Elderly"],["受療率_外来_脳血管疾患_2017","人口・世帯_老年人口割合2020","人口・世帯_生産年齢人口割合2020","自然環境_年平均気温","労働_完全失業率","居住_都市公園数(可住地面積100k㎡当たり)","高血圧疾患_外来2014年","悪性新生物(大腸)_年齢調整死亡率2015","ボランティア総行動率−総数","受療率_外来_心疾患_2017","居住_一戸建住宅比率","75歳未満調整死亡率_悪政新生物_2019","診療所数_2019","バリアフリー_手すりがある2018","循環器専門医数_2020","家計_スマートフォン所有数量（千世帯当たり）","ボランティア総行動率−高齢者を対象とした活動"],[0.2810190536608,0.0133019588195933,0.131665806654907,-0.245452373979631,0.581545173436247,0.165493305796674,0.361968982073231,0.55610118227027,-0.796268657894155,-0.0244831966966077,-0.31326804130149,0.803329453593861,-0.185808705646522,0.330629885180973,0.274195849547236,-0.322277003172049,-0.767887111946615],[0.642434819449489,0.864590065869961,-0.917898424923785,-0.342059028665738,-0.0102831306932167,-0.8534318210609,-0.838725167005935,-0.0726820741536221,0.0840500246300652,0.467641404118357,0.82095569391287,0.327763419958416,0.0788777940579974,-0.855538583545181,-0.844149302551764,-0.730053591595642,0.238266544034608]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>rowname<\/th>\n      <th>var_name_Jpn<\/th>\n      <th>F1<\/th>\n      <th>F2<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"targets":3,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\");\n  }"},{"targets":4,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\");\n  }"},{"className":"dt-right","targets":[3,4]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":["options.columnDefs.0.render","options.columnDefs.1.render"],"jsHooks":[]}</script>
+<pre class="r"><code>d_f_.FA$OBS.rotate %&gt;% as.data.frame() %&gt;% tbl_df() %&gt;%
+  rename(F1=V1, F2=V2) %&gt;%
+  mutate(pref.J=d_common$pref.J)%&gt;% select(pref.J, everything()) %&gt;%
+  DT::datatable() %&gt;% DT::formatRound(columns=c(&#39;F1&#39;, &#39;F2&#39;), digits=3)</code></pre>
+<pre><code>## Warning: `tbl_df()` was deprecated in dplyr 1.0.0.
+## Please use `tibble::as_tibble()` instead.</code></pre>
+<div id="htmlwidget-31db10bfea509715f622" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-31db10bfea509715f622">{"x":{"filter":"none","data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34","35","36","37","38","39","40","41","42","43","44","45","46","47"],["北海道","青森","岩手","宮城","秋田","山形","福島","茨城","栃木","群馬","埼玉","千葉","東京","神奈川","新潟","富山","石川","福井","山梨","長野","岐阜","静岡","愛知","三重","滋賀","京都","大阪","兵庫","奈良","和歌山","鳥取","島根","岡山","広島","山口","徳島","香川","愛媛","高知","福岡","佐賀","長崎","熊本","大分","宮崎","鹿児島","沖縄"],[2.19104412546323,3.27304546016769,0.671793554586379,0.119477448319483,1.52128246180145,-1.0904134375012,0.577845061936704,0.870301743428643,0.191112336048329,-0.114402083671834,0.441700135649274,0.241464718347676,0.695750660173441,0.211523300352622,0.767521488781098,-1.25749957701419,-0.837126567411352,-1.69428791642563,-0.512379996594154,-1.18318271257952,-1.014312740276,-0.326879508292621,0.383205938561706,-0.969849054089456,-1.72958051427192,-0.299214624005633,1.78164959829068,0.00527441379793586,-0.644718462096721,0.327974656989814,-0.411825254986126,-0.804037251905047,-1.27652095239193,0.101626233180354,0.348063151089569,0.164803933924574,-0.473660306921007,-0.0157626596499497,1.32070128142958,0.463159158831008,-1.00309745667102,0.268909135049379,-0.571857210365572,-0.629100738387369,-0.379284978077411,-0.690026368416564,0.989790375801597],[0.175795716087636,1.46418826417284,1.17555940181636,-0.306227010269896,1.59010471479864,0.652526641500693,0.730206530886309,0.0147209139991315,0.00309757511257486,0.110719091249611,-1.37696636660802,-1.20800136015682,-3.53088141165945,-2.1632959453645,0.326052827756147,0.408251685944803,-0.0184301804426634,-0.00194764865583602,0.241979823241606,0.351130513533904,0.0735134421214688,-0.361852230010056,-1.61002013148984,-0.309218332993583,-0.620630878594907,-0.668435448980822,-1.90457054236894,-0.958657014293507,-0.296492976372735,0.778794358449618,0.888057639008068,0.999769615921712,-0.0643867593893702,-0.0537436571996724,0.9266630687494,0.806863544628768,0.52315062271522,0.620544220331271,1.40455183548337,-1.00126580556463,0.341441960633295,0.509300803126663,0.152615412261115,0.510140229728298,0.716385892038945,0.643772794733236,-0.684875439615454]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>pref.J<\/th>\n      <th>F1<\/th>\n      <th>F2<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"targets":2,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\");\n  }"},{"targets":3,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\");\n  }"},{"className":"dt-right","targets":[2,3]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":["options.columnDefs.0.render","options.columnDefs.1.render"],"jsHooks":[]}</script>
+<pre class="r"><code>#
+#
 # aa$VAR[,c(1:3)] %&gt;% round(2)
-# 
-# 
-# plot(aa$OBS.rotate, 
+#
+#
+# plot(aa$OBS.rotate,
 #   aa$VAR.rotate)
 # DT::datatable()
 # aa=zemi::JcFA(zemi::USCrime)
-# 
+#
 # X_f&lt;-LE_d_f_final.reg$model[,-1]
 # X_f %&gt;% dim()
-# 
+#
 #  
-# 
+#
 # aa$d
 # aa=zemi::JcFA(LE_d_f_final[,-1])
-# 
+#
 # HLE_d_f_final %&gt;% colnames()
-# # 
+# #
 # # aa$d
 # # aa$OBS
 # # aa$VAR
-# </code></pre>
+#</code></pre>
 </div>
-<div id="男性説明変数" class="section level2" number="3.2">
-<h2 number="3.2"><span class="header-section-number">3.2</span> 男性説明変数</h2>
+<div id="男性説明変数-x_m" class="section level2" number="3.2">
+<h2 number="3.2"><span class="header-section-number">3.2</span> 男性説明変数　X_m</h2>
 <pre class="r"><code>LE_d_m_final.reg&lt;-lm(LE_2015~. , data = LE_d_m_final)
-LE_d_m_final.reg$model[,-1] %&gt;%DT::datatable()</code></pre>
-<div id="htmlwidget-31db10bfea509715f622" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-31db10bfea509715f622">{"x":{"filter":"none","data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34","35","36","37","38","39","40","41","42","43","44","45","46","47"],[97,43,49,41,49,51,53,37,44,45,33,36,33,34,49,73,86,73,52,46,50,41,33,42,48,58,56,51,50,62,54,50,57,52,69,98,61,69,125,68,62,81,80,74,61,89,51],[9.5,11,11,13.6,12.3,12.6,14.2,15.3,15.2,16.1,16.4,17.2,16.8,17.1,14.3,15,15.5,15.3,16,13,16.9,17.7,16.9,16.9,15.7,16.9,17.4,17.4,16.2,17.3,15.7,15.6,16.3,16.8,16,17.1,17,17.1,17.4,17.7,17.4,17.7,17.5,17.1,17.8,19,23.5],[59.3,54.2,60,47.5,59.6,57.2,56.9,40.1,49,51.2,30.3,33.3,28.4,23.5,54.3,59.1,49.7,61.6,76.5,77.2,49.5,47,36.2,40.9,50.6,45.8,25.9,32.1,41,52.9,59.3,79.3,53.6,46.1,55.5,55.8,58.5,51.9,73.9,35.8,60.2,56.2,56.5,58.7,62.3,58.3,53],[11918,8624,12689,12154,10419,12640,12491,15211,15311,12811,16489,17479,19669,19035,14208,17170,16152,18562,13074,15486,16864,15552,18551,17209,16607,14190,15017,16778,17849,17629,14759,16640,16645,17106,16659,14739,18215,12627,12597,11804,13004,10173,11865,11336,10136,9477,5747],[13.1,12.09,10.91,9.06,12.34,9.42,10.63,8.92,9.16,10.35,9.29,9.91,11.05,10.06,9.73,10.22,10.12,9.74,11.31,10.45,9.73,9.76,9.18,10.79,8.26,11.86,13.28,12.38,11.19,15,11.12,11.98,11.19,11.91,14.55,12.9,12.12,13.77,16.49,11.84,10.41,13.18,11.88,12.94,13.55,15.33,9.25],[22.4,28.3,21.1,18.3,23.5,18,23.8,25.4,23.8,22.6,21.7,20.9,22,21.2,21.3,19.4,17.8,19.6,19.9,17.3,19.1,20.6,20.4,19.6,17.4,20.3,22.3,20.3,17.5,23,22.9,20,17.9,18,20.3,22.8,19.6,20,21.4,20.6,17,22.1,17.5,17.4,17.6,18.2,25.8],[13.6,10.1,11.8,15.5,11.6,12.4,12.1,16,12.2,14.9,18.7,18.3,19.5,17.7,12.8,12.3,15,13.6,14,15.2,13.8,12.5,14.2,14.9,18.1,17.8,16.1,15.6,18.4,13.9,13.2,11.8,13.5,12.8,12.7,13.7,11.7,13.6,10.9,14,12.9,13.8,13,11.8,12.4,10.6,13.3],[42.2,37.4,43.9,46.5,42.8,45.9,43.2,39.2,41.1,42.1,39,38.8,42.9,41.9,46.8,47.5,44.6,45.1,40.4,48.7,44.5,45.4,43.5,41.9,45.8,39.9,41.1,47,42.6,41.2,46.8,48,43.4,44.3,40.7,39.8,42,39.7,39.5,41.1,45.9,43.7,42.5,43.2,40.8,40.9,28.1],[7.2,5.1,7,8.6,6.1,7.7,7.8,8.7,7.6,7.9,10.3,11.9,14.9,11.6,7.2,8.7,9.8,7.7,8.7,10.1,8.9,8,7.5,8.6,10.2,14.1,9.6,10.3,10.6,7.5,8.3,9.4,8.9,8.8,8.4,8.1,8,8.4,6.3,9.5,7.9,6.2,8,8.1,6.3,7.1,6.1],[2.7,1.4,1.8,3.2,1.6,1.8,1.5,2.7,3,2.8,3.3,3.7,5.7,5.1,1.1,2.7,2.9,1.9,2.4,2.3,2.7,2.6,2.5,1.8,2.9,6.2,4.6,3,3.2,1.2,2.3,1.4,2.3,2.4,2.1,1.8,3.1,1.6,1.6,2.1,1.5,2.1,3.1,2.1,2.3,1.3,2.3]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Medical_treatment_rate_hospitalization_heart_dz_2017<\/th>\n      <th>Natural_environment_annual_avg_temperature<\/th>\n      <th>HM_Num_of_public_health_nurses_per_100k_pop<\/th>\n      <th>Household_Savings<\/th>\n      <th>pop_Household_Ratio_of_elderly_single_person_households<\/th>\n      <th>Malignant_neoplasm_intestine_mortality_rate_2015<\/th>\n      <th>Self_development_PC_etc<\/th>\n      <th>Usual_barrier_free_rate_2018<\/th>\n      <th>Self_development_art_culture<\/th>\n      <th>Self_development_languages_other_than_Eng<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[1,2,3,4,5,6,7,8,9,10]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
-<pre class="r"><code>X_m&lt;-LE_d_m_final.reg$model[,-1]</code></pre>
+d_m_.FA&lt;-LE_d_m_final.reg$model[,-1] %&gt;% zemi::JcFA()
+rownames(d_m_.FA$VAR.rotate)&lt;-colnames(LE_d_m_final.reg$model[,-1] )
+d_m_.FA$VAR.rotate %&gt;% data.frame() %&gt;% rownames_to_column() %&gt;%
+    left_join(var, by=c(&quot;rowname&quot;=&quot;var_name_Eng&quot;)) %&gt;%
+  select(rowname,var_name_Jpn,X1,X2) %&gt;% rename(F1=X1, F2=X2) %&gt;%
+  DT::datatable() %&gt;% DT::formatRound(columns=c(&#39;F1&#39;, &#39;F2&#39;), digits=3)</code></pre>
+<div id="htmlwidget-53f33c03da31bebd84c7" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-53f33c03da31bebd84c7">{"x":{"filter":"none","data":[["1","2","3","4","5","6","7","8","9","10"],["Medical_treatment_rate_hospitalization_heart_dz_2017","Natural_environment_annual_avg_temperature","HM_Num_of_public_health_nurses_per_100k_pop","Household_Savings","pop_Household_Ratio_of_elderly_single_person_households","Malignant_neoplasm_intestine_mortality_rate_2015","Self_development_PC_etc","Usual_barrier_free_rate_2018","Self_development_art_culture","Self_development_languages_other_than_Eng"],["受療率_入院_心疾患_2017","自然環境_年平均気温","健康・医療_保健師数（人口10万人当たり）","家計_貯蓄現在高","人口・世帯_高齢単身者世帯の割合","悪性新生物(大腸)_年齢調整死亡率2015","自己啓発・訓練−パソコンなどの情報処理","一定のバリアフリー化率_2018","自己啓発・訓練−芸術・文化","自己啓発・訓練−英語以外の外国語"],[0.0163435967976585,0.504788750969381,-0.357183986959209,-0.430454189718299,0.20265558585343,0.652612134771235,0.0820046898170527,-0.929500367728066,-0.111346088967955,0.173628193010653],[-0.611887586788237,0.162690078798648,-0.759435857534367,0.650899912030477,-0.513704549442705,-0.11102951576554,0.898897061166913,0.0703016919922625,0.870754686426207,0.818639792264352]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>rowname<\/th>\n      <th>var_name_Jpn<\/th>\n      <th>F1<\/th>\n      <th>F2<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"targets":3,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\");\n  }"},{"targets":4,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\");\n  }"},{"className":"dt-right","targets":[3,4]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":["options.columnDefs.0.render","options.columnDefs.1.render"],"jsHooks":[]}</script>
+<pre class="r"><code>d_m_.FA$OBS.rotate %&gt;% as.data.frame() %&gt;% tbl_df() %&gt;%
+  rename(F1=V1, F2=V2) %&gt;%
+  mutate(pref.J=d_common$pref.J)%&gt;% select(pref.J, everything()) %&gt;%   
+  DT::datatable() %&gt;% DT::formatRound(columns=c(&#39;F1&#39;, &#39;F2&#39;), digits=3)</code></pre>
+<div id="htmlwidget-006fcd9f6314c0e03ee4" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-006fcd9f6314c0e03ee4">{"x":{"filter":"none","data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34","35","36","37","38","39","40","41","42","43","44","45","46","47"],["北海道","青森","岩手","宮城","秋田","山形","福島","茨城","栃木","群馬","埼玉","千葉","東京","神奈川","新潟","富山","石川","福井","山梨","長野","岐阜","静岡","愛知","三重","滋賀","京都","大阪","兵庫","奈良","和歌山","鳥取","島根","岡山","広島","山口","徳島","香川","愛媛","高知","福岡","佐賀","長崎","熊本","大分","宮崎","鹿児島","沖縄"],[-0.233482926513722,1.48595172514309,-0.771865864357291,-0.923883087398108,0.0886040698808764,-1.31629640971958,0.049763403018962,1.06292165880325,0.428140030651516,0.473358625828344,0.866760393524108,0.783007153625592,0.422455308501241,0.547354900065234,-0.899125615277378,-1.32598082218051,-0.830303519055455,-1.11220054423006,-0.0779595523352413,-2.14764483174997,-0.579371373730892,-0.297078955262818,-0.196109762136876,-0.0454108792358166,-1.12122696607674,0.822852759949459,1.23487641106777,-0.272676432156757,-0.377968252260023,0.525269697752705,-0.480490590131672,-1.56079307078462,-0.662790886920532,-0.603625885482803,0.123889533227704,0.753844596653054,-0.242588515896416,0.615413200138896,0.693686163606021,0.786057059753797,-0.939853416368169,0.598947526778206,-0.0399301282040181,-0.250036411832379,0.324148101745891,0.584934172234978,4.03645820734716],[-1.01229108434599,-1.48816311743181,-0.773386315888309,0.496587281147837,-1.14963678676795,-0.437320748574539,-0.647239564149341,0.725203223831712,0.0865876365276349,0.130147784015962,1.578244471345,1.76255455286063,2.74735782727892,2.17964631928536,-0.461979038621733,-0.141418975814303,0.30506097117906,-0.215454801698988,-0.424189050958509,0.0550802740296966,0.414863718787572,0.204445322749583,0.707388818381729,0.445971004909337,1.12125623937087,1.7733981097835,1.03258210515676,0.893150708148092,1.24785090074017,-0.539737131778527,-0.234525701860084,-0.627289182670449,0.0710077195487462,0.149574168526889,-0.501430179309928,-0.722688994236994,-0.156236226709362,-0.589050451892294,-2.0928423680943,0.0317996249374072,-0.501559954148726,-0.975159834028228,-0.435942342797869,-0.829394657843496,-0.991283865543574,-1.57654815133627,-0.634990256040876]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>pref.J<\/th>\n      <th>F1<\/th>\n      <th>F2<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"targets":2,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\");\n  }"},{"targets":3,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\");\n  }"},{"className":"dt-right","targets":[2,3]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":["options.columnDefs.0.render","options.columnDefs.1.render"],"jsHooks":[]}</script>
 </div>
 </div>
-<div id="q2logistic-regression-the-final-regression-and-interprete" class="section level1" number="4">
-<h1 number="4"><span class="header-section-number">4</span> Q2:logistic regression the final regression and interprete</h1>
+<div id="regression-寿命ーf1-f2-and-interprete" class="section level1 tabset tabset-fade tabset-pills" number="4">
+<h1 class="tabset tabset-fade tabset-pills" number="4"><span class="header-section-number">4</span> Regression : 寿命＜ーF1, F2, and interprete</h1>
+<div id="regression-女性平均寿命" class="section level2" number="4.1">
+<h2 number="4.1"><span class="header-section-number">4.1</span> regression : 女性、平均寿命</h2>
+<pre class="r"><code>lm(LE_d_f_final$LE_2015~d_f_.FA$OBS.rotate) %&gt;% broom::tidy() %&gt;% DT::datatable() %&gt;% DT::formatRound(columns=c(&#39;estimate&#39;, &#39;std.error&#39;, &#39;statistic&#39;, &#39;p.value&#39;), digits=3)</code></pre>
+<div id="htmlwidget-0502f06e1a28c9502b0d" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-0502f06e1a28c9502b0d">{"x":{"filter":"none","data":[["1","2","3"],["(Intercept)","d_f_.FA$OBS.rotate1","d_f_.FA$OBS.rotate2"],[87.0221276595745,-0.261373215112653,-0.0943091864103604],[0.0437623646188019,0.0442354850132298,0.0442354850132298],[1988.51520976055,-5.90867750256344,-2.13198038593122],[1.25409049313221e-110,4.59597352144011e-07,0.0386290170756166]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>term<\/th>\n      <th>estimate<\/th>\n      <th>std.error<\/th>\n      <th>statistic<\/th>\n      <th>p.value<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"targets":2,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\");\n  }"},{"targets":3,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\");\n  }"},{"targets":4,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\");\n  }"},{"targets":5,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\");\n  }"},{"className":"dt-right","targets":[2,3,4,5]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":["options.columnDefs.0.render","options.columnDefs.1.render","options.columnDefs.2.render","options.columnDefs.3.render"],"jsHooks":[]}</script>
+<pre class="r"><code>lm(LE_d_f_final$LE_2015~d_f_.FA$OBS.rotate) %&gt;% broom::glance()</code></pre>
+<pre><code>## # A tibble: 1 x 12
+##   r.squared adj.r.squared sigma statistic     p.value    df logLik   AIC   BIC
+##       &lt;dbl&gt;         &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt;       &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+## 1     0.473         0.449 0.300      19.7 0.000000765     2  -8.56  25.1  32.5
+## # … with 3 more variables: deviance &lt;dbl&gt;, df.residual &lt;int&gt;, nobs &lt;int&gt;</code></pre>
+</div>
+<div id="regression-女性健康寿命" class="section level2" number="4.2">
+<h2 number="4.2"><span class="header-section-number">4.2</span> regression : 女性、健康寿命</h2>
+<pre class="r"><code>lm(HLE_d_f_final$HLE_2016~d_f_.FA$OBS.rotate) %&gt;% broom::tidy()%&gt;% DT::datatable() %&gt;% DT::formatRound(columns=c(&#39;estimate&#39;, &#39;std.error&#39;, &#39;statistic&#39;, &#39;p.value&#39;), digits=3)</code></pre>
+<div id="htmlwidget-69e50488f7f01e50a9fc" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-69e50488f7f01e50a9fc">{"x":{"filter":"none","data":[["1","2","3"],["(Intercept)","d_f_.FA$OBS.rotate1","d_f_.FA$OBS.rotate2"],[74.94,-0.129463220424963,0.0697718291290599],[0.0946204717933367,0.0956434255419691,0.0956434255419691],[792.00619675284,-1.35360292347699,0.729499479276215],[4.88643504442849e-93,0.182776032128473,0.469562034592684]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>term<\/th>\n      <th>estimate<\/th>\n      <th>std.error<\/th>\n      <th>statistic<\/th>\n      <th>p.value<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"targets":2,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\");\n  }"},{"targets":3,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\");\n  }"},{"targets":4,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\");\n  }"},{"targets":5,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\");\n  }"},{"className":"dt-right","targets":[2,3,4,5]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":["options.columnDefs.0.render","options.columnDefs.1.render","options.columnDefs.2.render","options.columnDefs.3.render"],"jsHooks":[]}</script>
+<pre class="r"><code>lm(HLE_d_f_final$HLE_2016~d_f_.FA$OBS.rotate) %&gt;% broom::glance()</code></pre>
+<pre><code>## # A tibble: 1 x 12
+##   r.squared adj.r.squared sigma statistic p.value    df logLik   AIC   BIC
+##       &lt;dbl&gt;         &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+## 1    0.0510       0.00786 0.649      1.18   0.316     2  -44.8  97.6  105.
+## # … with 3 more variables: deviance &lt;dbl&gt;, df.residual &lt;int&gt;, nobs &lt;int&gt;</code></pre>
+</div>
+<div id="regression-男性平均寿命" class="section level2" number="4.3">
+<h2 number="4.3"><span class="header-section-number">4.3</span> regression : 男性、平均寿命</h2>
+<pre class="r"><code>lm(LE_d_m_final$LE_2015~d_m_.FA$OBS.rotate) %&gt;% broom::tidy()%&gt;% DT::datatable() %&gt;% DT::formatRound(columns=c(&#39;estimate&#39;, &#39;std.error&#39;, &#39;statistic&#39;, &#39;p.value&#39;), digits=3)</code></pre>
+<div id="htmlwidget-dbe37b99585fbce789d3" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-dbe37b99585fbce789d3">{"x":{"filter":"none","data":[["1","2","3"],["(Intercept)","d_m_.FA$OBS.rotate1","d_m_.FA$OBS.rotate2"],[80.6521276595745,-0.251092827772436,0.344747572956302],[0.0578635440513332,0.0584891140593305,0.0584891140593305],[1393.83318083705,-4.29298394770915,5.89421772753465],[7.73069253867782e-104,9.54496796207658e-05,4.82620476843762e-07]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>term<\/th>\n      <th>estimate<\/th>\n      <th>std.error<\/th>\n      <th>statistic<\/th>\n      <th>p.value<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"targets":2,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\");\n  }"},{"targets":3,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\");\n  }"},{"targets":4,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\");\n  }"},{"targets":5,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\");\n  }"},{"className":"dt-right","targets":[2,3,4,5]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":["options.columnDefs.0.render","options.columnDefs.1.render","options.columnDefs.2.render","options.columnDefs.3.render"],"jsHooks":[]}</script>
+<pre class="r"><code>lm(LE_d_m_final$LE_2015~d_m_.FA$OBS.rotate) %&gt;% broom::glance()</code></pre>
+<pre><code>## # A tibble: 1 x 12
+##   r.squared adj.r.squared sigma statistic      p.value    df logLik   AIC   BIC
+##       &lt;dbl&gt;         &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt;        &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+## 1     0.547         0.527 0.397      26.6 0.0000000269     2  -21.7  51.4  58.8
+## # … with 3 more variables: deviance &lt;dbl&gt;, df.residual &lt;int&gt;, nobs &lt;int&gt;</code></pre>
+</div>
+<div id="regression-男性健康寿命" class="section level2" number="4.4">
+<h2 number="4.4"><span class="header-section-number">4.4</span> regression : 男性、健康寿命</h2>
+<pre class="r"><code>lm(HLE_d_m_final$HLE_2016~d_m_.FA$OBS.rotate) %&gt;% broom::tidy()%&gt;% DT::datatable() %&gt;% DT::formatRound(columns=c(&#39;estimate&#39;, &#39;std.error&#39;, &#39;statistic&#39;, &#39;p.value&#39;), digits=3)</code></pre>
+<div id="htmlwidget-97b5968d61e346fee578" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-97b5968d61e346fee578">{"x":{"filter":"none","data":[["1","2","3"],["(Intercept)","d_m_.FA$OBS.rotate1","d_m_.FA$OBS.rotate2"],[72.0640425531915,-0.102765525432925,0.15346657900815],[0.0720571772444265,0.0728361963951559,0.0728361963951558],[1000.09527584937,-1.41091284991593,2.10700979188359],[1.70401545718026e-97,0.165301973069938,0.0408522883389448]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>term<\/th>\n      <th>estimate<\/th>\n      <th>std.error<\/th>\n      <th>statistic<\/th>\n      <th>p.value<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"targets":2,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\");\n  }"},{"targets":3,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\");\n  }"},{"targets":4,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\");\n  }"},{"targets":5,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\");\n  }"},{"className":"dt-right","targets":[2,3,4,5]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":["options.columnDefs.0.render","options.columnDefs.1.render","options.columnDefs.2.render","options.columnDefs.3.render"],"jsHooks":[]}</script>
+<pre class="r"><code>lm(HLE_d_m_final$HLE_2016~d_m_.FA$OBS.rotate) %&gt;% broom::glance()</code></pre>
+<pre><code>## # A tibble: 1 x 12
+##   r.squared adj.r.squared sigma statistic p.value    df logLik   AIC   BIC
+##       &lt;dbl&gt;         &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+## 1     0.128        0.0878 0.494      3.22  0.0497     2  -32.0  72.0  79.4
+## # … with 3 more variables: deviance &lt;dbl&gt;, df.residual &lt;int&gt;, nobs &lt;int&gt;</code></pre>
+</div>
+</div>
+<div id="q2logistic-regression-the-final-regression-and-interprete" class="section level1" number="5">
+<h1 number="5"><span class="header-section-number">5</span> Q2:logistic regression the final regression and interprete</h1>
 <p>want to create a new variable with 3 arbitrary categories based on continuous data.</p>
 <p>set.seed(123) df &lt;- data.frame(a = rnorm(100)) Using base I would</p>
 <p>df<span class="math inline">\(category[df\)</span>a &lt; 0.5] &lt;- “low” df<span class="math inline">\(category[df\)</span>a &gt; 0.5 &amp; df<span class="math inline">\(a &lt; 0.6] &lt;- &quot;middle&quot; df\)</span>category[df$a &gt; 0.6] &lt;- “high”</p>
@@ -388,15 +464,15 @@ LE_d_m_final.reg$model[,-1] %&gt;%DT::datatable()</code></pre>
 <p>using quantiles for cut</p>
 <p>xs=quantile(df<span class="math inline">\(a,c(0,1/3,2/3,1)) xs[1]=xs[1]-.00005 df1 &lt;- df %&gt;% mutate(category=cut(a, breaks=xs, labels=c(&quot;low&quot;,&quot;middle&quot;,&quot;high&quot;))) boxplot(df1\)</span>a~df1$category,col=3:5)</p>
 </div>
-<div id="try-glmm-and-interprete" class="section level1" number="5">
-<h1 number="5"><span class="header-section-number">5</span> try glmm and interprete</h1>
+<div id="try-glmm-and-interprete" class="section level1" number="6">
+<h1 number="6"><span class="header-section-number">6</span> try glmm and interprete</h1>
 <p>glmmML</p>
 </div>
-<div id="find-correlated-variable" class="section level1" number="6">
-<h1 number="6"><span class="header-section-number">6</span> find correlated variable</h1>
+<div id="find-correlated-variable" class="section level1" number="7">
+<h1 number="7"><span class="header-section-number">7</span> find correlated variable</h1>
 </div>
-<div id="data-標準化" class="section level1" number="7">
-<h1 number="7"><span class="header-section-number">7</span> data 標準化</h1>
+<div id="data-標準化" class="section level1" number="8">
+<h1 number="8"><span class="header-section-number">8</span> data 標準化</h1>
 <!-- d_common_standarize<- -->
 <!-- d_common %>% dplyr::select_if(is.numeric) %>% -->
 <!--   select(-key, -pref.id) %>% scale() %>% tbl_df() -->
