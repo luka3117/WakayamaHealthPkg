@@ -273,39 +273,51 @@ lm(HLE_d_m_final$HLE_2016~d_m_.FA$OBS.rotate) %>% broom::glance()
 
 
 
-# Q2:logistic regression the final regression and interprete
+# Q2:logistic regression the final regression and interprete {.tabset .tabset-fade .tabset-pills}
 
-want to create a new variable with 3 arbitrary categories based on continuous data.
-
-set.seed(123)
-df <- data.frame(a = rnorm(100))
-Using base I would
-
-df$category[df$a < 0.5] <- "low"
-df$category[df$a > 0.5 & df$a < 0.6] <- "middle"
-df$category[df$a > 0.6] <- "high"
+## To binary LE and HLE
 
 
-To convert from numeric to categorical, use cut. In your particular case, you want:
+```{r}
+LE_d_f_final$LE_binary <- ifelse(LE_d_f_final$LE_2015>median(LE_d_f_final$LE_2015),1,0)
+HLE_d_f_final$HLE_binary <- ifelse(HLE_d_f_final$HLE_2016>median(HLE_d_f_final$HLE_2016),1,0)
+LE_d_m_final$LE_binary <- ifelse(LE_d_m_final$LE_2015>median(LE_d_m_final$LE_2015),1,0)
+HLE_d_m_final$HLE_binary <- ifelse(HLE_d_m_final$HLE_2016>median(HLE_d_m_final$HLE_2016),1,0)
 
-  df$category <- cut(df$a,
-                     breaks=c(-Inf, 0.5, 0.6, Inf),
-                     labels=c("low","middle","high"))
+LE_d_f_final$LE_binary   # 女性
+HLE_d_f_final$HLE_binary   # 女性
+LE_d_m_final$LE_binary   # 男性
+HLE_d_m_final$HLE_binary   # 男性
+
+```
+
+## logit model 女性、LE
+
+```{r}
+glm(LE_d_f_final$LE_binary ~ d_f_.FA$OBS.rotate, family =  "binomial")%>% broom::tidy() %>% DT::datatable() %>% DT::formatRound(columns=c('estimate', 'std.error', 'statistic', 'p.value'), digits=3)
+```
 
 
+## logit model 女性、HLE
 
 
-
-using quantiles for cut
-
-xs=quantile(df$a,c(0,1/3,2/3,1))
-xs[1]=xs[1]-.00005
-df1 <- df %>% mutate(category=cut(a, breaks=xs, labels=c("low","middle","high")))
-boxplot(df1$a~df1$category,col=3:5)
+```{r}
+glm(HLE_d_f_final$HLE_binary ~ d_f_.FA$OBS.rotate, family =  "binomial")%>% broom::tidy() %>% DT::datatable() %>% DT::formatRound(columns=c('estimate', 'std.error', 'statistic', 'p.value'), digits=3)
+```
 
 
+## logit model 男性、LE
 
 
+```{r}
+glm(LE_d_m_final$LE_binary ~ d_m_.FA$OBS.rotate, family =  "binomial")%>% broom::tidy() %>% DT::datatable() %>% DT::formatRound(columns=c('estimate', 'std.error', 'statistic', 'p.value'), digits=3)
+```
+
+## logit model 男性、HLE
+
+```{r}
+glm(HLE_d_m_final$HLE_binary ~ d_m_.FA$OBS.rotate, family =  "binomial")%>% broom::tidy() %>% DT::datatable() %>% DT::formatRound(columns=c('estimate', 'std.error', 'statistic', 'p.value'), digits=3)
+```
 
 
 # try glmm and  interprete
@@ -313,7 +325,12 @@ boxplot(df1$a~df1$category,col=3:5)
 glmmML
 
 
+# gamma dist ????
+
+
 # find correlated variable
+
+
 
 # data 標準化
 <!-- d_common_standarize<- -->
