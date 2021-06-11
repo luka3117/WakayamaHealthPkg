@@ -9,9 +9,9 @@ output:
    number_section: true
    toc: true
    code_folding: hide
-   # toc_float:
-   #   smooth_scroll: false
-   #   collapsed: false
+   toc_float:
+     smooth_scroll: false
+     collapsed: false
 
 # output:
 #   ioslides_presentation:
@@ -322,10 +322,41 @@ glm(HLE_d_m_final$HLE_binary ~ d_m_.FA$OBS.rotate, family =  "binomial")%>% broo
 
 # try glmm and  interprete
 
-glmmML
+```{r}
+library(glmmML)
+# glmmML(LE_d_f_final$LE_binary ~ d_f_.FA$OBS.rotate, family =  "binomial", cluster=id)
+# 
+aaaa=LE_d_f_final$LE_binary %>% enframe() %>% 
+  bind_cols(as.data.frame(d_f_.FA$OBS.rotate))%>% rename(LE_binary=value,F1=V1, F2=V2) %>% mutate(LE_binary=as.factor(LE_binary))
+
+glmmML(LE_binary ~ F1+F2, family =  "binomial", cluster=name, data=aaaa)
+
+  
+
+```
 
 
-# gamma dist ????
+
+
+glmmML(y~, 
+
+data=
+
+fami)
+
+
+# gamma dist ???
+
+?
+
+gamma dist ???
+
+glm(y~x, family=Gamma(link="log"), data=d)
+
+
+
+
+
 
 
 # find correlated variable
