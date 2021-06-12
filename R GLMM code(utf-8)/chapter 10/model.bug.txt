@@ -1,0 +1,14 @@
+model
+{
+	for (i in 1:N) {
+		Y[i] ~ dbin(q[i], 8) # Binomial distribution
+		logit(q[i]) <- beta + r[i] # logit probability
+	}
+	beta ~ dnorm(0, 1.0E-4) # non-informative prior
+	for (i in 1:N) {
+		r[i] ~ dnorm(0, tau) # hierarchical prior
+	}
+	tau <- 1 / (s * s)	 # tau is inverse of variance
+	s ~ dunif(0, 1.0E+4) # hyper parameter, non-informative prior
+}
+
