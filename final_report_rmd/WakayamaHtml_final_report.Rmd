@@ -328,7 +328,7 @@ HLE_d_m_final$HLE_binary
 
 
 
-# gamma dist ??? {.tabset .tabset-fade .tabset-pills}
+# 寿命$\sim Gamma(\alpha,\beta)$ gamma dist {.tabset .tabset-fade .tabset-pills}
 
 glm(y~x, family=Gamma(link="log"), data=d)
 
@@ -340,7 +340,8 @@ LE_FF_d_f=LE_d_f_final$LE_2015 %>% enframe() %>%
   rename(LE=value,F1=V1, F2=V2) %>% select(-name)
   # mutate(LE=as.factor(LE_binary))
 
-glm(LE~., family=Gamma(link="log"), data=LE_FF_d_f)
+glm(LE~., family=Gamma(link="log"), data=LE_FF_d_f) %>%
+broom::tidy() %>% DT::datatable() %>% DT::formatRound(columns=c('estimate', 'std.error', 'statistic', 'p.value'), digits=3)
 
 ```
 
@@ -353,7 +354,8 @@ HLE_FF_d_f=HLE_d_f_final$HLE_2016 %>% enframe() %>%
   rename(HLE=value,F1=V1, F2=V2) %>% select(-name)
   # mutate(HLE=as.factor(HLE_binary))
 
-glm(HLE~., family=Gamma(link="log"), data=HLE_FF_d_f)
+glm(HLE~., family=Gamma(link="log"), data=HLE_FF_d_f) %>%
+broom::tidy() %>% DT::datatable() %>% DT::formatRound(columns=c('estimate', 'std.error', 'statistic', 'p.value'), digits=3)
 
 ```
 
@@ -366,7 +368,8 @@ LE_FF_d_m=LE_d_m_final$LE_2015 %>% enframe() %>%
   rename(LE=value,F1=V1, F2=V2) %>% select(-name)
   # mutate(LE=as.factor(LE_binary))
 
-glm(LE~., family=Gamma(link="log"), data=LE_FF_d_m)
+glm(LE~., family=Gamma(link="log"), data=LE_FF_d_m) %>%
+broom::tidy() %>% DT::datatable() %>% DT::formatRound(columns=c('estimate', 'std.error', 'statistic', 'p.value'), digits=3)
 
 ```
 
@@ -377,21 +380,28 @@ HLE_FF_d_m=HLE_d_m_final$HLE_2016 %>% enframe() %>%
   rename(HLE=value,F1=V1, F2=V2) %>% select(-name)
   # mutate(HLE=as.factor(HLE_binary))
 
-glm(HLE~., family=Gamma(link="log"), data=HLE_FF_d_m)
+glm(HLE~., family=Gamma(link="log"), data=HLE_FF_d_m) %>%
+broom::tidy() %>% DT::datatable() %>% DT::formatRound(columns=c('estimate', 'std.error', 'statistic', 'p.value'), digits=3)
 
 ```
 
-gamma dist ???
+
+
+# Bayes {.tabset .tabset-fade .tabset-pills}
 
 
 
-ls()
-load("d.RData")
-fit <- glm(y ~ x, family = Gamma(link = "log"), data = d)
-summary(fit)
+- 女性平均寿命 Bayes Inference
+LE_FF_d_f=LE_d_f_final$LE_2015 %>% enframe() %>%
 
-glm(y ~ x, data = d) %>% broom::tidy()
-fit %>% broom::tidy()
+- 女性健康寿命 Bayes Inference
+HLE_FF_d_f=HLE_d_f_final$HLE_2016 %>% enframe() %>%
+
+- 男性平均寿命 Bayes Inference
+LE_FF_d_m=LE_d_m_final$LE_2015 %>% enframe() %>%
+
+- 男性健康寿命 Bayes Inference
+HLE_FF_d_m=HLE_d_m_final$HLE_2016 %>% enframe() %>%
 
 
 
@@ -408,13 +418,7 @@ aaaa=LE_d_f_final$LE_binary %>% enframe() %>%
 
 glmmML(LE_binary ~ F1+F2, family =  "binomial", cluster=name, data=aaaa)
 
-
-
 ```
-
-
-
-
 
 # find correlated variable
 
