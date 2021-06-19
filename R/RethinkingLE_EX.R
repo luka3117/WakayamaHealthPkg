@@ -150,12 +150,10 @@ par(family= "HiraKakuProN-W3")
 # par(mfrow=c(1,1))
 
 # mu_at_Q1 %>% dens(main = "F2が Q1である場合")
-mu_at_Q2 %>% dens(main = "F2が Q2である場合")
+# mu_at_Q1 %>% dens(main = "F2が Q2である場合", xlim=c(86.4, 87.4))
+mu_at_Q2 %>% dens(main = "F2因子の変化による平均寿命分布の変化", xlim=c(86.4, 87.4))
 mu_at_Q3 %>% dens(main = "F2が Q3である場合", add = T)
 mu_at_Q4 %>% dens(main = "F2が Q4である場合", add = T)
 mu_at_Q5 %>% dens(main = "F2が Q5である場合", add = T)
 
 
-
-LE_FF_d_f$F2 %>% quantile()
-sdjklfjds
