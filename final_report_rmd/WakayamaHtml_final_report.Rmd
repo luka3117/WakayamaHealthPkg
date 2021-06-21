@@ -161,37 +161,6 @@ d_f_.FA$OBS.rotate %>% as.data.frame() %>% tbl_df() %>%
   DT::datatable() %>% DT::formatRound(columns=c('F1', 'F2'), digits=3)
 ```
 
-```{r}
-#
-#
-# aa$VAR[,c(1:3)] %>% round(2)
-#
-#
-# plot(aa$OBS.rotate,
-#   aa$VAR.rotate)
-# DT::datatable()
-# aa=zemi::JcFA(zemi::USCrime)
-#
-# X_f<-LE_d_f_final.reg$model[,-1]
-# X_f %>% dim()
-#
-#
-#
-# aa$d
-# aa=zemi::JcFA(LE_d_f_final[,-1])
-#
-# HLE_d_f_final %>% colnames()
-# #
-# # aa$d
-# # aa$OBS
-# # aa$VAR
-#
-
-
-```
-
-
-
 ## 男性説明変数　X_m
 
 ```{r}
@@ -392,19 +361,19 @@ Bayes_fit_LE_d_f<-
 
 ```
 
-### 因子効果、切片効果
+### F1, F2 因子効果および切片効果 and PI
 
 ```{r}
 precis(Bayes_fit_LE_d_f)
 
 ```
 
-### 因子効果、共分散
+<!-- ### 因子効果、共分散 -->
 
-```{r}
-round( vcov(Bayes_fit_LE_d_f) , 3 )
+<!-- ```{r} -->
+<!-- round( vcov(Bayes_fit_LE_d_f) , 3 ) -->
 
-```
+<!-- ``` -->
 
 ### 事後分布推定
 
@@ -416,13 +385,13 @@ post<-extract.samples(Bayes_fit_LE_d_f)
 # purrr::map(post, hist)
 
 
-rethinking::HPDI(post$beta0)
-rethinking::HPDI(post$beta1)
-rethinking::HPDI(post$beta2)
+# rethinking::HPDI(post$beta0)
+# rethinking::HPDI(post$beta1)
+# rethinking::HPDI(post$beta2)
 
-rethinking::PI(post$beta0)
-rethinking::PI(post$beta1)
-rethinking::PI(post$beta2)
+# rethinking::PI(post$beta0)
+# rethinking::PI(post$beta1)
+# rethinking::PI(post$beta2)
 dens(post)
 ```
 
@@ -448,6 +417,25 @@ mu_at_Q2 %>% dens(main = "F2因子の変化による平均寿命分布の変化"
 mu_at_Q3 %>% dens(main = "F2が Q3である場合", add = T)
 mu_at_Q4 %>% dens(main = "F2が Q4である場合", add = T)
 mu_at_Q5 %>% dens(main = "F2が Q5である場合", add = T)
+
+
+
+
+aa<-tibble::tibble(
+  mu_at_Q2=mu_at_Q2,
+  mu_at_Q3=mu_at_Q3,
+  mu_at_Q4=mu_at_Q4
+) %>% pivot_longer(cols = everything()) %>% nest(value)
+
+
+name <- function(aa) {
+ggplot_build(aa %>% ggplot(aes(value))+stat_ecdf())$data[[1]] %>% select(y, x) %>% 
+    mutate(ccdf=1-y)
+}
+
+aa$ccdf<-purrr::map(aa$data, name)
+
+aa %>% unnest(cols = ccdf) %>% ggplot(aes(x=x, y=ccdf, group=name, color=name))+geom_line()+theme_bw(base_family = "HiraKakuProN-W3")
 
 ```
 
@@ -502,19 +490,19 @@ Bayes_fit_LE_d_m<-
 
 ```
 
-### 因子効果、切片効果
+### F1, F2 因子効果および切片効果 and PI
 
 ```{r}
 precis(Bayes_fit_LE_d_m)
 
 ```
 
-### 因子効果、共分散
+<!-- ### 因子効果、共分散 -->
 
-```{r}
-round( vcov(Bayes_fit_LE_d_m) , 3 )
+<!-- ```{r} -->
+<!-- round( vcov(Bayes_fit_LE_d_m) , 3 ) -->
 
-```
+<!-- ``` -->
 
 ### 事後分布推定
 
@@ -526,13 +514,14 @@ post<-extract.samples(Bayes_fit_LE_d_m)
 # purrr::map(post, hist)
 
 
-rethinking::HPDI(post$beta0)
-rethinking::HPDI(post$beta1)
-rethinking::HPDI(post$beta2)
+# rethinking::HPDI(post$beta0)
+# rethinking::HPDI(post$beta1)
+# rethinking::HPDI(post$beta2)
 
-rethinking::PI(post$beta0)
-rethinking::PI(post$beta1)
-rethinking::PI(post$beta2)
+# rethinking::PI(post$beta0)
+# rethinking::PI(post$beta1)
+# rethinking::PI(post$beta2)
+
 dens(post)
 ```
 
@@ -615,19 +604,19 @@ Bayes_fit_HLE_d_f<-
 
 ```
 
-### 因子効果、切片効果
+### F1, F2 因子効果および切片効果 and PI
 
 ```{r}
 precis(Bayes_fit_HLE_d_f)
 
 ```
 
-### 因子効果、共分散
+<!-- ### 因子効果、共分散 -->
 
-```{r}
-round( vcov(Bayes_fit_HLE_d_f) , 3 )
+<!-- ```{r} -->
+<!-- round( vcov(Bayes_fit_HLE_d_f) , 3 ) -->
 
-```
+<!-- ``` -->
 
 ### 事後分布推定
 
@@ -639,13 +628,13 @@ post<-extract.samples(Bayes_fit_HLE_d_f)
 # purrr::map(post, hist)
 
 
-rethinking::HPDI(post$beta0)
-rethinking::HPDI(post$beta1)
-rethinking::HPDI(post$beta2)
+# rethinking::HPDI(post$beta0)
+# rethinking::HPDI(post$beta1)
+# rethinking::HPDI(post$beta2)
 
-rethinking::PI(post$beta0)
-rethinking::PI(post$beta1)
-rethinking::PI(post$beta2)
+# rethinking::PI(post$beta0)
+# rethinking::PI(post$beta1)
+# rethinking::PI(post$beta2)
 dens(post)
 ```
 
@@ -725,7 +714,7 @@ Bayes_fit_HLE_d_m<-
 
 ```
 
-### 因子効果、切片効果
+### F1, F2 因子効果および切片効果 and PI
 
 ```{r}
 precis(Bayes_fit_HLE_d_m)
@@ -749,13 +738,13 @@ post<-extract.samples(Bayes_fit_HLE_d_m)
 # purrr::map(post, hist)
 
 
-rethinking::HPDI(post$beta0)
-rethinking::HPDI(post$beta1)
-rethinking::HPDI(post$beta2)
+# rethinking::HPDI(post$beta0)
+# rethinking::HPDI(post$beta1)
+# rethinking::HPDI(post$beta2)
 
-rethinking::PI(post$beta0)
-rethinking::PI(post$beta1)
-rethinking::PI(post$beta2)
+# rethinking::PI(post$beta0)
+# rethinking::PI(post$beta1)
+# rethinking::PI(post$beta2)
 dens(post)
 ```
 
