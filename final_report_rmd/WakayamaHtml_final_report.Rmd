@@ -8,10 +8,10 @@ output:
   html_document:
    number_section: true
    toc: true
-   # code_folding: hide
-   # toc_float:
-   #   smooth_scroll: false
-   #   collapsed: false
+   code_folding: hide
+   toc_float:
+     smooth_scroll: false
+     collapsed: false
 
 # output:
 #   ioslides_presentation:
@@ -286,11 +286,10 @@ HLE_d_f_final$HLE_binary <- ifelse(HLE_d_f_final$HLE_2016>median(HLE_d_f_final$H
 LE_d_m_final$LE_binary <- ifelse(LE_d_m_final$LE_2015>median(LE_d_m_final$LE_2015),1,0)
 HLE_d_m_final$HLE_binary <- ifelse(HLE_d_m_final$HLE_2016>median(HLE_d_m_final$HLE_2016),1,0)
 
-LE_d_f_final$LE_binary   # 女性
-HLE_d_f_final$HLE_binary   # 女性
-LE_d_m_final$LE_binary   # 男性
-HLE_d_m_final$HLE_binary   # 男性
-
+# LE_d_f_final$LE_binary   # 女性
+# HLE_d_f_final$HLE_binary   # 女性
+# LE_d_m_final$LE_binary   # 男性
+# HLE_d_m_final$HLE_binary   # 男性
 ```
 
 ## logit model 女性、LE
@@ -324,21 +323,9 @@ glm(HLE_d_m_final$HLE_binary ~ d_m_.FA$OBS.rotate, family =  "binomial")%>% broo
 ```
 
 
-LE_d_f_final$LE_binary
-HLE_d_f_final$HLE_binary
-LE_d_m_final$LE_binary
-HLE_d_m_final$HLE_binary
-
-
-
-
-
 # Bayesモデル {.tabset .tabset-fade .tabset-pills}
 
 ## 女性平均寿命 Bayes Inference
-
-
-LE_FF_d_f=LE_d_f_final$LE_2015
 
 ### 推定
 
@@ -364,8 +351,7 @@ Bayes_fit_LE_d_f<-
 ### F1, F2 因子効果および切片効果 and PI
 
 ```{r}
-precis(Bayes_fit_LE_d_f)
-
+precis(Bayes_fit_LE_d_f) %>% DT::datatable() %>% DT::formatRound(columns=c("mean", "sd","5.5%","94.5%"), digits=3)
 ```
 
 <!-- ### 因子効果、共分散 -->
@@ -395,10 +381,10 @@ post<-extract.samples(Bayes_fit_LE_d_f)
 dens(post)
 ```
 
-### 事後分布: 因子効果の可視化
+### 事後分布: 因子効果の可視化{.tabset .tabset-fade .tabset-pills}
 
-- F2因子の変化による平均寿命分布の変化
-```{r}
+#### F2因子の寿命分布への影響
+```{r warning=FALSE}
 mu_at_Q1<-post$beta0 + post$beta1*mean(LE_FF_d_f$F1)+ post$beta2*quantile(LE_FF_d_f$F2)[1]
 mu_at_Q2<-post$beta0 + post$beta1*mean(LE_FF_d_f$F1)+ post$beta2*quantile(LE_FF_d_f$F2)[2]
 mu_at_Q3<-post$beta0 + post$beta1*mean(LE_FF_d_f$F1)+ post$beta2*quantile(LE_FF_d_f$F2)[3]
@@ -408,17 +394,9 @@ mu_at_Q5<-post$beta0 + post$beta1*mean(LE_FF_d_f$F1)+ post$beta2*quantile(LE_FF_
 
 par(family= "HiraKakuProN-W3")
 
-# par(mar=c(4,4,2,2)+0.1)
-# par(mfrow=c(1,1))
-
-# mu_at_Q1 %>% dens(main = "F2が Q1である場合")
-# mu_at_Q1 %>% dens(main = "F2が Q2である場合", xlim=c(86.4, 87.4))
-mu_at_Q2 %>% dens(main = "F2因子の変化による平均寿命分布の変化", xlim=c(86.4, 87.4))
-mu_at_Q3 %>% dens(main = "F2が Q3である場合", add = T)
-mu_at_Q4 %>% dens(main = "F2が Q4である場合", add = T)
-mu_at_Q5 %>% dens(main = "F2が Q5である場合", add = T)
-
-
+mu_at_Q2 %>% dens(col="red", main = "F2因子の寿命分布への影響", xlim=c(86.8, 87.2))
+mu_at_Q3 %>% dens(col="green", main = "F2が Q3である場合", add = T)
+mu_at_Q4 %>% dens(col="blue", main = "F2が Q4である場合", add = T)
 
 
 aa<-tibble::tibble(
@@ -429,19 +407,19 @@ aa<-tibble::tibble(
 
 
 name <- function(aa) {
-ggplot_build(aa %>% ggplot(aes(value))+stat_ecdf())$data[[1]] %>% select(y, x) %>% 
+ggplot_build(aa %>% ggplot(aes(value))+stat_ecdf())$data[[1]] %>% select(y, x) %>%
     mutate(ccdf=1-y)
 }
 
 aa$ccdf<-purrr::map(aa$data, name)
 
-aa %>% unnest(cols = ccdf) %>% ggplot(aes(x=x, y=ccdf, group=name, color=name))+geom_line()+theme_bw(base_family = "HiraKakuProN-W3")
+aa %>% unnest(cols = ccdf) %>% ggplot(aes(x=x, y=ccdf, group=name, color=name))+geom_line()+theme_bw(base_family = "HiraKakuProN-W3")+xlim(86.8, 87.2)
 
 ```
 
-- F1因子の変化による平均寿命分布の変化
+#### F1因子の寿命への影響
 
-```{r}
+```{r warning=FALSE}
 mu_at_Q1<-post$beta0 + post$beta1*quantile(LE_FF_d_f$F1)[1]+ post$beta2*mean(LE_FF_d_f$F2)
 mu_at_Q2<-post$beta0 + post$beta1*quantile(LE_FF_d_f$F1)[2]+ post$beta2*mean(LE_FF_d_f$F2)
 mu_at_Q3<-post$beta0 + post$beta1*quantile(LE_FF_d_f$F1)[3]+ post$beta2*mean(LE_FF_d_f$F2)
@@ -451,19 +429,28 @@ mu_at_Q5<-post$beta0 + post$beta1*quantile(LE_FF_d_f$F1)[5]+ post$beta2*mean(LE_
 
 par(family= "HiraKakuProN-W3")
 
-# par(mar=c(4,4,2,2)+0.1)
-# par(mfrow=c(1,1))
+mu_at_Q2 %>% dens(col="red", main = "F1因子の寿命への影響", xlim=c(86.8, 87.2))
+mu_at_Q3 %>% dens(col="green", main = "F1が Q3である場合", add = T)
+mu_at_Q4 %>% dens(col="blue", main = "F1が Q4である場合", add = T)
 
-# mu_at_Q1 %>% dens(main = "F1が Q1である場合")
-# mu_at_Q1 %>% dens(main = "F1が Q2である場合", xlim=c(86.4, 87.4))
-mu_at_Q2 %>% dens(main = "F1因子の変化による平均寿命分布の変化", xlim=c(86.4, 87.4))
-mu_at_Q3 %>% dens(main = "F1が Q3である場合", add = T)
-mu_at_Q4 %>% dens(main = "F1が Q4である場合", add = T)
-mu_at_Q5 %>% dens(main = "F1が Q5である場合", add = T)
+aa<-tibble::tibble(
+  mu_at_Q2=mu_at_Q2,
+  mu_at_Q3=mu_at_Q3,
+  mu_at_Q4=mu_at_Q4
+) %>% pivot_longer(cols = everything()) %>% nest(value)
+
+
+name <- function(aa) {
+ggplot_build(aa %>% ggplot(aes(value))+stat_ecdf())$data[[1]] %>% select(y, x) %>%
+    mutate(ccdf=1-y)
+}
+
+aa$ccdf<-purrr::map(aa$data, name)
+
+aa %>% unnest(cols = ccdf) %>% ggplot(aes(x=x, y=ccdf, group=name, color=name))+geom_line()+theme_bw(base_family = "HiraKakuProN-W3")+xlim(86.8, 87.2)
+
 
 ```
-
-
 
 ## 男性平均寿命 Bayes Inference
 
@@ -525,10 +512,10 @@ post<-extract.samples(Bayes_fit_LE_d_m)
 dens(post)
 ```
 
-### 事後分布: 因子効果の可視化
+### 事後分布: 因子効果の可視化{.tabset .tabset-fade .tabset-pills}
 
-- F2因子の変化による平均寿命分布の変化
-```{r}
+#### F2因子の寿命分布への影響
+```{r warning=FALSE}
 mu_at_Q1<-post$beta0 + post$beta1*mean(LE_FF_d_m$F1)+ post$beta2*quantile(LE_FF_d_m$F2)[1]
 mu_at_Q2<-post$beta0 + post$beta1*mean(LE_FF_d_m$F1)+ post$beta2*quantile(LE_FF_d_m$F2)[2]
 mu_at_Q3<-post$beta0 + post$beta1*mean(LE_FF_d_m$F1)+ post$beta2*quantile(LE_FF_d_m$F2)[3]
@@ -538,19 +525,29 @@ mu_at_Q5<-post$beta0 + post$beta1*mean(LE_FF_d_m$F1)+ post$beta2*quantile(LE_FF_
 
 par(family= "HiraKakuProN-W3")
 
-# par(mar=c(4,4,2,2)+0.1)
-# par(mfrow=c(1,1))
+mu_at_Q2 %>% dens(col="red", main = "F2因子の寿命分布への影響", xlim=c(80-.3, 80+2))
+mu_at_Q3 %>% dens(col="green", main = "F2が Q3である場合", add = T)
+mu_at_Q4 %>% dens(col="blue", main = "F2が Q4である場合", add = T)
 
-# mu_at_Q1 %>% dens(main = "F2が Q1である場合")
-# mu_at_Q1 %>% dens(main = "F2が Q2である場合", xlim=c(86.4, 87.4))
-mu_at_Q2 %>% dens(main = "F2因子の変化による平均寿命分布の変化", xlim=c(80-.3, 80+2))
-mu_at_Q3 %>% dens(main = "F2が Q3である場合", add = T)
-mu_at_Q4 %>% dens(main = "F2が Q4である場合", add = T)
-mu_at_Q5 %>% dens(main = "F2が Q5である場合", add = T)
+aa<-tibble::tibble(
+  mu_at_Q2=mu_at_Q2,
+  mu_at_Q3=mu_at_Q3,
+  mu_at_Q4=mu_at_Q4
+) %>% pivot_longer(cols = everything()) %>% nest(value)
+
+
+name <- function(aa) {
+ggplot_build(aa %>% ggplot(aes(value))+stat_ecdf())$data[[1]] %>% select(y, x) %>%
+    mutate(ccdf=1-y)
+}
+
+aa$ccdf<-purrr::map(aa$data, name)
+
+aa %>% unnest(cols = ccdf) %>% ggplot(aes(x=x, y=ccdf, group=name, color=name))+geom_line()+theme_bw(base_family = "HiraKakuProN-W3")+xlim(80-.3, 80+2)
 
 ```
 
-- F1因子の変化による平均寿命分布の変化
+#### F1因子の寿命への影響
 
 ```{r}
 mu_at_Q1<-post$beta0 + post$beta1*quantile(LE_FF_d_m$F1)[1]+ post$beta2*mean(LE_FF_d_m$F2)
@@ -562,26 +559,29 @@ mu_at_Q5<-post$beta0 + post$beta1*quantile(LE_FF_d_m$F1)[5]+ post$beta2*mean(LE_
 
 par(family= "HiraKakuProN-W3")
 
-# par(mar=c(4,4,2,2)+0.1)
-# par(mfrow=c(1,1))
+mu_at_Q2 %>% dens(col="red", main = "F1因子の寿命への影響", xlim=c(80-.3, 80+2))
+mu_at_Q3 %>% dens(col="green", main = "F1が Q3である場合", add = T)
+mu_at_Q4 %>% dens(col="blue", main = "F1が Q4である場合", add = T)
 
-# mu_at_Q1 %>% dens(main = "F1が Q1である場合")
-# mu_at_Q1 %>% dens(main = "F1が Q2である場合", xlim=c(86.4, 87.4))
-mu_at_Q2 %>% dens(main = "F1因子の変化による平均寿命分布の変化", xlim=c(80-.3, 80+2))
-mu_at_Q3 %>% dens(main = "F1が Q3である場合", add = T)
-mu_at_Q4 %>% dens(main = "F1が Q4である場合", add = T)
-mu_at_Q5 %>% dens(main = "F1が Q5である場合", add = T)
+aa<-tibble::tibble(
+  mu_at_Q2=mu_at_Q2,
+  mu_at_Q3=mu_at_Q3,
+  mu_at_Q4=mu_at_Q4
+) %>% pivot_longer(cols = everything()) %>% nest(value)
+
+
+name <- function(aa) {
+ggplot_build(aa %>% ggplot(aes(value))+stat_ecdf())$data[[1]] %>% select(y, x) %>%
+    mutate(ccdf=1-y)
+}
+
+aa$ccdf<-purrr::map(aa$data, name)
+
+aa %>% unnest(cols = ccdf) %>% ggplot(aes(x=x, y=ccdf, group=name, color=name))+geom_line()+theme_bw(base_family = "HiraKakuProN-W3")+xlim(80-.3, 80+2)
 
 ```
 
-
-
-
 ## 女性健康寿命 Bayes Inference
-
-
-HLE_FF_d_f=HLE_d_f_final$HLE_2016
-
 
 ### 推定
 
@@ -638,10 +638,10 @@ post<-extract.samples(Bayes_fit_HLE_d_f)
 dens(post)
 ```
 
-### 事後分布: 因子効果の可視化
+### 事後分布: 因子効果の可視化{.tabset .tabset-fade .tabset-pills}
 
-- F2因子の変化による平均寿命分布の変化
-```{r}
+#### F2因子の寿命分布への影響
+```{r warning=FALSE}
 mu_at_Q1<-post$beta0 + post$beta1*mean(HLE_FF_d_f$F1)+ post$beta2*quantile(HLE_FF_d_f$F2)[1]
 mu_at_Q2<-post$beta0 + post$beta1*mean(HLE_FF_d_f$F1)+ post$beta2*quantile(HLE_FF_d_f$F2)[2]
 mu_at_Q3<-post$beta0 + post$beta1*mean(HLE_FF_d_f$F1)+ post$beta2*quantile(HLE_FF_d_f$F2)[3]
@@ -651,19 +651,32 @@ mu_at_Q5<-post$beta0 + post$beta1*mean(HLE_FF_d_f$F1)+ post$beta2*quantile(HLE_F
 
 par(family= "HiraKakuProN-W3")
 
-# par(mar=c(4,4,2,2)+0.1)
-# par(mfrow=c(1,1))
+mu_at_Q2 %>% dens(col="red", main = "F2因子の寿命分布への影響", xlim=c(75-.3, 75+.3))
+mu_at_Q3 %>% dens(col="green", main = "F2が Q3である場合", add = T)
+mu_at_Q4 %>% dens(col="blue", main = "F2が Q4である場合", add = T)
 
-# mu_at_Q1 %>% dens(main = "F2が Q1である場合")
-# mu_at_Q1 %>% dens(main = "F2が Q2である場合", xlim=c(86.4, 87.4))
-mu_at_Q2 %>% dens(main = "F2因子の変化による平均寿命分布の変化", xlim=c(75-.1, 75+.1))
-mu_at_Q3 %>% dens(main = "F2が Q3である場合", add = T)
-mu_at_Q4 %>% dens(main = "F2が Q4である場合", add = T)
-mu_at_Q5 %>% dens(main = "F2が Q5である場合", add = T)
+aa<-tibble::tibble(
+  mu_at_Q2=mu_at_Q2,
+  mu_at_Q3=mu_at_Q3,
+  mu_at_Q4=mu_at_Q4
+) %>% pivot_longer(cols = everything()) %>% nest(value)
+
+
+name <- function(aa) {
+ggplot_build(aa %>% ggplot(aes(value))+stat_ecdf())$data[[1]] %>% select(y, x) %>%
+    mutate(ccdf=1-y)
+}
+
+aa$ccdf<-purrr::map(aa$data, name)
+
+aa %>% unnest(cols = ccdf) %>% ggplot(aes(x=x, y=ccdf, group=name, color=name))+geom_line()+theme_bw(base_family = "HiraKakuProN-W3")+xlim(75-.3, 75+.3)
+
+
+
 
 ```
 
-- F1因子の変化による平均寿命分布の変化
+#### F1因子の寿命への影響
 
 ```{r}
 mu_at_Q1<-post$beta0 + post$beta1*quantile(HLE_FF_d_f$F1)[1]+ post$beta2*mean(HLE_FF_d_f$F2)
@@ -675,15 +688,27 @@ mu_at_Q5<-post$beta0 + post$beta1*quantile(HLE_FF_d_f$F1)[5]+ post$beta2*mean(HL
 
 par(family= "HiraKakuProN-W3")
 
-# par(mar=c(4,4,2,2)+0.1)
-# par(mfrow=c(1,1))
+mu_at_Q2 %>% dens(col="red", main = "F1因子の寿命への影響", xlim=c(75-.3, 75+.3))
+mu_at_Q3 %>% dens(col="green", main = "F1が Q3である場合", add = T)
+mu_at_Q4 %>% dens(col="blue", main = "F1が Q4である場合", add = T)
 
-# mu_at_Q1 %>% dens(main = "F1が Q1である場合")
-# mu_at_Q1 %>% dens(main = "F1が Q2である場合", xlim=c(86.4, 87.4))
-mu_at_Q2 %>% dens(main = "F1因子の変化による平均寿命分布の変化", xlim=c(75-.1, 75+.1))
-mu_at_Q3 %>% dens(main = "F1が Q3である場合", add = T)
-mu_at_Q4 %>% dens(main = "F1が Q4である場合", add = T)
-mu_at_Q5 %>% dens(main = "F1が Q5である場合", add = T)
+aa<-tibble::tibble(
+  mu_at_Q2=mu_at_Q2,
+  mu_at_Q3=mu_at_Q3,
+  mu_at_Q4=mu_at_Q4
+) %>% pivot_longer(cols = everything()) %>% nest(value)
+
+
+name <- function(aa) {
+ggplot_build(aa %>% ggplot(aes(value))+stat_ecdf())$data[[1]] %>% select(y, x) %>%
+    mutate(ccdf=1-y)
+}
+
+aa$ccdf<-purrr::map(aa$data, name)
+
+aa %>% unnest(cols = ccdf) %>% ggplot(aes(x=x, y=ccdf, group=name, color=name))+geom_line()+theme_bw(base_family = "HiraKakuProN-W3")+xlim(75-.3, 75+.3)
+
+
 
 ```
 
@@ -721,13 +746,6 @@ precis(Bayes_fit_HLE_d_m)
 
 ```
 
-### 因子効果、共分散
-
-```{r}
-round( vcov(Bayes_fit_HLE_d_m) , 3 )
-
-```
-
 ### 事後分布推定
 
 ```{r}
@@ -748,10 +766,10 @@ post<-extract.samples(Bayes_fit_HLE_d_m)
 dens(post)
 ```
 
-### 事後分布: 因子効果の可視化
+### 事後分布: 因子効果の可視化{.tabset .tabset-fade .tabset-pills}
 
-- F2因子の変化による平均寿命分布の変化
-```{r}
+#### F2因子の寿命分布への影響
+```{r warning=FALSE}
 mu_at_Q1<-post$beta0 + post$beta1*mean(HLE_FF_d_m$F1)+ post$beta2*quantile(HLE_FF_d_m$F2)[1]
 mu_at_Q2<-post$beta0 + post$beta1*mean(HLE_FF_d_m$F1)+ post$beta2*quantile(HLE_FF_d_m$F2)[2]
 mu_at_Q3<-post$beta0 + post$beta1*mean(HLE_FF_d_m$F1)+ post$beta2*quantile(HLE_FF_d_m$F2)[3]
@@ -761,19 +779,31 @@ mu_at_Q5<-post$beta0 + post$beta1*mean(HLE_FF_d_m$F1)+ post$beta2*quantile(HLE_F
 
 par(family= "HiraKakuProN-W3")
 
-# par(mar=c(4,4,2,2)+0.1)
-# par(mfrow=c(1,1))
+mu_at_Q2 %>% dens(col="red", main = "F2因子の寿命分布への影響", xlim=c(72-.3, 72+.3))
+mu_at_Q3 %>% dens(col="green", main = "F2が Q3である場合", add = T)
+mu_at_Q4 %>% dens(col="blue", main = "F2が Q4である場合", add = T)
 
-# mu_at_Q1 %>% dens(main = "F2が Q1である場合")
-# mu_at_Q1 %>% dens(main = "F2が Q2である場合", xlim=c(86.4, 87.4))
-mu_at_Q2 %>% dens(main = "F2因子の変化による平均寿命分布の変化", xlim=c(72-.3, 72+2))
-mu_at_Q3 %>% dens(main = "F2が Q3である場合", add = T)
-mu_at_Q4 %>% dens(main = "F2が Q4である場合", add = T)
-mu_at_Q5 %>% dens(main = "F2が Q5である場合", add = T)
+aa<-tibble::tibble(
+  mu_at_Q2=mu_at_Q2,
+  mu_at_Q3=mu_at_Q3,
+  mu_at_Q4=mu_at_Q4
+) %>% pivot_longer(cols = everything()) %>% nest(value)
+
+
+name <- function(aa) {
+ggplot_build(aa %>% ggplot(aes(value))+stat_ecdf())$data[[1]] %>% select(y, x) %>%
+    mutate(ccdf=1-y)
+}
+
+aa$ccdf<-purrr::map(aa$data, name)
+
+aa %>% unnest(cols = ccdf) %>% ggplot(aes(x=x, y=ccdf, group=name, color=name))+geom_line()+theme_bw(base_family = "HiraKakuProN-W3")+xlim(72-.3, 72+.3)
+
+
 
 ```
 
-- F1因子の変化による平均寿命分布の変化
+#### F1因子の寿命への影響
 
 ```{r}
 mu_at_Q1<-post$beta0 + post$beta1*quantile(HLE_FF_d_m$F1)[1]+ post$beta2*mean(HLE_FF_d_m$F2)
@@ -785,14 +815,25 @@ mu_at_Q5<-post$beta0 + post$beta1*quantile(HLE_FF_d_m$F1)[5]+ post$beta2*mean(HL
 
 par(family= "HiraKakuProN-W3")
 
-# par(mar=c(4,4,2,2)+0.1)
-# par(mfrow=c(1,1))
+mu_at_Q2 %>% dens(col="red", main = "F1因子の寿命への影響", xlim=c(72-.3, 72+.3))
+mu_at_Q3 %>% dens(col="green", main = "F1が Q3である場合", add = T)
+mu_at_Q4 %>% dens(col="blue", main = "F1が Q4である場合", add = T)
 
-# mu_at_Q1 %>% dens(main = "F1が Q1である場合")
-# mu_at_Q1 %>% dens(main = "F1が Q2である場合", xlim=c(86.4, 87.4))
-mu_at_Q2 %>% dens(main = "F1因子の変化による平均寿命分布の変化", xlim=c(72-.3, 72+2))
-mu_at_Q3 %>% dens(main = "F1が Q3である場合", add = T)
-mu_at_Q4 %>% dens(main = "F1が Q4である場合", add = T)
-mu_at_Q5 %>% dens(main = "F1が Q5である場合", add = T)
+aa<-tibble::tibble(
+  mu_at_Q2=mu_at_Q2,
+  mu_at_Q3=mu_at_Q3,
+  mu_at_Q4=mu_at_Q4
+) %>% pivot_longer(cols = everything()) %>% nest(value)
+
+
+name <- function(aa) {
+ggplot_build(aa %>% ggplot(aes(value))+stat_ecdf())$data[[1]] %>% select(y, x) %>%
+    mutate(ccdf=1-y)
+}
+
+aa$ccdf<-purrr::map(aa$data, name)
+
+aa %>% unnest(cols = ccdf) %>% ggplot(aes(x=x, y=ccdf, group=name, color=name))+geom_line()+theme_bw(base_family = "HiraKakuProN-W3")+xlim(72-.3, 72+.3)
+
 
 ```
