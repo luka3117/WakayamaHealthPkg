@@ -1,0 +1,254 @@
+---
+title: "R code for Chapter4"
+author: "JC Lee"
+date: "最終更新: `r format(Sys.time(), '%Y/%m/%d')`"
+output:
+  html_document:
+    toc_float: true
+    toc: true
+    number_section: true
+    code_folding: hide
+    
+fig_width: 9
+fig_height: 6
+--- 
+
+# needed packages
+```{r}
+library(OsakaUniv2020)
+suppressMessages(library(tidyverse))
+
+# our class pkg
+# library(devtools)
+# devtools::install_github(repo = "luka3117/JcPackage/OsakaUniv2020")
+# remove.packages("OsakaUniv2020")
+# help(package = "OsakaUniv2020")
+library(OsakaUniv2020)
+packageVersion("OsakaUniv2020")
+```
+
+# page 121 table 4.2 snoring data 
+##  Snoring data Linear prob model with yes-no form 
+```{r}
+table4.2<-OsakaUniv2020::table4.2
+table4.2 %>% round(2) %>% DT::datatable()
+plot(p~snoring, data = table4.2)
+```
+
+
+
+:::: {style="display: flex;"}
+:::{}
+## response varaible(yes-no form)
+```{r}
+table4.2.response<-table4.2[, c(1, 2)] %>% as.matrix.data.frame()
+table4.2.response %>% knitr::kable()
+```
+:::
+:::{}
+## explanatory varaible(yes-no form)
+```{r}
+table4.2 %>% select(snoring) %>% knitr::kable()
+```
+:::
+::::
+
+
+```{r}
+res.linear.prob.YNform <-
+  glm(table4.2.response ~ table4.2$snoring,
+  family = binomial(link = "identity"))
+
+res.linear.prob.YNform
+
+res.linear.prob.YNform$fitted.values
+
+table4.2 %>% cbind(res.linear.prob.YNform$fitted.values) %>% select(yes, no, p, hatp=6, snoring) %>% round(2)
+
+  plot(p~snoring, data = table4.2)
+  points(res.linear.prob.YNform$fitted.values~table4.2$snoring, col="red")
+  abline(res.linear.prob.YNform, col="red")
+  abline(lm(table4.2$p ~ table4.2$snoring, weights = table4.2$n), col="blue")
+
+```
+
+```{r}
+res.linear.prob.YNform %>% broom::tidy()
+res.linear.prob.YNform %>% broom::glance()
+res.linear.prob.YNform %>% broom::augment() %>% round(2) %>% knitr::kable()
+res.linear.prob.YNform %>% logLik()
+```
+
+## check log-likeloihood
+```{r}
+total<-res.linear.prob.YNform$model %>% select(1) %>% apply(1, sum)
+yes<-res.linear.prob.YNform$model$table4.2.response[,1]
+pi<-res.linear.prob.YNform %>% broom::augment() %>% select(.fitted) %>% .[[1]]
+cbind(total, yes, fitted.pi=pi, binom.prob=dbinom(x = yes, size = total, prob = pi))
+```
+
+
+:::: {style="display: flex;"}
+:::{}
+```{r}
+res.linear.prob.YNform %>% logLik()
+```
+:::
+:::{}
+- $Y_i \sim B(n_i, \pi_i)$
+- $L=log(\Pi_{1}^{n} P(Y=i|\pi_i))=\sum log(P(Y=i|\pi_i))$
+- $-2L=\sum log(P(Y=i|\pi_i))$
+```{r}
+dbinom(x = yes, size = total, prob = pi) %>% log() %>% sum() %>% "*"(-2)
+```
+:::
+::::
+
+
+## Linear prob model with long form
+
+:::: {style="display: flex;"}
+:::{}
+```{r}
+table4.2.long <- OsakaUniv2020::table4.2.long
+table4.2.long %>% DT::datatable()
+```
+:::
+:::{}
+```{r}
+#xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+glm(table4.2.long$DZ~., family =binomial(link = "identity"), data = table4.2.long) %>%broom::tidy()
+```
+:::
+::::
+
+
+
+## snoring data  logit model estimation page 123  
+```{r}
+(m.logit<-glm(cbind(yes, no) ~ snoring, family=binomial(logit)))
+round(m.logit$coefficients, 2)
+m.logit$fitted.values
+```
+
+## page 124 probit model estimation
+```{r}
+(m.probit<-glm(cbind(yes, no) ~ snoring, family=binomial(probit)))
+round(m.probit$coefficients, 2)
+m.probit$fitted.values
+```
+
+
+```{r}
+plot(p~snoring, data = table4.2)
+a<-m.logit$coefficients[1]
+b<-m.logit$coefficients[2]
+
+name <- function(x) {
+  temp<-a+b*x
+  exp(temp)/(1+exp(temp))
+}
+curve(name, add = T, col="red")
+```
+
+
+
+
+# crab data
+## crab data summary
+- response variable : sattellite
+
+```{r}
+crab<-OsakaUniv2020::crab
+crab %>% DT::datatable()
+
+
+theme_set(theme_bw())  # pre-set the bw theme.
+g  <- ggplot(data = crab, aes(y = satell, x = width))
+
+g + geom_point()+
+  
+  geom_smooth(method = "loess", se = F)+
+  
+  labs(subtitle="width", y="# of sattellite", 
+     x="width(cm)",   title="horshoe crab data")
+
+
+```
+
+
+
+## page 126 loglinear GLM for crab data 
+```{r}
+crab<-OsakaUniv2020::crab
+# crab<-read.table("crab.txt", header=T)
+m.poisson<-glm(satell~ width, data=crab, family=poisson)
+m.poisson %>% broom::tidy() %>% column_to_rownames("term") %>% round(2)
+```
+
+```{r}
+m.poisson$coefficients
+```
+##  negative binomial vs identity model(page 131)
+```{r}
+# library(MASS)
+nb<-MASS::glm.nb(satell~ width, data=crab, link=identity, start=coef(m.poisson))
+
+id.poisson<-glm(satell~ width, data=crab, family=poisson(link=identity)
+, start=coef(m.poisson))
+
+```
+
+:::: {style="display: flex;"}
+:::{}
+```{r}
+nb %>% broom::tidy() %>% column_to_rownames("term") %>% round(2) %>% DT::datatable()
+```
+:::
+:::{}
+```{r}
+id.poisson %>% broom::tidy() %>% column_to_rownames("term") %>% round(2) %>% DT::datatable()
+```
+:::
+::::
+
+## crab data grouped
+
+```{r}
+OsakaUniv2020::crab_group %>% knitr::kable()
+
+##   Width.interval Width Cases Satellites Mean Variance
+
+crab_group<-OsakaUniv2020::crab_group
+theme_set(theme_bw())  # pre-set the bw theme.
+g  <- ggplot(data = crab_group, aes(x = Width, y = Mean))
+g + geom_point() + xlim(20,32)+
+  geom_smooth(method = "loess", se = F)+
+  
+  stat_function(
+  fun = function(x)
+  id.poisson$coefficients[1] + x * id.poisson$coefficients[2]
+  ) +
+  
+  stat_function(
+  fun = function(x)
+  exp(m.poisson$coefficients[1] + x * m.poisson$coefficients[2])
+  ,
+  col = "red"
+  ) +
+  
+  labs(
+  title = "poisson vs identity",
+  subtitle = "GLM of crab",
+  y = "mean of sattellite",
+  x = "width"
+  )
+#   geom_abline()
+#   geom_jitter(width = .5, size=1) +
+```
+
+
+## 
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/7VGPUBWGv6g" frameborder="0" allowfullscreen>
+</iframe>

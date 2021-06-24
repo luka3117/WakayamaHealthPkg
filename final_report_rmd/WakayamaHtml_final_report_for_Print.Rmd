@@ -1,0 +1,840 @@
+---
+title: "和歌山県報告書(under working for final report)"
+subtitle: "健康寿命"
+author: "李鍾賛(jc lee, 滋賀大助教、数理統計学博士)"
+date: "最終更新: `r format(Sys.time(), '%Y/%m/%d')`"
+output:
+  # word_document:
+  html_document:
+   number_section: true
+   toc: true
+   # code_folding: hide
+   # toc_float:
+   #   smooth_scroll: false
+   #   collapsed: false
+
+# output:
+#   ioslides_presentation:
+#   widescreen: true
+#   number_section: true
+#   toc: true
+#   transition: faster
+  # css: 'scrollable_slides.css'
+
+# runtime: shiny
+# https://bookdown.org/yihui/rmarkdown/ioslides-presentation.html
+
+# The following single character keyboard shortcuts enable alternate display modes:
+#
+# 'f': enable fullscreen mode
+#
+# 'w': toggle widescreen mode
+#
+# 'o': enable overview mode
+#
+# 'h': enable code highlight mode
+#
+# 'p': show presenter notes
+---
+```{r}
+```
+
+
+# pre materials- library etc..
+```{r}
+# devtools::install_github(repo = "luka3117/JcPackage/OsakaUniv2020")
+
+# # -----------------
+#  ____           __  __       _            _       _
+# |  _ \ _ __ ___|  \/  | __ _| |_ ___ _ __(_) __ _| |
+# | |_) | '__/ _ \ |\/| |/ _` | __/ _ \ '__| |/ _` | |
+# |  __/| | |  __/ |  | | (_| | ||  __/ |  | | (_| | |
+# |_|   |_|  \___|_|  |_|\__,_|\__\___|_|  |_|\__,_|_|
+# # -----------------
+# 使用package
+suppressMessages(library(readxl))
+suppressMessages(library(dplyr))
+suppressMessages(library(data.table))
+suppressMessages(library(kableExtra))
+suppressMessages(library(curl))
+suppressMessages(library(tidyverse))
+suppressMessages(library(plotly))
+suppressMessages(library(ggrepel))
+suppressMessages(library(magrittr))
+
+
+load("../ScreenEnd.RData")
+```
+{.tabset .tabset-fade .tabset-pill}
+
+# Usual regression--aaaaa
+
+  - only the followings are valid obj
+  - d , var, pref_id
+  - d_f_merge_X, d_m_merge_X, y_f , y_m
+  - LE_d_f_final, HLE_d_f_final, LE_d_m_final, HLE_d_m_final
+  - 女性：18変数、男性：11変数
+
+
+<!-- ```{r child="ref1.Rmd"} -->
+<!-- ``` -->
+
+## regression `LE_d_f_final`: 女性、平均寿命
+```{r}
+
+# -----------------
+# Q1:Do the final regression and interprete : with 4 data
+# -----------------
+# ----------------- ----------------- ----------------- -----------------
+#  _____ _             _   _     __  __
+# |  ___(_)_ __   __ _| | | |   |  \/  |
+# | |_  | | '_ \ / _` | | | |   | |\/| |
+# |  _| | | | | | (_| | | | |___| |  | |
+# |_|   |_|_| |_|\__,_|_| |_____|_|  |_|
+# ----------------- ----------------- ----------------- -----------------
+
+
+options(digits = 5)              # Modify global options
+
+lm(LE_2015~. , data = LE_d_f_final) %>%
+  broom::tidy() %>%
+  left_join(var, by=c("term"="var_name_Eng")) %>%
+  select(term, var_name_Jpn, everything(), -id,- address, -std.error, -columm_letter ) %>% DT::datatable() %>% DT::formatRound(columns=c('estimate', 'statistic', "p.value"), digits=3)
+
+```
+
+## regression `LE_d_m_final`: 男性、平均寿命
+```{r}
+options(digits = 5)              # Modify global options
+
+lm(LE_2015~. , data = LE_d_m_final) %>%
+  broom::tidy() %>%
+  left_join(var, by=c("term"="var_name_Eng")) %>%
+  select(term, var_name_Jpn, everything(), -id,- address, -std.error, -columm_letter ) %>% DT::datatable() %>% DT::formatRound(columns=c('estimate', 'statistic', "p.value"), digits=3)
+
+```
+
+
+## regression `HLE_d_f_final`: 女性、健康寿命
+```{r}
+
+options(digits = 5)              # Modify global options
+
+lm(HLE_2016~. , data = HLE_d_f_final) %>%
+  broom::tidy() %>%
+  left_join(var, by=c("term"="var_name_Eng")) %>%
+  select(term, var_name_Jpn, everything(), -id,- address, -std.error, -columm_letter ) %>% DT::datatable() %>% DT::formatRound(columns=c('estimate', 'statistic', "p.value"), digits=3)
+
+```
+
+
+
+## regression `HLE_d_m_final`: 男性、健康寿命
+```{r}
+options(digits = 5)              # Modify global options
+
+lm(HLE_2016~. , data = HLE_d_m_final) %>%
+  broom::tidy() %>%
+  left_join(var, by=c("term"="var_name_Eng")) %>%
+  select(term, var_name_Jpn, everything(), -id,- address, -std.error, -columm_letter ) %>% DT::datatable() %>% DT::formatRound(columns=c('estimate', 'statistic', "p.value"), digits=3)
+
+```
+
+
+# FA and interprete--aaaaa
+## 女性説明変数 : X_f
+
+```{r}
+LE_d_f_final.reg<-lm(LE_2015~. , data = LE_d_f_final)
+d_f_.FA<-LE_d_f_final.reg$model[,-1] %>% zemi::JcFA()
+rownames(d_f_.FA$VAR.rotate)<-colnames(LE_d_f_final.reg$model[,-1] )
+d_f_.FA$VAR.rotate %>% data.frame() %>% rownames_to_column() %>%
+    left_join(var, by=c("rowname"="var_name_Eng")) %>%
+  select(rowname,var_name_Jpn,X1,X2) %>% rename(F1=X1, F2=X2) %>%
+  DT::datatable() %>% DT::formatRound(columns=c('F1', 'F2'), digits=3)
+```
+
+
+```{r}
+d_f_.FA$OBS.rotate %>% as.data.frame() %>% tbl_df() %>%
+  rename(F1=V1, F2=V2) %>%
+  mutate(pref.J=d_common$pref.J)%>% select(pref.J, everything()) %>%
+  DT::datatable() %>% DT::formatRound(columns=c('F1', 'F2'), digits=3)
+```
+
+## 男性説明変数　X_m
+
+```{r}
+LE_d_m_final.reg<-lm(LE_2015~. , data = LE_d_m_final)
+d_m_.FA<-LE_d_m_final.reg$model[,-1] %>% zemi::JcFA()
+rownames(d_m_.FA$VAR.rotate)<-colnames(LE_d_m_final.reg$model[,-1] )
+d_m_.FA$VAR.rotate %>% data.frame() %>% rownames_to_column() %>%
+    left_join(var, by=c("rowname"="var_name_Eng")) %>%
+  select(rowname,var_name_Jpn,X1,X2) %>% rename(F1=X1, F2=X2) %>%
+  DT::datatable() %>% DT::formatRound(columns=c('F1', 'F2'), digits=3)
+```
+
+
+```{r}
+d_m_.FA$OBS.rotate %>% as.data.frame() %>% tbl_df() %>%
+  rename(F1=V1, F2=V2) %>%
+  mutate(pref.J=d_common$pref.J)%>% select(pref.J, everything()) %>%
+  DT::datatable() %>% DT::formatRound(columns=c('F1', 'F2'), digits=3)
+```
+
+
+
+
+# Regression with FA : 寿命＜ーF1, F2, and interprete--aaaaa
+
+## regression : 女性、平均寿命
+
+```{r}
+lm(LE_d_f_final$LE_2015~d_f_.FA$OBS.rotate) %>% broom::tidy() %>% DT::datatable() %>% DT::formatRound(columns=c('estimate', 'std.error', 'statistic', 'p.value'), digits=3)
+lm(LE_d_f_final$LE_2015~d_f_.FA$OBS.rotate) %>% broom::glance()
+```
+
+
+## regression : 男性、平均寿命
+
+```{r}
+lm(LE_d_m_final$LE_2015~d_m_.FA$OBS.rotate) %>% broom::tidy()%>% DT::datatable() %>% DT::formatRound(columns=c('estimate', 'std.error', 'statistic', 'p.value'), digits=3)
+lm(LE_d_m_final$LE_2015~d_m_.FA$OBS.rotate) %>% broom::glance()
+```
+
+## regression : 女性、健康寿命
+```{r}
+lm(HLE_d_f_final$HLE_2016~d_f_.FA$OBS.rotate) %>% broom::tidy()%>% DT::datatable() %>% DT::formatRound(columns=c('estimate', 'std.error', 'statistic', 'p.value'), digits=3)
+lm(HLE_d_f_final$HLE_2016~d_f_.FA$OBS.rotate) %>% broom::glance()
+```
+
+## regression : 男性、健康寿命
+
+```{r}
+lm(HLE_d_m_final$HLE_2016~d_m_.FA$OBS.rotate) %>% broom::tidy()%>% DT::datatable() %>% DT::formatRound(columns=c('estimate', 'std.error', 'statistic', 'p.value'), digits=3)
+lm(HLE_d_m_final$HLE_2016~d_m_.FA$OBS.rotate) %>% broom::glance()
+```
+
+
+# 寿命$\sim Gamma(\alpha,\beta)$ gamma dist --aaaaa
+
+glm(y~x, family=Gamma(link="log"), data=d)
+
+
+## 女性平均寿命 Gamma link
+```{r}
+LE_FF_d_f=LE_d_f_final$LE_2015 %>% enframe() %>%
+  bind_cols(as.data.frame(d_f_.FA$OBS.rotate))%>%
+  rename(LE=value,F1=V1, F2=V2) %>% select(-name)
+  # mutate(LE=as.factor(LE_binary))
+
+glm(LE~., family=Gamma(link="log"), data=LE_FF_d_f) %>%
+broom::tidy() %>% DT::datatable() %>% DT::formatRound(columns=c('estimate', 'std.error', 'statistic', 'p.value'), digits=3)
+
+```
+
+
+
+
+## 男性平均寿命 Gamma link
+```{r}
+LE_FF_d_m=LE_d_m_final$LE_2015 %>% enframe() %>%
+  bind_cols(as.data.frame(d_m_.FA$OBS.rotate))%>%
+  rename(LE=value,F1=V1, F2=V2) %>% select(-name)
+  # mutate(LE=as.factor(LE_binary))
+
+glm(LE~., family=Gamma(link="log"), data=LE_FF_d_m) %>%
+broom::tidy() %>% DT::datatable() %>% DT::formatRound(columns=c('estimate', 'std.error', 'statistic', 'p.value'), digits=3)
+
+```
+
+
+
+## 女性健康寿命 Gamma link
+```{r}
+HLE_FF_d_f=HLE_d_f_final$HLE_2016 %>% enframe() %>%
+  bind_cols(as.data.frame(d_f_.FA$OBS.rotate))%>%
+  rename(HLE=value,F1=V1, F2=V2) %>% select(-name)
+  # mutate(HLE=as.factor(HLE_binary))
+
+glm(HLE~., family=Gamma(link="log"), data=HLE_FF_d_f) %>%
+broom::tidy() %>% DT::datatable() %>% DT::formatRound(columns=c('estimate', 'std.error', 'statistic', 'p.value'), digits=3)
+
+```
+
+## 男性健康寿命 Gamma link
+```{r}
+HLE_FF_d_m=HLE_d_m_final$HLE_2016 %>% enframe() %>%
+  bind_cols(as.data.frame(d_m_.FA$OBS.rotate))%>%
+  rename(HLE=value,F1=V1, F2=V2) %>% select(-name)
+  # mutate(HLE=as.factor(HLE_binary))
+
+glm(HLE~., family=Gamma(link="log"), data=HLE_FF_d_m) %>%
+broom::tidy() %>% DT::datatable() %>% DT::formatRound(columns=c('estimate', 'std.error', 'statistic', 'p.value'), digits=3)
+
+```
+
+
+
+# Logistic regression the final regression and interprete --aaaaa
+
+## To binary LE and HLE
+
+
+```{r}
+LE_d_f_final$LE_binary <- ifelse(LE_d_f_final$LE_2015>median(LE_d_f_final$LE_2015),1,0)
+HLE_d_f_final$HLE_binary <- ifelse(HLE_d_f_final$HLE_2016>median(HLE_d_f_final$HLE_2016),1,0)
+LE_d_m_final$LE_binary <- ifelse(LE_d_m_final$LE_2015>median(LE_d_m_final$LE_2015),1,0)
+HLE_d_m_final$HLE_binary <- ifelse(HLE_d_m_final$HLE_2016>median(HLE_d_m_final$HLE_2016),1,0)
+
+# LE_d_f_final$LE_binary   # 女性
+# HLE_d_f_final$HLE_binary   # 女性
+# LE_d_m_final$LE_binary   # 男性
+# HLE_d_m_final$HLE_binary   # 男性
+```
+
+## logit model 女性、LE
+
+```{r}
+glm(LE_d_f_final$LE_binary ~ d_f_.FA$OBS.rotate, family =  "binomial")%>% broom::tidy() %>% DT::datatable() %>% DT::formatRound(columns=c('estimate', 'std.error', 'statistic', 'p.value'), digits=3)
+```
+
+
+## logit model 男性、LE
+
+
+```{r}
+glm(LE_d_m_final$LE_binary ~ d_m_.FA$OBS.rotate, family =  "binomial")%>% broom::tidy() %>% DT::datatable() %>% DT::formatRound(columns=c('estimate', 'std.error', 'statistic', 'p.value'), digits=3)
+```
+
+
+## logit model 女性、HLE
+
+
+```{r}
+glm(HLE_d_f_final$HLE_binary ~ d_f_.FA$OBS.rotate, family =  "binomial")%>% broom::tidy() %>% DT::datatable() %>% DT::formatRound(columns=c('estimate', 'std.error', 'statistic', 'p.value'), digits=3)
+```
+
+
+
+## logit model 男性、HLE
+
+```{r}
+glm(HLE_d_m_final$HLE_binary ~ d_m_.FA$OBS.rotate, family =  "binomial")%>% broom::tidy() %>% DT::datatable() %>% DT::formatRound(columns=c('estimate', 'std.error', 'statistic', 'p.value'), digits=3)
+```
+
+
+# Bayesモデル --aaaaa
+
+## 女性平均寿命 Bayes Inference
+
+### 推定
+
+```{r}
+suppressMessages(library(rethinking))
+
+
+Bayes_fit_LE_d_f<-
+  rethinking::map(alist(
+  LE~dnorm(mu, sigma),
+  mu~beta0+beta1*F1+beta2*F2,
+  beta0~dnorm(80, 100),
+  beta1~dnorm(0, 10),
+  beta2~dnorm(0, 10),
+  sigma ~ dunif(0, 50)
+), data=LE_FF_d_f
+)
+
+
+
+```
+
+### F1, F2 因子効果および切片効果 and PI
+
+```{r}
+precis(Bayes_fit_LE_d_f) %>% DT::datatable() %>% DT::formatRound(columns=c("mean", "sd","5.5%","94.5%"), digits=3)
+```
+
+<!-- ### 因子効果、共分散 -->
+
+<!-- ```{r} -->
+<!-- round( vcov(Bayes_fit_LE_d_f) , 3 ) -->
+
+<!-- ``` -->
+
+### 事後分布推定
+
+```{r}
+
+post<-extract.samples(Bayes_fit_LE_d_f)
+
+
+# purrr::map(post, hist)
+
+
+# rethinking::HPDI(post$beta0)
+# rethinking::HPDI(post$beta1)
+# rethinking::HPDI(post$beta2)
+
+# rethinking::PI(post$beta0)
+# rethinking::PI(post$beta1)
+# rethinking::PI(post$beta2)
+dens(post)
+```
+
+### 事後分布: 因子効果の可視化--aaaaa
+
+#### F2因子の寿命分布への影響
+```{r warning=FALSE}
+mu_at_Q1<-post$beta0 + post$beta1*mean(LE_FF_d_f$F1)+ post$beta2*quantile(LE_FF_d_f$F2)[1]
+mu_at_Q2<-post$beta0 + post$beta1*mean(LE_FF_d_f$F1)+ post$beta2*quantile(LE_FF_d_f$F2)[2]
+mu_at_Q3<-post$beta0 + post$beta1*mean(LE_FF_d_f$F1)+ post$beta2*quantile(LE_FF_d_f$F2)[3]
+mu_at_Q4<-post$beta0 + post$beta1*mean(LE_FF_d_f$F1)+ post$beta2*quantile(LE_FF_d_f$F2)[4]
+mu_at_Q5<-post$beta0 + post$beta1*mean(LE_FF_d_f$F1)+ post$beta2*quantile(LE_FF_d_f$F2)[5]
+
+
+par(family= "HiraKakuProN-W3")
+
+mu_at_Q2 %>% dens(col="red", main = "F2因子の寿命分布への影響", xlim=c(86.8, 87.2))
+mu_at_Q3 %>% dens(col="green", main = "F2が Q3である場合", add = T)
+mu_at_Q4 %>% dens(col="blue", main = "F2が Q4である場合", add = T)
+
+
+aa<-tibble::tibble(
+  mu_at_Q2=mu_at_Q2,
+  mu_at_Q3=mu_at_Q3,
+  mu_at_Q4=mu_at_Q4
+) %>% pivot_longer(cols = everything()) %>% nest(value)
+
+
+name <- function(aa) {
+ggplot_build(aa %>% ggplot(aes(value))+stat_ecdf())$data[[1]] %>% select(y, x) %>%
+    mutate(ccdf=1-y)
+}
+
+aa$ccdf<-purrr::map(aa$data, name)
+
+aa %>% unnest(cols = ccdf) %>% ggplot(aes(x=x, y=ccdf, group=name, color=name))+geom_line()+theme_bw(base_family = "HiraKakuProN-W3")+xlim(86.8, 87.2)
+
+```
+
+#### F1因子の寿命への影響
+
+```{r warning=FALSE}
+mu_at_Q1<-post$beta0 + post$beta1*quantile(LE_FF_d_f$F1)[1]+ post$beta2*mean(LE_FF_d_f$F2)
+mu_at_Q2<-post$beta0 + post$beta1*quantile(LE_FF_d_f$F1)[2]+ post$beta2*mean(LE_FF_d_f$F2)
+mu_at_Q3<-post$beta0 + post$beta1*quantile(LE_FF_d_f$F1)[3]+ post$beta2*mean(LE_FF_d_f$F2)
+mu_at_Q4<-post$beta0 + post$beta1*quantile(LE_FF_d_f$F1)[4]+ post$beta2*mean(LE_FF_d_f$F2)
+mu_at_Q5<-post$beta0 + post$beta1*quantile(LE_FF_d_f$F1)[5]+ post$beta2*mean(LE_FF_d_f$F2)
+
+
+par(family= "HiraKakuProN-W3")
+
+mu_at_Q2 %>% dens(col="red", main = "F1因子の寿命への影響", xlim=c(86.8, 87.2))
+mu_at_Q3 %>% dens(col="green", main = "F1が Q3である場合", add = T)
+mu_at_Q4 %>% dens(col="blue", main = "F1が Q4である場合", add = T)
+
+aa<-tibble::tibble(
+  mu_at_Q2=mu_at_Q2,
+  mu_at_Q3=mu_at_Q3,
+  mu_at_Q4=mu_at_Q4
+) %>% pivot_longer(cols = everything()) %>% nest(value)
+
+
+name <- function(aa) {
+ggplot_build(aa %>% ggplot(aes(value))+stat_ecdf())$data[[1]] %>% select(y, x) %>%
+    mutate(ccdf=1-y)
+}
+
+aa$ccdf<-purrr::map(aa$data, name)
+
+aa %>% unnest(cols = ccdf) %>% ggplot(aes(x=x, y=ccdf, group=name, color=name))+geom_line()+theme_bw(base_family = "HiraKakuProN-W3")+xlim(86.8, 87.2)
+
+
+```
+
+## 男性平均寿命 Bayes Inference
+
+LE_FF_d_m=LE_d_m_final$LE_2015
+
+### 推定
+
+```{r}
+suppressMessages(library(rethinking))
+
+
+Bayes_fit_LE_d_m<-
+  rethinking::map(alist(
+  LE~dnorm(mu, sigma),
+  mu~beta0+beta1*F1+beta2*F2,
+  beta0~dnorm(80, 100),
+  beta1~dnorm(0, 10),
+  beta2~dnorm(0, 10),
+  sigma ~ dunif(0, 50)
+), data=LE_FF_d_m
+)
+
+
+
+```
+
+### F1, F2 因子効果および切片効果 and PI
+
+```{r}
+precis(Bayes_fit_LE_d_m)
+
+```
+
+<!-- ### 因子効果、共分散 -->
+
+<!-- ```{r} -->
+<!-- round( vcov(Bayes_fit_LE_d_m) , 3 ) -->
+
+<!-- ``` -->
+
+### 事後分布推定
+
+```{r}
+
+post<-extract.samples(Bayes_fit_LE_d_m)
+
+
+# purrr::map(post, hist)
+
+
+# rethinking::HPDI(post$beta0)
+# rethinking::HPDI(post$beta1)
+# rethinking::HPDI(post$beta2)
+
+# rethinking::PI(post$beta0)
+# rethinking::PI(post$beta1)
+# rethinking::PI(post$beta2)
+
+dens(post)
+```
+
+### 事後分布: 因子効果の可視化--aaaaa
+
+#### F2因子の寿命分布への影響
+```{r warning=FALSE}
+mu_at_Q1<-post$beta0 + post$beta1*mean(LE_FF_d_m$F1)+ post$beta2*quantile(LE_FF_d_m$F2)[1]
+mu_at_Q2<-post$beta0 + post$beta1*mean(LE_FF_d_m$F1)+ post$beta2*quantile(LE_FF_d_m$F2)[2]
+mu_at_Q3<-post$beta0 + post$beta1*mean(LE_FF_d_m$F1)+ post$beta2*quantile(LE_FF_d_m$F2)[3]
+mu_at_Q4<-post$beta0 + post$beta1*mean(LE_FF_d_m$F1)+ post$beta2*quantile(LE_FF_d_m$F2)[4]
+mu_at_Q5<-post$beta0 + post$beta1*mean(LE_FF_d_m$F1)+ post$beta2*quantile(LE_FF_d_m$F2)[5]
+
+
+par(family= "HiraKakuProN-W3")
+
+mu_at_Q2 %>% dens(col="red", main = "F2因子の寿命分布への影響", xlim=c(80-.3, 80+2))
+mu_at_Q3 %>% dens(col="green", main = "F2が Q3である場合", add = T)
+mu_at_Q4 %>% dens(col="blue", main = "F2が Q4である場合", add = T)
+
+aa<-tibble::tibble(
+  mu_at_Q2=mu_at_Q2,
+  mu_at_Q3=mu_at_Q3,
+  mu_at_Q4=mu_at_Q4
+) %>% pivot_longer(cols = everything()) %>% nest(value)
+
+
+name <- function(aa) {
+ggplot_build(aa %>% ggplot(aes(value))+stat_ecdf())$data[[1]] %>% select(y, x) %>%
+    mutate(ccdf=1-y)
+}
+
+aa$ccdf<-purrr::map(aa$data, name)
+
+aa %>% unnest(cols = ccdf) %>% ggplot(aes(x=x, y=ccdf, group=name, color=name))+geom_line()+theme_bw(base_family = "HiraKakuProN-W3")+xlim(80-.3, 80+2)
+
+```
+
+#### F1因子の寿命への影響
+
+```{r}
+mu_at_Q1<-post$beta0 + post$beta1*quantile(LE_FF_d_m$F1)[1]+ post$beta2*mean(LE_FF_d_m$F2)
+mu_at_Q2<-post$beta0 + post$beta1*quantile(LE_FF_d_m$F1)[2]+ post$beta2*mean(LE_FF_d_m$F2)
+mu_at_Q3<-post$beta0 + post$beta1*quantile(LE_FF_d_m$F1)[3]+ post$beta2*mean(LE_FF_d_m$F2)
+mu_at_Q4<-post$beta0 + post$beta1*quantile(LE_FF_d_m$F1)[4]+ post$beta2*mean(LE_FF_d_m$F2)
+mu_at_Q5<-post$beta0 + post$beta1*quantile(LE_FF_d_m$F1)[5]+ post$beta2*mean(LE_FF_d_m$F2)
+
+
+par(family= "HiraKakuProN-W3")
+
+mu_at_Q2 %>% dens(col="red", main = "F1因子の寿命への影響", xlim=c(80-.3, 80+2))
+mu_at_Q3 %>% dens(col="green", main = "F1が Q3である場合", add = T)
+mu_at_Q4 %>% dens(col="blue", main = "F1が Q4である場合", add = T)
+
+aa<-tibble::tibble(
+  mu_at_Q2=mu_at_Q2,
+  mu_at_Q3=mu_at_Q3,
+  mu_at_Q4=mu_at_Q4
+) %>% pivot_longer(cols = everything()) %>% nest(value)
+
+
+name <- function(aa) {
+ggplot_build(aa %>% ggplot(aes(value))+stat_ecdf())$data[[1]] %>% select(y, x) %>%
+    mutate(ccdf=1-y)
+}
+
+aa$ccdf<-purrr::map(aa$data, name)
+
+aa %>% unnest(cols = ccdf) %>% ggplot(aes(x=x, y=ccdf, group=name, color=name))+geom_line()+theme_bw(base_family = "HiraKakuProN-W3")+xlim(80-.3, 80+2)
+
+```
+
+## 女性健康寿命 Bayes Inference
+
+### 推定
+
+```{r}
+suppressMessages(library(rethinking))
+
+
+Bayes_fit_HLE_d_f<-
+  rethinking::map(alist(
+  HLE~dnorm(mu, sigma),
+  mu~beta0+beta1*F1+beta2*F2,
+  beta0~dnorm(80, 100),
+  beta1~dnorm(0, 10),
+  beta2~dnorm(0, 10),
+  sigma ~ dunif(0, 50)
+), data=HLE_FF_d_f
+)
+
+
+
+```
+
+### F1, F2 因子効果および切片効果 and PI
+
+```{r}
+precis(Bayes_fit_HLE_d_f)
+
+```
+
+<!-- ### 因子効果、共分散 -->
+
+<!-- ```{r} -->
+<!-- round( vcov(Bayes_fit_HLE_d_f) , 3 ) -->
+
+<!-- ``` -->
+
+### 事後分布推定
+
+```{r}
+
+post<-extract.samples(Bayes_fit_HLE_d_f)
+
+
+# purrr::map(post, hist)
+
+
+# rethinking::HPDI(post$beta0)
+# rethinking::HPDI(post$beta1)
+# rethinking::HPDI(post$beta2)
+
+# rethinking::PI(post$beta0)
+# rethinking::PI(post$beta1)
+# rethinking::PI(post$beta2)
+dens(post)
+```
+
+### 事後分布: 因子効果の可視化--aaaaa
+
+#### F2因子の寿命分布への影響
+```{r warning=FALSE}
+mu_at_Q1<-post$beta0 + post$beta1*mean(HLE_FF_d_f$F1)+ post$beta2*quantile(HLE_FF_d_f$F2)[1]
+mu_at_Q2<-post$beta0 + post$beta1*mean(HLE_FF_d_f$F1)+ post$beta2*quantile(HLE_FF_d_f$F2)[2]
+mu_at_Q3<-post$beta0 + post$beta1*mean(HLE_FF_d_f$F1)+ post$beta2*quantile(HLE_FF_d_f$F2)[3]
+mu_at_Q4<-post$beta0 + post$beta1*mean(HLE_FF_d_f$F1)+ post$beta2*quantile(HLE_FF_d_f$F2)[4]
+mu_at_Q5<-post$beta0 + post$beta1*mean(HLE_FF_d_f$F1)+ post$beta2*quantile(HLE_FF_d_f$F2)[5]
+
+
+par(family= "HiraKakuProN-W3")
+
+mu_at_Q2 %>% dens(col="red", main = "F2因子の寿命分布への影響", xlim=c(75-.3, 75+.3))
+mu_at_Q3 %>% dens(col="green", main = "F2が Q3である場合", add = T)
+mu_at_Q4 %>% dens(col="blue", main = "F2が Q4である場合", add = T)
+
+aa<-tibble::tibble(
+  mu_at_Q2=mu_at_Q2,
+  mu_at_Q3=mu_at_Q3,
+  mu_at_Q4=mu_at_Q4
+) %>% pivot_longer(cols = everything()) %>% nest(value)
+
+
+name <- function(aa) {
+ggplot_build(aa %>% ggplot(aes(value))+stat_ecdf())$data[[1]] %>% select(y, x) %>%
+    mutate(ccdf=1-y)
+}
+
+aa$ccdf<-purrr::map(aa$data, name)
+
+aa %>% unnest(cols = ccdf) %>% ggplot(aes(x=x, y=ccdf, group=name, color=name))+geom_line()+theme_bw(base_family = "HiraKakuProN-W3")+xlim(75-.3, 75+.3)
+
+
+
+
+```
+
+#### F1因子の寿命への影響
+
+```{r}
+mu_at_Q1<-post$beta0 + post$beta1*quantile(HLE_FF_d_f$F1)[1]+ post$beta2*mean(HLE_FF_d_f$F2)
+mu_at_Q2<-post$beta0 + post$beta1*quantile(HLE_FF_d_f$F1)[2]+ post$beta2*mean(HLE_FF_d_f$F2)
+mu_at_Q3<-post$beta0 + post$beta1*quantile(HLE_FF_d_f$F1)[3]+ post$beta2*mean(HLE_FF_d_f$F2)
+mu_at_Q4<-post$beta0 + post$beta1*quantile(HLE_FF_d_f$F1)[4]+ post$beta2*mean(HLE_FF_d_f$F2)
+mu_at_Q5<-post$beta0 + post$beta1*quantile(HLE_FF_d_f$F1)[5]+ post$beta2*mean(HLE_FF_d_f$F2)
+
+
+par(family= "HiraKakuProN-W3")
+
+mu_at_Q2 %>% dens(col="red", main = "F1因子の寿命への影響", xlim=c(75-.3, 75+.3))
+mu_at_Q3 %>% dens(col="green", main = "F1が Q3である場合", add = T)
+mu_at_Q4 %>% dens(col="blue", main = "F1が Q4である場合", add = T)
+
+aa<-tibble::tibble(
+  mu_at_Q2=mu_at_Q2,
+  mu_at_Q3=mu_at_Q3,
+  mu_at_Q4=mu_at_Q4
+) %>% pivot_longer(cols = everything()) %>% nest(value)
+
+
+name <- function(aa) {
+ggplot_build(aa %>% ggplot(aes(value))+stat_ecdf())$data[[1]] %>% select(y, x) %>%
+    mutate(ccdf=1-y)
+}
+
+aa$ccdf<-purrr::map(aa$data, name)
+
+aa %>% unnest(cols = ccdf) %>% ggplot(aes(x=x, y=ccdf, group=name, color=name))+geom_line()+theme_bw(base_family = "HiraKakuProN-W3")+xlim(75-.3, 75+.3)
+
+
+
+```
+
+
+
+## 男性健康寿命 Bayes Inference
+
+HLE_FF_d_m=HLE_d_m_final$HLE_2015
+
+### 推定
+
+```{r}
+suppressMessages(library(rethinking))
+
+
+Bayes_fit_HLE_d_m<-
+  rethinking::map(alist(
+  HLE~dnorm(mu, sigma),
+  mu~beta0+beta1*F1+beta2*F2,
+  beta0~dnorm(80, 100),
+  beta1~dnorm(0, 10),
+  beta2~dnorm(0, 10),
+  sigma ~ dunif(0, 50)
+), data=HLE_FF_d_m
+)
+
+
+
+```
+
+### F1, F2 因子効果および切片効果 and PI
+
+```{r}
+precis(Bayes_fit_HLE_d_m)
+
+```
+
+### 事後分布推定
+
+```{r}
+
+post<-extract.samples(Bayes_fit_HLE_d_m)
+
+
+# purrr::map(post, hist)
+
+
+# rethinking::HPDI(post$beta0)
+# rethinking::HPDI(post$beta1)
+# rethinking::HPDI(post$beta2)
+
+# rethinking::PI(post$beta0)
+# rethinking::PI(post$beta1)
+# rethinking::PI(post$beta2)
+dens(post)
+```
+
+### 事後分布: 因子効果の可視化--aaaaa
+
+#### F2因子の寿命分布への影響
+```{r warning=FALSE}
+mu_at_Q1<-post$beta0 + post$beta1*mean(HLE_FF_d_m$F1)+ post$beta2*quantile(HLE_FF_d_m$F2)[1]
+mu_at_Q2<-post$beta0 + post$beta1*mean(HLE_FF_d_m$F1)+ post$beta2*quantile(HLE_FF_d_m$F2)[2]
+mu_at_Q3<-post$beta0 + post$beta1*mean(HLE_FF_d_m$F1)+ post$beta2*quantile(HLE_FF_d_m$F2)[3]
+mu_at_Q4<-post$beta0 + post$beta1*mean(HLE_FF_d_m$F1)+ post$beta2*quantile(HLE_FF_d_m$F2)[4]
+mu_at_Q5<-post$beta0 + post$beta1*mean(HLE_FF_d_m$F1)+ post$beta2*quantile(HLE_FF_d_m$F2)[5]
+
+
+par(family= "HiraKakuProN-W3")
+
+mu_at_Q2 %>% dens(col="red", main = "F2因子の寿命分布への影響", xlim=c(72-.3, 72+.3))
+mu_at_Q3 %>% dens(col="green", main = "F2が Q3である場合", add = T)
+mu_at_Q4 %>% dens(col="blue", main = "F2が Q4である場合", add = T)
+
+aa<-tibble::tibble(
+  mu_at_Q2=mu_at_Q2,
+  mu_at_Q3=mu_at_Q3,
+  mu_at_Q4=mu_at_Q4
+) %>% pivot_longer(cols = everything()) %>% nest(value)
+
+
+name <- function(aa) {
+ggplot_build(aa %>% ggplot(aes(value))+stat_ecdf())$data[[1]] %>% select(y, x) %>%
+    mutate(ccdf=1-y)
+}
+
+aa$ccdf<-purrr::map(aa$data, name)
+
+aa %>% unnest(cols = ccdf) %>% ggplot(aes(x=x, y=ccdf, group=name, color=name))+geom_line()+theme_bw(base_family = "HiraKakuProN-W3")+xlim(72-.3, 72+.3)
+
+
+
+```
+
+#### F1因子の寿命への影響
+
+```{r}
+mu_at_Q1<-post$beta0 + post$beta1*quantile(HLE_FF_d_m$F1)[1]+ post$beta2*mean(HLE_FF_d_m$F2)
+mu_at_Q2<-post$beta0 + post$beta1*quantile(HLE_FF_d_m$F1)[2]+ post$beta2*mean(HLE_FF_d_m$F2)
+mu_at_Q3<-post$beta0 + post$beta1*quantile(HLE_FF_d_m$F1)[3]+ post$beta2*mean(HLE_FF_d_m$F2)
+mu_at_Q4<-post$beta0 + post$beta1*quantile(HLE_FF_d_m$F1)[4]+ post$beta2*mean(HLE_FF_d_m$F2)
+mu_at_Q5<-post$beta0 + post$beta1*quantile(HLE_FF_d_m$F1)[5]+ post$beta2*mean(HLE_FF_d_m$F2)
+
+
+par(family= "HiraKakuProN-W3")
+
+mu_at_Q2 %>% dens(col="red", main = "F1因子の寿命への影響", xlim=c(72-.3, 72+.3))
+mu_at_Q3 %>% dens(col="green", main = "F1が Q3である場合", add = T)
+mu_at_Q4 %>% dens(col="blue", main = "F1が Q4である場合", add = T)
+
+aa<-tibble::tibble(
+  mu_at_Q2=mu_at_Q2,
+  mu_at_Q3=mu_at_Q3,
+  mu_at_Q4=mu_at_Q4
+) %>% pivot_longer(cols = everything()) %>% nest(value)
+
+
+name <- function(aa) {
+ggplot_build(aa %>% ggplot(aes(value))+stat_ecdf())$data[[1]] %>% select(y, x) %>%
+    mutate(ccdf=1-y)
+}
+
+aa$ccdf<-purrr::map(aa$data, name)
+
+aa %>% unnest(cols = ccdf) %>% ggplot(aes(x=x, y=ccdf, group=name, color=name))+geom_line()+theme_bw(base_family = "HiraKakuProN-W3")+xlim(72-.3, 72+.3)
+
+
+```
