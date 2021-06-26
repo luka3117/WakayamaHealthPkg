@@ -6,12 +6,11 @@ system("open .")
 
 library(xtable)
 
+## ----tex file sink example ------------------------------
 # table tex saving folder
 path="./final_report-kenko(和歌山県)/table/"
 # table tex file name
 file="example.tex"
-
-# write.csv(iris, file = paste0(path, file))
 
 sink(file = paste0(path, file))
 xtable(iris[1:5, ], label = "tablelabel", caption = c(
@@ -20,10 +19,6 @@ xtable(iris[1:5, ], label = "tablelabel", caption = c(
   \\beta_0 X_2$
   寿命", "bbb")) %>% print(size="\\tiny")
 sink()
-
-
-
-## ----warning=FALSE------------------------------
 
 
 ## ----warning=FALSE------------------------------
@@ -51,8 +46,36 @@ suppressMessages(library(magrittr))
 # load("../ScreenEnd.RData")
 load("ScreenEnd.RData")
 
-ls()
 
+f_var=LE_d_f_final %>% colnames() %>% tbl_df() %>% left_join(var, by=c("value"="var_name_Eng")) %>%
+  select(3) %>% filter(!is.na(var_name_Jpn)) %>% rename(f_var=var_name_Jpn) %>% .[-1, ]
+
+m_var=LE_d_m_final %>% colnames() %>% tbl_df() %>% left_join(var, by=c("value"="var_name_Eng")) %>%
+  select(3) %>% filter(!is.na(var_name_Jpn)) %>% rename(m_var=var_name_Jpn) %>% .[-1, ]
+m_var %<>% bind_rows(as.data.frame(rep(NA, 7)))
+m_var %<>% select(1)
+
+
+
+# table tex file name
+file="UsedVar.tex"
+
+sink(file = paste0(path, file))
+f_var %>% bind_cols(m_var) %>%
+  xtable(label = "tablelabel",
+         caption = c("$\\beta_0 X_1+\\beta_0 X_2$寿命",
+                     "bbb")) %>% print(size = "\\tiny")
+sink()
+
+
+
+
+LE_d_m_final %>% colnames() %>% tbl_df() %>% left_join(var, by=c("value"="var_name_Eng")) %>%
+  select(3) %>% filter(!is.na(var_name_Jpn)) %>% rename(female_var=var_name_Jpn) %>% .[-1, ]
+
+
+LE_d_m_final %>% colnames() %>% tbl_df() %>% left_join(var, by=c("value"="var_name_Eng")) %>%
+  select(3)
 
 ## ----warning=FALSE------------------------------
 
