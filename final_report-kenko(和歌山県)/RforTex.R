@@ -52,6 +52,14 @@ suppressMessages(library(magrittr))
 # load("../ScreenEnd.RData")
 load("ScreenEnd.RData")
 
+# -----------------
+#  _   _              _  __     ___    ____
+# | | | |___  ___  __| | \ \   / / \  |  _ \
+# | | | / __|/ _ \/ _` |  \ \ / / _ \ | |_) |
+# | |_| \__ \  __/ (_| |   \ V / ___ \|  _ <
+#  \___/|___/\___|\__,_|    \_/_/   \_\_| \_\
+# -----------------
+
 
 f_var=LE_d_f_final %>% colnames() %>% tbl_df() %>% left_join(var, by=c("value"="var_name_Eng")) %>%
   select(3) %>% filter(!is.na(var_name_Jpn)) %>% rename(f_var=var_name_Jpn) %>% .[-1, ]
@@ -70,7 +78,7 @@ file="UsedVar.tex"
 sink(file = paste0(path, file))
 f_var %>%
   bind_cols(m_var) %>%
-  xtable(label = "tablelabel",
+  xtable(label = "UsedVariable",
          caption = c("$\\beta_0 X_1+\\beta_0 X_2$寿命",
                      "bbb")) %>%
   print(size = "\\tiny")
@@ -100,6 +108,7 @@ LE_d_m_final %>% colnames() %>% tbl_df() %>% left_join(var, by=c("value"="var_na
 # ----------------- ----------------- ----------------- -----------------
 
 
+# file="table_LM_HLE_mf.tex"
 
 
 options(digits = 5)              # Modify global options
@@ -111,6 +120,20 @@ lm(LE_2015~. , data = LE_d_f_final) %>%
   broom::tidy() %>%
   left_join(var, by=c("term"="var_name_Eng")) %>%
   select(term, var_name_Jpn, everything(), -id,- address, -std.error, -columm_letter ) %>% DT::datatable() %>% DT::formatRound(columns=c('estimate', 'statistic', "p.value"), digits=3)
+
+
+# table tex file name
+file="table_LM_LE_f.tex"
+# path="./final_report-kenko(和歌山県)/table/"
+
+sink(file = paste0(path, file))
+fit_with_X_lm_LE_d_f %>% broom::tidy() %>%
+  left_join(var, by=c("term"="var_name_Eng")) %>%
+  select(term, var_name_Jpn, everything(), -id,- address, -std.error, -columm_letter ) %>%
+    xtable(label = "UsualLMLEf",
+         caption = c("女性の線形回帰(平均寿命)")) %>%
+  print(size = "\\tiny")
+sink()
 
 
 
@@ -126,6 +149,20 @@ lm(LE_2015~. , data = LE_d_m_final) %>%
 
 
 
+# table tex file name
+file="table_LM_LE_m.tex"
+# path="./final_report-kenko(和歌山県)/table/"
+
+sink(file = paste0(path, file))
+fit_with_X_lm_LE_d_m %>% broom::tidy() %>%
+  left_join(var, by=c("term"="var_name_Eng")) %>%
+  select(term, var_name_Jpn, everything(), -id,- address, -std.error, -columm_letter ) %>%
+    xtable(label = "UsualLMLEm",
+         caption = c("男性の線形回帰(平均寿命)")) %>%
+  print(size = "\\tiny")
+sink()
+
+
 ## ----warning=FALSE------------------------------
 
 options(digits = 5)              # Modify global options
@@ -139,6 +176,18 @@ lm(HLE_2016~. , data = HLE_d_f_final) %>%
   select(term, var_name_Jpn, everything(), -id,- address, -std.error, -columm_letter ) %>% DT::datatable() %>% DT::formatRound(columns=c('estimate', 'statistic', "p.value"), digits=3)
 
 
+# table tex file name
+file="table_LM_HLE_f.tex"
+# path="./final_report-kenko(和歌山県)/table/"
+
+sink(file = paste0(path, file))
+fit_with_X_lm_HLE_d_f %>% broom::tidy() %>%
+  left_join(var, by=c("term"="var_name_Eng")) %>%
+  select(term, var_name_Jpn, everything(), -id,- address, -std.error, -columm_letter ) %>%
+    xtable(label = "UsualHLMLEf",
+         caption = c("女性の線形回帰(健康寿命)")) %>%
+  print(size = "\\tiny")
+sink()
 
 ## ----warning=FALSE------------------------------
 options(digits = 5)              # Modify global options
@@ -151,6 +200,38 @@ lm(HLE_2016~. , data = HLE_d_m_final) %>%
   select(term, var_name_Jpn, everything(), -id,- address, -std.error, -columm_letter ) %>% DT::datatable() %>% DT::formatRound(columns=c('estimate', 'statistic', "p.value"), digits=3)
 
 
+# -----------------# -----------------
+# table tex file name
+file="table_LM_HLE_m.tex"
+# path="./final_report-kenko(和歌山県)/table/"
+
+sink(file = paste0(path, file))
+fit_with_X_lm_HLE_d_m %>% broom::tidy() %>%
+  left_join(var, by=c("term"="var_name_Eng")) %>%
+  select(term, var_name_Jpn, everything(), -id,- address, -std.error, -columm_letter ) %>%
+    xtable(label = "UsualHLMLEf",
+         caption = c("男性の線形回帰(健康寿命)")) %>%
+  print(size = "\\tiny")
+sink()
+# -----------------# -----------------
+
+
+
+# -----------------
+# -----------------
+# -----------------
+# -----------------
+# -----------------
+# _____ _
+# |  ___/ \
+# | |_ / _ \
+# |  _/ ___ \
+# |_|/_/   \_\
+# -----------------
+# -----------------
+# -----------------
+# -----------------
+
 
 ## ----warning=FALSE------------------------------
 LE_d_f_final.reg<-lm(LE_2015~. , data = LE_d_f_final)
@@ -160,6 +241,22 @@ d_f_.FA$VAR.rotate %>% data.frame() %>% rownames_to_column() %>%
   left_join(var, by=c("rowname"="var_name_Eng")) %>%
   select(rowname,var_name_Jpn,X1,X2) %>% rename(F1=X1, F2=X2) %>%
   DT::datatable() %>% DT::formatRound(columns=c('F1', 'F2'), digits=3)
+
+# -----------------# -----------------
+# table tex file name
+file="table_FA_f.tex"
+# path="./final_report-kenko(和歌山県)/table/"
+
+sink(file = paste0(path, file))
+rownames(d_f_.FA$VAR.rotate)<-colnames(LE_d_f_final.reg$model[,-1] )
+d_f_.FA$VAR.rotate %>% data.frame() %>% rownames_to_column() %>%
+  left_join(var, by=c("rowname"="var_name_Eng")) %>%
+  select(rowname,var_name_Jpn,X1,X2) %>% rename(F1=X1, F2=X2)
+    xtable(label = "FAf",
+         caption = c("女性のFA")) %>%
+  print(size = "\\tiny")
+sink()
+# -----------------# -----------------
 
 
 ## ----warning=FALSE------------------------------
@@ -186,11 +283,60 @@ d_m_.FA$OBS.rotate %>% as.data.frame() %>% tbl_df() %>%
   DT::datatable() %>% DT::formatRound(columns=c('F1', 'F2'), digits=3)
 
 
+
+# -----------------# -----------------
+# table tex file name
+file="table_FA_m.tex"
+# path="./final_report-kenko(和歌山県)/table/"
+
+sink(file = paste0(path, file))
+rownames(d_m_.FA$VAR.rotate)<-colnames(LE_d_m_final.reg$model[,-1] )
+d_m_.FA$VAR.rotate %>% data.frame() %>% rownames_to_column() %>%
+  left_join(var, by=c("rowname"="var_name_Eng")) %>%
+  select(rowname,var_name_Jpn,X1,X2) %>% rename(F1=X1, F2=X2)
+    xtable(label = "FAm",
+         caption = c("男性のFA")) %>%
+  print(size = "\\tiny")
+sink()
+# -----------------# -----------------
+
+
+
+
+# -----------------
+# -----------------
+# -----------------
+# -----------------
+# -----------------
+# _     __  __            _ _   _       _____ _
+# | |   |  \/  | __      _(_) |_| |__   |  ___/ \
+# | |   | |\/| | \ \ /\ / / | __| '_ \  | |_ / _ \
+# | |___| |  | |  \ V  V /| | |_| | | | |  _/ ___ \
+# |_____|_|  |_|   \_/\_/ |_|\__|_| |_| |_|/_/   \_\
+# -----------------
+# -----------------
+# -----------------
+# -----------------
+
 ## ----warning=FALSE------------------------------
 fit_with_FA_lm_LE_d_f<-lm(LE_d_f_final$LE_2015~d_f_.FA$OBS.rotate)
 
 lm(LE_d_f_final$LE_2015~d_f_.FA$OBS.rotate) %>% broom::tidy() %>% DT::datatable() %>% DT::formatRound(columns=c('estimate', 'std.error', 'statistic', 'p.value'), digits=3)
 lm(LE_d_f_final$LE_2015~d_f_.FA$OBS.rotate) %>% broom::glance()
+
+
+# -----------------# -----------------
+# table tex file name
+file="table_LM_LE_FA_f.tex"
+# path="./final_report-kenko(和歌山県)/table/"
+
+sink(file = paste0(path, file))
+fit_with_FA_lm_LE_d_f %>% broom::tidy() %>%
+    xtable(label = "tableLMLEFAf",
+         caption = c("女性の回帰withFA(平均寿命)")) %>%
+  print(size = "\\tiny")
+sink()
+# -----------------# -----------------
 
 
 ## ----warning=FALSE------------------------------
@@ -200,6 +346,21 @@ lm(LE_d_m_final$LE_2015~d_m_.FA$OBS.rotate) %>% broom::tidy()%>% DT::datatable()
 lm(LE_d_m_final$LE_2015~d_m_.FA$OBS.rotate) %>% broom::glance()
 
 
+# -----------------# -----------------
+# table tex file name
+file="table_LM_LE_FA_m.tex"
+# path="./final_report-kenko(和歌山県)/table/"
+
+sink(file = paste0(path, file))
+fit_with_FA_lm_LE_d_m %>% broom::tidy() %>%
+    xtable(label = "tableLMLEFAm",
+         caption = c("男性の回帰withFA(平均寿命)")) %>%
+  print(size = "\\tiny")
+sink()
+# -----------------# -----------------
+
+
+
 ## ----warning=FALSE------------------------------
 fit_with_FA_lm_HLE_d_f<-lm(HLE_d_f_final$HLE_2016~d_f_.FA$OBS.rotate)
 
@@ -207,11 +368,57 @@ lm(HLE_d_f_final$HLE_2016~d_f_.FA$OBS.rotate) %>% broom::tidy()%>% DT::datatable
 lm(HLE_d_f_final$HLE_2016~d_f_.FA$OBS.rotate) %>% broom::glance()
 
 
+# -----------------# -----------------
+# table tex file name
+file="table_LM_HLE_FA_f.tex"
+# path="./final_report-kenko(和歌山県)/table/"
+
+sink(file = paste0(path, file))
+fit_with_FA_lm_HLE_d_f %>% broom::tidy() %>%
+    xtable(label = "tableLMHLEFAf",
+         caption = c("女性の回帰withFA(健康寿命)")) %>%
+  print(size = "\\tiny")
+sink()
+# -----------------# -----------------
+
+
 ## ----warning=FALSE------------------------------
 fit_with_FA_lm_HLE_d_m<-lm(HLE_d_m_final$HLE_2016~d_m_.FA$OBS.rotate)
 
 lm(HLE_d_m_final$HLE_2016~d_m_.FA$OBS.rotate) %>% broom::tidy()%>% DT::datatable() %>% DT::formatRound(columns=c('estimate', 'std.error', 'statistic', 'p.value'), digits=3)
 lm(HLE_d_m_final$HLE_2016~d_m_.FA$OBS.rotate) %>% broom::glance()
+
+
+# -----------------# -----------------
+# table tex file name
+file="table_LM_HLE_FA_m.tex"
+# path="./final_report-kenko(和歌山県)/table/"
+
+sink(file = paste0(path, file))
+fit_with_FA_lm_HLE_d_m %>% broom::tidy() %>%
+    xtable(label = "tableLMHLEFAm",
+         caption = c("男性の回帰withFA(健康寿命)")) %>%
+  print(size = "\\tiny")
+sink()
+# -----------------# -----------------
+
+
+
+# -----------------
+# -----------------
+# -----------------
+# -----------------
+# -----------------
+#   ____
+#  / ___| __ _ _ __ ___  _ __ ___   __ _
+# | |  _ / _` | '_ ` _ \| '_ ` _ \ / _` |
+# | |_| | (_| | | | | | | | | | | | (_| |
+#  \____|\__,_|_| |_| |_|_| |_| |_|\__,_|
+# -----------------
+# -----------------
+# -----------------
+# -----------------
+
 
 
 ## ----warning=FALSE------------------------------
@@ -739,8 +946,8 @@ aa %>% unnest(cols = ccdf) %>% ggplot(aes(x=x, y=ccdf, group=name, color=name))+
 
 
 #
-# file="table_LM_LE_mf.tex"
-# file="table_LM_HLE_mf.tex"
+
+
 # file="table_FA_m.tex"
 # file="table_FA_f.tex"
 # file="table_LM_with_FA_LE_mf.tex"

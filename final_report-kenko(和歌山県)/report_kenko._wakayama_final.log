@@ -1,10 +1,10 @@
-This is e-pTeX, Version 3.14159265-p3.8.1-180226-2.6 (utf8.euc) (TeX Live 2018) (preloaded format=platex 2019.4.23)  24 MAY 2021 20:42
+This is e-pTeX, Version 3.14159265-p3.8.1-180226-2.6 (utf8.euc) (TeX Live 2018) (preloaded format=platex 2019.4.23)  28 JUN 2021 20:29
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**report_kenko._wakayama.tex
-(./report_kenko._wakayama.tex
+**report_kenko._wakayama_final.tex
+(./report_kenko._wakayama_final.tex
 pLaTeX2e <2018-12-01> (based on LaTeX2e <2018-12-01>)
 (/usr/local/texlive/2018/texmf-dist/tex/platex/base/jreport.cls
 Document Class: jreport 2018/10/25 v1.8a Standard pLaTeX class
@@ -358,8 +358,12 @@ Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
 LaTeX Warning: Unused global option(s):
     [mc].
 
-(./report_kenko._wakayama.aux)
-\openout1 = `report_kenko._wakayama.aux'.
+(./report_kenko._wakayama_final.aux
+
+LaTeX Warning: Label `UsualHLMLEf' multiply defined.
+
+)
+\openout1 = `report_kenko._wakayama_final.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 47.
 LaTeX Font Info:    ... okay on input line 47.
@@ -446,103 +450,41 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 
 
 ]
-(./report_kenko._wakayama.toc)
+(./report_kenko._wakayama_final.toc)
 \tf@toc=\write3
-\openout3 = `report_kenko._wakayama.toc'.
+\openout3 = `report_kenko._wakayama_final.toc'.
 
  [1
 
-] (./sub/wakayamaForSend1.tex
-第 1 章
-LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <12> not available
-(Font)              Font shape `JT1/gt/m/n' tried instead on input line 9.
-LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <12> not available
-(Font)              Font shape `JY1/gt/m/n' tried instead on input line 9.
-[2
-
-]
-第 2 章
-runsystem([ 'fig/daly.png' -nt 'fig/daly.bb' ] && cd 'fig/' && ebb 'daly.png').
-..disabled (restricted).
-
-File: fig/daly.png Graphic file (type bmp)
-<fig/daly.png>
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 126.
-
-(/usr/local/texlive/2018/texmf-dist/tex/latex/base/omscmr.fd
-File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
-)
-LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 126.
- [3
-
-]
-LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <10.95> not available
-(Font)              Font shape `JT1/gt/m/n' tried instead on input line 152.
-LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <10.95> not available
-(Font)              Font shape `JY1/gt/m/n' tried instead on input line 152.
-
+] (./table/UsedVar.tex)
+(./table/table_LM_LE_f.tex) (./table/table_LM_LE_m.tex)
+(./table/table_LM_HLE_f.tex) (./table/table_LM_HLE_m.tex)
+(./table/table_FA_f.tex) (./table/table_FA_m.tex) (./table/table_LM_LE_FA_f.tex
+) (./table/table_LM_LE_FA_m.tex) (./table/table_LM_HLE_FA_f.tex)
+(./table/table_LM_HLE_FA_m.tex)
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
 Make it at least 15.49998pt.
 We now make it that large for the rest of the document.
 This may cause the page layout to be inconsistent, however.
 
-[4] [5]
-第 3 章
-[6
-
-]
-第 4 章
-[7
-
-] [8] [9] [10] [11] [12]
-第 5 章
-[13
-
-]
-Underfull \hbox (badness 10000) in paragraph at lines 1155--1156
-[]\JY1/mc/m/sc/10.95 一定のバリアフリ ー化率手すりの設
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1157--1158
-[]\JY1/mc/m/sc/10.95 高度のバリアフリ ー化率手すりの設
- []
-
-[14] [15]
-第 6 章
-[16
-
-]
-LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <9> not available
-(Font)              Font shape `JT1/gt/m/n' tried instead on input line 1445.
-LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <9> not available
-(Font)              Font shape `JY1/gt/m/n' tried instead on input line 1445.
- [17] [18] [19] [20] [21]
-第 7 章
-File: fig/DistCommondVariable.pdf Graphic file (type pdf)
-<fig/DistCommondVariable.pdf>
-[22
-
-] [23] [24]
-第 8 章
-) [25
-
-]
-No file report_kenko._wakayama.bbl.
-(./report_kenko._wakayama.aux)
+[2]
+No file report_kenko._wakayama_final.bbl.
+[3] [4] (./report_kenko._wakayama_final.aux)
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
+
+LaTeX Warning: There were multiply-defined labels.
+
  ) 
 Here is how much of TeX's memory you used:
- 3464 strings out of 493226
- 44626 string characters out of 6144095
- 158030 words of memory out of 5000000
- 7335 multiletter control sequences out of 15000+600000
- 27885 words of font info for 109 fonts, out of 8000000 for 9000
+ 3438 strings out of 493226
+ 44589 string characters out of 6144095
+ 174112 words of memory out of 5000000
+ 7300 multiletter control sequences out of 15000+600000
+ 23808 words of font info for 93 fonts, out of 8000000 for 9000
  929 hyphenation exceptions out of 8191
- 41i,11n,47p,3448b,585s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 41i,11n,47p,429b,311s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on report_kenko._wakayama.dvi (26 pages, 113312 bytes).
+Output written on report_kenko._wakayama_final.dvi (5 pages, 26860 bytes).
