@@ -1,8 +1,17 @@
-system("open .")
+# devtools::install_github(repo = "luka3117/JcPackage/OsakaUniv2020")
 
+
+# -----------------
+# ____  _       _      _____
+# / ___|(_)_ __ | | __ | ____|_  __
+# \___ \| | '_ \| |/ / |  _| \ \/ /
+#  ___) | | | | |   <  | |___ >  <
+# |____/|_|_| |_|_|\_\ |_____/_/\_\
+# -----------------
 # ref for Q and A
 # https://stackoverflow.com/questions/33994194/changing-the-font-size-of-table-using-print-xtable
 # print(xtable(results), only.contents=TRUE, include.rownames=F,        include.colnames=T, floating=F,       hline.after=NULL, size="\\fontsize{9pt}{10pt}\\selectfont",       file = '~/Dropbox/Paper/table.tex')
+
 
 library(xtable)
 
@@ -20,9 +29,6 @@ xtable(iris[1:5, ], label = "tablelabel", caption = c(
   寿命", "bbb")) %>% print(size="\\tiny")
 sink()
 
-
-## ----warning=FALSE------------------------------
-# devtools::install_github(repo = "luka3117/JcPackage/OsakaUniv2020")
 
 # # -----------------
 #  ____           __  __       _            _       _
@@ -59,12 +65,15 @@ m_var %<>% select(1)
 
 # table tex file name
 file="UsedVar.tex"
+# path="./final_report-kenko(和歌山県)/table/"
 
 sink(file = paste0(path, file))
-f_var %>% bind_cols(m_var) %>%
+f_var %>%
+  bind_cols(m_var) %>%
   xtable(label = "tablelabel",
          caption = c("$\\beta_0 X_1+\\beta_0 X_2$寿命",
-                     "bbb")) %>% print(size = "\\tiny")
+                     "bbb")) %>%
+  print(size = "\\tiny")
 sink()
 
 
@@ -89,6 +98,8 @@ LE_d_m_final %>% colnames() %>% tbl_df() %>% left_join(var, by=c("value"="var_na
 # |  _| | | | | | (_| | | | |___| |  | |
 # |_|   |_|_| |_|\__,_|_| |_____|_|  |_|
 # ----------------- ----------------- ----------------- -----------------
+
+
 
 
 options(digits = 5)              # Modify global options
@@ -727,4 +738,20 @@ aa %>% unnest(cols = ccdf) %>% ggplot(aes(x=x, y=ccdf, group=name, color=name))+
 
 
 
-
+#
+# file="table_LM_LE_mf.tex"
+# file="table_LM_HLE_mf.tex"
+# file="table_FA_m.tex"
+# file="table_FA_f.tex"
+# file="table_LM_with_FA_LE_mf.tex"
+# file="table_LM_with_FA_HLE_mf.tex"
+# file="table_logit_with_FA_LE_mf.tex"
+# file="table_logit_with_FA_HLE_mf.tex"
+# file="table_gamma_with_FA_LE_mf.tex"
+# file="table_gamma_with_FA_HLE_mf.tex"
+# file="table_bayes_with_FA_LE_mf.tex"
+# file="table_bayes_with_FA_HLE_mf.tex"
+# file="fig_bayes_with_FA_LE_m.tex"
+# file="fig_bayes_with_FA_LE_f.tex"
+# file="fig_bayes_with_FA_HLE_m.tex"
+# file="fig_bayes_with_FA_HLE_f.tex"
