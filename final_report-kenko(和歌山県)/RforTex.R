@@ -93,6 +93,13 @@ f_var %>%
   print(size = "\\tiny")
 sink()
 
+system('
+cd "./final_report-kenko(和歌山県)/table/";
+sed -e "s/㎡/m$^2$/g" "UsedVar.tex" > "UsedVar1.tex";
+rm UsedVar.tex;
+mv UsedVar1.tex UsedVar.tex
+')
+
 
 
 
@@ -143,6 +150,14 @@ fit_with_X_lm_LE_d_f %>% broom::tidy() %>%
          caption = c("女性の線形回帰(平均寿命)")) %>%
   print(size = "\\tiny")
 sink()
+
+system('
+cd "./final_report-kenko(和歌山県)/table/";
+sed -e "s/㎡/m$^2$/g" "table_LM_LE_f.tex" > "table_LM_LE_f1.tex";
+rm table_LM_LE_f.tex;
+mv table_LM_LE_f1.tex table_LM_LE_f.tex
+')
+
 
 
 
@@ -197,6 +212,14 @@ fit_with_X_lm_HLE_d_f %>% broom::tidy() %>%
          caption = c("女性の線形回帰(健康寿命)")) %>%
   print(size = "\\tiny")
 sink()
+
+system('
+cd "./final_report-kenko(和歌山県)/table/";
+sed -e "s/㎡/m$^2$/g" "table_LM_HLE_f.tex" > "table_LM_HLE_f1.tex";
+rm table_LM_HLE_f.tex;
+mv table_LM_HLE_f1.tex table_LM_HLE_f.tex
+')
+
 
 ## ----warning=FALSE------------------------------
 options(digits = 5)              # Modify global options
@@ -260,12 +283,20 @@ sink(file = paste0(path, file))
 rownames(d_f_.FA$VAR.rotate)<-colnames(LE_d_f_final.reg$model[,-1] )
 d_f_.FA$VAR.rotate %>% data.frame() %>% rownames_to_column() %>%
   left_join(var, by=c("rowname"="var_name_Eng")) %>%
-  select(rowname,var_name_Jpn,X1,X2) %>% rename(F1=X1, F2=X2)
+  select(rowname,var_name_Jpn,X1,X2) %>% rename(F1=X1, F2=X2) %>%
     xtable(label = "FAf",
          caption = c("女性のFA")) %>%
   print(size = "\\tiny")
 sink()
 # -----------------# -----------------
+
+
+system('
+cd "./final_report-kenko(和歌山県)/table/";
+sed -e "s/㎡/m$^2$/g" "table_FA_f.tex" > "table_FA_f1.tex";
+rm table_FA_f.tex;
+mv table_FA_f1.tex table_FA_f.tex
+')
 
 
 ## ----warning=FALSE------------------------------
