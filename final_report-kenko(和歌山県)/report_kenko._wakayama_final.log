@@ -1,4 +1,4 @@
-This is e-pTeX, Version 3.14159265-p3.8.1-180226-2.6 (utf8.euc) (TeX Live 2018) (preloaded format=platex 2019.4.23)  28 JUN 2021 20:29
+This is e-pTeX, Version 3.14159265-p3.8.1-180226-2.6 (utf8.euc) (TeX Live 2018) (preloaded format=platex 2019.4.23)  29 JUN 2021 18:41
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -362,6 +362,30 @@ LaTeX Warning: Unused global option(s):
 
 LaTeX Warning: Label `UsualHLMLEf' multiply defined.
 
+
+LaTeX Warning: Label `table_Gamma_HLE_FA_m' multiply defined.
+
+
+LaTeX Warning: Label `table_Gamma_HLE_FA_m' multiply defined.
+
+
+LaTeX Warning: Label `table_Gamma_HLE_FA_f' multiply defined.
+
+
+LaTeX Warning: Label `table_Gamma_HLE_FA_m' multiply defined.
+
+
+LaTeX Warning: Label `table_Gamma_HLE_FA_m' multiply defined.
+
+
+LaTeX Warning: Label `table_Gamma_HLE_FA_m' multiply defined.
+
+
+LaTeX Warning: Label `table_Gamma_HLE_FA_m' multiply defined.
+
+
+LaTeX Warning: Label `table_Gamma_HLE_FA_m' multiply defined.
+
 )
 \openout1 = `report_kenko._wakayama_final.aux'.
 
@@ -461,16 +485,31 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 (./table/table_LM_HLE_f.tex) (./table/table_LM_HLE_m.tex)
 (./table/table_FA_f.tex) (./table/table_FA_m.tex) (./table/table_LM_LE_FA_f.tex
 ) (./table/table_LM_LE_FA_m.tex) (./table/table_LM_HLE_FA_f.tex)
-(./table/table_LM_HLE_FA_m.tex)
+(./table/table_LM_HLE_FA_m.tex) (./table/table_Gamma_LE_FA_f.tex)
+(./table/table_Gamma_LE_FA_m.tex) (./table/table_Gamma_HLE_FA_f.tex)
+(./table/table_Gamma_HLE_FA_m.tex) (./table/table_logit_LE_FA_f.tex)
+(./table/table_logit_LE_FA_m.tex) (./table/table_logit_HLE_FA_f.tex)
+(./table/table_logit_HLE_FA_m.tex) (./table/Bayes_fit_LE_d_f.tex)
+(./table/Bayes_fit_LE_d_m.tex) (./table/Bayes_fit_HLE_d_f.tex)
+(./table/Bayes_fit_HLE_d_m.tex)
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
 Make it at least 15.49998pt.
 We now make it that large for the rest of the document.
 This may cause the page layout to be inconsistent, however.
 
-[2]
+[2] [3] [4] [5]
+第 1 章
+runsystem([ 'fig/daly.png' -nt 'fig/daly.bb' ] && cd 'fig/' && ebb 'daly.png').
+..disabled (restricted).
+
+File: fig/daly.png Graphic file (type bmp)
+<fig/daly.png>
+[6
+
+]
 No file report_kenko._wakayama_final.bbl.
-[3] [4] (./report_kenko._wakayama_final.aux)
+(./report_kenko._wakayama_final.aux)
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
@@ -479,12 +518,12 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 3438 strings out of 493226
- 44589 string characters out of 6144095
- 174112 words of memory out of 5000000
- 7300 multiletter control sequences out of 15000+600000
+ 3485 strings out of 493226
+ 45677 string characters out of 6144095
+ 192148 words of memory out of 5000000
+ 7307 multiletter control sequences out of 15000+600000
  23808 words of font info for 93 fonts, out of 8000000 for 9000
  929 hyphenation exceptions out of 8191
- 41i,11n,47p,429b,311s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 41i,11n,47p,429b,347s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on report_kenko._wakayama_final.dvi (5 pages, 26860 bytes).
+Output written on report_kenko._wakayama_final.dvi (7 pages, 35688 bytes).

@@ -1,7 +1,7 @@
 # devtools::install_github(repo = "luka3117/JcPackage/OsakaUniv2020")
 
 
-# -----------------
+## ----sink example  ------------------------------
 # ____  _       _      _____
 # / ___|(_)_ __ | | __ | ____|_  __
 # \___ \| | '_ \| |/ / |  _| \ \/ /
@@ -29,6 +29,7 @@ xtable(iris[1:5, ], label = "tablelabel", caption = c(
   寿命", "bbb")) %>% print(size="\\tiny")
 sink()
 
+## ---- Pre material ------------------------------
 
 # # -----------------
 #  ____           __  __       _            _       _
@@ -418,6 +419,7 @@ sink()
 # -----------------
 # -----------------
 # -----------------
+load("ScreenEnd.RData")
 
 
 
@@ -433,6 +435,22 @@ glm(LE~., family=Gamma(link="log"), data=LE_FF_d_f) %>%
   broom::tidy() %>% DT::datatable() %>% DT::formatRound(columns=c('estimate', 'std.error', 'statistic', 'p.value'), digits=3)
 
 
+# -----------------# -----------------
+# table tex file name
+# path="./final_report-kenko(和歌山県)/table/"
+
+file="table_Gamma_LE_FA_f.tex"
+# path="./final_report-kenko(和歌山県)/table/"
+
+sink(file = paste0(path, file))
+fit_with_FA_gamma_LE_d_f %>% broom::tidy() %>% mutate_if(is.numeric, round, 5) %>%
+    xtable(label = "table_Gamma_LE_FA_f",
+         caption = c("女性の一般化線形モデルwithFA(平均寿命)"), digits=3) %>%
+  print(size = "\\tiny")
+sink()
+# -----------------# -----------------
+
+
 
 ## ----warning=FALSE------------------------------
 LE_FF_d_m=LE_d_m_final$LE_2015 %>% enframe() %>%
@@ -444,6 +462,22 @@ fit_with_FA_gamma_LE_d_m<-glm(LE~., family=Gamma(link="log"), data=LE_FF_d_m)
 
 glm(LE~., family=Gamma(link="log"), data=LE_FF_d_m) %>%
   broom::tidy() %>% DT::datatable() %>% DT::formatRound(columns=c('estimate', 'std.error', 'statistic', 'p.value'), digits=3)
+
+
+# -----------------# -----------------
+# table tex file name
+# path="./final_report-kenko(和歌山県)/table/"
+
+file="table_Gamma_LE_FA_m.tex"
+# path="./final_report-kenko(和歌山県)/table/"
+
+sink(file = paste0(path, file))
+fit_with_FA_gamma_LE_d_m %>% broom::tidy() %>% mutate_if(is.numeric, round, 5) %>%
+    xtable(label = "table_Gamma_LE_FA_m",
+         caption = c("男性の一般化線形モデルwithFA(平均寿命)"), digits=3) %>%
+  print(size = "\\tiny")
+sink()
+# -----------------# -----------------
 
 
 
@@ -460,6 +494,22 @@ glm(HLE~., family=Gamma(link="log"), data=HLE_FF_d_f) %>%
   broom::tidy() %>% DT::datatable() %>% DT::formatRound(columns=c('estimate', 'std.error', 'statistic', 'p.value'), digits=3)
 
 
+# -----------------# -----------------
+# table tex file name
+# path="./final_report-kenko(和歌山県)/table/"
+
+file="table_Gamma_HLE_FA_f.tex"
+# path="./final_report-kenko(和歌山県)/table/"
+
+sink(file = paste0(path, file))
+fit_with_FA_gamma_HLE_d_f %>% broom::tidy() %>% mutate_if(is.numeric, round, 5) %>%
+    xtable(label = "table_Gamma_HLE_FA_f",
+         caption = c("女性の一般化線形モデルwithFA(健康寿命)"), digits=3) %>%
+  print(size = "\\tiny")
+sink()
+# -----------------# -----------------
+
+
 
 ## ----warning=FALSE------------------------------
 HLE_FF_d_m=HLE_d_m_final$HLE_2016 %>% enframe() %>%
@@ -471,6 +521,22 @@ fit_with_FA_gamma_HLE_d_m<-glm(HLE~., family=Gamma(link="log"), data=HLE_FF_d_m)
 
 glm(HLE~., family=Gamma(link="log"), data=HLE_FF_d_m) %>%
   broom::tidy() %>% DT::datatable() %>% DT::formatRound(columns=c('estimate', 'std.error', 'statistic', 'p.value'), digits=3)
+
+
+# -----------------# -----------------
+# table tex file name
+# path="./final_report-kenko(和歌山県)/table/"
+
+file="table_Gamma_HLE_FA_m.tex"
+# path="./final_report-kenko(和歌山県)/table/"
+
+sink(file = paste0(path, file))
+fit_with_FA_gamma_HLE_d_m %>% broom::tidy() %>% mutate_if(is.numeric, round, 5) %>%
+    xtable(label = "table_Gamma_HLE_FA_m",
+         caption = c("男性の一般化線形モデルwithFA(健康寿命)"), digits=3) %>%
+  print(size = "\\tiny")
+sink()
+# -----------------# -----------------
 
 
 
@@ -485,6 +551,23 @@ HLE_d_m_final$HLE_binary <- ifelse(HLE_d_m_final$HLE_2016>median(HLE_d_m_final$H
 # LE_d_m_final$LE_binary   # 男性
 # HLE_d_m_final$HLE_binary   # 男性
 
+## -----------------
+## -----------------
+## -----------------
+## -----------------
+## -----------------
+## -----------------
+#  _             _ _
+# | | ___   __ _(_) |_
+# | |/ _ \ / _` | | __|
+# | | (_) | (_| | | |_
+# |_|\___/ \__, |_|\__|
+#          |___/
+# -----------------
+# -----------------
+# -----------------
+# -----------------
+# -----------------
 
 ## ----warning=FALSE------------------------------
 
@@ -493,11 +576,42 @@ fit_with_FA_logit_LE_d_f<-glm(LE_d_f_final$LE_binary ~ d_f_.FA$OBS.rotate, famil
 glm(LE_d_f_final$LE_binary ~ d_f_.FA$OBS.rotate, family =  "binomial")%>% broom::tidy() %>% DT::datatable() %>% DT::formatRound(columns=c('estimate', 'std.error', 'statistic', 'p.value'), digits=3)
 
 
+# -----------------# -----------------
+# table tex file name
+# path="./final_report-kenko(和歌山県)/table/"
+
+file="table_logit_LE_FA_f.tex"
+# path="./final_report-kenko(和歌山県)/table/"
+
+sink(file = paste0(path, file))
+fit_with_FA_logit_LE_d_f %>% broom::tidy() %>% mutate_if(is.numeric, round, 5) %>%
+    xtable(label = "table_Gamma_HLE_FA_m",
+         caption = c("女性の一般化線形モデル(logit)withFA(平均寿命)"), digits=3) %>%
+  print(size = "\\tiny")
+sink()
+# -----------------# -----------------
+
+
 ## ----warning=FALSE------------------------------
 fit_with_FA_logit_LE_d_m<-glm(LE_d_m_final$LE_binary ~ d_m_.FA$OBS.rotate, family =  "binomial")
 
 glm(LE_d_m_final$LE_binary ~ d_m_.FA$OBS.rotate, family =  "binomial")%>% broom::tidy() %>% DT::datatable() %>% DT::formatRound(columns=c('estimate', 'std.error', 'statistic', 'p.value'), digits=3)
 
+
+# -----------------# -----------------
+# table tex file name
+# path="./final_report-kenko(和歌山県)/table/"
+
+file="table_logit_LE_FA_m.tex"
+# path="./final_report-kenko(和歌山県)/table/"
+
+sink(file = paste0(path, file))
+fit_with_FA_logit_LE_d_m %>% broom::tidy() %>% mutate_if(is.numeric, round, 5) %>%
+    xtable(label = "table_Gamma_HLE_FA_m",
+         caption = c("男性の一般化線形モデル(logit)withFA(平均寿命)"), digits=3) %>%
+  print(size = "\\tiny")
+sink()
+# -----------------# -----------------
 
 ## ----warning=FALSE------------------------------
 fit_with_FA_logit_HLE_d_f<-glm(HLE_d_f_final$HLE_binary ~ d_f_.FA$OBS.rotate, family =  "binomial")%>% broom::tidy()
@@ -505,16 +619,67 @@ fit_with_FA_logit_HLE_d_f<-glm(HLE_d_f_final$HLE_binary ~ d_f_.FA$OBS.rotate, fa
 glm(HLE_d_f_final$HLE_binary ~ d_f_.FA$OBS.rotate, family =  "binomial")%>% broom::tidy() %>% DT::datatable() %>% DT::formatRound(columns=c('estimate', 'std.error', 'statistic', 'p.value'), digits=3)
 
 
+# -----------------# -----------------
+# table tex file name
+# path="./final_report-kenko(和歌山県)/table/"
+
+file="table_logit_HLE_FA_f.tex"
+# path="./final_report-kenko(和歌山県)/table/"
+
+sink(file = paste0(path, file))
+fit_with_FA_logit_HLE_d_f %>% broom::tidy() %>% mutate_if(is.numeric, round, 5) %>%
+    xtable(label = "table_Gamma_HLE_FA_f",
+         caption = c("女性の一般化線形モデル(logit)withFA(健康寿命)"), digits=3) %>%
+  print(size = "\\tiny")
+sink()
+# -----------------# -----------------
+
+
 ## ----warning=FALSE------------------------------
 
-fit_with_FA_logit_HLE_d_m<-glm(HLE_d_m_final$HLE_binary ~ d_m_.FA$OBS.rotate, family =  "binomial")%>% broom::tidy()
+fit_with_FA_logit_HLE_d_m<-glm(HLE_d_m_final$HLE_binary ~ d_m_.FA$OBS.rotate, family =  "binomial")
 
 glm(HLE_d_m_final$HLE_binary ~ d_m_.FA$OBS.rotate, family =  "binomial")%>% broom::tidy() %>% DT::datatable() %>% DT::formatRound(columns=c('estimate', 'std.error', 'statistic', 'p.value'), digits=3)
 
 
+# -----------------# -----------------
+# table tex file name
+# path="./final_report-kenko(和歌山県)/table/"
+
+file="table_logit_HLE_FA_m.tex"
+# path="./final_report-kenko(和歌山県)/table/"
+
+sink(file = paste0(path, file))
+fit_with_FA_logit_HLE_d_m %>% broom::tidy() %>% mutate_if(is.numeric, round, 5) %>%
+    xtable(label = "table_Gamma_HLE_FA_m",
+         caption = c("男性の一般化線形モデル(logit)withFA(健康寿命)"), digits=3) %>%
+  print(size = "\\tiny")
+sink()
+# -----------------# -----------------
+
+# -----------------
+# -----------------
+# -----------------
+# -----------------
+# -----------------
+# -----------------
+# ____
+# | __ )  __ _ _   _  ___  ___
+# |  _ \ / _` | | | |/ _ \/ __|
+# | |_) | (_| | |_| |  __/\__ \
+# |____/ \__,_|\__, |\___||___/
+#              |___/
+# -----------------
+# -----------------
+# -----------------
+# -----------------
+# -----------------
+# -----------------
+
+## ---- Bayes ------------------------------
+## ---- Bayes : 女性、平均寿命---------------
 ## ----warning=FALSE------------------------------
 suppressMessages(library(rethinking))
-
 
 Bayes_fit_LE_d_f<-
   rethinking::map(alist(
@@ -533,7 +698,24 @@ Bayes_fit_LE_d_f<-
 
 ## ----warning=FALSE------------------------------
 precis(Bayes_fit_LE_d_f) %>% DT::datatable() %>% DT::formatRound(columns=c("mean", "sd","5.5%","94.5%"), digits=3)
+precis(Bayes_fit_LE_d_f) %>% as.matrix() %>% as.data.frame()
 
+
+
+# -----------------# -----------------
+# table tex file name
+# path="./final_report-kenko(和歌山県)/table/"
+
+file="Bayes_fit_LE_d_f.tex"
+# path="./final_report-kenko(和歌山県)/table/"
+
+sink(file = paste0(path, file))
+precis(Bayes_fit_LE_d_f) %>% as.matrix() %>% as.data.frame() %>%
+  xtable(label = "table_Gamma_HLE_FA_m",
+         caption = c("女性のBayes(平均寿命)"), digits=3) %>%
+  print(size = "\\tiny")
+sink()
+# -----------------# -----------------
 
 ## ----warning=FALSE------------------------------
 
@@ -552,6 +734,12 @@ post<-extract.samples(Bayes_fit_LE_d_f)
 # rethinking::PI(post$beta2)
 dens(post)
 
+path="./final_report-kenko(和歌山県)/fig/"
+file="Bayes_LE_f_estimates.pdf"
+pdf(paste0(path, file), family="Japan1")
+dens(post)
+dev.off()
+
 
 ## ----warning=FALSE------------------------------
 mu_at_Q1<-post$beta0 + post$beta1*mean(LE_FF_d_f$F1)+ post$beta2*quantile(LE_FF_d_f$F2)[1]
@@ -561,11 +749,17 @@ mu_at_Q4<-post$beta0 + post$beta1*mean(LE_FF_d_f$F1)+ post$beta2*quantile(LE_FF_
 mu_at_Q5<-post$beta0 + post$beta1*mean(LE_FF_d_f$F1)+ post$beta2*quantile(LE_FF_d_f$F2)[5]
 
 
-par(family= "HiraKakuProN-W3")
 
-mu_at_Q2 %>% dens(col="red", main = "F2因子の寿命分布への影響", xlim=c(86.8, 87.2))
+par(family= "HiraKakuProN-W3")
+path="./final_report-kenko(和歌山県)/fig/"
+file="Bayes_LE_M_F2.pdf"
+pdf(paste0(path, file), family="Japan1")
+par(mfrow=c(1,1))
+mu_at_Q2 %>% dens(col="red", main = "(女性平均寿命)F2因子の寿命分布への影響", xlim=c(86.8, 87.2))
 mu_at_Q3 %>% dens(col="green", main = "F2が Q3である場合", add = T)
 mu_at_Q4 %>% dens(col="blue", main = "F2が Q4である場合", add = T)
+dev.off()
+
 
 
 aa<-tibble::tibble(
@@ -583,6 +777,14 @@ name <- function(aa) {
 aa$ccdf<-purrr::map(aa$data, name)
 
 aa %>% unnest(cols = ccdf) %>% ggplot(aes(x=x, y=ccdf, group=name, color=name))+geom_line()+theme_bw(base_family = "HiraKakuProN-W3")+xlim(86.8, 87.2)
+# 1
+
+aa_plot<-aa %>% unnest(cols = ccdf) %>% ggplot(aes(x=x, y=ccdf, group=name, color=name))+geom_line()+xlim(86.8, 87.2)
+
+path="./final_report-kenko(和歌山県)/fig/"
+file="Bayes_LE_f_ccdf_F2.pdf"
+# ggsave(filename = paste0(path, file),aa,width = 8, height = 8, family="Japan1")
+ggsave(filename = paste0(path, file),aa_plot, family="Japan1")
 
 
 
@@ -596,9 +798,16 @@ mu_at_Q5<-post$beta0 + post$beta1*quantile(LE_FF_d_f$F1)[5]+ post$beta2*mean(LE_
 
 par(family= "HiraKakuProN-W3")
 
-mu_at_Q2 %>% dens(col="red", main = "F1因子の寿命への影響", xlim=c(86.8, 87.2))
+
+par(family= "HiraKakuProN-W3")
+path="./final_report-kenko(和歌山県)/fig/"
+file="Bayes_LE_M_F1.pdf"
+pdf(paste0(path, file), family="Japan1")
+par(mfrow=c(1,1))
+mu_at_Q2 %>% dens(col="red", main = "(女性平均寿命)F1因子の寿命への影響", xlim=c(86.8, 87.2))
 mu_at_Q3 %>% dens(col="green", main = "F1が Q3である場合", add = T)
 mu_at_Q4 %>% dens(col="blue", main = "F1が Q4である場合", add = T)
+dev.off()
 
 aa<-tibble::tibble(
   mu_at_Q2=mu_at_Q2,
@@ -615,11 +824,13 @@ name <- function(aa) {
 aa$ccdf<-purrr::map(aa$data, name)
 
 aa %>% unnest(cols = ccdf) %>% ggplot(aes(x=x, y=ccdf, group=name, color=name))+geom_line()+theme_bw(base_family = "HiraKakuProN-W3")+xlim(86.8, 87.2)
+# 2
 
 
 
 
-## ----warning=FALSE------------------------------
+## ---- Bayes : 男性、平均寿命---------------
+
 suppressMessages(library(rethinking))
 
 
@@ -640,7 +851,23 @@ Bayes_fit_LE_d_m<-
 
 ## ----warning=FALSE------------------------------
 precis(Bayes_fit_LE_d_m)
+precis(Bayes_fit_LE_d_m) %>% as.matrix() %>% as.data.frame()
 
+
+# -----------------# -----------------
+# table tex file name
+# path="./final_report-kenko(和歌山県)/table/"
+
+file="Bayes_fit_LE_d_m.tex"
+# path="./final_report-kenko(和歌山県)/table/"
+
+sink(file = paste0(path, file))
+precis(Bayes_fit_LE_d_m) %>% as.matrix() %>% as.data.frame() %>%
+  xtable(label = "table_Gamma_HLE_FA_m",
+         caption = c("男性のBayes(平均寿命)"), digits=3) %>%
+  print(size = "\\tiny")
+sink()
+# -----------------# -----------------
 
 
 ## ----warning=FALSE------------------------------
@@ -660,6 +887,12 @@ post<-extract.samples(Bayes_fit_LE_d_m)
 # rethinking::PI(post$beta2)
 
 dens(post)
+
+path="./final_report-kenko(和歌山県)/fig/"
+file="Bayes_LE_m_estimates.pdf"
+pdf(paste0(path, file), family="Japan1")
+dens(post)
+dev.off()
 
 
 ## ----warning=FALSE------------------------------
@@ -691,6 +924,7 @@ name <- function(aa) {
 aa$ccdf<-purrr::map(aa$data, name)
 
 aa %>% unnest(cols = ccdf) %>% ggplot(aes(x=x, y=ccdf, group=name, color=name))+geom_line()+theme_bw(base_family = "HiraKakuProN-W3")+xlim(80-.0, 80+1)
+# 3
 
 
 
@@ -723,10 +957,11 @@ name <- function(aa) {
 aa$ccdf<-purrr::map(aa$data, name)
 
 aa %>% unnest(cols = ccdf) %>% ggplot(aes(x=x, y=ccdf, group=name, color=name))+geom_line()+theme_bw(base_family = "HiraKakuProN-W3")+xlim(80-.0, 80+1)
+# 4
 
 
 
-## ----warning=FALSE------------------------------
+## ---- Bayes : 女性、健康寿命---------------
 suppressMessages(library(rethinking))
 
 
@@ -747,7 +982,23 @@ Bayes_fit_HLE_d_f<-
 
 ## ----warning=FALSE------------------------------
 precis(Bayes_fit_HLE_d_f)
+precis(Bayes_fit_HLE_d_f) %>% as.matrix() %>% as.data.frame()
 
+
+# -----------------# -----------------
+# table tex file name
+# path="./final_report-kenko(和歌山県)/table/"
+
+file="Bayes_fit_HLE_d_f.tex"
+# path="./final_report-kenko(和歌山県)/table/"
+
+sink(file = paste0(path, file))
+precis(Bayes_fit_HLE_d_f) %>% as.matrix() %>% as.data.frame() %>%
+  xtable(label = "table_Gamma_HLE_FA_m",
+         caption = c("女性のBayes(健康寿命)"), digits=3) %>%
+  print(size = "\\tiny")
+sink()
+# -----------------# -----------------
 
 
 ## ----warning=FALSE------------------------------
@@ -767,6 +1018,11 @@ post<-extract.samples(Bayes_fit_HLE_d_f)
 # rethinking::PI(post$beta2)
 dens(post)
 
+path="./final_report-kenko(和歌山県)/fig/"
+file="Bayes_HLE_f_estimates.pdf"
+pdf(paste0(path, file), family="Japan1")
+dens(post)
+dev.off()
 
 ## ----warning=FALSE------------------------------
 mu_at_Q1<-post$beta0 + post$beta1*mean(HLE_FF_d_f$F1)+ post$beta2*quantile(HLE_FF_d_f$F2)[1]
@@ -797,6 +1053,7 @@ name <- function(aa) {
 aa$ccdf<-purrr::map(aa$data, name)
 
 aa %>% unnest(cols = ccdf) %>% ggplot(aes(x=x, y=ccdf, group=name, color=name))+geom_line()+theme_bw(base_family = "HiraKakuProN-W3")+xlim(75-.3, 75+.3)
+# 5
 
 
 
@@ -832,12 +1089,13 @@ name <- function(aa) {
 aa$ccdf<-purrr::map(aa$data, name)
 
 aa %>% unnest(cols = ccdf) %>% ggplot(aes(x=x, y=ccdf, group=name, color=name))+geom_line()+theme_bw(base_family = "HiraKakuProN-W3")+xlim(75-.3, 75+.3)
+# 6
 
 
 
 
 
-## ----warning=FALSE------------------------------
+## ---- Bayes : 男性、健康寿命---------------
 suppressMessages(library(rethinking))
 
 
@@ -858,8 +1116,24 @@ Bayes_fit_HLE_d_m<-
 
 ## ----warning=FALSE------------------------------
 precis(Bayes_fit_HLE_d_m)
+precis(Bayes_fit_HLE_d_m) %>% as.matrix() %>% as.data.frame()
 
 
+
+# -----------------# -----------------
+# table tex file name
+# path="./final_report-kenko(和歌山県)/table/"
+
+file="Bayes_fit_HLE_d_m.tex"
+# path="./final_report-kenko(和歌山県)/table/"
+
+sink(file = paste0(path, file))
+precis(Bayes_fit_HLE_d_m) %>% as.matrix() %>% as.data.frame() %>%
+  xtable(label = "table_Gamma_HLE_FA_m",
+         caption = c("男性のBayes(健康寿命)"), digits=3) %>%
+  print(size = "\\tiny")
+sink()
+# -----------------# -----------------
 
 ## ----warning=FALSE------------------------------
 
@@ -878,6 +1152,11 @@ post<-extract.samples(Bayes_fit_HLE_d_m)
 # rethinking::PI(post$beta2)
 dens(post)
 
+path="./final_report-kenko(和歌山県)/fig/"
+file="Bayes_HLE_m_estimates.pdf"
+pdf(paste0(path, file), family="Japan1")
+dens(post)
+dev.off()
 
 ## ----warning=FALSE------------------------------
 mu_at_Q1<-post$beta0 + post$beta1*mean(HLE_FF_d_m$F1)+ post$beta2*quantile(HLE_FF_d_m$F2)[1]
@@ -908,6 +1187,7 @@ name <- function(aa) {
 aa$ccdf<-purrr::map(aa$data, name)
 
 aa %>% unnest(cols = ccdf) %>% ggplot(aes(x=x, y=ccdf, group=name, color=name))+geom_line()+theme_bw(base_family = "HiraKakuProN-W3")+xlim(72-.3, 72+.3)
+# 7
 
 
 
@@ -942,6 +1222,7 @@ name <- function(aa) {
 aa$ccdf<-purrr::map(aa$data, name)
 
 aa %>% unnest(cols = ccdf) %>% ggplot(aes(x=x, y=ccdf, group=name, color=name))+geom_line()+theme_bw(base_family = "HiraKakuProN-W3")+xlim(72-.3, 72+.3)
+# 8
 
 
 
@@ -958,7 +1239,3 @@ aa %>% unnest(cols = ccdf) %>% ggplot(aes(x=x, y=ccdf, group=name, color=name))+
 # file="table_gamma_with_FA_HLE_mf.tex"
 # file="table_bayes_with_FA_LE_mf.tex"
 # file="table_bayes_with_FA_HLE_mf.tex"
-# file="fig_bayes_with_FA_LE_m.tex"
-# file="fig_bayes_with_FA_LE_f.tex"
-# file="fig_bayes_with_FA_HLE_m.tex"
-# file="fig_bayes_with_FA_HLE_f.tex"
