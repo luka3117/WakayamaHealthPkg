@@ -1,3 +1,11 @@
+# 使用package
+suppressMessages(library(readxl))
+suppressMessages(library(dplyr))
+suppressMessages(library(data.table))
+suppressMessages(library(kableExtra))
+suppressMessages(library(curl))
+suppressMessages(library(tidyverse))
+suppressMessages(library(plotly))
 # devtools::install_github(repo = "luka3117/JcPackage/OsakaUniv2020")
 
 
@@ -682,18 +690,9 @@ sink()
 suppressMessages(library(rethinking))
 
 Bayes_fit_LE_d_f<-
-  rethinking::map(alist(
-    LE~dnorm(mu, sigma),
-    mu~beta0+beta1*F1+beta2*F2,
-    beta0~dnorm(80, 100),
-    beta1~dnorm(0, 10),
-    beta2~dnorm(0, 10),
-    sigma ~ dunif(0, 50)
-  ), data=LE_FF_d_f
-  )
-
-
-
+rethinking::map(alist( LE~dnorm(mu, sigma), mu~beta0+beta1*F1+beta2*F2, beta0~dnorm(80, 100), beta1~dnorm(0, 10), beta2~dnorm(0, 10), sigma ~ dunif(0, 50)),
+data=LE_FF_d_f
+)
 
 
 ## ----warning=FALSE------------------------------
@@ -720,18 +719,6 @@ sink()
 ## ----warning=FALSE------------------------------
 
 post<-extract.samples(Bayes_fit_LE_d_f)
-
-
-# purrr::map(post, hist)
-
-
-# rethinking::HPDI(post$beta0)
-# rethinking::HPDI(post$beta1)
-# rethinking::HPDI(post$beta2)
-
-# rethinking::PI(post$beta0)
-# rethinking::PI(post$beta1)
-# rethinking::PI(post$beta2)
 dens(post)
 
 path="./final_report-kenko(和歌山県)/fig/"
@@ -742,12 +729,9 @@ dev.off()
 
 
 ## ----warning=FALSE------------------------------
-mu_at_Q1<-post$beta0 + post$beta1*mean(LE_FF_d_f$F1)+ post$beta2*quantile(LE_FF_d_f$F2)[1]
 mu_at_Q2<-post$beta0 + post$beta1*mean(LE_FF_d_f$F1)+ post$beta2*quantile(LE_FF_d_f$F2)[2]
 mu_at_Q3<-post$beta0 + post$beta1*mean(LE_FF_d_f$F1)+ post$beta2*quantile(LE_FF_d_f$F2)[3]
 mu_at_Q4<-post$beta0 + post$beta1*mean(LE_FF_d_f$F1)+ post$beta2*quantile(LE_FF_d_f$F2)[4]
-mu_at_Q5<-post$beta0 + post$beta1*mean(LE_FF_d_f$F1)+ post$beta2*quantile(LE_FF_d_f$F2)[5]
-
 
 
 par(family= "HiraKakuProN-W3")
@@ -779,24 +763,24 @@ aa$ccdf<-purrr::map(aa$data, name)
 aa %>% unnest(cols = ccdf) %>% ggplot(aes(x=x, y=ccdf, group=name, color=name))+geom_line()+theme_bw(base_family = "HiraKakuProN-W3")+xlim(86.8, 87.2)
 # 1
 
-aa_plot<-aa %>% unnest(cols = ccdf) %>% ggplot(aes(x=x, y=ccdf, group=name, color=name))+geom_line()+xlim(86.8, 87.2)
+# insert start-----------------
+aa_plot<-aa %>% unnest(cols = ccdf) %>% ggplot(aes(x=x, y=ccdf, group=name, color=name))+geom_line()+xlim(86.8, 87.2) +
+  ggtitle("平均寿命のF2による影響、女性")+theme_bw()
+
 
 path="./final_report-kenko(和歌山県)/fig/"
 file="Bayes_LE_f_ccdf_F2.pdf"
 # ggsave(filename = paste0(path, file),aa,width = 8, height = 8, family="Japan1")
 ggsave(filename = paste0(path, file),aa_plot, family="Japan1")
+# insert end -----------------
+
 
 
 
 ## ----warning=FALSE------------------------------
-mu_at_Q1<-post$beta0 + post$beta1*quantile(LE_FF_d_f$F1)[1]+ post$beta2*mean(LE_FF_d_f$F2)
 mu_at_Q2<-post$beta0 + post$beta1*quantile(LE_FF_d_f$F1)[2]+ post$beta2*mean(LE_FF_d_f$F2)
 mu_at_Q3<-post$beta0 + post$beta1*quantile(LE_FF_d_f$F1)[3]+ post$beta2*mean(LE_FF_d_f$F2)
 mu_at_Q4<-post$beta0 + post$beta1*quantile(LE_FF_d_f$F1)[4]+ post$beta2*mean(LE_FF_d_f$F2)
-mu_at_Q5<-post$beta0 + post$beta1*quantile(LE_FF_d_f$F1)[5]+ post$beta2*mean(LE_FF_d_f$F2)
-
-
-par(family= "HiraKakuProN-W3")
 
 
 par(family= "HiraKakuProN-W3")
@@ -826,6 +810,17 @@ aa$ccdf<-purrr::map(aa$data, name)
 aa %>% unnest(cols = ccdf) %>% ggplot(aes(x=x, y=ccdf, group=name, color=name))+geom_line()+theme_bw(base_family = "HiraKakuProN-W3")+xlim(86.8, 87.2)
 # 2
 
+# insert start-----------------
+aa_plot<-aa %>% unnest(cols = ccdf) %>% ggplot(aes(x=x, y=ccdf, group=name, color=name))+geom_line()+xlim(86.8, 87.2) +
+  ggtitle("平均寿命のF1による影響、女性")+theme_bw()
+
+
+path="./final_report-kenko(和歌山県)/fig/"
+file="Bayes_LE_f_ccdf_F1.pdf"
+# ggsave(filename = paste0(path, file),aa,width = 8, height = 8, family="Japan1")
+ggsave(filename = paste0(path, file),aa_plot, family="Japan1")
+# insert end -----------------
+
 
 
 
@@ -835,19 +830,9 @@ suppressMessages(library(rethinking))
 
 
 Bayes_fit_LE_d_m<-
-  rethinking::map(alist(
-    LE~dnorm(mu, sigma),
-    mu~beta0+beta1*F1+beta2*F2,
-    beta0~dnorm(80, 100),
-    beta1~dnorm(0, 10),
-    beta2~dnorm(0, 10),
-    sigma ~ dunif(0, 50)
-  ), data=LE_FF_d_m
-  )
-
-
-
-
+rethinking::map(alist( LE~dnorm(mu, sigma), mu~beta0+beta1*F1+beta2*F2, beta0~dnorm(80, 100), beta1~dnorm(0, 10), beta2~dnorm(0, 10), sigma ~ dunif(0, 50)),
+data=LE_FF_d_m
+)
 
 ## ----warning=FALSE------------------------------
 precis(Bayes_fit_LE_d_m)
@@ -873,19 +858,6 @@ sink()
 ## ----warning=FALSE------------------------------
 
 post<-extract.samples(Bayes_fit_LE_d_m)
-
-
-# purrr::map(post, hist)
-
-
-# rethinking::HPDI(post$beta0)
-# rethinking::HPDI(post$beta1)
-# rethinking::HPDI(post$beta2)
-
-# rethinking::PI(post$beta0)
-# rethinking::PI(post$beta1)
-# rethinking::PI(post$beta2)
-
 dens(post)
 
 path="./final_report-kenko(和歌山県)/fig/"
@@ -896,12 +868,9 @@ dev.off()
 
 
 ## ----warning=FALSE------------------------------
-mu_at_Q1<-post$beta0 + post$beta1*mean(LE_FF_d_m$F1)+ post$beta2*quantile(LE_FF_d_m$F2)[1]
 mu_at_Q2<-post$beta0 + post$beta1*mean(LE_FF_d_m$F1)+ post$beta2*quantile(LE_FF_d_m$F2)[2]
 mu_at_Q3<-post$beta0 + post$beta1*mean(LE_FF_d_m$F1)+ post$beta2*quantile(LE_FF_d_m$F2)[3]
 mu_at_Q4<-post$beta0 + post$beta1*mean(LE_FF_d_m$F1)+ post$beta2*quantile(LE_FF_d_m$F2)[4]
-mu_at_Q5<-post$beta0 + post$beta1*mean(LE_FF_d_m$F1)+ post$beta2*quantile(LE_FF_d_m$F2)[5]
-
 
 par(family= "HiraKakuProN-W3")
 
@@ -926,14 +895,25 @@ aa$ccdf<-purrr::map(aa$data, name)
 aa %>% unnest(cols = ccdf) %>% ggplot(aes(x=x, y=ccdf, group=name, color=name))+geom_line()+theme_bw(base_family = "HiraKakuProN-W3")+xlim(80-.0, 80+1)
 # 3
 
+# insert start-----------------
+aa_plot<-aa %>% unnest(cols = ccdf) %>% ggplot(aes(x=x, y=ccdf, group=name, color=name))+geom_line()+xlim(80-.0, 80+1) +
+  ggtitle("平均寿命のF2による影響、男性")+theme_bw()
+
+
+path="./final_report-kenko(和歌山県)/fig/"
+file="Bayes_LE_m_ccdf_F2.pdf"
+# ggsave(filename = paste0(path, file),aa,width = 8, height = 8, family="Japan1")
+ggsave(filename = paste0(path, file),aa_plot, family="Japan1")
+# insert end -----------------
+
+
+
 
 
 ## ----warning=FALSE------------------------------
-mu_at_Q1<-post$beta0 + post$beta1*quantile(LE_FF_d_m$F1)[1]+ post$beta2*mean(LE_FF_d_m$F2)
 mu_at_Q2<-post$beta0 + post$beta1*quantile(LE_FF_d_m$F1)[2]+ post$beta2*mean(LE_FF_d_m$F2)
 mu_at_Q3<-post$beta0 + post$beta1*quantile(LE_FF_d_m$F1)[3]+ post$beta2*mean(LE_FF_d_m$F2)
 mu_at_Q4<-post$beta0 + post$beta1*quantile(LE_FF_d_m$F1)[4]+ post$beta2*mean(LE_FF_d_m$F2)
-mu_at_Q5<-post$beta0 + post$beta1*quantile(LE_FF_d_m$F1)[5]+ post$beta2*mean(LE_FF_d_m$F2)
 
 
 par(family= "HiraKakuProN-W3")
@@ -960,25 +940,30 @@ aa %>% unnest(cols = ccdf) %>% ggplot(aes(x=x, y=ccdf, group=name, color=name))+
 # 4
 
 
+# insert start-----------------
+aa_plot<-aa %>% unnest(cols = ccdf) %>% ggplot(aes(x=x, y=ccdf, group=name, color=name))+geom_line()+xlim(86.8, 87.2) +
+  ggtitle("平均寿命のF1による影響、男性")+theme_bw()
+
+
+path="./final_report-kenko(和歌山県)/fig/"
+file="Bayes_LE_m_ccdf_F1.pdf"
+# ggsave(filename = paste0(path, file),aa,width = 8, height = 8, family="Japan1")
+ggsave(filename = paste0(path, file),aa_plot, family="Japan1")
+# insert end -----------------
+
+
+
+
+
 
 ## ---- Bayes : 女性、健康寿命---------------
 suppressMessages(library(rethinking))
 
 
 Bayes_fit_HLE_d_f<-
-  rethinking::map(alist(
-    HLE~dnorm(mu, sigma),
-    mu~beta0+beta1*F1+beta2*F2,
-    beta0~dnorm(80, 100),
-    beta1~dnorm(0, 10),
-    beta2~dnorm(0, 10),
-    sigma ~ dunif(0, 50)
-  ), data=HLE_FF_d_f
-  )
-
-
-
-
+rethinking::map(alist(HLE~dnorm(mu, sigma),mu~beta0+beta1*F1+beta2*F2,beta0~dnorm(80, 100),beta1~dnorm(0, 10),beta2~dnorm(0, 10),sigma ~ dunif(0, 50)),
+data=HLE_FF_d_f
+)
 
 ## ----warning=FALSE------------------------------
 precis(Bayes_fit_HLE_d_f)
@@ -1004,18 +989,6 @@ sink()
 ## ----warning=FALSE------------------------------
 
 post<-extract.samples(Bayes_fit_HLE_d_f)
-
-
-# purrr::map(post, hist)
-
-
-# rethinking::HPDI(post$beta0)
-# rethinking::HPDI(post$beta1)
-# rethinking::HPDI(post$beta2)
-
-# rethinking::PI(post$beta0)
-# rethinking::PI(post$beta1)
-# rethinking::PI(post$beta2)
 dens(post)
 
 path="./final_report-kenko(和歌山県)/fig/"
@@ -1025,11 +998,9 @@ dens(post)
 dev.off()
 
 ## ----warning=FALSE------------------------------
-mu_at_Q1<-post$beta0 + post$beta1*mean(HLE_FF_d_f$F1)+ post$beta2*quantile(HLE_FF_d_f$F2)[1]
 mu_at_Q2<-post$beta0 + post$beta1*mean(HLE_FF_d_f$F1)+ post$beta2*quantile(HLE_FF_d_f$F2)[2]
 mu_at_Q3<-post$beta0 + post$beta1*mean(HLE_FF_d_f$F1)+ post$beta2*quantile(HLE_FF_d_f$F2)[3]
 mu_at_Q4<-post$beta0 + post$beta1*mean(HLE_FF_d_f$F1)+ post$beta2*quantile(HLE_FF_d_f$F2)[4]
-mu_at_Q5<-post$beta0 + post$beta1*mean(HLE_FF_d_f$F1)+ post$beta2*quantile(HLE_FF_d_f$F2)[5]
 
 
 par(family= "HiraKakuProN-W3")
@@ -1055,17 +1026,36 @@ aa$ccdf<-purrr::map(aa$data, name)
 aa %>% unnest(cols = ccdf) %>% ggplot(aes(x=x, y=ccdf, group=name, color=name))+geom_line()+theme_bw(base_family = "HiraKakuProN-W3")+xlim(75-.3, 75+.3)
 # 5
 
+# insert start-----------------
+aa_plot<-aa %>% unnest(cols = ccdf) %>% ggplot(aes(x=x, y=ccdf, group=name, color=name))+geom_line()+xlim(75-.3, 75+.3) +
+  ggtitle("健康寿命のF2による影響、女性")+theme_bw()
 
 
+path="./final_report-kenko(和歌山県)/fig/"
+file="Bayes_HLE_f_ccdf_F2.pdf"
+# ggsave(filename = paste0(path, file),aa,width = 8, height = 8, family="Japan1")
+ggsave(filename = paste0(path, file),aa_plot, family="Japan1")
+# insert end -----------------
+
+
+
+# insert start-----------------
+aa_plot<-aa %>% unnest(cols = ccdf) %>% ggplot(aes(x=x, y=ccdf, group=name, color=name))+geom_line()+xlim(86.8, 87.2) +
+  ggtitle("健康寿命のF2による影響、女性")+theme_bw()
+
+
+path="./final_report-kenko(和歌山県)/fig/"
+file="Bayes_HLE_f_ccdf_F2.pdf"
+# ggsave(filename = paste0(path, file),aa,width = 8, height = 8, family="Japan1")
+ggsave(filename = paste0(path, file),aa_plot, family="Japan1")
+# insert end -----------------
 
 
 
 ## ----warning=FALSE------------------------------
-mu_at_Q1<-post$beta0 + post$beta1*quantile(HLE_FF_d_f$F1)[1]+ post$beta2*mean(HLE_FF_d_f$F2)
 mu_at_Q2<-post$beta0 + post$beta1*quantile(HLE_FF_d_f$F1)[2]+ post$beta2*mean(HLE_FF_d_f$F2)
 mu_at_Q3<-post$beta0 + post$beta1*quantile(HLE_FF_d_f$F1)[3]+ post$beta2*mean(HLE_FF_d_f$F2)
 mu_at_Q4<-post$beta0 + post$beta1*quantile(HLE_FF_d_f$F1)[4]+ post$beta2*mean(HLE_FF_d_f$F2)
-mu_at_Q5<-post$beta0 + post$beta1*quantile(HLE_FF_d_f$F1)[5]+ post$beta2*mean(HLE_FF_d_f$F2)
 
 
 par(family= "HiraKakuProN-W3")
@@ -1092,7 +1082,16 @@ aa %>% unnest(cols = ccdf) %>% ggplot(aes(x=x, y=ccdf, group=name, color=name))+
 # 6
 
 
+# insert start-----------------
+aa_plot<-aa %>% unnest(cols = ccdf) %>% ggplot(aes(x=x, y=ccdf, group=name, color=name))+geom_line()+xlim(75-.3, 75+.3) +
+  ggtitle("健康寿命のF1による影響、女性")+theme_bw()
 
+
+path="./final_report-kenko(和歌山県)/fig/"
+file="Bayes_HLE_f_ccdf_F1.pdf"
+# ggsave(filename = paste0(path, file),aa,width = 8, height = 8, family="Japan1")
+ggsave(filename = paste0(path, file),aa_plot, family="Japan1")
+# insert end -----------------
 
 
 ## ---- Bayes : 男性、健康寿命---------------
@@ -1100,17 +1099,9 @@ suppressMessages(library(rethinking))
 
 
 Bayes_fit_HLE_d_m<-
-  rethinking::map(alist(
-    HLE~dnorm(mu, sigma),
-    mu~beta0+beta1*F1+beta2*F2,
-    beta0~dnorm(80, 100),
-    beta1~dnorm(0, 10),
-    beta2~dnorm(0, 10),
-    sigma ~ dunif(0, 50)
-  ), data=HLE_FF_d_m
-  )
-
-
+rethinking::map(alist(HLE~dnorm(mu, sigma),mu~beta0+beta1*F1+beta2*F2,beta0~dnorm(80, 100),beta1~dnorm(0, 10),beta2~dnorm(0, 10),sigma ~ dunif(0, 50)),
+data=HLE_FF_d_m
+)
 
 
 
@@ -1138,18 +1129,6 @@ sink()
 ## ----warning=FALSE------------------------------
 
 post<-extract.samples(Bayes_fit_HLE_d_m)
-
-
-# purrr::map(post, hist)
-
-
-# rethinking::HPDI(post$beta0)
-# rethinking::HPDI(post$beta1)
-# rethinking::HPDI(post$beta2)
-
-# rethinking::PI(post$beta0)
-# rethinking::PI(post$beta1)
-# rethinking::PI(post$beta2)
 dens(post)
 
 path="./final_report-kenko(和歌山県)/fig/"
@@ -1159,11 +1138,9 @@ dens(post)
 dev.off()
 
 ## ----warning=FALSE------------------------------
-mu_at_Q1<-post$beta0 + post$beta1*mean(HLE_FF_d_m$F1)+ post$beta2*quantile(HLE_FF_d_m$F2)[1]
 mu_at_Q2<-post$beta0 + post$beta1*mean(HLE_FF_d_m$F1)+ post$beta2*quantile(HLE_FF_d_m$F2)[2]
 mu_at_Q3<-post$beta0 + post$beta1*mean(HLE_FF_d_m$F1)+ post$beta2*quantile(HLE_FF_d_m$F2)[3]
 mu_at_Q4<-post$beta0 + post$beta1*mean(HLE_FF_d_m$F1)+ post$beta2*quantile(HLE_FF_d_m$F2)[4]
-mu_at_Q5<-post$beta0 + post$beta1*mean(HLE_FF_d_m$F1)+ post$beta2*quantile(HLE_FF_d_m$F2)[5]
 
 
 par(family= "HiraKakuProN-W3")
@@ -1190,15 +1167,22 @@ aa %>% unnest(cols = ccdf) %>% ggplot(aes(x=x, y=ccdf, group=name, color=name))+
 # 7
 
 
+# insert start-----------------
+aa_plot<-aa %>% unnest(cols = ccdf) %>% ggplot(aes(x=x, y=ccdf, group=name, color=name))+geom_line()+xlim(72-.3, 72+.3) +
+  ggtitle("健康寿命のF2による影響、男性")+theme_bw()
 
+
+path="./final_report-kenko(和歌山県)/fig/"
+file="Bayes_HLE_m_ccdf_F2.pdf"
+# ggsave(filename = paste0(path, file),aa,width = 8, height = 8, family="Japan1")
+ggsave(filename = paste0(path, file),aa_plot, family="Japan1")
+# insert end -----------------
 
 
 ## ----warning=FALSE------------------------------
-mu_at_Q1<-post$beta0 + post$beta1*quantile(HLE_FF_d_m$F1)[1]+ post$beta2*mean(HLE_FF_d_m$F2)
 mu_at_Q2<-post$beta0 + post$beta1*quantile(HLE_FF_d_m$F1)[2]+ post$beta2*mean(HLE_FF_d_m$F2)
 mu_at_Q3<-post$beta0 + post$beta1*quantile(HLE_FF_d_m$F1)[3]+ post$beta2*mean(HLE_FF_d_m$F2)
 mu_at_Q4<-post$beta0 + post$beta1*quantile(HLE_FF_d_m$F1)[4]+ post$beta2*mean(HLE_FF_d_m$F2)
-mu_at_Q5<-post$beta0 + post$beta1*quantile(HLE_FF_d_m$F1)[5]+ post$beta2*mean(HLE_FF_d_m$F2)
 
 
 par(family= "HiraKakuProN-W3")
@@ -1225,17 +1209,14 @@ aa %>% unnest(cols = ccdf) %>% ggplot(aes(x=x, y=ccdf, group=name, color=name))+
 # 8
 
 
+# insert start-----------------
+aa_plot<-aa %>% unnest(cols = ccdf) %>% ggplot(aes(x=x, y=ccdf, group=name, color=name))+geom_line()+xlim(72-.3, 72+.3) +
+  ggtitle("健康寿命のF1による影響、男性")+theme_bw()
 
-#
 
+path="./final_report-kenko(和歌山県)/fig/"
+file="Bayes_HLE_m_ccdf_F1.pdf"
+# ggsave(filename = paste0(path, file),aa,width = 8, height = 8, family="Japan1")
+ggsave(filename = paste0(path, file),aa_plot, family="Japan1")
+# insert end -----------------
 
-# file="table_FA_m.tex"
-# file="table_FA_f.tex"
-# file="table_LM_with_FA_LE_mf.tex"
-# file="table_LM_with_FA_HLE_mf.tex"
-# file="table_logit_with_FA_LE_mf.tex"
-# file="table_logit_with_FA_HLE_mf.tex"
-# file="table_gamma_with_FA_LE_mf.tex"
-# file="table_gamma_with_FA_HLE_mf.tex"
-# file="table_bayes_with_FA_LE_mf.tex"
-# file="table_bayes_with_FA_HLE_mf.tex"

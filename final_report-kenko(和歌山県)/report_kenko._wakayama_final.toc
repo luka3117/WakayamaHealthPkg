@@ -1,2 +1,15 @@
-\contentsline {chapter}{\numberline {第1章}aaa}{6}% 
+\contentsline {chapter}{\numberline {第1章}線形回帰モデルからの探索}{3}% 
+\contentsline {chapter}{\numberline {第2章}因子分析}{5}% 
+\contentsline {chapter}{\numberline {第3章}線形回帰分析}{6}% 
+\contentsline {chapter}{\numberline {第4章}一般化線形モデル: Gamma dist}{8}% 
+\contentsline {chapter}{\numberline {第5章}一般化線形モデル: logit model}{10}% 
+\contentsline {chapter}{\numberline {第6章}ベイズ推定}{12}% 
+\contentsline {section}{\numberline {6.1}bbb}{12}% 
+\contentsline {section}{\numberline {6.2}bbb}{13}% 
+\contentsline {section}{\numberline {6.3}bbb}{13}% 
+\contentsline {section}{\numberline {6.4}bbb}{13}% 
+\contentsline {section}{\numberline {6.5}bbb}{13}% 
+\contentsline {section}{\numberline {6.6}bbb}{13}% 
+\contentsline {section}{\numberline {6.7}bbb}{13}% 
+\contentsline {section}{\numberline {6.8}aaa}{13}% 
 \contentsfinish 
