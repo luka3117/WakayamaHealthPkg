@@ -1,5 +1,5 @@
-%\documentclass[a4j,11pt,mc, twocolumn]{jreport}
-\documentclass[a4j,11pt,mc]{jreport}
+\documentclass[a4j,11pt,mc, twocolumn]{jreport}
+% \documentclass[a4j,11pt,mc]{jreport}
 %\documentclass[a4j,11pt,mc]{jreport}
 \usepackage{style/dsreport}
 %\usepackage[dvipdfmx]{graphicx}
@@ -16,18 +16,18 @@
 \renewcommand{\sectionmark}[1]{\markright{\thesection #1}{}}
 \setlength{\textwidth}{200mm}
 
-\newcommand{\tr}[1]{\textcolor{red}{\bf#1}}  %% red text
-\newcommand{\bb}[1]{\textcolor{blue}{\bf#1}}  %% red text
+\newcommand{\tr}[1]{\textcolor{red}{\bf#1}} %% red text
+\newcommand{\bb}[1]{\textcolor{blue}{\bf#1}} %% red text
 \newgeometry{left=25mm, top=30mm, textheight=247mm, textwidth=165mm}
 
 \setlength{\unitlength}{0.5\linewidth}
 
 
 
-%\newcommand{\tr}[1]{\textcolor{red}{\textbf{#1}}}  %% red text
-\newcommand{\tb}[1]{\textcolor{blue}{#1}}  %% red text
-\newcommand{\tm}[1]{\textcolor{magenta}{#1}}  %% red text
-\newcommand{\tc}[1]{\textcolor{cyan}{#1}}  %% red text
+%\newcommand{\tr}[1]{\textcolor{red}{\textbf{#1}}} %% red text
+\newcommand{\tb}[1]{\textcolor{blue}{#1}} %% red text
+\newcommand{\tm}[1]{\textcolor{magenta}{#1}} %% red text
+\newcommand{\tc}[1]{\textcolor{cyan}{#1}} %% red text
 
 
 
@@ -36,12 +36,16 @@
 %\usepackage[printwatermark]{xwatermark}
 %%\newwatermark[allpages,color=red!10,angle=45,scale=4.5,xpos=0,ypos=0]{DRAFT}
 %\newwatermark[pages=1-2, color=cyan, angle=45, scale=2, xpos=0, ypos=0]{To do page\\ \the\month 月\the\day 日}
-%%--- water mark  End -----
+%%--- water mark End -----
 %
 %
 
 
 
+%\documentclass[dvipdfmx]{jsarticle}
+%\documentclass[border=0.125cm]{standalone}
+\usepackage{tikz}
+\usetikzlibrary{positioning}
 
 %---------------------------------------------------------------------------
 \begin{document}
@@ -79,43 +83,231 @@
 % \input{sub/FinalSub1.tex}%<-送付用
 %\input{sub/wakayamaForSend1.tex}%<-送付用
 
-\input{table/UsedVar.tex}%<-送付用
+\chapter{1	　はじめに}
 
-\chapter{線形回帰モデルからの探索}
+\begin{itemize}
+	\item 研究背景　
+	\item   現状（平均寿命と健康寿命の格差の問題等）
+	\item 　健康寿命に関しての先行研究の紹介等
+\end{itemize}
 
-\input{table/table_LM_LE_f.tex}%<-送付用
-\input{table/table_LM_LE_m.tex}%<-送付用
-\input{table/table_LM_HLE_f.tex}%<-送付用
-\input{table/table_LM_HLE_m.tex}%<-送付用
 
 
-\chapter{因子分析}
+\chapter{2	　方法（Method）}
+\section{データ}
 
-\input{table/table_FA_f.tex}%<-送付用
-\input{table/table_FA_m.tex}%<-送付用
+解析に用いるデータは公的データ：
+全て168？変数、
+その中、平均寿命、健康寿命は目的変数、
+
+県単位で集計された公的データを利用する。
+
+変数中、一部の変数は性別の区別のない変数がある。
+
+例えは、
+？？？変数は男性の？？？と女性の？？？であるが、
+？？？変数は県のデータとなる。
+
+
+
+データソースの説明
+
+
+滋賀県の研究を基に、更新されたデータを和歌山県が収集して滋賀大学に提出した旨
+　変数の説明
+「詳は添付資料」
+
+　分析分析手法等
+
+R version 4.0.4
+
+
+
+\chapter{結果}
+
+
+
+
+
+
+	\section{分析に用いる説明変数}
+
+今回の分析では平均寿命及び健康寿命を目的変数とし、
+目的変数と統計的な関連性が示した以下の変数を説明変数として採用する。
+男性の説明変数は18個、女性は10個の説明変数である。
+
+	\input{table/UsedVar.tex}%<-送付用
+
+
+
+
+
+
+	\section{線形回帰モデルからの探索}
+
+	\input{table/table_LM_LE_f.tex}%<-送付用
+	\input{table/table_LM_LE_m.tex}%<-送付用
+	\input{table/table_LM_HLE_f.tex}%<-送付用
+	\input{table/table_LM_HLE_m.tex}%<-送付用
+
+
+	\section{因子分析}
+
+
+	\input{FAdiagram.tex}%<-送付用
+
+	\begin{eqnarray}
+	x=Lf+\varepsilon
+	\end{eqnarray}
+
+	\begin{eqnarray}
+	X_1 &=&l_{11}F_1+l_{12}F_2+\varepsilon\\
+	&\vdots&\\
+	X_p &=&l_{p1}F_1+l_{p2}F_2+\varepsilon
+	\end{eqnarray}
+
+
+	\begin{eqnarray}
+	\begin{split}
+	X_1 =l_{11}F_1+l_{12}F_2+\varepsilon\\
+	X_1 =l_{11}F_1+l_{12}F_2+\varepsilon\\
+	3&=1+2\\
+	&=2+1
+	\end{split}
+	\end{eqnarray}
+
+
+
+
+
+%	因子分析
+%
+%	https://www.macromill.com/service/data_analysis/factor-analysis.html
+%
 %
 
-\chapter{線形回帰分析}
-\input{table/table_LM_LE_FA_f.tex}%<-送付用
-\input{table/table_LM_LE_FA_m.tex}%<-送付用
-\input{table/table_LM_HLE_FA_f.tex}%<-送付用
-\input{table/table_LM_HLE_FA_m.tex}%<-送付用
+%	https://www.nikkei-r.co.jp/glossary/id=1651
 
 
-\chapter{一般化線形モデル: Gamma dist}
-\input{table/table_Gamma_LE_FA_f.tex}%<-送付用
-\input{table/table_Gamma_LE_FA_m.tex}%<-送付用
-\input{table/table_Gamma_HLE_FA_f.tex}%<-送付用
-\input{table/table_Gamma_HLE_FA_m.tex}%<-送付用
+
+	因子分析とは
+	因子分析結果の読み方
+	因子分析とは
+
+	因子分析とは、多変量データに潜む共通因子を探り出すための手法として、消費者を理解するためによく使われる多変量解析手法です。
+	因子分析は「知能」という潜在的な概念を研究する中から生まれた分析手法です（Spearman, 1904）。これは目には見えず、直接測ることができない「知能」というものが存在し、それが具体的な知能テストや試験などの結果として現れる（観測できる）という考え方を元にしています。様々な事象（観測変数）を手がかりにして、潜在的に存在する概念（潜在変数）を推定するしかない、ということになります。
+	このような考え方の視点を広げてみると、消費者の意識、態度は全て潜在的な概念と考えることができ、具体的にモデルを描くと以下の図1のようになります。楕円が「悲しい気持ち」という潜在変数で、共通因子といいます。そして四角のX1～X3までの観測変数が、私達が見ることができる実際の現象と言うことができます。もちろん他の観測変数でも、「悲しい」という心が表出する可能性はあるでしょう。
+	消費者の意識、態度を潜在的な概念と考えたモデル図
+	図1
+	また、この図にあるe1～e3は独自因子といい、それぞれの観測変数に固有の情報を表しています。つまり、それぞれの観測変数が以下のような形で分解されることになります。
+	観測変数　=　共通因子　+　独自因子
+	観測変数 = 共通因子 + 独自因子の統計的な概念を図示すると、図2のようになります。
+	観測変数zを共通因子空間S(F)で説明するとして、zのなかでS(F)で説明できる部分はhとなり、できなかった部分がeとなります。ここで、eとhは直行するので、z,h,eで直角三角形ができます。このことが、zをhとeに分解する、という意味になり、ピタゴラスの定理が分散分析の根拠になっています。
+	通常、分析をするにあたって関心を持つのは共通因子の方になりますので、単純に「因子」といったときは独自因子ではなく、共通因子を指します。ここで着目していただきたいのが、観測変数の全てを説明するモデルを作るのではなく、他の観測変数の中から共通する部分だけを共通因子空間によって説明し、それだけでは説明できない固有の要素を独自変数として残す、という点です。つまり、より小さな変数で人々の意識を理解する試みが行われており、「枝葉を捨てて、エッセンスを見る」というのが根本的な考え方となっています。この時、それぞれの観測変数に固有の枝が独自因子eと言うことができます。（朝野熙彦「マーケティング・リサーチ」講談社の第2章から引用）
+	観測変数 = 共通因子 + 独自因子の統計的な概念
+	図2
+	因子分析結果の読み方
+
+	因子分析で得られる指標
+
+	因子負荷量
+
+	直交解を求めた場合に限りますが各変数と各因子の相関を表します。その場合は因子負荷量は、相関係数なので0から±1の値をとります。バリマックス回転が直交解の方法としてよく利用されます。
+	しかし、次の項の共通性の推定により、独自因子の情報は共通因子空間から除かれていることに注意してください。通常、この因子負荷量が高い変数を考慮して、因子の名前をつけます。
+	共通性
+
+	各変数が因子空間で表される分散を表しています。0から1の値をとります。
+	これも直交解を求めた場合に限りますが共通性は、各因子負荷量の2乗和となります。
+	寄与率
+
+	ある因子がどの程度の説明力を持っているか割合を表します。
+	独自因子の割合＝独自性です。Uniqueness と言います。
+	因子分析で得られる指標
+	図3
+	因子得点
+
+	因子得点は、各因子ごとの各個体（対象者）のスコアを表します。因子得点が高い人は、その因子に影響されている度合いが高いといえます。
+	下記の表は、適性検査の成績を因子分析した結果の一部です。「計算能力」、「図形処理能力」、「言語能力」、「記憶能力」という4つの因子が抽出され、対象者ごとの因子得点を求めたものです。因子得点から、対象者を3つのグループに分けることができました。
+	因子得点
+	図4
 
 
-\chapter{一般化線形モデル: logit model}
-\input{table/table_logit_LE_FA_f.tex}%<-送付用
-\input{table/table_logit_LE_FA_m.tex}%<-送付用
-\input{table/table_logit_HLE_FA_f.tex}%<-送付用
-\input{table/table_logit_HLE_FA_m.tex}%<-送付用
 
-\chapter{ベイズ推定}
+
+
+
+
+	バリマックス回転
+	　因子分析における直交回転法のひとつで、もっともよく利用されてきた。回転の目的は因子の解釈を容易にすることであり、バリマックス回転（varimax rotation）が解釈しやすい結果を与えることが多かったために、研究者や実務家に非常に頻繁に利用されてきた。実は回転方法は無数にある。
+	　素朴な疑問として「回転」とは何なのか、なぜ「回転」するのか、ということを理解したいが、それに先立って回転前（初期解）と回転後（回転解）の実例を示す。これはブランド戦略サーベイの企業イメージ25変数の因子分析である。どのような変化が回転前後で生じているであろうか。
+
+	初期解（回転前）の因子負荷行列　
+
+	　
+	バリマックス回転後（回転解）の因子負荷行列
+
+	　
+	＜回転とは何か＞
+	　回転は幾何学的概念である。一方、因子負荷量は解析的概念である。データ解析では、しばしば幾何学的表現と解析的表現が、同じ文脈で混在するので、慣れていないと混乱するであろう。因子負荷行列を図的に表現すれば下図のようになる。
+	　因子は２個としてあるので、因子を縦軸と横軸にすれば平面を描くことができる（３因子による空間表示でもかまわない）。変数は６個にして色分けしてある。●は因子１と因子2の因子負荷量の値を座標値とした位置にあるが、見やすいように原点からのベクトルで表現してある。これが因子負荷行列の図的表現である。
+	　回転とは、この平面つまり座標空間で因子（軸）を「回転させる」という幾何学的イメージに準拠している。６変数の相対的位置は変わっていない。下図の回転前後は因子（軸）ではなく、変数が回転しているように見えるが、因子の方を回転しているのである。そして、この回転は360度、どのように回転することもできる。無数の回転解が存在する。因子分析は座標空間だけを定めたのである。ちなみに、これをネガティブに「因子の不定性」とか、ポジティブに「回転の自由度」などという。
+
+	因子負荷行列の図的表現
+	　
+
+	　
+	＜なぜ回転するのか？＞
+	　解釈しやすい解を得るためである。解釈しやすいとは、どういう状態であろうか。それは単純構造の時である。単純構造という概念はThurstoneが提案したのだが、これを解析的に実現したのがKaiserで、1958年に"The varimax criterion for analytic rotation in factor analysis"という論文としてPsychometrikaに発表した。この時、バリマックス回転が成立した。
+%単純構造とは下図のように、ある因子には、ある変数だけが1に近い負荷量を持ち、他の変数は0に近い負荷量を持つ状態である。下図の因子Ⅰは変数1,2,3の3変数とだけ関係しているので、因子Ⅰの解釈には3変数だけを考慮し、他の6変数を無視できる。
+	　
+
+	　
+	　因子負荷行列の図的表現をみると、回転前は6変数のすべてが因子1と関係している。回転後では最初の3変数は縦軸と、後の3変数は横軸と強い関係を持つように分離している。別の見方をすると、6変数が3変数ごとにグループ化された。関係の強さは幾何学的には因子の軸と各変数ベクトルとの角度の小ささである。回転後は、3変数はある因子と強く関係し、他の因子とは弱い関係になった。回転によって単純構造に接近したのである。
+	　Kaiserは単純構造を得るには、因子負荷行列の要素の分散を（規準化したうえで）最大化すれば実現できる、というアイデアを得た。大きい負荷はより大きく、小さい負荷はより小さくなるような規準に向かって回転させるので、分散（variance）の最大化（max）、すなわちvarimaxという名前にしたのである。
+	　最初に示した「ブランド戦略サーベイ」の初期解（回転前）は、因子1にほぼすべての変数は高い負荷を持つ。しかし、バリマックス回転後は単純構造に向かって、因子と変数とのコントラストが強化されていることが分かる。これで4因子についての解釈は容易な方向に改善されたのである。
+	 　
+	＜因子負荷量の計算＞
+	　因子分析の数理的な目標は、因子負荷量の推定である。しかし因子分析モデルは強い制約条件をもつ統計モデルである。そのため、まず計算しやすいような解を最初に求めている。それが「初期解」という名前の意味である。初期解は第1因子の分散が最大になるように計算し、次に第2因子の分散、という順番に解を求めているので、因子1の負荷量がすべて大きかったのである。
+	　因子分析モデルの制約条件が多い理由は、因子が観測されていない潜在変数であるためである。方程式の本数よりも未知数の方が多いと、一意に解を求めることができないので制約条件を設定して計算している。回転解とはそのような制約のあとに「有用な」解を求めていくことである。なお、回転しても因子分析モデルの共通性や独自性、モデルの適合度などは変化しない。
+
+
+
+	\input{table/table_FA_f.tex}%<-送付用
+	\input{table/table_FA_m.tex}%<-送付用
+	%
+
+	\section{線形回帰分析}
+	\input{table/table_LM_LE_FA_f.tex}%<-送付用
+	\input{table/table_LM_LE_FA_m.tex}%<-送付用
+	\input{table/table_LM_HLE_FA_f.tex}%<-送付用
+	\input{table/table_LM_HLE_FA_m.tex}%<-送付用
+
+
+
+
+
+
+	\section{一般化線形モデル: Gamma dist}
+	\input{table/table_Gamma_LE_FA_f.tex}%<-送付用
+	\input{table/table_Gamma_LE_FA_m.tex}%<-送付用
+	\input{table/table_Gamma_HLE_FA_f.tex}%<-送付用
+	\input{table/table_Gamma_HLE_FA_m.tex}%<-送付用
+
+
+	\section{一般化線形モデル: logit model}
+	\input{table/table_logit_LE_FA_f.tex}%<-送付用
+	\input{table/table_logit_LE_FA_m.tex}%<-送付用
+	\input{table/table_logit_HLE_FA_f.tex}%<-送付用
+	\input{table/table_logit_HLE_FA_m.tex}%<-送付用
+
+	\section{ベイズ推定}
+
+
+
+\begin{eqnarray}
+   p(\theta|y) \propto p(\theta)p(y|\theta)
+\end{eqnarray}
+
 \input{table/Bayes_fit_LE_d_f.tex}%<-送付用
 \input{table/Bayes_fit_LE_d_m.tex}%<-送付用
 \input{table/Bayes_fit_HLE_d_f.tex}%<-送付用
@@ -124,92 +316,113 @@
 
 
 
-% # -----------------
-\section{bbb}
-\begin{figure}[h!]
-	\begin{center}
-	\fbox{\includegraphics[width=0.5\linewidth]{fig/Bayes_LE_f_ccdf_F1.pdf}}
-			\caption{Bayes\_LE\_f\_ccdf\_F1}
-	\end{center}
-\end{figure}
+	%
+
+	\begin{figure}[h!]
+		\begin{center}
+		\fbox{\includegraphics[width=1\linewidth]{fig/Bayes_LE_f_ccdf_F1.pdf}}
+				\caption{Bayes\_LE\_f\_ccdf\_F1}
+		\end{center}
+	\end{figure}
 
 
-\begin{figure}[h!]
-	\begin{center}
-	\fbox{\includegraphics[width=0.5\linewidth]{fig/Bayes_LE_f_ccdf_F2.pdf}}
-			\caption{Bayes\_LE\_f\_ccdf\_F2}
-	\end{center}
-\end{figure}
+	\begin{figure}[h!]
+		\begin{center}
+		\fbox{\includegraphics[width=1\linewidth]{fig/Bayes_LE_f_ccdf_F2.pdf}}
+				\caption{Bayes\_LE\_f\_ccdf\_F2}
+		\end{center}
+	\end{figure}
 
 
-% # -----------------
-\section{bbb}
-\begin{figure}[h!]
-	\begin{center}
-	\fbox{\includegraphics[width=0.5\linewidth]{fig/Bayes_LE_m_ccdf_F1.pdf}}
-			\caption{Bayes\_LE\_m\_ccdf\_F1}
-	\end{center}
-\end{figure}
+	%
 
-\section{bbb}
-\begin{figure}[h!]
-	\begin{center}
-	\fbox{\includegraphics[width=0.5\linewidth]{fig/Bayes_LE_m_ccdf_F2.pdf}}
-			\caption{Bayes\_LE\_m\_ccdf\_F2}
-	\end{center}
-\end{figure}
+	\begin{figure}[h!]
+		\begin{center}
+		\fbox{\includegraphics[width=1\linewidth]{fig/Bayes_LE_m_ccdf_F1.pdf}}
+				\caption{Bayes\_LE\_m\_ccdf\_F1}
+		\end{center}
+	\end{figure}
 
 
-% # -----------------
-
-\section{bbb}
-\begin{figure}[h!]
-	\begin{center}
-	\fbox{\includegraphics[width=0.5\linewidth]{fig/Bayes_HLE_f_ccdf_F1.pdf}}
-			\caption{Bayes\_HLE\_f\_ccdf\_F1}
-	\end{center}
-\end{figure}
+	\begin{figure}[h!]
+		\begin{center}
+		\fbox{\includegraphics[width=1\linewidth]{fig/Bayes_LE_m_ccdf_F2.pdf}}
+				\caption{Bayes\_LE\_m\_ccdf\_F2}
+		\end{center}
+	\end{figure}
 
 
-\section{bbb}
-\begin{figure}[h!]
-	\begin{center}
-	\fbox{\includegraphics[width=0.5\linewidth]{fig/Bayes_HLE_f_ccdf_F2.pdf}}
-			\caption{Bayes\_HLE\_f\_ccdf\_F2}
-	\end{center}
-\end{figure}
-
-% # -----------------
-
-\section{bbb}
-\begin{figure}[h!]
-	\begin{center}
-	\fbox{\includegraphics[width=0.5\linewidth]{fig/Bayes_HLE_m_ccdf_F1.pdf}}
-			\caption{Bayes\_HLE\_m\_ccdf\_F1}
-	\end{center}
-\end{figure}
+	%
 
 
-\section{bbb}
-\begin{figure}[h!]
-	\begin{center}
-	\fbox{\includegraphics[width=0.5\linewidth]{fig/Bayes_HLE_m_ccdf_F2.pdf}}
-			\caption{Bayes\_HLE\_m\_ccdf\_F2}
-	\end{center}
-\end{figure}
+	\begin{figure}[h!]
+		\begin{center}
+		\fbox{\includegraphics[width=1\linewidth]{fig/Bayes_HLE_f_ccdf_F1.pdf}}
+				\caption{Bayes\_HLE\_f\_ccdf\_F1}
+		\end{center}
+	\end{figure}
 
 
-% # -----------------
 
-\section{aaa}
-\begin{figure}[h!]
-	\begin{center}
-	\fbox{\includegraphics[ width=0.5\linewidth]{fig/daly.png}}
-			\caption{DALYの算出概念図, 出典：wikipedia.org, 障害調整生命年
-		}
-	\end{center}
-\end{figure}
+	\begin{figure}[h!]
+		\begin{center}
+		\fbox{\includegraphics[width=1\linewidth]{fig/Bayes_HLE_f_ccdf_F2.pdf}}
+				\caption{Bayes\_HLE\_f\_ccdf\_F2}
+		\end{center}
+	\end{figure}
 
+	%
+
+
+	\begin{figure}[h!]
+		\begin{center}
+		\fbox{\includegraphics[width=1\linewidth]{fig/Bayes_HLE_m_ccdf_F1.pdf}}
+				\caption{Bayes\_HLE\_m\_ccdf\_F1}
+		\end{center}
+	\end{figure}
+
+
+
+	\begin{figure}[h!]
+		\begin{center}
+		\fbox{\includegraphics[width=1\linewidth]{fig/Bayes_HLE_m_ccdf_F2.pdf}}
+				\caption{Bayes\_HLE\_m\_ccdf\_F2}
+		\end{center}
+	\end{figure}
+
+
+	%
+
+	\section{aaa}
+	\begin{figure}[h!]
+		\begin{center}
+		\fbox{\includegraphics[ width=1\linewidth]{fig/daly.png}}
+				\caption{DALYの算出概念図, 出典：wikipedia.org, 障害調整生命年
+			}
+		\end{center}
+	\end{figure}
+
+
+
+
+
+
+\chapter{4	　考察（Discussion）}
+  　諸々の結果を踏まえた考察
+先行研究と比較
+
+
+今後の展望・提言
+
+
+研究の限界
+ ヘルスケア産業についても触れてください
+
+
+5 参考資料（Reference）
+ 　引用文献、参考文献
+
+6 添付（Appendix）
 
 
 
@@ -225,7 +438,7 @@
 %/Users/jclee/Dropbox/00000健康和歌山県/0 wakayamaPkg/on working/report-kenko(和歌山県)/sub/
 
 %---------------------------------------------------------------------------
-%  References
+% References
 %---------------------------------------------------------------------------
 \newpage
 \makeatletter

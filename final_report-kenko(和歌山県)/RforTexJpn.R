@@ -83,7 +83,7 @@ sink(file = paste0(path, file))
 f_var %>%
   bind_cols(m_var) %>%
   xtable(label = "UsedVariable",
-         caption = c("$\\beta_0 X_1+\\beta_0 X_2$寿命",
+         caption = c("分析に用いる説明変数",
                      "bbb")) %>%
   print(size = "\\tiny")
 sink()
