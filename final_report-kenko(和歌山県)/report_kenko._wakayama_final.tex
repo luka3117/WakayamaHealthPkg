@@ -153,26 +153,30 @@ R version 4.0.4
 
 	\section{因子分析}
 
-
+\begin{figure}
+	% \includegraphics{/path/to/figure}
 	\input{FAdiagram.tex}%<-送付用
+	\caption{因子分析の概念図}
+	\label{FAdiagram}
+\end{figure}
 
-	\begin{eqnarray}
-	x=Lf+\varepsilon
-	\end{eqnarray}
 
 	\begin{eqnarray}
 	X_1 &=&l_{11}F_1+l_{12}F_2+\varepsilon\\
-	&\vdots&\\
+	&\vdots&\\\nonumber
 	X_p &=&l_{p1}F_1+l_{p2}F_2+\varepsilon
 	\end{eqnarray}
 
 
+
+		\begin{eqnarray}
+		x=Lf+\varepsilon
+		\end{eqnarray}
+
 	\begin{eqnarray}
 	\begin{split}
+	X_1 =l_{11}F_1+l_{12}F_2+\varepsilon\\\nonumber
 	X_1 =l_{11}F_1+l_{12}F_2+\varepsilon\\
-	X_1 =l_{11}F_1+l_{12}F_2+\varepsilon\\
-	3&=1+2\\
-	&=2+1
 	\end{split}
 	\end{eqnarray}
 
@@ -302,6 +306,61 @@ R version 4.0.4
 
 	\section{ベイズ推定}
 
+
+
+	bayesian multilevel モデル
+
+	https://www.stata.com/features/overview/bayesian-multilevel-models/
+
+	何のことか？
+
+	multilevel モデルは、
+	グループ固有の効果を組み込んだ回帰モデル。
+
+	グループは、病院、病院内にネストされた医師、病院内にネストされた医師内にネストされた患者など、
+	グループ固有の効果は、
+	いくつかの事前分布、(通常は正規分布に従って)、
+	グループ間でランダムに変化すると想定。
+
+
+	さまざまなレベルの階層を表す場合があ。
+	この仮定により、multilevel モデルはベイズ分析の自然な候補にな。
+	bayes multilevel モデルはさらに
+	、回帰係数や分散成分（グループ固有の効果の分散）などの他のモデルパラメーターもランダムであると想定。
+
+
+	bayesmultilevel モデルを使用する理由bayes分析の標準的な理由に加えて、
+	bayesmultilevel モデリングは、グループの数が少ない場合、
+	または多くの階層レベルが存在する場合によく使用されます。
+
+	逸脱度情報量基準（DIC）などのベイズ情報量基準も、multilevel モデルの比較によく使用されます。
+	グループの比較が主な関心事である場合、bayesmultilevel モデリングは、
+	グループ固有の効果の分布全体を提供できます。
+
+	multilevel コマンドの前にベイズを付けるだけ。
+
+
+	bayesmultilevel モデルをStataに適合させることができ、これを簡単に行うことができます。
+	。
+	ベイズ：混合y x1 x2 || id：
+	もちろん、「簡単に」と言うときは、モデルの定式化ではなく、モデルの仕様を指します。
+	他のモデリングタスクと同様に、bayesmultilevel モデリングでは慎重に検討する必要があ。
+
+
+	連続、打ち切り、バイナリ、序数、カウント、GLM、および生存の結果がサポートされています。
+
+	サポートされているmultilevel コマンドの完全なリストを参照してください。
+
+	複数レベルの階層、ネストおよびクロスされたランダム効果、ランダム切片と係数、ランダム効果共分散構造など、
+
+	すべてのmultilevel 機能を利用できます。
+
+
+	 [BAYES] bayesmhコマンドによって提供されるすべてのベイズ機能は、
+
+	 multilevel コマンドでベイズプレフィックスを使用する場合にサポートされます。
+
+	bayesmultilevel モデリングの新機能もご覧ください。
 
 
 \begin{eqnarray}

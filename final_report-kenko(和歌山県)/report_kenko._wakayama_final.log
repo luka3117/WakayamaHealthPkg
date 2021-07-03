@@ -1,4 +1,4 @@
-This is e-pTeX, Version 3.14159265-p3.8.3-191112-2.6 (utf8.euc) (TeX Live 2020) (preloaded format=platex 2021.2.25)  2 JUL 2021 23:34
+This is e-pTeX, Version 3.14159265-p3.8.3-191112-2.6 (utf8.euc) (TeX Live 2020) (preloaded format=platex 2021.2.25)  3 JUL 2021 12:04
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -847,19 +847,19 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 
 ]
 第 2 章
+LaTeX Font Info:    Font shape `JT1/mc/b/n' in size <12> not available
+(Font)              Font shape `JT1/mc/bx/n' tried instead on input line 97.
+LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <12> not available
+(Font)              Font shape `JT1/gt/m/n' tried instead on input line 97.
+LaTeX Font Info:    Font shape `JY1/mc/b/n' in size <12> not available
+(Font)              Font shape `JY1/mc/bx/n' tried instead on input line 97.
+LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <12> not available
+(Font)              Font shape `JY1/gt/m/n' tried instead on input line 97.
 [3
 
 
 ]
 第 3 章
-LaTeX Font Info:    Font shape `JT1/mc/b/n' in size <12> not available
-(Font)              Font shape `JT1/mc/bx/n' tried instead on input line 115.
-LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <12> not available
-(Font)              Font shape `JT1/gt/m/n' tried instead on input line 115.
-LaTeX Font Info:    Font shape `JY1/mc/b/n' in size <12> not available
-(Font)              Font shape `JY1/mc/bx/n' tried instead on input line 115.
-LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <12> not available
-(Font)              Font shape `JY1/gt/m/n' tried instead on input line 115.
 (./table/UsedVar.tex) (./table/table_LM_LE_f.tex
 Overfull \hbox (225.388pt too wide) in paragraph at lines 6--31
  [][][][] 
@@ -883,7 +883,7 @@ Overfull \hbox (229.41524pt too wide) in paragraph at lines 6--24
 ) (./FAdiagram.tex)
 
 Package amsmath Warning: Cannot use `split' here;
-(amsmath)                trying to recover with `aligned' on input line 158.
+(amsmath)                trying to recover with `aligned' on input line 180.
 
 [4
 
@@ -984,22 +984,24 @@ Underfull \hbox (badness 10000) in paragraph at lines 16--16
 []\OT1/cmr/m/n/10.95 Table. 3.19 \JY1/mc/m/sc/10.95 男性の一般化線形モデル
  []
 
-) (./table/Bayes_fit_LE_d_f.tex) (./table/Bayes_fit_LE_d_m.tex)
+)
+Overfull \hbox (37.57922pt too wide) in paragraph at lines 313--314
+[]\OT1/cmr/m/n/10.95 https://www.stata.com/features/overview/bayesian-
+ []
+
+[7] (./table/Bayes_fit_LE_d_f.tex) (./table/Bayes_fit_LE_d_m.tex)
 (./table/Bayes_fit_HLE_d_f.tex) (./table/Bayes_fit_HLE_d_m.tex)
 File: fig/Bayes_LE_f_ccdf_F1.pdf Graphic file (type pdf)
 <fig/Bayes_LE_f_ccdf_F1.pdf>
 
-Overfull \hbox (6.79999pt too wide) in paragraph at lines 301--302
+Overfull \hbox (6.79999pt too wide) in paragraph at lines 382--383
  [] 
  []
-
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 File: fig/Bayes_LE_f_ccdf_F2.pdf Graphic file (type pdf)
 <fig/Bayes_LE_f_ccdf_F2.pdf>
 
-Overfull \hbox (6.79999pt too wide) in paragraph at lines 309--310
+Overfull \hbox (6.79999pt too wide) in paragraph at lines 390--391
  [] 
  []
 
@@ -1009,7 +1011,7 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 File: fig/Bayes_LE_m_ccdf_F1.pdf Graphic file (type pdf)
 <fig/Bayes_LE_m_ccdf_F1.pdf>
 
-Overfull \hbox (6.79999pt too wide) in paragraph at lines 319--320
+Overfull \hbox (6.79999pt too wide) in paragraph at lines 400--401
  [] 
  []
 
@@ -1019,7 +1021,7 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 File: fig/Bayes_LE_m_ccdf_F2.pdf Graphic file (type pdf)
 <fig/Bayes_LE_m_ccdf_F2.pdf>
 
-Overfull \hbox (6.79999pt too wide) in paragraph at lines 327--328
+Overfull \hbox (6.79999pt too wide) in paragraph at lines 408--409
  [] 
  []
 
@@ -1029,7 +1031,7 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 File: fig/Bayes_HLE_f_ccdf_F1.pdf Graphic file (type pdf)
 <fig/Bayes_HLE_f_ccdf_F1.pdf>
 
-Overfull \hbox (6.79999pt too wide) in paragraph at lines 338--339
+Overfull \hbox (6.79999pt too wide) in paragraph at lines 419--420
  [] 
  []
 
@@ -1039,7 +1041,7 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 File: fig/Bayes_HLE_f_ccdf_F2.pdf Graphic file (type pdf)
 <fig/Bayes_HLE_f_ccdf_F2.pdf>
 
-Overfull \hbox (6.79999pt too wide) in paragraph at lines 347--348
+Overfull \hbox (6.79999pt too wide) in paragraph at lines 428--429
  [] 
  []
 
@@ -1049,7 +1051,7 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 File: fig/Bayes_HLE_m_ccdf_F1.pdf Graphic file (type pdf)
 <fig/Bayes_HLE_m_ccdf_F1.pdf>
 
-Overfull \hbox (6.79999pt too wide) in paragraph at lines 357--358
+Overfull \hbox (6.79999pt too wide) in paragraph at lines 438--439
  [] 
  []
 
@@ -1059,7 +1061,7 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 File: fig/Bayes_HLE_m_ccdf_F2.pdf Graphic file (type pdf)
 <fig/Bayes_HLE_m_ccdf_F2.pdf>
 
-Overfull \hbox (6.79999pt too wide) in paragraph at lines 366--367
+Overfull \hbox (6.79999pt too wide) in paragraph at lines 447--448
  [] 
  []
 
@@ -1071,22 +1073,20 @@ runsystem([ 'fig/daly.png' -nt 'fig/daly.bb' ] && cd 'fig/' && ebb 'daly.png').
 
 File: fig/daly.png Graphic file (type bmp)
 <fig/daly.png>
-Overfull \hbox (6.79999pt too wide) in paragraph at lines 377--379
+Overfull \hbox (6.79999pt too wide) in paragraph at lines 458--460
  [] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 379--379
-[]\OT1/cmr/m/n/10.95 Fig. 3.9 DALY \JY1/mc/m/sc/10.95 の算出概念図\OT1/cmr/m/n/
-10.95 , \JY1/mc/m/sc/10.95 出典 ：
+Underfull \hbox (badness 10000) in paragraph at lines 460--460
+[]\OT1/cmr/m/n/10.95 Fig. 3.10 DALY \JY1/mc/m/sc/10.95 の算出概念図\OT1/cmr/m/n
+/10.95 , \JY1/mc/m/sc/10.95 出典 ：
  []
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[7] [8] [9] [10
-
-]
+[8] [9] [10]
 第 4 章
 No file report_kenko._wakayama_final.bbl.
 [11
@@ -1101,12 +1101,12 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 14495 strings out of 481140
- 279442 string characters out of 5917417
- 560428 words of memory out of 5000000
- 30138 multiletter control sequences out of 15000+600000
+ 14496 strings out of 481140
+ 279453 string characters out of 5917417
+ 559886 words of memory out of 5000000
+ 30139 multiletter control sequences out of 15000+600000
  553494 words of font info for 106 fonts, out of 8000000 for 9000
  929 hyphenation exceptions out of 8191
- 60i,12n,71p,5871b,677s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 60i,12n,71p,5871b,837s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on report_kenko._wakayama_final.dvi (12 pages, 85352 bytes).
+Output written on report_kenko._wakayama_final.dvi (12 pages, 91040 bytes).
