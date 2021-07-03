@@ -1,10 +1,10 @@
-This is e-pTeX, Version 3.14159265-p3.8.3-191112-2.6 (utf8.euc) (TeX Live 2020) (preloaded format=platex 2021.2.25)  3 JUL 2021 22:28
+This is e-pTeX, Version 3.14159265-p3.8.3-191112-2.6 (utf8.euc) (TeX Live 2020) (preloaded format=platex 2021.2.25)  3 JUL 2021 21:31
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**report_kenko._wakayama_final.tex
-(./report_kenko._wakayama_final.tex
+**report_kenko._wakayama_mid.tex
+(./report_kenko._wakayama_mid.tex
 pLaTeX2e <2020-02-02>+3 (based on LaTeX2e <2020-02-02> patch level 5)
 L3 programming layer <2020-03-06>
 (/usr/local/texlive/2020/texmf-dist/tex/platex/base/jreport.cls
@@ -36,11 +36,6 @@ LaTeX Font Info:    Overwriting symbol font `mincho' in version `bold'
 (/usr/local/texlive/2020/texmf-dist/tex/latex/tools/multicol.sty
 Package: multicol 2019/12/09 v1.8y multicolumn formatting (FMi)
 \c@tracingmulticols=\count177
-
-
-Package multicol Warning: May not work with the twocolumn option on input line 
-141.
-
 \mult@box=\box61
 \multicol@leftmargin=\dimen153
 \c@unbalance=\count178
@@ -107,7 +102,8 @@ Package multicol Warning: May not work with the twocolumn option on input line
 \mult@nat@firstbox=\box105
 \colbreak@box=\box106
 \mc@col@check@num=\count186
-) (/usr/local/texlive/2020/texmf-dist/tex/generic/epsf/epsf.sty
+)
+(/usr/local/texlive/2020/texmf-dist/tex/generic/epsf/epsf.sty
 This is `epsf.tex' v2.7.4 <14 February 2011>
 \epsffilein=\read2
 \epsfframemargin=\dimen162
@@ -363,14 +359,14 @@ Package: iftex 2020/03/06 v1.0d TeX engine tests
 * \headsep=25.0pt
 * \topskip=8.51457pt
 * \footskip=30.0pt
-* \marginparwidth=30.0pt
+* \marginparwidth=60.0pt
 * \marginparsep=10.0pt
 * \columnsep=21.07251pt
 * \skip\footins=10.0pt plus 4.0pt minus 2.0pt
 * \hoffset=0.0pt
 * \voffset=0.0pt
 * \mag=1000
-* \@twocolumntrue
+* \@twocolumnfalse
 * \@twosidefalse
 * \@mparswitchfalse
 * \@reversemarginfalse
@@ -701,33 +697,8 @@ File: l3backend-dvips.def 2020-03-12 L3 backend support: dvips
 LaTeX Warning: Unused global option(s):
     [mc].
 
-(./report_kenko._wakayama_final.aux
-
-LaTeX Warning: Label `UsualHLMLEf' multiply defined.
-
-
-LaTeX Warning: Label `table_Gamma_HLE_FA_m' multiply defined.
-
-
-LaTeX Warning: Label `table_Gamma_HLE_FA_m' multiply defined.
-
-
-LaTeX Warning: Label `table_Gamma_HLE_FA_m' multiply defined.
-
-
-LaTeX Warning: Label `table_Gamma_HLE_FA_m' multiply defined.
-
-
-LaTeX Warning: Label `table_Gamma_HLE_FA_m' multiply defined.
-
-
-LaTeX Warning: Label `table_Gamma_HLE_FA_m' multiply defined.
-
-
-LaTeX Warning: Label `table_Gamma_HLE_FA_m' multiply defined.
-
-)
-\openout1 = `report_kenko._wakayama_final.aux'.
+(./report_kenko._wakayama_mid.aux)
+\openout1 = `report_kenko._wakayama_mid.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 51.
 LaTeX Font Info:    ... okay on input line 51.
@@ -769,14 +740,14 @@ LaTeX Font Info:    ... okay on input line 51.
 * \headsep=25.0pt
 * \topskip=8.51457pt
 * \footskip=30.0pt
-* \marginparwidth=30.0pt
+* \marginparwidth=60.0pt
 * \marginparsep=10.0pt
 * \columnsep=21.07251pt
 * \skip\footins=10.0pt plus 4.0pt minus 2.0pt
 * \hoffset=0.0pt
 * \voffset=0.0pt
 * \mag=1000
-* \@twocolumntrue
+* \@twocolumnfalse
 * \@twosidefalse
 * \@mparswitchfalse
 * \@reversemarginfalse
@@ -826,271 +797,111 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [0
 
 
-
 ]
-(./report_kenko._wakayama_final.toc)
+(./report_kenko._wakayama_mid.toc)
 \tf@toc=\write4
-\openout4 = `report_kenko._wakayama_final.toc'.
+\openout4 = `report_kenko._wakayama_mid.toc'.
 
  [1
 
-
-
-]
+] (./sub/wakayamaForSend1.tex
 第 1 章
+LaTeX Font Info:    Font shape `JT1/mc/b/n' in size <12> not available
+(Font)              Font shape `JT1/mc/bx/n' tried instead on input line 9.
+LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <12> not available
+(Font)              Font shape `JT1/gt/m/n' tried instead on input line 9.
+LaTeX Font Info:    Font shape `JY1/mc/b/n' in size <12> not available
+(Font)              Font shape `JY1/mc/bx/n' tried instead on input line 9.
+LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <12> not available
+(Font)              Font shape `JY1/gt/m/n' tried instead on input line 9.
 [2
-
-
 
 ]
 第 2 章
-LaTeX Font Info:    Font shape `JT1/mc/b/n' in size <12> not available
-(Font)              Font shape `JT1/mc/bx/n' tried instead on input line 97.
-LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <12> not available
-(Font)              Font shape `JT1/gt/m/n' tried instead on input line 97.
-LaTeX Font Info:    Font shape `JY1/mc/b/n' in size <12> not available
-(Font)              Font shape `JY1/mc/bx/n' tried instead on input line 97.
-LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <12> not available
-(Font)              Font shape `JY1/gt/m/n' tried instead on input line 97.
-[3
+runsystem([ 'fig/daly.png' -nt 'fig/daly.bb' ] && cd 'fig/' && ebb 'daly.png').
+..disabled (restricted).
 
+File: fig/daly.png Graphic file (type bmp)
+<fig/daly.png> [3
 
 ]
-第 3 章
-(./table/UsedVar.tex
-Overfull \hbox (62.10074pt too wide) in paragraph at lines 6--30
- [][][][] 
- []
+LaTeX Font Info:    Font shape `JT1/mc/b/n' in size <10.95> not available
+(Font)              Font shape `JT1/mc/bx/n' tried instead on input line 152.
+LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <10.95> not available
+(Font)              Font shape `JT1/gt/m/n' tried instead on input line 152.
+LaTeX Font Info:    Font shape `JY1/mc/b/n' in size <10.95> not available
+(Font)              Font shape `JY1/mc/bx/n' tried instead on input line 152.
+LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <10.95> not available
+(Font)              Font shape `JY1/gt/m/n' tried instead on input line 152.
 
-) (./table/table_LM_LE_f.tex
-Overfull \hbox (45.6234pt too wide) in paragraph at lines 6--31
- [][][][] 
- []
-
-) (./table/table_LM_LE_m.tex
-Overfull \hbox (34.5653pt too wide) in paragraph at lines 6--24
- [][][][] 
- []
-
-) (./table/table_LM_HLE_f.tex
-Overfull \hbox (45.6234pt too wide) in paragraph at lines 6--31
- [][][][] 
- []
-
-) (./table/table_LM_HLE_m.tex
-Overfull \hbox (34.5653pt too wide) in paragraph at lines 6--24
- [][][][] 
- []
-
-) (./FAdiagram.tex)
-
-Package amsmath Warning: Cannot use `split' here;
-(amsmath)                trying to recover with `aligned' on input line 181.
-
-[4
-
-]
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
 Make it at least 15.49998pt.
 We now make it that large for the rest of the document.
 This may cause the page layout to be inconsistent, however.
 
-[5] [6] (./table/table_FA_f.tex) (./table/table_FA_m.tex)
-(./table/table_LM_LE_FA_f.tex
-Overfull \hbox (21.10031pt too wide) in paragraph at lines 6--16
- [][][][] 
- []
-
-) (./table/table_LM_LE_FA_m.tex
-Overfull \hbox (24.79471pt too wide) in paragraph at lines 6--16
- [][][][] 
- []
-
-) (./table/table_LM_HLE_FA_f.tex
-Overfull \hbox (21.10031pt too wide) in paragraph at lines 6--16
- [][][][] 
- []
-
-) (./table/table_LM_HLE_FA_m.tex
-Overfull \hbox (24.79471pt too wide) in paragraph at lines 6--16
- [][][][] 
- []
-
-) (./table/table_Gamma_LE_FA_f.tex
-Underfull \hbox (badness 10000) in paragraph at lines 16--16
-[]\OT1/cmr/m/n/10.95 Table. 3.12 \JY1/mc/m/sc/10.95 女性の一般化線形モデル
- []
-
-) (./table/table_Gamma_LE_FA_m.tex
-Underfull \hbox (badness 10000) in paragraph at lines 16--16
-[]\OT1/cmr/m/n/10.95 Table. 3.13 \JY1/mc/m/sc/10.95 男性の一般化線形モデル
- []
-
-) (./table/table_Gamma_HLE_FA_f.tex
-Underfull \hbox (badness 10000) in paragraph at lines 16--16
-[]\OT1/cmr/m/n/10.95 Table. 3.14 \JY1/mc/m/sc/10.95 女性の一般化線形モデル
- []
-
-) (./table/table_Gamma_HLE_FA_m.tex
-Underfull \hbox (badness 10000) in paragraph at lines 16--16
-[]\OT1/cmr/m/n/10.95 Table. 3.15 \JY1/mc/m/sc/10.95 男性の一般化線形モデル
- []
-
-) (./table/table_logit_LE_FA_f.tex
-Overfull \hbox (21.10031pt too wide) in paragraph at lines 6--16
- [][][][] 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 16--16
-[]\OT1/cmr/m/n/10.95 Table. 3.16 \JY1/mc/m/sc/10.95 女性の一般化線形モデル
- []
-
-) (./table/table_logit_LE_FA_m.tex
-Overfull \hbox (24.79471pt too wide) in paragraph at lines 6--16
- [][][][] 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 16--16
-[]\OT1/cmr/m/n/10.95 Table. 3.17 \JY1/mc/m/sc/10.95 男性の一般化線形モデル
- []
-
-) (./table/table_logit_HLE_FA_f.tex) (./table/table_logit_HLE_FA_m.tex
-Overfull \hbox (24.79471pt too wide) in paragraph at lines 6--16
- [][][][] 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 16--16
-[]\OT1/cmr/m/n/10.95 Table. 3.18 \JY1/mc/m/sc/10.95 男性の一般化線形モデル
- []
-
-)
-Overfull \hbox (37.57922pt too wide) in paragraph at lines 314--315
-[]\OT1/cmr/m/n/10.95 https://www.stata.com/features/overview/bayesian-
- []
-
-[7] (./table/Bayes_fit_LE_d_f.tex) (./table/Bayes_fit_LE_d_m.tex)
-(./table/Bayes_fit_HLE_d_f.tex) (./table/Bayes_fit_HLE_d_m.tex)
-File: fig/Bayes_LE_f_ccdf_F1.pdf Graphic file (type pdf)
-<fig/Bayes_LE_f_ccdf_F1.pdf>
-
-Overfull \hbox (6.79999pt too wide) in paragraph at lines 383--384
- [] 
- []
-
-File: fig/Bayes_LE_f_ccdf_F2.pdf Graphic file (type pdf)
-<fig/Bayes_LE_f_ccdf_F2.pdf>
-
-Overfull \hbox (6.79999pt too wide) in paragraph at lines 391--392
- [] 
- []
-
-File: fig/Bayes_LE_m_ccdf_F1.pdf Graphic file (type pdf)
-<fig/Bayes_LE_m_ccdf_F1.pdf>
-
-Overfull \hbox (6.79999pt too wide) in paragraph at lines 401--402
- [] 
- []
-
-File: fig/Bayes_LE_m_ccdf_F2.pdf Graphic file (type pdf)
-<fig/Bayes_LE_m_ccdf_F2.pdf>
-
-Overfull \hbox (6.79999pt too wide) in paragraph at lines 409--410
- [] 
- []
-
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-File: fig/Bayes_HLE_f_ccdf_F1.pdf Graphic file (type pdf)
-<fig/Bayes_HLE_f_ccdf_F1.pdf>
-
-Overfull \hbox (6.79999pt too wide) in paragraph at lines 420--421
- [] 
- []
-
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-File: fig/Bayes_HLE_f_ccdf_F2.pdf Graphic file (type pdf)
-<fig/Bayes_HLE_f_ccdf_F2.pdf>
-
-Overfull \hbox (6.79999pt too wide) in paragraph at lines 429--430
- [] 
- []
-
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-File: fig/Bayes_HLE_m_ccdf_F1.pdf Graphic file (type pdf)
-<fig/Bayes_HLE_m_ccdf_F1.pdf>
-
-Overfull \hbox (6.79999pt too wide) in paragraph at lines 439--440
- [] 
- []
-
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-File: fig/Bayes_HLE_m_ccdf_F2.pdf Graphic file (type pdf)
-<fig/Bayes_HLE_m_ccdf_F2.pdf>
-
-Overfull \hbox (6.79999pt too wide) in paragraph at lines 448--449
- [] 
- []
-
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-runsystem([ 'fig/daly.png' -nt 'fig/daly.bb' ] && cd 'fig/' && ebb 'daly.png').
-..disabled (restricted).
-
-File: fig/daly.png Graphic file (type bmp)
-<fig/daly.png>
-Overfull \hbox (6.79999pt too wide) in paragraph at lines 459--461
- [] 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 461--461
-[]\OT1/cmr/m/n/10.95 Fig. 3.10 DALY \JY1/mc/m/sc/10.95 の算出概念図\OT1/cmr/m/n
-/10.95 , \JY1/mc/m/sc/10.95 出典 ：
- []
-
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-[8] [9] [10
+[4] [5]
+第 3 章
+[6
 
 ]
 第 4 章
-[11
+[7
 
+] [8] [9] [10] [11] [12]
+第 5 章
+[13
 
 ]
-第 5 章
-[12
+Underfull \hbox (badness 10000) in paragraph at lines 1155--1156
+[]\JY1/mc/m/sc/10.95 一定のバリアフリ ー化率手すりの設
+ []
 
-] [13]
-No file report_kenko._wakayama_final.bbl.
-(./report_kenko._wakayama_final.aux)
+
+Underfull \hbox (badness 10000) in paragraph at lines 1157--1158
+[]\JY1/mc/m/sc/10.95 高度のバリアフリ ー化率手すりの設
+ []
+
+[14] [15]
+第 6 章
+[16
+
+]
+LaTeX Font Info:    Font shape `JT1/mc/b/n' in size <9> not available
+(Font)              Font shape `JT1/mc/bx/n' tried instead on input line 1445.
+LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <9> not available
+(Font)              Font shape `JT1/gt/m/n' tried instead on input line 1445.
+LaTeX Font Info:    Font shape `JY1/mc/b/n' in size <9> not available
+(Font)              Font shape `JY1/mc/bx/n' tried instead on input line 1445.
+LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <9> not available
+(Font)              Font shape `JY1/gt/m/n' tried instead on input line 1445.
+ [17] [18] [19] [20] [21]
+第 7 章
+File: fig/DistCommondVariable.pdf Graphic file (type pdf)
+<fig/DistCommondVariable.pdf>
+[22
+
+] [23] [24]
+第 8 章
+) [25
+
+]
+No file report_kenko._wakayama_mid.bbl.
+(./report_kenko._wakayama_mid.aux)
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
 
-LaTeX Warning: There were multiply-defined labels.
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
  ) 
 Here is how much of TeX's memory you used:
- 14496 strings out of 481140
- 279451 string characters out of 5917417
- 552749 words of memory out of 5000000
- 30139 multiletter control sequences out of 15000+600000
- 553494 words of font info for 106 fonts, out of 8000000 for 9000
+ 14178 strings out of 481140
+ 271898 string characters out of 5917417
+ 539948 words of memory out of 5000000
+ 29886 multiletter control sequences out of 15000+600000
+ 556924 words of font info for 120 fonts, out of 8000000 for 9000
  929 hyphenation exceptions out of 8191
- 60i,12n,71p,3763b,837s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 60i,11n,60p,4514b,586s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on report_kenko._wakayama_final.dvi (14 pages, 94324 bytes).
+Output written on report_kenko._wakayama_mid.dvi (26 pages, 115036 bytes).

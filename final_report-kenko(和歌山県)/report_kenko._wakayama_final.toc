@@ -10,5 +10,6 @@
 \contentsline {section}{\numberline {3.6}一般化線形モデル: logit model}{7}%
 \contentsline {section}{\numberline {3.7}ベイズ推定}{7}%
 \contentsline {section}{\numberline {3.8}aaa}{8}%
-\contentsfinish 
 \contentsline {chapter}{\numberline {第4章}4 　考察（Discussion）}{11}%
+\contentsline {chapter}{\numberline {第5章}about glm}{12}%
+\contentsfinish 

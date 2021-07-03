@@ -83,7 +83,7 @@ sink(file = paste0(path, file))
 f_var %>%
   bind_cols(m_var) %>%
   xtable(label = "UsedVariable",
-         caption = c("分析に用いる説明変数",
+         caption = c("$\\beta_0 X_1+\\beta_0 X_2$寿命",
                      "bbb")) %>%
   print(size = "\\tiny")
 sink()
@@ -137,8 +137,8 @@ file="table_LM_LE_f.tex"
 sink(file = paste0(path, file))
 fit_with_X_lm_LE_d_f %>% broom::tidy() %>%
   left_join(var, by=c("term"="var_name_Eng")) %>%
-  select(term, var_name_Jpn, everything(), -id,- address, -std.error, -columm_letter ) %>%
-    xtable(label = "UsualLMLEf",
+  select(var_name_Jpn, everything(), -term, -id,- address, -std.error, -columm_letter ) %>%
+  xtable(label = "UsualLMLEf",
          caption = c("女性の線形回帰(平均寿命)")) %>%
   print(size = "\\tiny")
 sink()
@@ -172,8 +172,8 @@ file="table_LM_LE_m.tex"
 sink(file = paste0(path, file))
 fit_with_X_lm_LE_d_m %>% broom::tidy() %>%
   left_join(var, by=c("term"="var_name_Eng")) %>%
-  select(term, var_name_Jpn, everything(), -id,- address, -std.error, -columm_letter ) %>%
-    xtable(label = "UsualLMLEm",
+  select(var_name_Jpn, everything(), -term, -id,- address, -std.error, -columm_letter ) %>%
+  xtable(label = "UsualLMLEm",
          caption = c("男性の線形回帰(平均寿命)")) %>%
   print(size = "\\tiny")
 sink()
@@ -199,8 +199,8 @@ file="table_LM_HLE_f.tex"
 sink(file = paste0(path, file))
 fit_with_X_lm_HLE_d_f %>% broom::tidy() %>%
   left_join(var, by=c("term"="var_name_Eng")) %>%
-  select(term, var_name_Jpn, everything(), -id,- address, -std.error, -columm_letter ) %>%
-    xtable(label = "UsualHLMLEf",
+  select(var_name_Jpn, everything(), -term, -id,- address, -std.error, -columm_letter ) %>%
+  xtable(label = "UsualHLMLEf",
          caption = c("女性の線形回帰(健康寿命)")) %>%
   print(size = "\\tiny")
 sink()
@@ -232,8 +232,8 @@ file="table_LM_HLE_m.tex"
 sink(file = paste0(path, file))
 fit_with_X_lm_HLE_d_m %>% broom::tidy() %>%
   left_join(var, by=c("term"="var_name_Eng")) %>%
-  select(term, var_name_Jpn, everything(), -id,- address, -std.error, -columm_letter ) %>%
-    xtable(label = "UsualHLMLEf",
+  select(var_name_Jpn, everything(), -term, -id,- address, -std.error, -columm_letter ) %>%
+  xtable(label = "UsualHLMLEf",
          caption = c("男性の線形回帰(健康寿命)")) %>%
   print(size = "\\tiny")
 sink()
@@ -275,8 +275,9 @@ sink(file = paste0(path, file))
 rownames(d_f_.FA$VAR.rotate)<-colnames(LE_d_f_final.reg$model[,-1] )
 d_f_.FA$VAR.rotate %>% data.frame() %>% rownames_to_column() %>%
   left_join(var, by=c("rowname"="var_name_Eng")) %>%
-  select(rowname,var_name_Jpn,X1,X2) %>% rename(F1=X1, F2=X2) %>%
-    xtable(label = "FAf",
+  # select(rowname,var_name_Jpn,X1,X2) %>% rename(F1=X1, F2=X2) %>%
+  select(var_name_Jpn,X1,X2) %>% rename(F1=X1, F2=X2) %>%
+  xtable(label = "FAf",
          caption = c("女性のFA")) %>%
   print(size = "\\tiny")
 sink()
@@ -325,8 +326,9 @@ sink(file = paste0(path, file))
 rownames(d_m_.FA$VAR.rotate)<-colnames(LE_d_m_final.reg$model[,-1] )
 d_m_.FA$VAR.rotate %>% data.frame() %>% rownames_to_column() %>%
   left_join(var, by=c("rowname"="var_name_Eng")) %>%
-  select(rowname,var_name_Jpn,X1,X2) %>% rename(F1=X1, F2=X2)
-    xtable(label = "FAm",
+  # select(rowname,var_name_Jpn,X1,X2) %>% rename(F1=X1, F2=X2) %>%
+  select(var_name_Jpn,X1,X2) %>% rename(F1=X1, F2=X2) %>%
+  xtable(label = "FAm",
          caption = c("男性のFA")) %>%
   print(size = "\\tiny")
 sink()
@@ -364,7 +366,7 @@ file="table_LM_LE_FA_f.tex"
 
 sink(file = paste0(path, file))
 fit_with_FA_lm_LE_d_f %>% broom::tidy() %>%
-    xtable(label = "tableLMLEFAf",
+  xtable(label = "tableLMLEFAf",
          caption = c("女性の回帰withFA(平均寿命)")) %>%
   print(size = "\\tiny")
 sink()
@@ -385,7 +387,7 @@ file="table_LM_LE_FA_m.tex"
 
 sink(file = paste0(path, file))
 fit_with_FA_lm_LE_d_m %>% broom::tidy() %>%
-    xtable(label = "tableLMLEFAm",
+  xtable(label = "tableLMLEFAm",
          caption = c("男性の回帰withFA(平均寿命)")) %>%
   print(size = "\\tiny")
 sink()
@@ -407,7 +409,7 @@ file="table_LM_HLE_FA_f.tex"
 
 sink(file = paste0(path, file))
 fit_with_FA_lm_HLE_d_f %>% broom::tidy() %>%
-    xtable(label = "tableLMHLEFAf",
+  xtable(label = "tableLMHLEFAf",
          caption = c("女性の回帰withFA(健康寿命)")) %>%
   print(size = "\\tiny")
 sink()
@@ -428,7 +430,7 @@ file="table_LM_HLE_FA_m.tex"
 
 sink(file = paste0(path, file))
 fit_with_FA_lm_HLE_d_m %>% broom::tidy() %>%
-    xtable(label = "tableLMHLEFAm",
+  xtable(label = "tableLMHLEFAm",
          caption = c("男性の回帰withFA(健康寿命)")) %>%
   print(size = "\\tiny")
 sink()
@@ -475,7 +477,7 @@ file="table_Gamma_LE_FA_f.tex"
 
 sink(file = paste0(path, file))
 fit_with_FA_gamma_LE_d_f %>% broom::tidy() %>% mutate_if(is.numeric, round, 5) %>%
-    xtable(label = "table_Gamma_LE_FA_f",
+  xtable(label = "table_Gamma_LE_FA_f",
          caption = c("女性の一般化線形モデルwithFA(平均寿命)"), digits=3) %>%
   print(size = "\\tiny")
 sink()
@@ -504,7 +506,7 @@ file="table_Gamma_LE_FA_m.tex"
 
 sink(file = paste0(path, file))
 fit_with_FA_gamma_LE_d_m %>% broom::tidy() %>% mutate_if(is.numeric, round, 5) %>%
-    xtable(label = "table_Gamma_LE_FA_m",
+  xtable(label = "table_Gamma_LE_FA_m",
          caption = c("男性の一般化線形モデルwithFA(平均寿命)"), digits=3) %>%
   print(size = "\\tiny")
 sink()
@@ -534,7 +536,7 @@ file="table_Gamma_HLE_FA_f.tex"
 
 sink(file = paste0(path, file))
 fit_with_FA_gamma_HLE_d_f %>% broom::tidy() %>% mutate_if(is.numeric, round, 5) %>%
-    xtable(label = "table_Gamma_HLE_FA_f",
+  xtable(label = "table_Gamma_HLE_FA_f",
          caption = c("女性の一般化線形モデルwithFA(健康寿命)"), digits=3) %>%
   print(size = "\\tiny")
 sink()
@@ -563,7 +565,7 @@ file="table_Gamma_HLE_FA_m.tex"
 
 sink(file = paste0(path, file))
 fit_with_FA_gamma_HLE_d_m %>% broom::tidy() %>% mutate_if(is.numeric, round, 5) %>%
-    xtable(label = "table_Gamma_HLE_FA_m",
+  xtable(label = "table_Gamma_HLE_FA_m",
          caption = c("男性の一般化線形モデルwithFA(健康寿命)"), digits=3) %>%
   print(size = "\\tiny")
 sink()
@@ -616,7 +618,7 @@ file="table_logit_LE_FA_f.tex"
 
 sink(file = paste0(path, file))
 fit_with_FA_logit_LE_d_f %>% broom::tidy() %>% mutate_if(is.numeric, round, 5) %>%
-    xtable(label = "table_Gamma_HLE_FA_m",
+  xtable(label = "table_Gamma_HLE_FA_m",
          caption = c("女性の一般化線形モデル(logit)withFA(平均寿命)"), digits=3) %>%
   print(size = "\\tiny")
 sink()
@@ -638,7 +640,7 @@ file="table_logit_LE_FA_m.tex"
 
 sink(file = paste0(path, file))
 fit_with_FA_logit_LE_d_m %>% broom::tidy() %>% mutate_if(is.numeric, round, 5) %>%
-    xtable(label = "table_Gamma_HLE_FA_m",
+  xtable(label = "table_Gamma_HLE_FA_m",
          caption = c("男性の一般化線形モデル(logit)withFA(平均寿命)"), digits=3) %>%
   print(size = "\\tiny")
 sink()
@@ -659,7 +661,7 @@ file="table_logit_HLE_FA_f.tex"
 
 sink(file = paste0(path, file))
 fit_with_FA_logit_HLE_d_f %>% broom::tidy() %>% mutate_if(is.numeric, round, 5) %>%
-    xtable(label = "table_Gamma_HLE_FA_f",
+  xtable(label = "table_Gamma_HLE_FA_f",
          caption = c("女性の一般化線形モデル(logit)withFA(健康寿命)"), digits=3) %>%
   print(size = "\\tiny")
 sink()
@@ -682,10 +684,12 @@ file="table_logit_HLE_FA_m.tex"
 
 sink(file = paste0(path, file))
 fit_with_FA_logit_HLE_d_m %>% broom::tidy() %>% mutate_if(is.numeric, round, 5) %>%
-    xtable(label = "table_Gamma_HLE_FA_m",
+  xtable(label = "table_Gamma_HLE_FA_m",
          caption = c("男性の一般化線形モデル(logit)withFA(健康寿命)"), digits=3) %>%
   print(size = "\\tiny")
 sink()
+# -----------------# -----------------
+
 # -----------------# -----------------
 
 # -----------------
@@ -713,9 +717,9 @@ sink()
 suppressMessages(library(rethinking))
 
 Bayes_fit_LE_d_f<-
-rethinking::map(alist( LE~dnorm(mu, sigma), mu~beta0+beta1*F1+beta2*F2, beta0~dnorm(80, 100), beta1~dnorm(0, 10), beta2~dnorm(0, 10), sigma ~ dunif(0, 50)),
-data=LE_FF_d_f
-)
+  rethinking::map(alist( LE~dnorm(mu, sigma), mu~beta0+beta1*F1+beta2*F2, beta0~dnorm(80, 100), beta1~dnorm(0, 10), beta2~dnorm(0, 10), sigma ~ dunif(0, 50)),
+                  data=LE_FF_d_f
+  )
 
 
 ## ----warning=FALSE------------------------------
@@ -853,9 +857,9 @@ suppressMessages(library(rethinking))
 
 
 Bayes_fit_LE_d_m<-
-rethinking::map(alist( LE~dnorm(mu, sigma), mu~beta0+beta1*F1+beta2*F2, beta0~dnorm(80, 100), beta1~dnorm(0, 10), beta2~dnorm(0, 10), sigma ~ dunif(0, 50)),
-data=LE_FF_d_m
-)
+  rethinking::map(alist( LE~dnorm(mu, sigma), mu~beta0+beta1*F1+beta2*F2, beta0~dnorm(80, 100), beta1~dnorm(0, 10), beta2~dnorm(0, 10), sigma ~ dunif(0, 50)),
+                  data=LE_FF_d_m
+  )
 
 ## ----warning=FALSE------------------------------
 precis(Bayes_fit_LE_d_m)
@@ -964,7 +968,7 @@ aa %>% unnest(cols = ccdf) %>% ggplot(aes(x=x, y=ccdf, group=name, color=name))+
 
 
 # insert start-----------------
-aa_plot<-aa %>% unnest(cols = ccdf) %>% ggplot(aes(x=x, y=ccdf, group=name, color=name))+geom_line()+xlim(86.8, 87.2) +
+aa_plot<-aa %>% unnest(cols = ccdf) %>% ggplot(aes(x=x, y=ccdf, group=name, color=name))+geom_line()+xlim(80-.0, 80+1) +
   ggtitle("平均寿命のF1による影響、男性")+theme_bw()
 
 
@@ -984,9 +988,9 @@ suppressMessages(library(rethinking))
 
 
 Bayes_fit_HLE_d_f<-
-rethinking::map(alist(HLE~dnorm(mu, sigma),mu~beta0+beta1*F1+beta2*F2,beta0~dnorm(80, 100),beta1~dnorm(0, 10),beta2~dnorm(0, 10),sigma ~ dunif(0, 50)),
-data=HLE_FF_d_f
-)
+  rethinking::map(alist(HLE~dnorm(mu, sigma),mu~beta0+beta1*F1+beta2*F2,beta0~dnorm(80, 100),beta1~dnorm(0, 10),beta2~dnorm(0, 10),sigma ~ dunif(0, 50)),
+                  data=HLE_FF_d_f
+  )
 
 ## ----warning=FALSE------------------------------
 precis(Bayes_fit_HLE_d_f)
@@ -1063,7 +1067,7 @@ ggsave(filename = paste0(path, file),aa_plot, family="Japan1")
 
 
 # insert start-----------------
-aa_plot<-aa %>% unnest(cols = ccdf) %>% ggplot(aes(x=x, y=ccdf, group=name, color=name))+geom_line()+xlim(86.8, 87.2) +
+aa_plot<-aa %>% unnest(cols = ccdf) %>% ggplot(aes(x=x, y=ccdf, group=name, color=name))+geom_line()+xlim(75-.3, 75+.3) +
   ggtitle("健康寿命のF2による影響、女性")+theme_bw()
 
 
@@ -1122,9 +1126,9 @@ suppressMessages(library(rethinking))
 
 
 Bayes_fit_HLE_d_m<-
-rethinking::map(alist(HLE~dnorm(mu, sigma),mu~beta0+beta1*F1+beta2*F2,beta0~dnorm(80, 100),beta1~dnorm(0, 10),beta2~dnorm(0, 10),sigma ~ dunif(0, 50)),
-data=HLE_FF_d_m
-)
+  rethinking::map(alist(HLE~dnorm(mu, sigma),mu~beta0+beta1*F1+beta2*F2,beta0~dnorm(80, 100),beta1~dnorm(0, 10),beta2~dnorm(0, 10),sigma ~ dunif(0, 50)),
+                  data=HLE_FF_d_m
+  )
 
 
 

@@ -325,7 +325,7 @@ sink(file = paste0(path, file))
 rownames(d_m_.FA$VAR.rotate)<-colnames(LE_d_m_final.reg$model[,-1] )
 d_m_.FA$VAR.rotate %>% data.frame() %>% rownames_to_column() %>%
   left_join(var, by=c("rowname"="var_name_Eng")) %>%
-  select(rowname,var_name_Jpn,X1,X2) %>% rename(F1=X1, F2=X2)
+  select(rowname,var_name_Jpn,X1,X2) %>% rename(F1=X1, F2=X2) %>%
     xtable(label = "FAm",
          caption = c("男性のFA")) %>%
   print(size = "\\tiny")
@@ -964,7 +964,7 @@ aa %>% unnest(cols = ccdf) %>% ggplot(aes(x=x, y=ccdf, group=name, color=name))+
 
 
 # insert start-----------------
-aa_plot<-aa %>% unnest(cols = ccdf) %>% ggplot(aes(x=x, y=ccdf, group=name, color=name))+geom_line()+xlim(86.8, 87.2) +
+aa_plot<-aa %>% unnest(cols = ccdf) %>% ggplot(aes(x=x, y=ccdf, group=name, color=name))+geom_line()+xlim(80-.0, 80+1) +
   ggtitle("平均寿命のF1による影響、男性")+theme_bw()
 
 
@@ -1063,7 +1063,7 @@ ggsave(filename = paste0(path, file),aa_plot, family="Japan1")
 
 
 # insert start-----------------
-aa_plot<-aa %>% unnest(cols = ccdf) %>% ggplot(aes(x=x, y=ccdf, group=name, color=name))+geom_line()+xlim(86.8, 87.2) +
+aa_plot<-aa %>% unnest(cols = ccdf) %>% ggplot(aes(x=x, y=ccdf, group=name, color=name))+geom_line()+xlim(75-.3, 75+.3) +
   ggtitle("健康寿命のF2による影響、女性")+theme_bw()
 
 
