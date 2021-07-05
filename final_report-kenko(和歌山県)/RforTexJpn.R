@@ -1,13 +1,10 @@
 
 ## ---- Pre material ------------------------------
-
-# # -----------------
-#  ____           __  __       _            _       _
 # |  _ \ _ __ ___|  \/  | __ _| |_ ___ _ __(_) __ _| |
 # | |_) | '__/ _ \ |\/| |/ _` | __/ _ \ '__| |/ _` | |
 # |  __/| | |  __/ |  | | (_| | ||  __/ |  | | (_| | |
 # |_|   |_|  \___|_|  |_|\__,_|\__\___|_|  |_|\__,_|_|
-# # -----------------
+## ---- Pre material ------------------------------
 # 使用package
 suppressMessages(library(readxl))
 suppressMessages(library(dplyr))
@@ -34,12 +31,10 @@ options(digits = 5)              # Modify global options
 # \___ \| | '_ \| |/ / |  _| \ \/ /
 #  ___) | | | | |   <  | |___ >  <
 # |____/|_|_| |_|_|\_\ |_____/_/\_\
-# -----------------
 # ref for Q and A
 # https://stackoverflow.com/questions/33994194/changing-the-font-size-of-table-using-print-xtable
 # print(xtable(results), only.contents=TRUE, include.rownames=F,        include.colnames=T, floating=F,       hline.after=NULL, size="\\fontsize{9pt}{10pt}\\selectfont",       file = '~/Dropbox/Paper/table.tex')
-
-
+## ----sink example  ------------------------------
 
 ## ----tex file sink example ------------------------------
 # table tex saving folder
@@ -56,13 +51,137 @@ xtable(iris[1:5, ], label = "tablelabel", caption = c(
 sink()
 
 
-# -----------------
+# # -----------------　total variable # -----------------
+#  _____     _        _  __     __    _           _     _
+# |_   _|__ | |_ __ _| | \ \   / /_ _(_)_ __ __ _| |__ | | ___
+#   | |/ _ \| __/ _` | |  \ \ / / _` | | '__/ _` | '_ \| |/ _ \
+#   | | (_) | || (_| | |   \ V / (_| | | | | (_| | |_) | |  __/
+#   |_|\___/ \__\__,_|_|    \_/ \__,_|_|_|  \__,_|_.__/|_|\___|
+# # -----------------　total variable # -----------------
+
+library(xtable)
+# table 変数リスト
+
+d_common1 <- d_common[, 7:104] %>% colnames() %>% enframe() %>% .[1:25, ] %>%
+  left_join(var, by=c("value"="var_name_Eng")) %>% select(id, var_name_Jpn)
+d_common2 <- d_common[, 7:104] %>% colnames() %>% enframe() %>% .[26:50, ]  %>%
+  left_join(var, by=c("value"="var_name_Eng")) %>% select(id, var_name_Jpn)
+d_common3 <- d_common[, 7:104] %>% colnames() %>% enframe() %>% .[51:75, ]  %>%
+  left_join(var, by=c("value"="var_name_Eng")) %>% select(id, var_name_Jpn)
+d_common4 <- d_common[, 7:104] %>% colnames() %>% enframe() %>% .[76:98, ] %>%
+  rbind(c(NA, NA), c(NA, NA)) %>%
+  left_join(var, by=c("value"="var_name_Eng")) %>% select(id, var_name_Jpn)
+
+bind_cols(d_common1, d_common2[-11,], d_common3, d_common4) %>% select(2,4,6,8)
+
+
+file="table_commom_d.tex"
+path="./final_report-kenko(和歌山県)/table/"
+
+sink(file = paste0(path, file))
+
+d_common1 <- d_common[, 7:104] %>% colnames() %>% enframe() %>% .[1:25, ] %>%
+  left_join(var, by=c("value"="var_name_Eng")) %>% select(id, var_name_Jpn)
+d_common2 <- d_common[, 7:104] %>% colnames() %>% enframe() %>% .[26:50, ]  %>%
+  left_join(var, by=c("value"="var_name_Eng")) %>% select(id, var_name_Jpn)
+d_common3 <- d_common[, 7:104] %>% colnames() %>% enframe() %>% .[51:75, ]  %>%
+  left_join(var, by=c("value"="var_name_Eng")) %>% select(id, var_name_Jpn)
+d_common4 <- d_common[, 7:104] %>% colnames() %>% enframe() %>% .[76:98, ] %>%
+  rbind(c(NA, NA), c(NA, NA)) %>%
+  left_join(var, by=c("value"="var_name_Eng")) %>% select(id, var_name_Jpn)
+
+bind_cols(d_common1, d_common2[-11,], d_common3, d_common4) %>% select(2,4,6,8) %>%
+  xtable(label = "table_commom_d.tex",
+         caption = c("変数名98個(common)"), digits=3) %>%
+   print(size = "\\tiny", caption.placement = "top")
+sink()
+
+system('
+cd "./final_report-kenko(和歌山県)/table/";
+sed -e "s/㎡/m$^2$/g" "table_commom_d.tex" > "table_commom_d1.tex";
+rm table_commom_d.tex;
+mv table_commom_d1.tex table_commom_d.tex;
+python3 ../../exex.py "table_commom_d.tex" "temp.tex";
+mv "temp.tex" "table_commom_d.tex"
+')
+rm(d_common1,d_common2,d_common3,d_common4)
+
+
+
+
+
+# # -----------------　Var MF # -----------------
+# __     ___    ____    __  __ _____
+# \ \   / / \  |  _ \  |  \/  |  ___|
+#  \ \ / / _ \ | |_) | | |\/| | |_
+#   \ V / ___ \|  _ <  | |  | |  _|
+#    \_/_/   \_\_| \_\ |_|  |_|_|
+# # -----------------　Var MF # -----------------
+
+library(xtable)
+# table 変数リスト
+
+d_mf
+
+d_mf1 <- d_mf[, 7:70] %>% colnames() %>% enframe() %>% .[1:25, ] %>%
+  left_join(var, by=c("value"="var_name_Eng")) %>% select(id,var_name_Jpn)
+d_mf2 <- d_mf[, 7:70] %>% colnames() %>% enframe() %>% .[26:50, ]  %>%
+  left_join(var, by=c("value"="var_name_Eng")) %>% select(id, var_name_Jpn)
+d_mf3 <- d_mf[, 7:70] %>% colnames() %>% enframe() %>% .[51:64, ] %>%
+  rbind(
+    c(NA, NA), c(NA, NA), c(NA, NA), c(NA, NA), c(NA, NA), c(NA, NA),
+    c(NA, NA), c(NA, NA), c(NA, NA), c(NA, NA), c(NA, NA)
+  ) %>%
+  left_join(var, by=c("value"="var_name_Eng")) %>% select(id, var_name_Jpn)
+
+bind_cols(d_mf1[-15,], d_mf2, d_mf3) %>% select(2,4,6)
+
+
+file="table_mf_d.tex"
+path="./final_report-kenko(和歌山県)/table/"
+
+sink(file = paste0(path, file))
+
+
+d_mf1 <- d_mf[, 7:70] %>% colnames() %>% enframe() %>% .[1:25, ] %>%
+  left_join(var, by=c("value"="var_name_Eng")) %>% select(id,var_name_Jpn)
+d_mf2 <- d_mf[, 7:70] %>% colnames() %>% enframe() %>% .[26:50, ]  %>%
+  left_join(var, by=c("value"="var_name_Eng")) %>% select(id, var_name_Jpn)
+d_mf3 <- d_mf[, 7:70] %>% colnames() %>% enframe() %>% .[51:64, ] %>%
+  rbind(
+    c(NA, NA), c(NA, NA), c(NA, NA), c(NA, NA), c(NA, NA), c(NA, NA),
+    c(NA, NA), c(NA, NA), c(NA, NA), c(NA, NA), c(NA, NA)
+  ) %>%
+  left_join(var, by=c("value"="var_name_Eng")) %>% select(id, var_name_Jpn)
+
+bind_cols(d_mf1[-15,], d_mf2, d_mf3) %>% select(2,4,6) %>%
+  xtable(label = "table_mf_d.tex",
+         caption = c("変数名64個(mf)"), digits=3) %>%
+   print(size = "\\tiny", caption.placement = "top")
+sink()
+
+system('
+cd "./final_report-kenko(和歌山県)/table/";
+sed -e "s/㎡/m$^2$/g" "table_mf_d.tex" > "table_mf_d1.tex";
+rm table_mf_d.tex;
+mv table_mf_d1.tex table_mf_d.tex;
+python3 ../../exex.py "table_mf_d.tex" "temp.tex";
+mv "temp.tex" "table_mf_d.tex"
+')
+
+rm(d_mf1,d_mf2,d_mf3)
+
+
+
+
+
+# ----------------- used var # -----------------
 #  _   _              _  __     ___    ____
 # | | | |___  ___  __| | \ \   / / \  |  _ \
 # | | | / __|/ _ \/ _` |  \ \ / / _ \ | |_) |
 # | |_| \__ \  __/ (_| |   \ V / ___ \|  _ <
 #  \___/|___/\___|\__,_|    \_/_/   \_\_| \_\
-# -----------------
+# ----------------- used var # -----------------
 
 
 f_var=LE_d_f_final %>% colnames() %>% tbl_df() %>% left_join(var, by=c("value"="var_name_Eng")) %>%
@@ -85,7 +204,7 @@ f_var %>%
   xtable(label = "UsedVariable",
          caption = c("$\\beta_0 X_1+\\beta_0 X_2$寿命",
                      "bbb")) %>%
-  print(size = "\\tiny")
+   print(size = "\\tiny", caption.placement = "top")
 sink()
 
 system('
@@ -105,18 +224,13 @@ LE_d_m_final %>% colnames() %>% tbl_df() %>% left_join(var, by=c("value"="var_na
 LE_d_m_final %>% colnames() %>% tbl_df() %>% left_join(var, by=c("value"="var_name_Eng")) %>%
   select(3)
 
-## ----warning=FALSE------------------------------
-
-# -----------------
-# Q1:Do the final regression and interprete : with 4 data
-# -----------------
-# ----------------- ----------------- ----------------- -----------------
+# ----------------- final LM # -----------------
 #  _____ _             _   _     __  __
 # |  ___(_)_ __   __ _| | | |   |  \/  |
 # | |_  | | '_ \ / _` | | | |   | |\/| |
 # |  _| | | | | | (_| | | | |___| |  | |
 # |_|   |_|_| |_|\__,_|_| |_____|_|  |_|
-# ----------------- ----------------- ----------------- -----------------
+# ----------------- final LM # -----------------
 
 
 # file="table_LM_HLE_mf.tex"
@@ -140,7 +254,7 @@ fit_with_X_lm_LE_d_f %>% broom::tidy() %>%
   select(var_name_Jpn, everything(), -term, -id,- address, -std.error, -columm_letter ) %>%
   xtable(label = "UsualLMLEf",
          caption = c("女性の線形回帰(平均寿命)")) %>%
-  print(size = "\\tiny")
+   print(size = "\\tiny", caption.placement = "top")
 sink()
 
 system('
@@ -175,7 +289,7 @@ fit_with_X_lm_LE_d_m %>% broom::tidy() %>%
   select(var_name_Jpn, everything(), -term, -id,- address, -std.error, -columm_letter ) %>%
   xtable(label = "UsualLMLEm",
          caption = c("男性の線形回帰(平均寿命)")) %>%
-  print(size = "\\tiny")
+   print(size = "\\tiny", caption.placement = "top")
 sink()
 
 
@@ -202,7 +316,7 @@ fit_with_X_lm_HLE_d_f %>% broom::tidy() %>%
   select(var_name_Jpn, everything(), -term, -id,- address, -std.error, -columm_letter ) %>%
   xtable(label = "UsualHLMLEf",
          caption = c("女性の線形回帰(健康寿命)")) %>%
-  print(size = "\\tiny")
+   print(size = "\\tiny", caption.placement = "top")
 sink()
 
 system('
@@ -235,7 +349,7 @@ fit_with_X_lm_HLE_d_m %>% broom::tidy() %>%
   select(var_name_Jpn, everything(), -term, -id,- address, -std.error, -columm_letter ) %>%
   xtable(label = "UsualHLMLEf",
          caption = c("男性の線形回帰(健康寿命)")) %>%
-  print(size = "\\tiny")
+   print(size = "\\tiny", caption.placement = "top")
 sink()
 # -----------------# -----------------
 
@@ -245,13 +359,14 @@ sink()
 # -----------------
 # -----------------
 # -----------------
-# -----------------
+# ----------------- FA # -----------------
 # _____ _
 # |  ___/ \
 # | |_ / _ \
 # |  _/ ___ \
 # |_|/_/   \_\
 # -----------------
+# ----------------- FA # -----------------
 # -----------------
 # -----------------
 # -----------------
@@ -279,7 +394,7 @@ d_f_.FA$VAR.rotate %>% data.frame() %>% rownames_to_column() %>%
   select(var_name_Jpn,X1,X2) %>% rename(F1=X1, F2=X2) %>%
   xtable(label = "FAf",
          caption = c("女性のFA")) %>%
-  print(size = "\\tiny")
+   print(size = "\\tiny", caption.placement = "top")
 sink()
 # -----------------# -----------------
 
@@ -330,7 +445,7 @@ d_m_.FA$VAR.rotate %>% data.frame() %>% rownames_to_column() %>%
   select(var_name_Jpn,X1,X2) %>% rename(F1=X1, F2=X2) %>%
   xtable(label = "FAm",
          caption = c("男性のFA")) %>%
-  print(size = "\\tiny")
+   print(size = "\\tiny", caption.placement = "top")
 sink()
 # -----------------# -----------------
 
@@ -368,7 +483,7 @@ sink(file = paste0(path, file))
 fit_with_FA_lm_LE_d_f %>% broom::tidy() %>%
   xtable(label = "tableLMLEFAf",
          caption = c("女性の回帰withFA(平均寿命)")) %>%
-  print(size = "\\tiny")
+   print(size = "\\tiny", caption.placement = "top")
 sink()
 # -----------------# -----------------
 
@@ -389,7 +504,7 @@ sink(file = paste0(path, file))
 fit_with_FA_lm_LE_d_m %>% broom::tidy() %>%
   xtable(label = "tableLMLEFAm",
          caption = c("男性の回帰withFA(平均寿命)")) %>%
-  print(size = "\\tiny")
+   print(size = "\\tiny", caption.placement = "top")
 sink()
 # -----------------# -----------------
 
@@ -411,7 +526,7 @@ sink(file = paste0(path, file))
 fit_with_FA_lm_HLE_d_f %>% broom::tidy() %>%
   xtable(label = "tableLMHLEFAf",
          caption = c("女性の回帰withFA(健康寿命)")) %>%
-  print(size = "\\tiny")
+   print(size = "\\tiny", caption.placement = "top")
 sink()
 # -----------------# -----------------
 
@@ -432,7 +547,7 @@ sink(file = paste0(path, file))
 fit_with_FA_lm_HLE_d_m %>% broom::tidy() %>%
   xtable(label = "tableLMHLEFAm",
          caption = c("男性の回帰withFA(健康寿命)")) %>%
-  print(size = "\\tiny")
+   print(size = "\\tiny", caption.placement = "top")
 sink()
 # -----------------# -----------------
 
@@ -479,7 +594,7 @@ sink(file = paste0(path, file))
 fit_with_FA_gamma_LE_d_f %>% broom::tidy() %>% mutate_if(is.numeric, round, 5) %>%
   xtable(label = "table_Gamma_LE_FA_f",
          caption = c("女性の一般化線形モデルwithFA(平均寿命)"), digits=3) %>%
-  print(size = "\\tiny")
+   print(size = "\\tiny", caption.placement = "top")
 sink()
 # -----------------# -----------------
 
@@ -508,7 +623,7 @@ sink(file = paste0(path, file))
 fit_with_FA_gamma_LE_d_m %>% broom::tidy() %>% mutate_if(is.numeric, round, 5) %>%
   xtable(label = "table_Gamma_LE_FA_m",
          caption = c("男性の一般化線形モデルwithFA(平均寿命)"), digits=3) %>%
-  print(size = "\\tiny")
+   print(size = "\\tiny", caption.placement = "top")
 sink()
 # -----------------# -----------------
 
@@ -538,7 +653,7 @@ sink(file = paste0(path, file))
 fit_with_FA_gamma_HLE_d_f %>% broom::tidy() %>% mutate_if(is.numeric, round, 5) %>%
   xtable(label = "table_Gamma_HLE_FA_f",
          caption = c("女性の一般化線形モデルwithFA(健康寿命)"), digits=3) %>%
-  print(size = "\\tiny")
+   print(size = "\\tiny", caption.placement = "top")
 sink()
 # -----------------# -----------------
 
@@ -567,7 +682,7 @@ sink(file = paste0(path, file))
 fit_with_FA_gamma_HLE_d_m %>% broom::tidy() %>% mutate_if(is.numeric, round, 5) %>%
   xtable(label = "table_Gamma_HLE_FA_m",
          caption = c("男性の一般化線形モデルwithFA(健康寿命)"), digits=3) %>%
-  print(size = "\\tiny")
+   print(size = "\\tiny", caption.placement = "top")
 sink()
 # -----------------# -----------------
 
@@ -620,7 +735,7 @@ sink(file = paste0(path, file))
 fit_with_FA_logit_LE_d_f %>% broom::tidy() %>% mutate_if(is.numeric, round, 5) %>%
   xtable(label = "table_Gamma_HLE_FA_m",
          caption = c("女性の一般化線形モデル(logit)withFA(平均寿命)"), digits=3) %>%
-  print(size = "\\tiny")
+   print(size = "\\tiny", caption.placement = "top")
 sink()
 # -----------------# -----------------
 
@@ -642,7 +757,7 @@ sink(file = paste0(path, file))
 fit_with_FA_logit_LE_d_m %>% broom::tidy() %>% mutate_if(is.numeric, round, 5) %>%
   xtable(label = "table_Gamma_HLE_FA_m",
          caption = c("男性の一般化線形モデル(logit)withFA(平均寿命)"), digits=3) %>%
-  print(size = "\\tiny")
+   print(size = "\\tiny", caption.placement = "top")
 sink()
 # -----------------# -----------------
 
@@ -663,7 +778,7 @@ sink(file = paste0(path, file))
 fit_with_FA_logit_HLE_d_f %>% broom::tidy() %>% mutate_if(is.numeric, round, 5) %>%
   xtable(label = "table_Gamma_HLE_FA_f",
          caption = c("女性の一般化線形モデル(logit)withFA(健康寿命)"), digits=3) %>%
-  print(size = "\\tiny")
+   print(size = "\\tiny", caption.placement = "top")
 sink()
 # -----------------# -----------------
 
@@ -686,7 +801,7 @@ sink(file = paste0(path, file))
 fit_with_FA_logit_HLE_d_m %>% broom::tidy() %>% mutate_if(is.numeric, round, 5) %>%
   xtable(label = "table_Gamma_HLE_FA_m",
          caption = c("男性の一般化線形モデル(logit)withFA(健康寿命)"), digits=3) %>%
-  print(size = "\\tiny")
+   print(size = "\\tiny", caption.placement = "top")
 sink()
 # -----------------# -----------------
 
@@ -739,7 +854,7 @@ sink(file = paste0(path, file))
 precis(Bayes_fit_LE_d_f) %>% as.matrix() %>% as.data.frame() %>%
   xtable(label = "table_Gamma_HLE_FA_m",
          caption = c("女性のBayes(平均寿命)"), digits=3) %>%
-  print(size = "\\tiny")
+   print(size = "\\tiny", caption.placement = "top")
 sink()
 # -----------------# -----------------
 
@@ -877,7 +992,7 @@ sink(file = paste0(path, file))
 precis(Bayes_fit_LE_d_m) %>% as.matrix() %>% as.data.frame() %>%
   xtable(label = "table_Gamma_HLE_FA_m",
          caption = c("男性のBayes(平均寿命)"), digits=3) %>%
-  print(size = "\\tiny")
+   print(size = "\\tiny", caption.placement = "top")
 sink()
 # -----------------# -----------------
 
@@ -1008,7 +1123,7 @@ sink(file = paste0(path, file))
 precis(Bayes_fit_HLE_d_f) %>% as.matrix() %>% as.data.frame() %>%
   xtable(label = "table_Gamma_HLE_FA_m",
          caption = c("女性のBayes(健康寿命)"), digits=3) %>%
-  print(size = "\\tiny")
+   print(size = "\\tiny", caption.placement = "top")
 sink()
 # -----------------# -----------------
 
@@ -1149,7 +1264,7 @@ sink(file = paste0(path, file))
 precis(Bayes_fit_HLE_d_m) %>% as.matrix() %>% as.data.frame() %>%
   xtable(label = "table_Gamma_HLE_FA_m",
          caption = c("男性のBayes(健康寿命)"), digits=3) %>%
-  print(size = "\\tiny")
+   print(size = "\\tiny", caption.placement = "top")
 sink()
 # -----------------# -----------------
 
