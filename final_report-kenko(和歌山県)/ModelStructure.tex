@@ -5,11 +5,14 @@
 %\usetikzlibrary{positioning}
 %\begin{document}
 
+\begin{center}
+\begin{adjustbox}{width=.5\textwidth}
 \tikzset{%
   every neuron/.style={
-    circle,
+    rectangle,
     draw,
-    minimum size=1cm
+    minimum size=1cm,
+    minimum width=3cm
   },
   neuron missing/.style={
     draw=none,
@@ -19,13 +22,18 @@
   },
 }
 
-\begin{tikzpicture}[x=1.5cm, y=1.5cm, >=stealth]
 
-\foreach \m/\l [count=\y] in {1,2,3,missing,4}
+%\begin{center}
+
+
+\begin{tikzpicture}[x=2cm, y=1.5cm, >=stealth]
+
+% \foreach \m/\l [count=\y] in {1,2,3,missing,4} % <-original
+\foreach \m/\l [count=\y] in {1,2,3,4}
   \node [every neuron/.try, neuron \m/.try] (input-\m) at (0,2.5-\y) {};
 
-\foreach \m [count=\y] in {1,missing,2}
-  \node [every neuron/.try, neuron \m/.try ] (hidden-\m) at (2,2-\y*1.25) {};
+\foreach \m [count=\y] in {1}
+  \node [every neuron/.try, neuron \m/.try ] (hidden-\m) at (3,2-\y*2) {};
 %
 % \foreach \m [count=\y] in {1,missing,2}
 %   \node [every neuron/.try, neuron \m/.try ] (output-\m) at (4,1.5-\y) {};
@@ -37,31 +45,41 @@
 
 % node for x1...xp :: by jc lee
 % to above in the circle use : \node [above]
-\foreach \l [count=\i] in {1,2,3,p}
-  \node [] at (input-\i) {$X_\l$};
+\foreach \l [count=\i] in {女性の平均,男性の平均,女性の健康,男性の健康}
+  \node [] at (input-\i) {\l 寿命};
 
 % node for F1,F2 :: by jc lee
-\foreach \l [count=\i] in {1,m}
-  % \node [above] at (hidden-\i.north) {$F_\l$};
-  \node [] at (hidden-\i) {$F_\l$};
+\foreach \l [count=\i] in {1}
+  \node [] at (hidden-\i) {$X_1, \cdots, X_{162}$};
 %
 % \foreach \l [count=\i] in {1,n}
 %   \draw [->] (output-\i) -- ++(1,0)
 %     node [above, midway] {$O_\l$};
 
-\foreach \i in {1,...,4}
-  \foreach \j in {1,...,2}
+% \foreach \i in {1,...,4}
+%   \foreach \j in {1,...,2}
+%     \draw [<-] (input-\i) -- (hidden-\j);
+
+\foreach \i in {1,2,3,4}
+  \foreach \j in {1}
     \draw [<-] (input-\i) -- (hidden-\j);
+
 %
+% \foreach \i in {2}
+%   \foreach \j in {2}
+%     \draw [<-] (input-\i) -- (hidden-\j);
+
+
 % \foreach \i in {1,...,2}
 %   \foreach \j in {1,...,2}
 %     \draw [->] (hidden-\i) -- (output-\j);
 
-\foreach \l [count=\x from 0] in {観測変数}
+\foreach \l [count=\x from 0] in {目的変数}
   \node [align=center, above] at (\x*2,2) {\l \\ 結果};
 
-\foreach \l [count=\x from 1] in {観測変数}
-  \node [align=center, above] at (\x*2,2) {\l \\ 原因};
+\foreach \l [count=\x from 1] in {説明変数}
+  \node [align=center, above] at (1+\x*2,2) {\l \\ 原因};
+
 
 % === following is original comment add by jc lee===
 % \foreach \l [count=\x from 0] in {観測変数, 共通因子}
@@ -69,5 +87,7 @@
 % === following is original comment add by jc lee end ===
 
 \end{tikzpicture}
-
+%\end{center}
 %\end{document}
+\end{adjustbox}
+\end{center}

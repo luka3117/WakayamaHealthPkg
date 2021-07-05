@@ -1,15 +1,23 @@
-\contentsline {chapter}{\numberline {第1章}はじめに}{2}%
-\contentsline {chapter}{\numberline {第2章}データ}{3}%
-\contentsline {chapter}{\numberline {第3章}方法}{4}%
-\contentsline {chapter}{\numberline {第4章}結果}{5}%
-\contentsline {section}{\numberline {4.1}分析に用いる説明変数}{5}%
-\contentsline {section}{\numberline {4.2}線形回帰モデルからの探索}{5}%
-\contentsline {section}{\numberline {4.3}因子分析}{5}%
-\contentsline {section}{\numberline {4.4}線形回帰分析}{8}%
-\contentsline {section}{\numberline {4.5}一般化線形モデル: Gamma dist}{8}%
-\contentsline {section}{\numberline {4.6}一般化線形モデル: logit model}{8}%
-\contentsline {section}{\numberline {4.7}ベイズ推定}{8}%
-\contentsline {section}{\numberline {4.8}aaa}{9}%
-\contentsline {chapter}{\numberline {第5章}4 　考察（Discussion）}{12}%
+\contentsline {chapter}{\numberline {第1章}はじめに}{2}{chapter.1}%
+\contentsline {chapter}{\numberline {第2章}本事業の概要}{3}{chapter.2}%
+\contentsline {section}{\numberline {2.1}背景}{3}{section.2.1}%
+\contentsline {section}{\numberline {2.2}目的}{3}{section.2.2}%
+\contentsline {section}{\numberline {2.3}実施期間}{3}{section.2.3}%
+\contentsline {section}{\numberline {2.4}データ}{3}{section.2.4}%
+\contentsline {section}{\numberline {2.5}方法}{3}{section.2.5}%
+\contentsline {section}{\numberline {2.6}期待効果}{3}{section.2.6}%
+\contentsline {chapter}{\numberline {第3章}データと変数}{4}{chapter.3}%
+\contentsline {chapter}{\numberline {第4章}変数選択と次元縮約}{5}{chapter.4}%
+\contentsline {section}{\numberline {4.1}分析に用いる説明変数}{5}{section.4.1}%
+\contentsline {section}{\numberline {4.2}線形回帰モデルからの探索}{5}{section.4.2}%
+\contentsline {chapter}{\numberline {第5章}因子分析による次元縮約}{6}{chapter.5}%
+\contentsline {chapter}{\numberline {第6章}方法}{9}{chapter.6}%
+\contentsline {chapter}{\numberline {第7章}結果}{10}{chapter.7}%
+\contentsline {section}{\numberline {7.1}線形回帰分析}{10}{section.7.1}%
+\contentsline {section}{\numberline {7.2}一般化線形モデル: Gamma dist}{10}{section.7.2}%
+\contentsline {section}{\numberline {7.3}一般化線形モデル: logit model}{10}{section.7.3}%
+\contentsline {section}{\numberline {7.4}ベイズ推定}{10}{section.7.4}%
+\contentsline {section}{\numberline {7.5}aaa}{11}{section.7.5}%
+\contentsline {chapter}{\numberline {第8章}4 　考察（Discussion）}{13}{chapter.8}%
 \contentsfinish 
-\contentsline {chapter}{\numberline {第6章}about glm}{13}%
+\contentsline {chapter}{\numberline {第9章}about glm}{14}{chapter.9}%

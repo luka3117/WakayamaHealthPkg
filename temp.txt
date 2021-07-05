@@ -1,0 +1,143 @@
+.
+├── ClassData
+│   ├── Doshisha
+│   ├── KyotoEDU
+│   ├── README.md
+│   ├── Someday1.mid
+│   ├── Wakayama
+│   ├── eternal_sailor_moon_theme_2.mid
+│   ├── jcommit.py
+│   └── jweb.py
+├── DESCRIPTION
+├── FA_PCA
+│   ├── WakayamaFA
+│   └── WakayamaPCA
+├── JcSearch.py
+├── NAMESPACE
+├── R
+│   ├── R3ProjRcode.R
+│   ├── R3ProjRcode_mid_report.R
+│   ├── RethinkingLE_EX.R
+│   ├── RethinkingLE_EX.html
+│   ├── RethinkingRegEX.R
+│   ├── complementary_CDF.R
+│   └── complementary_CDF.html
+├── R GLMM code(utf-8)
+│   ├── Pro.Rproj
+│   ├── chapter 10
+│   ├── chapter 11
+│   ├── chapter 2
+│   ├── chapter 3
+│   ├── chapter 4
+│   ├── chapter 5
+│   ├── chapter 6
+│   ├── chapter 7
+│   ├── chapter 8
+│   └── chapter 9
+├── ReThinking
+│   ├── ReThinking-Ch3.R
+│   ├── ReThinking.R
+│   └── ReThinkingCh4-.R
+├── ScreenEnd.RData
+├── Wakayama.R
+├── WakayamaData.Rmd
+├── WakayamaData.html
+├── ZezeHtml.Rmd
+├── aa.tex
+├── aa.txt
+├── aaa.csv
+├── aaaa.Rmd
+├── aaaa.html
+├── city code.txt
+├── d_common_var_name.csv
+├── data
+│   ├── DataFormat-32021年3月11日受領
+│   ├── data1.xlsx
+│   └── misc
+├── exex.py
+├── fig
+│   ├── Bayes_LE_M_F2.pdf
+│   ├── wakayama_HLE_F.pdf
+│   ├── wakayama_HLE_F.xbb
+│   ├── wakayama_HLE_M.pdf
+│   ├── wakayama_HLE_M.xbb
+│   ├── wakayama_LE_F.pdf
+│   ├── wakayama_LE_F.xbb
+│   ├── wakayama_LE_M.pdf
+│   └── wakayama_LE_M.xbb
+├── final_report-kenko(和歌山県)
+│   ├── 20210409 滋賀大学 協議　議題予定表
+│   ├── 20210622 最終報告へ向けての議題.docx
+│   ├── FAdiagram.tex
+│   ├── Report_MATERIAL_FAetc.txt
+│   ├── RforTex.R
+│   ├── RforTexJpn.R
+│   ├── ScreenEnd.RData
+│   ├── aa.txt
+│   ├── contentsForm.txt
+│   ├── fig
+│   ├── ref lists
+│   ├── report_kenko._wakayama.aux
+│   ├── report_kenko._wakayama.log
+│   ├── report_kenko._wakayama.pdf
+│   ├── report_kenko._wakayama.synctex.gz
+│   ├── report_kenko._wakayama.tex
+│   ├── report_kenko._wakayama.toc
+│   ├── report_kenko._wakayama_final.aux
+│   ├── report_kenko._wakayama_final.log
+│   ├── report_kenko._wakayama_final.pdf
+│   ├── report_kenko._wakayama_final.synctex.gz
+│   ├── report_kenko._wakayama_final.tex
+│   ├── report_kenko._wakayama_final.toc
+│   ├── report_kenko._wakayama_mid.aux
+│   ├── report_kenko._wakayama_mid.log
+│   ├── report_kenko._wakayama_mid.pdf
+│   ├── report_kenko._wakayama_mid.synctex.gz
+│   ├── report_kenko._wakayama_mid.tex
+│   ├── report_kenko._wakayama_mid.toc
+│   ├── report_kenko._wakayamaのコピー.pdf
+│   ├── style
+│   ├── sub
+│   ├── table
+│   ├── xtableGallery.pdf
+│   └── 出典リンク.html
+├── final_report_rmd
+│   ├── GLMM.pdf
+│   ├── WakayamaHtml_final_report.Rmd
+│   ├── WakayamaHtml_final_report.html
+│   ├── WakayamaHtml_final_report_for_Print.Rmd
+│   ├── WakayamaHtml_final_report_for_Print.html
+│   ├── ref.Rmd
+│   └── ref1.Rmd
+├── final_report_slide
+│   ├── mid_prentation.R
+│   ├── mid_prentation.Rmd
+│   ├── mid_prentation.html
+│   ├── mid_prentation.txt
+│   └── mid_report_tex.R
+├── jcommit.py
+├── jweb.py
+├── kkk.txt
+├── man
+│   ├── city.code.Rd
+│   └── d.Rd
+├── pkg on gooing.r
+├── report.Rmd
+├── report.md
+├── table_commom_d.tex
+├── temp.tex
+├── temp.txt
+├── wakayama.Rproj
+├── z_misc
+│   ├── slide
+│   ├── trend
+│   └── wakayama_trend.csv
+├── 予算.numbers
+├── 変数リスト.R
+├── 変数リスト.txt
+└── 健康寿命延伸PT第1回会議_資料
+    ├── （資料1）出席者名簿.pdf
+    ├── 健康寿命延伸PT第1回会議_資料
+    └── 健康寿命　別紙用（第一回PT会議配布資料）
+
+40 directories, 100 files

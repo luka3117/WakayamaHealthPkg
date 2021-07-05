@@ -92,7 +92,7 @@ d_common4 <- d_common[, 7:104] %>% colnames() %>% enframe() %>% .[76:98, ] %>%
 
 bind_cols(d_common1, d_common2[-11,], d_common3, d_common4) %>% select(2,4,6,8) %>%
   xtable(label = "table_commom_d.tex",
-         caption = c("変数名98個(common)"), digits=3) %>%
+         caption = c("共通変数(98個)"), digits=3) %>%
    print(size = "\\tiny", caption.placement = "top")
 sink()
 
@@ -156,7 +156,7 @@ d_mf3 <- d_mf[, 7:70] %>% colnames() %>% enframe() %>% .[51:64, ] %>%
 
 bind_cols(d_mf1[-15,], d_mf2, d_mf3) %>% select(2,4,6) %>%
   xtable(label = "table_mf_d.tex",
-         caption = c("変数名64個(mf)"), digits=3) %>%
+         caption = c("性別変数(64個)"), digits=3) %>%
    print(size = "\\tiny", caption.placement = "top")
 sink()
 
@@ -202,8 +202,7 @@ sink(file = paste0(path, file))
 f_var %>%
   bind_cols(m_var) %>%
   xtable(label = "UsedVariable",
-         caption = c("$\\beta_0 X_1+\\beta_0 X_2$寿命",
-                     "bbb")) %>%
+         caption = c("変数選択後の変数")) %>%
    print(size = "\\tiny", caption.placement = "top")
 sink()
 
@@ -211,7 +210,9 @@ system('
 cd "./final_report-kenko(和歌山県)/table/";
 sed -e "s/㎡/m$^2$/g" "UsedVar.tex" > "UsedVar1.tex";
 rm UsedVar.tex;
-mv UsedVar1.tex UsedVar.tex
+mv UsedVar1.tex UsedVar.tex;
+python3 ../../exex.py "UsedVar.tex" "temp.tex";
+mv "temp.tex" "UsedVar.tex"
 ')
 
 
@@ -233,8 +234,8 @@ LE_d_m_final %>% colnames() %>% tbl_df() %>% left_join(var, by=c("value"="var_na
 # ----------------- final LM # -----------------
 
 
-# file="table_LM_HLE_mf.tex"
 
+# -----------------　fit_with_X_lm_LE_d_f # -----------------
 
 fit_with_X_lm_LE_d_f<-lm(LE_2015~. , data = LE_d_f_final)
 
@@ -261,13 +262,15 @@ system('
 cd "./final_report-kenko(和歌山県)/table/";
 sed -e "s/㎡/m$^2$/g" "table_LM_LE_f.tex" > "table_LM_LE_f1.tex";
 rm table_LM_LE_f.tex;
-mv table_LM_LE_f1.tex table_LM_LE_f.tex
+mv table_LM_LE_f1.tex table_LM_LE_f.tex;
+python3 ../../exex.py "table_LM_LE_f.tex" "temp.tex";
+mv "temp.tex" "table_LM_LE_f.tex"
 ')
 
 
 
 
-## ----warning=FALSE------------------------------
+# -----------------　fit_with_X_lm_LE_d_m # -----------------
 
 
 fit_with_X_lm_LE_d_m<-lm(LE_2015~. , data = LE_d_m_final)
@@ -293,9 +296,7 @@ fit_with_X_lm_LE_d_m %>% broom::tidy() %>%
 sink()
 
 
-## ----warning=FALSE------------------------------
-
-
+# -----------------　fit_with_X_lm_HLE_d_f # -----------------
 
 fit_with_X_lm_HLE_d_f <- lm(HLE_2016 ~ . , data = HLE_d_f_final)
 
@@ -327,8 +328,7 @@ mv table_LM_HLE_f1.tex table_LM_HLE_f.tex
 ')
 
 
-## ----warning=FALSE------------------------------
-
+# -----------------　fit_with_X_lm_HLE_d_m # -----------------
 
 fit_with_X_lm_HLE_d_m<-lm(HLE_2016~. , data = HLE_d_m_final)
 
@@ -338,7 +338,6 @@ lm(HLE_2016~. , data = HLE_d_m_final) %>%
   select(term, var_name_Jpn, everything(), -id,- address, -std.error, -columm_letter ) %>% DT::datatable() %>% DT::formatRound(columns=c('estimate', 'statistic', "p.value"), digits=3)
 
 
-# -----------------# -----------------
 # table tex file name
 file="table_LM_HLE_m.tex"
 # path="./final_report-kenko(和歌山県)/table/"
@@ -351,28 +350,17 @@ fit_with_X_lm_HLE_d_m %>% broom::tidy() %>%
          caption = c("男性の線形回帰(健康寿命)")) %>%
    print(size = "\\tiny", caption.placement = "top")
 sink()
-# -----------------# -----------------
 
-
-
-# -----------------
-# -----------------
-# -----------------
-# -----------------
 # ----------------- FA # -----------------
 # _____ _
 # |  ___/ \
 # | |_ / _ \
 # |  _/ ___ \
 # |_|/_/   \_\
-# -----------------
 # ----------------- FA # -----------------
-# -----------------
-# -----------------
-# -----------------
 
 
-## ----warning=FALSE------------------------------
+# -----------------　d_f_.FA # -----------------
 LE_d_f_final.reg<-lm(LE_2015~. , data = LE_d_f_final)
 d_f_.FA<-LE_d_f_final.reg$model[,-1] %>% zemi::JcFA()
 rownames(d_f_.FA$VAR.rotate)<-colnames(LE_d_f_final.reg$model[,-1] )
@@ -381,7 +369,11 @@ d_f_.FA$VAR.rotate %>% data.frame() %>% rownames_to_column() %>%
   select(rowname,var_name_Jpn,X1,X2) %>% rename(F1=X1, F2=X2) %>%
   DT::datatable() %>% DT::formatRound(columns=c('F1', 'F2'), digits=3)
 
-# -----------------# -----------------
+d_f_.FA$OBS.rotate %>% as.data.frame() %>% tbl_df() %>%
+  rename(F1=V1, F2=V2) %>%
+  mutate(pref.J=d_common$pref.J)%>% select(pref.J, everything()) %>%
+  DT::datatable() %>% DT::formatRound(columns=c('F1', 'F2'), digits=3)
+
 # table tex file name
 file="table_FA_f.tex"
 # path="./final_report-kenko(和歌山県)/table/"
@@ -396,8 +388,6 @@ d_f_.FA$VAR.rotate %>% data.frame() %>% rownames_to_column() %>%
          caption = c("女性のFA")) %>%
    print(size = "\\tiny", caption.placement = "top")
 sink()
-# -----------------# -----------------
-
 
 system('
 cd "./final_report-kenko(和歌山県)/table/";
@@ -407,14 +397,8 @@ mv table_FA_f1.tex table_FA_f.tex
 ')
 
 
-## ----warning=FALSE------------------------------
-d_f_.FA$OBS.rotate %>% as.data.frame() %>% tbl_df() %>%
-  rename(F1=V1, F2=V2) %>%
-  mutate(pref.J=d_common$pref.J)%>% select(pref.J, everything()) %>%
-  DT::datatable() %>% DT::formatRound(columns=c('F1', 'F2'), digits=3)
 
-
-## ----warning=FALSE------------------------------
+# -----------------　d_m_.FA # -----------------
 LE_d_m_final.reg<-lm(LE_2015~. , data = LE_d_m_final)
 d_m_.FA<-LE_d_m_final.reg$model[,-1] %>% zemi::JcFA()
 rownames(d_m_.FA$VAR.rotate)<-colnames(LE_d_m_final.reg$model[,-1] )
@@ -424,15 +408,12 @@ d_m_.FA$VAR.rotate %>% data.frame() %>% rownames_to_column() %>%
   DT::datatable() %>% DT::formatRound(columns=c('F1', 'F2'), digits=3)
 
 
-## ----warning=FALSE------------------------------
 d_m_.FA$OBS.rotate %>% as.data.frame() %>% tbl_df() %>%
   rename(F1=V1, F2=V2) %>%
   mutate(pref.J=d_common$pref.J)%>% select(pref.J, everything()) %>%
   DT::datatable() %>% DT::formatRound(columns=c('F1', 'F2'), digits=3)
 
 
-
-# -----------------# -----------------
 # table tex file name
 file="table_FA_m.tex"
 # path="./final_report-kenko(和歌山県)/table/"

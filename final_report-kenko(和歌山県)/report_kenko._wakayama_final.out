@@ -1,0 +1,22 @@
+\BOOKMARK [0][-]{chapter.1}{はじめに}{}% 1
+\BOOKMARK [0][-]{chapter.2}{本事業の概要}{}% 2
+\BOOKMARK [1][-]{section.2.1}{背景}{chapter.2}% 3
+\BOOKMARK [1][-]{section.2.2}{目的}{chapter.2}% 4
+\BOOKMARK [1][-]{section.2.3}{実施期間}{chapter.2}% 5
+\BOOKMARK [1][-]{section.2.4}{データ}{chapter.2}% 6
+\BOOKMARK [1][-]{section.2.5}{方法}{chapter.2}% 7
+\BOOKMARK [1][-]{section.2.6}{期待効果}{chapter.2}% 8
+\BOOKMARK [0][-]{chapter.3}{データと変数}{}% 9
+\BOOKMARK [0][-]{chapter.4}{変数選択と次元縮約}{}% 10
+\BOOKMARK [1][-]{section.4.1}{分析に用いる説明変数}{chapter.4}% 11
+\BOOKMARK [1][-]{section.4.2}{線形回帰モデルからの探索}{chapter.4}% 12
+\BOOKMARK [0][-]{chapter.5}{因子分析による次元縮約}{}% 13
+\BOOKMARK [0][-]{chapter.6}{方法}{}% 14
+\BOOKMARK [0][-]{chapter.7}{結果}{}% 15
+\BOOKMARK [1][-]{section.7.1}{線形回帰分析}{chapter.7}% 16
+\BOOKMARK [1][-]{section.7.2}{一般化線形モデル: Gamma dist}{chapter.7}% 17
+\BOOKMARK [1][-]{section.7.3}{一般化線形モデル: logit model}{chapter.7}% 18
+\BOOKMARK [1][-]{section.7.4}{ベイズ推定}{chapter.7}% 19
+\BOOKMARK [1][-]{section.7.5}{aaa}{chapter.7}% 20
+\BOOKMARK [0][-]{chapter.8}{4 　考察（Discussion）}{}% 21
+\BOOKMARK [0][-]{chapter.9}{about glm}{}% 22
