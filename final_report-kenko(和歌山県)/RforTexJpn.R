@@ -123,18 +123,18 @@ library(xtable)
 
 d_mf
 
-d_mf1 <- d_mf[, 7:70] %>% colnames() %>% enframe() %>% .[1:25, ] %>%
+d_mf1 <- d_mf[, 7:70] %>% .[, -c(3, 4)] %>% colnames() %>% enframe() %>% .[1:25, ] %>%
   left_join(var, by=c("value"="var_name_Eng")) %>% select(id,var_name_Jpn)
-d_mf2 <- d_mf[, 7:70] %>% colnames() %>% enframe() %>% .[26:50, ]  %>%
+d_mf2 <- d_mf[, 7:70] %>% .[, -c(3, 4)] %>% colnames() %>% enframe() %>% .[26:50, ]  %>%
   left_join(var, by=c("value"="var_name_Eng")) %>% select(id, var_name_Jpn)
-d_mf3 <- d_mf[, 7:70] %>% colnames() %>% enframe() %>% .[51:64, ] %>%
+d_mf3 <- d_mf[, 7:70] %>% .[, -c(3, 4)] %>% colnames() %>% enframe() %>% .[51:62, ] %>%
   rbind(
     c(NA, NA), c(NA, NA), c(NA, NA), c(NA, NA), c(NA, NA), c(NA, NA),
-    c(NA, NA), c(NA, NA), c(NA, NA), c(NA, NA), c(NA, NA)
+    c(NA, NA), c(NA, NA), c(NA, NA), c(NA, NA), c(NA, NA), c(NA, NA), c(NA, NA)
   ) %>%
   left_join(var, by=c("value"="var_name_Eng")) %>% select(id, var_name_Jpn)
 
-bind_cols(d_mf1[-15,], d_mf2, d_mf3) %>% select(2,4,6)
+bind_cols(d_mf1[-13,], d_mf2, d_mf3) %>% select(2,4,6)
 
 
 file="table_mf_d.tex"
@@ -143,18 +143,18 @@ path="./final_report-kenko(和歌山県)/table/"
 sink(file = paste0(path, file))
 
 
-d_mf1 <- d_mf[, 7:70] %>% colnames() %>% enframe() %>% .[1:25, ] %>%
+d_mf1 <- d_mf[, 7:70] %>% .[, -c(3, 4)] %>% colnames() %>% enframe() %>% .[1:25, ] %>%
   left_join(var, by=c("value"="var_name_Eng")) %>% select(id,var_name_Jpn)
-d_mf2 <- d_mf[, 7:70] %>% colnames() %>% enframe() %>% .[26:50, ]  %>%
+d_mf2 <- d_mf[, 7:70] %>% .[, -c(3, 4)] %>% colnames() %>% enframe() %>% .[26:50, ]  %>%
   left_join(var, by=c("value"="var_name_Eng")) %>% select(id, var_name_Jpn)
-d_mf3 <- d_mf[, 7:70] %>% colnames() %>% enframe() %>% .[51:64, ] %>%
+d_mf3 <- d_mf[, 7:70] %>% .[, -c(3, 4)] %>% colnames() %>% enframe() %>% .[51:62, ] %>%
   rbind(
     c(NA, NA), c(NA, NA), c(NA, NA), c(NA, NA), c(NA, NA), c(NA, NA),
-    c(NA, NA), c(NA, NA), c(NA, NA), c(NA, NA), c(NA, NA)
+    c(NA, NA), c(NA, NA), c(NA, NA), c(NA, NA), c(NA, NA), c(NA, NA), c(NA, NA)
   ) %>%
   left_join(var, by=c("value"="var_name_Eng")) %>% select(id, var_name_Jpn)
 
-bind_cols(d_mf1[-15,], d_mf2, d_mf3) %>% select(2,4,6) %>%
+bind_cols(d_mf1[-13,], d_mf2, d_mf3) %>% select(2,4,6) %>%
   xtable(label = "table_mf_d.tex",
          caption = c("性別変数(64個)"), digits=3) %>%
    print(size = "\\tiny", caption.placement = "top")
