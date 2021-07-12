@@ -156,7 +156,7 @@ d_mf3 <- d_mf[, 7:70] %>% .[, -c(3, 4)] %>% colnames() %>% enframe() %>% .[51:62
 
 bind_cols(d_mf1[-13,], d_mf2, d_mf3) %>% select(2,4,6) %>%
   xtable(label = "table_mf_d.tex",
-         caption = c("性別変数(64個)"), digits=3) %>%
+         caption = c("性別変数(62個)"), digits=3) %>%
    print(size = "\\tiny", caption.placement = "top")
 sink()
 

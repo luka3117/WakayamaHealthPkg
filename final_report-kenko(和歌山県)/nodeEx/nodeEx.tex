@@ -1,0 +1,137 @@
+\documentclass[dvipdfmx]{article}
+
+\usepackage{tikz}
+\usepackage{adjustbox}
+
+\usetikzlibrary{shapes}
+\tikzset{
+block/.style={draw,rectangle,
+% fill=red!30,
+% minimum size=1.7cm,
+minimum height=1.7cm,
+minimum width=1.7cm,
+text width=3cm,align=center},
+oval/.style={draw,ellipse,fill=yellow!70},
+decision/.style={draw,diamond,
+% fill=green!10,
+minimum size=1.7cm, text width=2cm,align=center,inner sep=2pt}
+}
+
+\begin{document}
+
+% \includegraphics[width=0.8\linewidth]{flow-chart}
+
+
+
+\begin{figure}
+
+\begin{adjustbox}{width=1\textwidth}
+
+\begin{tikzpicture}
+\node[block] (X0) {$X_0$};
+
+\node[block, below=2cm] (X2) at (X0){X2};
+\node[block, left=3cm] (X1) at (X2){X1};
+\node[block, right=3cm] (X3) at (X2){X3};
+% \node[block, right=3cm, below=2cm] (X3) at (X0){X3};
+
+
+
+
+\node[block, below=2cm] (Y2) at (X2){Y2};
+\node[block, left=3cm] (Y1) at (Y2){Y1};
+\node[block, right=3cm] (Y3) at (Y2){Y3};
+
+
+
+\node[block, below=2cm] (XX2) at (Y2){XX2};
+\node[block, left=3cm] (XX1) at (XX2){XX1};
+\node[block, right=3cm] (XX3) at (XX2){XX3};
+
+
+\node[decision, below=2cm]             (Z1) at (XX2){Z1};
+
+
+\node[block, left=4cm, above=1cm]             (side1) at (Y1){side1};
+
+
+\node[block, below=3cm]             (end) at (Z1){end\\
+最終選択変数};
+
+
+
+\node[block, above=2cm]             (start) at (X0){start\\160説明変数160説明変数};
+
+
+%
+% \node[block, left=3cm, below=2cm]   (Y1) at (X2){Y1};
+% \node[block, below=2cm]             (Y2) at (X2){Y2};
+% \node[block, right=3cm, below=2cm]  (Y3) at (X2){Y3};
+
+
+
+\draw[dashed, -latex] (X0) -- (X1);
+\draw[-latex] (X0) -- (X2);
+\draw[dashed, -latex] (X0) -- (X3);
+
+
+
+\draw[dashed, -latex] (X1) -- (Y1);
+\draw[-latex] (X2) -- (Y2);
+\draw[dashed, -latex] (X3) -- (Y3);
+
+
+
+\draw[dashed] (XX1) -- (Z1);
+\draw[-latex] (XX2) -- (Z1);
+\draw[dashed] (XX3) -- (Z1);
+
+
+\draw[-latex, line width=1mm]
+(Z1)
+node[below=2cm, left=.5cm] {yes}
+node[above=.5cm, left=2cm] {no}
+-|
+(side1) ;
+
+
+\draw[-latex, line width=1mm] (side1) |- (X0);
+
+
+\draw[-latex, line width=1mm] (start) -- (X0);
+
+
+\draw[-latex, line width=1mm] (Z1) -- (end);
+
+
+
+%\node[block,left =3cm] (X1) at (X2) {$X_1$};
+%
+%\node[block, right=3cm] (X3) at (X2) {$X_3$};
+%\node[block, left=3cm] (reg) at (X1) {$Y_1, Y_1, Y_1, Y_1, $};
+%\node[block, below =2cm] (P1) at (X2) {Process-1};
+%\node[block, below =2cm] (P2) at (P1) {Process-2};
+%\node[decision, below =2cm] (D1) at (P2) {Is processing done correctly?};
+%\node[block, left =3cm] (D1P1) at (P2) {Back to process-1};
+%\node[block, below =3cm] (S2) at (D1) {Stop};
+%
+%% \draw[dashed,-latex] (X1)--(X2);
+%% \draw[dashed,-latex] (X1)--(X2);
+%\draw[dashed] (X1)--(X2);
+%
+%\draw[dashed,-latex] (X3)--(X2);
+%\draw[-latex] (X2)--(P1);
+%\draw[-latex] (P1)--(P2);
+%\draw[-latex] (P2)--(D1);
+%\draw[-latex] (D1)--(S2) node[above=1.3cm, right=2mm] {yes};
+%\draw[-latex] (D1)-|(D1P1) node[below=4.2cm, right=1cm] {no};
+%\draw[-latex] (D1P1)|-(P1);
+%\draw[-latex] (X3)|-(P2);
+\end{tikzpicture}
+\end{adjustbox}
+\caption{}
+\label{}
+\end{figure}
+
+
+\end{document}

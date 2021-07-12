@@ -1,23 +1,29 @@
-\contentsline {chapter}{\numberline {第1章}はじめに}{2}{chapter.1}%
-\contentsline {chapter}{\numberline {第2章}本事業の概要}{3}{chapter.2}%
-\contentsline {section}{\numberline {2.1}背景}{3}{section.2.1}%
-\contentsline {section}{\numberline {2.2}目的}{3}{section.2.2}%
-\contentsline {section}{\numberline {2.3}実施期間}{3}{section.2.3}%
-\contentsline {section}{\numberline {2.4}データ}{3}{section.2.4}%
-\contentsline {section}{\numberline {2.5}方法}{3}{section.2.5}%
-\contentsline {section}{\numberline {2.6}期待効果}{3}{section.2.6}%
-\contentsline {chapter}{\numberline {第3章}データと変数}{4}{chapter.3}%
-\contentsline {chapter}{\numberline {第4章}変数選択と次元縮約}{5}{chapter.4}%
-\contentsline {section}{\numberline {4.1}分析に用いる説明変数}{5}{section.4.1}%
-\contentsline {section}{\numberline {4.2}線形回帰モデルからの探索}{5}{section.4.2}%
-\contentsline {chapter}{\numberline {第5章}因子分析による次元縮約}{6}{chapter.5}%
-\contentsline {chapter}{\numberline {第6章}方法}{9}{chapter.6}%
-\contentsline {chapter}{\numberline {第7章}結果}{10}{chapter.7}%
-\contentsline {section}{\numberline {7.1}線形回帰分析}{10}{section.7.1}%
-\contentsline {section}{\numberline {7.2}一般化線形モデル: Gamma dist}{10}{section.7.2}%
-\contentsline {section}{\numberline {7.3}一般化線形モデル: logit model}{10}{section.7.3}%
-\contentsline {section}{\numberline {7.4}ベイズ推定}{10}{section.7.4}%
-\contentsline {section}{\numberline {7.5}aaa}{11}{section.7.5}%
-\contentsline {chapter}{\numberline {第8章}4 　考察（Discussion）}{13}{chapter.8}%
+\contentsline {chapter}{\numberline {第1章}本事業の概要, はじめに}{2}{chapter.1}%
+\contentsline {section}{\numberline {1.1}背景}{2}{section.1.1}%
+\contentsline {section}{\numberline {1.2}目的}{2}{section.1.2}%
+\contentsline {section}{\numberline {1.3}実施期間}{2}{section.1.3}%
+\contentsline {section}{\numberline {1.4}データ}{2}{section.1.4}%
+\contentsline {section}{\numberline {1.5}方法}{2}{section.1.5}%
+\contentsline {section}{\numberline {1.6}期待効果}{2}{section.1.6}%
+\contentsline {chapter}{\numberline {第2章}データと変数}{4}{chapter.2}%
+\contentsline {chapter}{\numberline {第3章}方法}{7}{chapter.3}%
+\contentsline {chapter}{\numberline {第4章}変数選択}{9}{chapter.4}%
+\contentsline {section}{\numberline {4.1}選択された説明変数}{9}{section.4.1}%
+\contentsline {section}{\numberline {4.2}線形回帰モデルからの探索}{10}{section.4.2}%
+\contentsline {subsection}{\numberline {4.2.1}平均寿命の線形回帰モデルからの探索}{10}{subsection.4.2.1}%
+\contentsline {subsection}{\numberline {4.2.2}健康寿命の線形回帰モデルからの探索}{11}{subsection.4.2.2}%
+\contentsline {section}{\numberline {4.3}変数選択のアルゴリズム}{11}{section.4.3}%
+\contentsline {chapter}{\numberline {第5章}因子分析による次元縮約}{13}{chapter.5}%
+\contentsline {section}{\numberline {5.1}因子分析とは}{13}{section.5.1}%
+\contentsline {section}{\numberline {5.2}回転とは何か}{15}{section.5.2}%
+\contentsline {section}{\numberline {5.3}抽出された共通因子}{16}{section.5.3}%
+\contentsline {chapter}{\numberline {第6章}glmによる分析}{17}{chapter.6}%
+\contentsline {section}{\numberline {6.1}線形回帰分析}{18}{section.6.1}%
+\contentsline {section}{\numberline {6.2}一般化線形モデル: Gamma dist}{18}{section.6.2}%
+\contentsline {section}{\numberline {6.3}一般化線形モデル: logit model}{19}{section.6.3}%
+\contentsline {chapter}{\numberline {第7章}ベイズモデルによる推定}{21}{chapter.7}%
+\contentsline {section}{\numberline {7.1}bayes モデルによる係数の事後分布推定}{22}{section.7.1}%
+\contentsline {section}{\numberline {7.2}因子による寿命の生存曲線への影響}{22}{section.7.2}%
+\contentsline {section}{\numberline {7.3}bayes モデルによる寿命の事後分布の推定}{22}{section.7.3}%
+\contentsline {chapter}{\numberline {第8章}まとめ}{26}{chapter.8}%
 \contentsfinish 
-\contentsline {chapter}{\numberline {第9章}about glm}{14}{chapter.9}%

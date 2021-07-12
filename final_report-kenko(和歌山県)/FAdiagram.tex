@@ -51,7 +51,10 @@
 
 \foreach \i in {1,...,4}
   \foreach \j in {1,...,2}
-    \draw [<-] (input-\i) -- (hidden-\j);
+    \draw [<-] (input-\i) -- (hidden-\j)
+    % node [left, above] at (2*.7,2-1.25) {$\varepsilon $}
+    % node [left, above] at (2*.7,2-3*1.25) {$\varepsilon $}
+    ;
 %
 % \foreach \i in {1,...,2}
 %   \foreach \j in {1,...,2}

@@ -1,0 +1,136 @@
+% \begin{figure*}
+% \centering
+%
+\setlength{\unitlength}{.5\linewidth}
+
+
+
+\usetikzlibrary{shapes}
+\tikzset{
+block/.style={draw,rectangle,
+font=\normalsize,
+% fill=red!30,
+% minimum size=1.7cm,
+% minimum height=1.7cm,
+% minimum width=1.7cm,
+minimum height=.2\unitlength,
+minimum width=.2\unitlength,
+text width=2cm,align=center},
+block1/.style={draw,rectangle,
+font=\normalsize,
+% fill=red!30,
+% minimum size=1.7cm,
+% minimum height=1.7cm,
+% minimum width=1.7cm,
+minimum height=.2\unitlength,
+minimum width=.4\unitlength,
+text width=5cm,align=center},
+oval/.style={draw,ellipse,fill=yellow!70},
+decision/.style={draw,diamond,
+aspect=2,
+% fill=green!10,
+% minimum size=1.7cm,
+text width=4cm,
+minimum height=.2\unitlength,
+minimum width=.6\unitlength,
+align=center,
+inner sep=2pt}
+}
+
+
+
+\begin{adjustbox}{width=.7\textwidth}
+%
+\begin{tikzpicture}
+\node[block] (X0) {$\bm{X}_0$};
+
+\node[block1, below=2*0.1\unitlength, fill=red!30] (X2) at (X0){$\bm{X}_{2}$};
+\node[block, left=3*0.1\unitlength, fill=red!30] (X1) at (X2){$\bm{X}_{1}$};
+\node[block, right=3*0.1\unitlength, fill=red!30] (X3) at (X2){$\bm{X}_{3}$};
+% \node[block, right=3*0.1\unitlength, below=2*0.1\unitlength] (X3) at (X0){X3};
+
+
+
+
+\node[block1, below=2*0.1\unitlength, fill=green!30] (Y2) at (X2){
+% $\mbox{男性の平均寿命}=X_{2}\bm{\beta}+\bm{\varepsilon}$
+$\mbox{平均寿命}=\bm{X}_{2}\bm{\beta}+\bm{\varepsilon}$
+% $\mbox{男性の健康寿命}=\bm{X}_{2}\bm{\beta}+\bm{\varepsilon}$
+$\mbox{健康寿命}=\bm{X}_{2}\bm{\beta}+\bm{\varepsilon}$
+};
+\node[block, left=3*0.1\unitlength, fill=green!30] (Y1) at (Y2){右と同様の作業};
+\node[block, right=3*0.1\unitlength, fill=green!30] (Y3) at (Y2){左と同様の作業};
+
+
+
+\node[block1, below=2*0.1\unitlength, fill=blue!30] (XX2) at (Y2){AIC変数選択};
+
+\node[block, left=3*0.1\unitlength, fill=blue!30] (XX1) at (XX2){AIC変数選択};
+\node[block, right=3*0.1\unitlength, fill=blue!30] (XX3) at (XX2){AIC変数選択};
+
+
+\node[decision, below=2*0.1\unitlength]             (Z1) at (XX2){上記の説明変数を集め、47変数を超える場合は繰り返す};
+
+
+\node[block, left=4*0.1\unitlength, above=1*0.1\unitlength] (side1) at (-6,-6){変数選択を繰り返し};
+% \node[block, left=4*0.1\unitlength, above=1*0.1\unitlength] (side1) at (Y1){side1};
+
+
+\node[block, below=3*0.1\unitlength]             (end) at (Z1){end\\
+最終選択変数};
+
+
+
+\node[block, above=3*0.1\unitlength]             (start) at (X0){start\\
+説明変数行列 $
+\bm{X}_{47\times p}
+$から開始};
+
+
+\draw[dashed, -latex] (X0) -- (X1);
+\draw[-latex] (X0) -- (X2);
+\draw[dashed, -latex] (X0) -- (X3);
+
+
+
+\draw[dashed, -latex] (X1) -- (Y1);
+\draw[-latex] (X2) -- (Y2);
+\draw[dashed, -latex] (X3) -- (Y3);
+
+
+
+\draw[dashed, -latex] (Y1) -- (XX1);
+\draw[-latex] (Y2) -- (XX2);
+\draw[dashed, -latex] (Y3) -- (XX3);
+
+
+\draw[dashed] (XX1) -- (Z1);
+\draw[-latex] (XX2) -- (Z1);
+\draw[dashed] (XX3) -- (Z1);
+
+
+
+
+\draw[-latex, line width=1mm]
+(Z1)
+% node[below=2*0.1\unitlength, left=.5*0.1\unitlength] {yes}
+node[below=2] {Yes}
+node[left=2] {No}
+% node[above=.5*0.1\unitlength, left=2*0.1\unitlength] {no}
+-|
+(side1) ;
+
+
+\draw[-latex, line width=1mm] (side1) |- (X0);
+
+
+\draw[-latex, line width=1mm] (start) -- (X0);
+
+
+\draw[-latex, line width=1mm] (Z1) -- (end);
+
+\end{tikzpicture}
+\end{adjustbox}
+% \caption{変数選択アルゴリズム}
+% \label{}
+% \end{figure*}

@@ -1,0 +1,435 @@
+.
+├── ClassData
+│   ├── Doshisha
+│   │   ├── Animals.csv
+│   │   ├── OldFaithful.csv
+│   │   ├── Pro.Rproj
+│   │   ├── aa.R
+│   │   ├── anscombe.csv
+│   │   ├── iris.csv
+│   │   └── iris1.csv
+│   ├── KyotoEDU
+│   │   └── iris.csv
+│   ├── README.md
+│   ├── Someday1.mid
+│   ├── Wakayama
+│   │   ├── DataFormat.csv
+│   │   ├── HealthCare_related
+│   │   ├── JpnEng.csv
+│   │   ├── README.md
+│   │   ├── wakayamaClass.Rproj
+│   │   └── 変数説明(Original).txt
+│   ├── eternal_sailor_moon_theme_2.mid
+│   ├── jcommit.py
+│   └── jweb.py
+├── DESCRIPTION
+├── FA_PCA
+│   ├── WakayamaFA
+│   │   ├── 000 FA_USCrime.R
+│   │   ├── 000 FA_USCrimeのコピー.R
+│   │   ├── 000FA.Rmd
+│   │   ├── 000FA.html
+│   │   ├── FactorAnalysis.pdf
+│   │   └── USCrime.txt
+│   └── WakayamaPCA
+│       ├── pca 6月18日(木).Rmd
+│       └── pca-6月18日-木-.html
+├── JcSearch.py
+├── NAMESPACE
+├── R
+│   ├── R3ProjRcode.R
+│   ├── R3ProjRcode_mid_report.R
+│   ├── RethinkingLE_EX.R
+│   ├── RethinkingLE_EX.html
+│   ├── RethinkingRegEX.R
+│   ├── complementary_CDF.R
+│   └── complementary_CDF.html
+├── R GLMM code(utf-8)
+│   ├── Pro.Rproj
+│   ├── chapter 10
+│   │   ├── R2WBwrapper_Kor
+│   │   ├── data7a.csv
+│   │   ├── fig10_04.R
+│   │   ├── model.bug.txt
+│   │   ├── post.bugs.RData
+│   │   ├── runbugs.R
+│   │   └── section 10.5
+│   ├── chapter 11
+│   │   ├── CAR model
+│   │   ├── GLMM model
+│   │   ├── R2WBwrapper_Kor
+│   │   └── missing
+│   ├── chapter 2
+│   │   ├── chap2.r
+│   │   └── data.RData
+│   ├── chapter 3
+│   │   ├── chap3.r
+│   │   └── data3a.csv
+│   ├── chapter 4
+│   │   ├── chap4.r
+│   │   └── data3a.csv
+│   ├── chapter 5
+│   │   ├── chap5.r
+│   │   ├── data3a.csv
+│   │   └── pb.R
+│   ├── chapter 6
+│   │   ├── chap6.r
+│   │   ├── d.RData
+│   │   ├── data4a.csv
+│   │   └── data4b.csv
+│   ├── chapter 7
+│   │   ├── chap7.r
+│   │   └── data.csv
+│   ├── chapter 8
+│   │   └── chap8.r
+│   └── chapter 9
+│       ├── R2WBwrapper_Kor
+│       ├── d.RData
+│       ├── data7a.csv
+│       ├── fig09_06.R
+│       ├── model.bug.txt
+│       ├── post.bugs.RData
+│       └── runbugs.R
+├── ReThinking
+│   ├── ReThinking-Ch3.R
+│   ├── ReThinking.R
+│   └── ReThinkingCh4-.R
+├── ScreenEnd.RData
+├── Wakayama.R
+├── WakayamaData.Rmd
+├── WakayamaData.html
+├── ZezeHtml.Rmd
+├── aa.tex
+├── aa.txt
+├── aaa.csv
+├── aaaa.Rmd
+├── aaaa.html
+├── city code.txt
+├── d_common_var_name.csv
+├── data
+│   ├── DataFormat-32021年3月11日受領
+│   │   ├── DataFormat.csv
+│   │   ├── JpnEng.csv
+│   │   ├── var_name_Eng.csv
+│   │   ├── 変数説明.txt
+│   │   └── 県庁所在地データ.txt
+│   ├── data1.xlsx
+│   └── misc
+│       ├── DataFormat.csv
+│       ├── ShigaData.csv
+│       └── 変数説明.txt
+├── exex.py
+├── fig
+│   ├── Bayes_LE_M_F2.pdf
+│   ├── wakayama_HLE_F.pdf
+│   ├── wakayama_HLE_F.xbb
+│   ├── wakayama_HLE_M.pdf
+│   ├── wakayama_HLE_M.xbb
+│   ├── wakayama_LE_F.pdf
+│   ├── wakayama_LE_F.xbb
+│   ├── wakayama_LE_M.pdf
+│   └── wakayama_LE_M.xbb
+├── final_report-kenko(和歌山県)
+│   ├── 20210409 滋賀大学 協議　議題予定表
+│   │   ├── 20210409 滋賀大学 協議　別紙1.docx
+│   │   ├── 20210409 滋賀大学 協議　別紙2.docx
+│   │   ├── 20210409 滋賀大学 協議　別紙3.docx
+│   │   └── 20210409 滋賀大学 協議　議題予定表.docx
+│   ├── 20210622 最終報告へ向けての議題.docx
+│   ├── FAdiagram.log
+│   ├── FAdiagram.tex
+│   ├── ModelStructure.tex
+│   ├── ModelSupression.tex
+│   ├── Report_MATERIAL_FAetc.txt
+│   ├── RforTex.R
+│   ├── RforTexJpn.R
+│   ├── ScreenEnd.RData
+│   ├── aa.txt
+│   ├── contentsForm.txt
+│   ├── fig
+│   │   ├── 3idxF.pdf
+│   │   ├── 3idxF.xbb
+│   │   ├── 3idxM.pdf
+│   │   ├── 3idxM.xbb
+│   │   ├── Bayes_HLE_f_ccdf_F1.pdf
+│   │   ├── Bayes_HLE_f_ccdf_F2.pdf
+│   │   ├── Bayes_HLE_f_estimates.pdf
+│   │   ├── Bayes_HLE_m_ccdf_F1.pdf
+│   │   ├── Bayes_HLE_m_ccdf_F2.pdf
+│   │   ├── Bayes_HLE_m_estimates.pdf
+│   │   ├── Bayes_LE_M_F1.pdf
+│   │   ├── Bayes_LE_M_F2.pdf
+│   │   ├── Bayes_LE_f_ccdf_F1.pdf
+│   │   ├── Bayes_LE_f_ccdf_F2.pdf
+│   │   ├── Bayes_LE_f_estimates.pdf
+│   │   ├── Bayes_LE_m_ccdf_F1.pdf
+│   │   ├── Bayes_LE_m_ccdf_F2.pdf
+│   │   ├── Bayes_LE_m_estimates.pdf
+│   │   ├── Bayes_fit_HLE_d_f.tex
+│   │   ├── Bayes_fit_HLE_d_m.tex
+│   │   ├── Bayes_fit_LE_d_f.tex
+│   │   ├── Bayes_fit_LE_d_m.tex
+│   │   ├── DaLY.png
+│   │   ├── DaLY.xbb
+│   │   ├── DistCommondVariable.pdf
+│   │   ├── DistCommondVariable.xbb
+│   │   ├── HLcorrF.pdf
+│   │   ├── HLcorrF.xbb
+│   │   ├── HLcorrM.pdf
+│   │   ├── HLcorrM.xbb
+│   │   ├── WakayamAomoriComp1.pdf
+│   │   ├── WakayamAomoriComp1.xbb
+│   │   ├── WakayamAomoriComp10.pdf
+│   │   ├── WakayamAomoriComp10.xbb
+│   │   ├── WakayamAomoriComp11.pdf
+│   │   ├── WakayamAomoriComp11.xbb
+│   │   ├── WakayamAomoriComp12.pdf
+│   │   ├── WakayamAomoriComp2.pdf
+│   │   ├── WakayamAomoriComp2.xbb
+│   │   ├── WakayamAomoriComp3.pdf
+│   │   ├── WakayamAomoriComp3.xbb
+│   │   ├── WakayamAomoriComp4.pdf
+│   │   ├── WakayamAomoriComp4.xbb
+│   │   ├── WakayamAomoriComp5.pdf
+│   │   ├── WakayamAomoriComp5.xbb
+│   │   ├── WakayamAomoriComp6.pdf
+│   │   ├── WakayamAomoriComp6.xbb
+│   │   ├── WakayamAomoriComp7.pdf
+│   │   ├── WakayamAomoriComp7.xbb
+│   │   ├── WakayamAomoriComp8.pdf
+│   │   ├── WakayamAomoriComp8.xbb
+│   │   ├── WakayamAomoriComp9.pdf
+│   │   ├── WakayamAomoriComp9.xbb
+│   │   ├── WakayamRank1.pdf
+│   │   ├── WakayamRank1.xbb
+│   │   ├── WakayamRank2.pdf
+│   │   ├── WakayamRank2.xbb
+│   │   ├── WakayamRank3.pdf
+│   │   ├── WakayamRank3.xbb
+│   │   ├── WakayamaTrend.pdf
+│   │   ├── WakayamaTrend.xbb
+│   │   ├── diff_LE_HLE_F.png
+│   │   ├── diff_LE_HLE_F.xbb
+│   │   ├── diff_LE_HLE_M.png
+│   │   ├── diff_LE_HLE_M.xbb
+│   │   ├── fig1.png
+│   │   ├── fig1.xbb
+│   │   ├── fig10.png
+│   │   ├── fig10.xbb
+│   │   ├── fig11.png
+│   │   ├── fig11.xbb
+│   │   ├── fig12.png
+│   │   ├── fig12.xbb
+│   │   ├── fig13.png
+│   │   ├── fig13.xbb
+│   │   ├── fig14.png
+│   │   ├── fig14.xbb
+│   │   ├── fig15.png
+│   │   ├── fig15.xbb
+│   │   ├── fig16.png
+│   │   ├── fig16.xbb
+│   │   ├── fig17.png
+│   │   ├── fig17.xbb
+│   │   ├── fig18.png
+│   │   ├── fig18.xbb
+│   │   ├── fig19.png
+│   │   ├── fig19.xbb
+│   │   ├── fig2.png
+│   │   ├── fig2.xbb
+│   │   ├── fig20.png
+│   │   ├── fig20.xbb
+│   │   ├── fig21.png
+│   │   ├── fig21.xbb
+│   │   ├── fig22.png
+│   │   ├── fig22.xbb
+│   │   ├── fig23.png
+│   │   ├── fig23.xbb
+│   │   ├── fig24.png
+│   │   ├── fig24.xbb
+│   │   ├── fig3.png
+│   │   ├── fig3.xbb
+│   │   ├── fig3pdf.pdf
+│   │   ├── fig3pdf.xbb
+│   │   ├── fig4.png
+│   │   ├── fig4.xbb
+│   │   ├── fig5.png
+│   │   ├── fig5.xbb
+│   │   ├── fig6.png
+│   │   ├── fig6.xbb
+│   │   ├── fig7.png
+│   │   ├── fig7.xbb
+│   │   ├── fig8.png
+│   │   ├── fig8.xbb
+│   │   ├── fig9.png
+│   │   ├── fig9.xbb
+│   │   ├── filename change.bat
+│   │   ├── myebb.bat
+│   │   ├── myxbb.bat
+│   │   ├── rank.female.xbb
+│   │   ├── rankfemale.pdf
+│   │   ├── rankmale.pdf
+│   │   ├── rankmale.xbb
+│   │   ├── table_FA_m.tex
+│   │   ├── table_LM_HLE_f.tex
+│   │   ├── table_LM_LE_f.tex
+│   │   ├── table_LM_LE_m.tex
+│   │   ├── ttestF.pdf
+│   │   ├── ttestF.xbb
+│   │   ├── ttestM.pdf
+│   │   ├── ttestM.xbb
+│   │   ├── wakayama_HLE_F.pdf
+│   │   ├── wakayama_HLE_F.xbb
+│   │   ├── wakayama_HLE_M.pdf
+│   │   ├── wakayama_HLE_M.xbb
+│   │   ├── wakayama_LE_F.pdf
+│   │   ├── wakayama_LE_F.xbb
+│   │   ├── wakayama_LE_M.pdf
+│   │   └── wakayama_LE_M.xbb
+│   ├── ref lists
+│   │   ├── apa6.cls
+│   │   ├── reflist.aux
+│   │   ├── reflist.bbl
+│   │   ├── reflist.blg
+│   │   ├── reflist.dvi
+│   │   ├── reflist.log
+│   │   ├── reflist.pdf
+│   │   ├── reflist.synctex.gz
+│   │   ├── reflist.tex
+│   │   ├── zzz1.bib
+│   │   └── zzz2.bib
+│   ├── report_kenko._wakayama.pdf
+│   ├── report_kenko._wakayama.tex
+│   ├── report_kenko._wakayama_final.aux
+│   ├── report_kenko._wakayama_final.log
+│   ├── report_kenko._wakayama_final.out
+│   ├── report_kenko._wakayama_final.pdf
+│   ├── report_kenko._wakayama_final.synctex.gz
+│   ├── report_kenko._wakayama_final.tex
+│   ├── report_kenko._wakayama_final.toc
+│   ├── report_kenko._wakayama_mid.pdf
+│   ├── report_kenko._wakayama_mid.tex
+│   ├── style
+│   │   ├── common.log
+│   │   ├── common.sty
+│   │   ├── dsreport.png
+│   │   ├── dsreport.sty
+│   │   ├── dsreport.xbb
+│   │   ├── geometry.sty
+│   │   ├── indent.log
+│   │   ├── mediabb.sty
+│   │   ├── misl.bst
+│   │   └── subfigure.sty
+│   ├── sub
+│   │   ├── 20210409 滋賀大学 協議　議題予定表-1
+│   │   ├── FinalSub1.tex
+│   │   ├── aaa.html
+│   │   ├── aaa.html.html
+│   │   ├── modify.txt
+│   │   ├── modify.txt.html
+│   │   ├── ssss.html
+│   │   ├── wakayama1.tex
+│   │   └── wakayamaForSend1.tex
+│   ├── table
+│   │   ├── Bayes_fit_HLE_d_f.tex
+│   │   ├── Bayes_fit_HLE_d_m.tex
+│   │   ├── Bayes_fit_LE_d_f.tex
+│   │   ├── Bayes_fit_LE_d_m.tex
+│   │   ├── UsedVar.tex
+│   │   ├── aaaUsedVar.tex
+│   │   ├── aaのコピー.aux
+│   │   ├── aaのコピー.log
+│   │   ├── aaのコピー.pdf
+│   │   ├── aaのコピー.tex
+│   │   ├── ccc.log
+│   │   ├── ccc.tex
+│   │   ├── ccc.txt
+│   │   ├── example.tex
+│   │   ├── kkk.txt
+│   │   ├── sss.txt
+│   │   ├── table_FA_f.tex
+│   │   ├── table_FA_m.tex
+│   │   ├── table_Gamma_HLE_FA_f.tex
+│   │   ├── table_Gamma_HLE_FA_m.tex
+│   │   ├── table_Gamma_LE_FA_f.tex
+│   │   ├── table_Gamma_LE_FA_m.tex
+│   │   ├── table_LM_HLE_FA_f.tex
+│   │   ├── table_LM_HLE_FA_m.tex
+│   │   ├── table_LM_HLE_f.tex
+│   │   ├── table_LM_HLE_m.tex
+│   │   ├── table_LM_LE_FA_f.tex
+│   │   ├── table_LM_LE_FA_m.tex
+│   │   ├── table_LM_LE_f.tex
+│   │   ├── table_LM_LE_m.tex
+│   │   ├── table_LMwithFA_f.tex
+│   │   ├── table_LMwithFA_m.tex
+│   │   ├── table_commom_d.tex
+│   │   ├── table_logit_HLE_FA_f.tex
+│   │   ├── table_logit_HLE_FA_m.tex
+│   │   ├── table_logit_LE_FA_f.tex
+│   │   ├── table_logit_LE_FA_m.tex
+│   │   ├── table_mf_d.tex
+│   │   └── ttt.txt
+│   ├── xtableGallery.pdf
+│   └── 出典リンク.html
+├── final_report_rmd
+│   ├── GLMM.pdf
+│   ├── WakayamaHtml_final_report.Rmd
+│   ├── WakayamaHtml_final_report.html
+│   ├── WakayamaHtml_final_report_for_Print.Rmd
+│   ├── WakayamaHtml_final_report_for_Print.html
+│   ├── ref.Rmd
+│   └── ref1.Rmd
+├── final_report_slide
+│   ├── mid_prentation.R
+│   ├── mid_prentation.Rmd
+│   ├── mid_prentation.html
+│   ├── mid_prentation.txt
+│   └── mid_report_tex.R
+├── jcommit.py
+├── jweb.py
+├── kkk.txt
+├── man
+│   ├── city.code.Rd
+│   └── d.Rd
+├── pkg on gooing.r
+├── report.Rmd
+├── report.md
+├── table_commom_d.tex
+├── temp.tex
+├── temp.txt
+├── tempTree.txt
+├── wakayama.Rproj
+├── z_misc
+│   ├── slide
+│   │   ├── Salary.csv
+│   │   ├── WakayamaHtml.Rmd
+│   │   ├── WakayamaHtml.html
+│   │   ├── ZezeHtml.html
+│   │   ├── ZezeSlide.Rmd
+│   │   ├── ZezeSlide.html
+│   │   ├── _main.html
+│   │   ├── death.csv
+│   │   ├── population_h26.csv
+│   │   ├── ref.Rmd
+│   │   └── room.csv
+│   ├── trend
+│   │   └── 15 平均寿命時系列Trend
+│   └── wakayama_trend.csv
+├── 予算.numbers
+├── 変数リスト.R
+├── 変数リスト.txt
+└── 健康寿命延伸PT第1回会議_資料
+    ├── （資料1）出席者名簿.pdf
+    ├── 健康寿命延伸PT第1回会議_資料
+    │   ├── 00_次第.pdf
+    │   ├── 01_（別紙1）出席者名簿.pdf
+    │   ├── 01_（別紙2）中間報告書.pdf
+    │   ├── 01_（別紙3-1）滋賀県の資料との比較.pdf
+    │   ├── 01_（別紙3-2）滋賀県資料_長寿のヒミツ.pdf
+    │   ├── 02_（参考資料1）健康寿命延伸PT設置要綱.pdf
+    │   └── 02_（参考資料2）R3健康寿命延伸PT_名簿.pdf
+    └── 健康寿命　別紙用（第一回PT会議配布資料）
+        ├── 滋賀　長寿のヒミツ.pdf
+        └── 健康寿命　別紙用（第一回PT会議配布資料）.docx
+
+50 directories, 382 files

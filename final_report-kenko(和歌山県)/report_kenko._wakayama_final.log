@@ -1,4 +1,4 @@
-This is e-pTeX, Version 3.14159265-p3.8.3-191112-2.6 (utf8.euc) (TeX Live 2020) (preloaded format=platex 2021.2.25)  6 JUL 2021 12:45
+This is e-pTeX, Version 3.14159265-p3.8.3-191112-2.6 (utf8.euc) (TeX Live 2020) (preloaded format=platex 2021.2.25)  13 JUL 2021 00:41
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -36,11 +36,6 @@ LaTeX Font Info:    Overwriting symbol font `mincho' in version `bold'
 (/usr/local/texlive/2020/texmf-dist/tex/latex/tools/multicol.sty
 Package: multicol 2019/12/09 v1.8y multicolumn formatting (FMi)
 \c@tracingmulticols=\count177
-
-
-Package multicol Warning: May not work with the twocolumn option on input line 
-141.
-
 \mult@box=\box61
 \multicol@leftmargin=\dimen153
 \c@unbalance=\count178
@@ -107,7 +102,8 @@ Package multicol Warning: May not work with the twocolumn option on input line
 \mult@nat@firstbox=\box105
 \colbreak@box=\box106
 \mc@col@check@num=\count186
-) (/usr/local/texlive/2020/texmf-dist/tex/generic/epsf/epsf.sty
+)
+(/usr/local/texlive/2020/texmf-dist/tex/generic/epsf/epsf.sty
 This is `epsf.tex' v2.7.4 <14 February 2011>
 \epsffilein=\read2
 \epsfframemargin=\dimen162
@@ -766,40 +762,10 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 86.
 )
 \Hy@SectionHShift=\skip65
+) (/usr/local/texlive/2020/texmf-dist/tex/latex/graphics/lscape.sty
+Package: lscape 2000/10/22 v3.01 Landscape Pages (DPC)
 )
-*geometry* verbose mode - [ newgeometry ] result:
-* driver: 
-* paper: a4paper
-* layout: <same size as paper>
-* layoutoffset:(h,v)=(0.0pt,0.0pt)
-* modes: 
-* h-part:(L,W,R)=(71.13188pt, 469.47046pt, 56.90553pt)
-* v-part:(T,H,B)=(85.35826pt, 702.78307pt, 56.90552pt)
-* \paperwidth=597.50787pt
-* \paperheight=845.04684pt
-* \textwidth=469.47046pt
-* \textheight=702.78307pt
-* \oddsidemargin=-1.1381pt
-* \evensidemargin=-1.1381pt
-* \topmargin=-23.91173pt
-* \headheight=12.0pt
-* \headsep=25.0pt
-* \topskip=8.51457pt
-* \footskip=30.0pt
-* \marginparwidth=30.0pt
-* \marginparsep=10.0pt
-* \columnsep=21.07251pt
-* \skip\footins=10.0pt plus 4.0pt minus 2.0pt
-* \hoffset=0.0pt
-* \voffset=0.0pt
-* \mag=1000
-* \@twocolumntrue
-* \@twosidefalse
-* \@mparswitchfalse
-* \@reversemarginfalse
-* (1in=72.27pt=25.4mm, 1cm=28.453pt)
-
- (/usr/local/texlive/2020/texmf-dist/tex/latex/pgf/frontendlayer/tikz.sty
+(/usr/local/texlive/2020/texmf-dist/tex/latex/pgf/frontendlayer/tikz.sty
 (/usr/local/texlive/2020/texmf-dist/tex/latex/pgf/utilities/pgffor.sty
 (/usr/local/texlive/2020/texmf-dist/tex/latex/pgf/utilities/pgfkeys.sty
 (/usr/local/texlive/2020/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex)
@@ -854,6 +820,39 @@ File: pgfmodulematrix.code.tex 2020/01/08 v3.1.5b (3.1.5b)
 s/tikzlibrarytopaths.code.tex
 File: tikzlibrarytopaths.code.tex 2020/01/08 v3.1.5b (3.1.5b)
 )))
+*geometry* verbose mode - [ newgeometry ] result:
+* driver: 
+* paper: a4paper
+* layout: <same size as paper>
+* layoutoffset:(h,v)=(0.0pt,0.0pt)
+* modes: 
+* h-part:(L,W,R)=(71.13188pt, 469.47046pt, 56.90553pt)
+* v-part:(T,H,B)=(85.35826pt, 702.78307pt, 56.90552pt)
+* \paperwidth=597.50787pt
+* \paperheight=845.04684pt
+* \textwidth=469.47046pt
+* \textheight=702.78307pt
+* \oddsidemargin=-1.1381pt
+* \evensidemargin=-1.1381pt
+* \topmargin=-23.91173pt
+* \headheight=12.0pt
+* \headsep=25.0pt
+* \topskip=8.51457pt
+* \footskip=30.0pt
+* \marginparwidth=60.0pt
+* \marginparsep=10.0pt
+* \columnsep=21.07251pt
+* \skip\footins=10.0pt plus 4.0pt minus 2.0pt
+* \hoffset=0.0pt
+* \voffset=0.0pt
+* \mag=1000
+* \@twocolumnfalse
+* \@twosidefalse
+* \@mparswitchfalse
+* \@reversemarginfalse
+* (1in=72.27pt=25.4mm, 1cm=28.453pt)
+
+
 (/usr/local/texlive/2020/texmf-dist/tex/generic/pgf/frontendlayer/tikz/librarie
 s/tikzlibrarypositioning.code.tex
 File: tikzlibrarypositioning.code.tex 2020/01/08 v3.1.5b (3.1.5b)
@@ -900,26 +899,26 @@ LaTeX Warning: Label `table_Gamma_HLE_FA_m' multiply defined.
 )
 \openout1 = `report_kenko._wakayama_final.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 55.
-LaTeX Font Info:    ... okay on input line 55.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 55.
-LaTeX Font Info:    ... okay on input line 55.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 55.
-LaTeX Font Info:    ... okay on input line 55.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 55.
-LaTeX Font Info:    ... okay on input line 55.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 55.
-LaTeX Font Info:    ... okay on input line 55.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 55.
-LaTeX Font Info:    ... okay on input line 55.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 55.
-LaTeX Font Info:    ... okay on input line 55.
-LaTeX Font Info:    Checking defaults for JY1/mc/m/n on input line 55.
-LaTeX Font Info:    ... okay on input line 55.
-LaTeX Font Info:    Checking defaults for JT1/mc/m/n on input line 55.
-LaTeX Font Info:    ... okay on input line 55.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 55.
-LaTeX Font Info:    ... okay on input line 55.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 78.
+LaTeX Font Info:    ... okay on input line 78.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 78.
+LaTeX Font Info:    ... okay on input line 78.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 78.
+LaTeX Font Info:    ... okay on input line 78.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 78.
+LaTeX Font Info:    ... okay on input line 78.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 78.
+LaTeX Font Info:    ... okay on input line 78.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 78.
+LaTeX Font Info:    ... okay on input line 78.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 78.
+LaTeX Font Info:    ... okay on input line 78.
+LaTeX Font Info:    Checking defaults for JY1/mc/m/n on input line 78.
+LaTeX Font Info:    ... okay on input line 78.
+LaTeX Font Info:    Checking defaults for JT1/mc/m/n on input line 78.
+LaTeX Font Info:    ... okay on input line 78.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 78.
+LaTeX Font Info:    ... okay on input line 78.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: dvips
@@ -942,14 +941,14 @@ LaTeX Font Info:    ... okay on input line 55.
 * \headsep=25.0pt
 * \topskip=8.51457pt
 * \footskip=30.0pt
-* \marginparwidth=30.0pt
+* \marginparwidth=60.0pt
 * \marginparsep=10.0pt
 * \columnsep=21.07251pt
 * \skip\footins=10.0pt plus 4.0pt minus 2.0pt
 * \hoffset=0.0pt
 * \voffset=0.0pt
 * \mag=1000
-* \@twocolumntrue
+* \@twocolumnfalse
 * \@twosidefalse
 * \@mparswitchfalse
 * \@reversemarginfalse
@@ -957,7 +956,7 @@ LaTeX Font Info:    ... okay on input line 55.
 
 ABD: EveryShipout initializing macros
 \AtBeginShipoutBox=\box138
-Package hyperref Info: Link coloring OFF on input line 55.
+Package hyperref Info: Link coloring OFF on input line 78.
 
 (/usr/local/texlive/2020/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2019/09/16 v2.46 Cross-referencing by name of section
@@ -971,9 +970,9 @@ Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
 \c@section@level=\count315
 )
-LaTeX Info: Redefining \ref on input line 55.
-LaTeX Info: Redefining \pageref on input line 55.
-LaTeX Info: Redefining \nameref on input line 55.
+LaTeX Info: Redefining \ref on input line 78.
+LaTeX Info: Redefining \pageref on input line 78.
+LaTeX Info: Redefining \nameref on input line 78.
  (./report_kenko._wakayama_final.out) (./report_kenko._wakayama_final.out)
 \@outlinefile=\write4
 \openout4 = `report_kenko._wakayama_final.out'.
@@ -981,40 +980,39 @@ LaTeX Info: Redefining \nameref on input line 55.
 
 
 LaTeX Font Warning: Font shape `JT1/mc/m/sc' undefined
-(Font)              using `JT1/mc/m/n' instead on input line 71.
+(Font)              using `JT1/mc/m/n' instead on input line 96.
 
 
 LaTeX Font Warning: Font shape `JY1/mc/m/sc' undefined
-(Font)              using `JY1/mc/m/n' instead on input line 71.
+(Font)              using `JY1/mc/m/n' instead on input line 96.
 
 LaTeX Font Info:    Font shape `JT1/mc/b/n' in size <14.4> not available
-(Font)              Font shape `JT1/mc/bx/n' tried instead on input line 71.
+(Font)              Font shape `JT1/mc/bx/n' tried instead on input line 96.
 LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <14.4> not available
-(Font)              Font shape `JT1/gt/m/n' tried instead on input line 71.
+(Font)              Font shape `JT1/gt/m/n' tried instead on input line 96.
 LaTeX Font Info:    Font shape `JY1/mc/b/n' in size <14.4> not available
-(Font)              Font shape `JY1/mc/bx/n' tried instead on input line 71.
+(Font)              Font shape `JY1/mc/bx/n' tried instead on input line 96.
 LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <14.4> not available
-(Font)              Font shape `JY1/gt/m/n' tried instead on input line 71.
+(Font)              Font shape `JY1/gt/m/n' tried instead on input line 96.
 LaTeX Font Info:    Font shape `JT1/mc/b/n' in size <20.74> not available
-(Font)              Font shape `JT1/mc/bx/n' tried instead on input line 71.
+(Font)              Font shape `JT1/mc/bx/n' tried instead on input line 96.
 LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <20.74> not available
-(Font)              Font shape `JT1/gt/m/n' tried instead on input line 71.
+(Font)              Font shape `JT1/gt/m/n' tried instead on input line 96.
 LaTeX Font Info:    Font shape `JY1/mc/b/n' in size <20.74> not available
-(Font)              Font shape `JY1/mc/bx/n' tried instead on input line 71.
+(Font)              Font shape `JY1/mc/bx/n' tried instead on input line 96.
 LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <20.74> not available
-(Font)              Font shape `JY1/gt/m/n' tried instead on input line 71.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 71.
+(Font)              Font shape `JY1/gt/m/n' tried instead on input line 96.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 96.
 
 (/usr/local/texlive/2020/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 71.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 96.
 
 
 (/usr/local/texlive/2020/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [0
-
 
 
 ]
@@ -1024,98 +1022,17 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 
  [1
 
-
-
-]
+] (./sub/chap1.tex
 第 1 章
-[2
-
-
-
-]
-第 2 章
 LaTeX Font Info:    Font shape `JT1/mc/b/n' in size <12> not available
-(Font)              Font shape `JT1/mc/bx/n' tried instead on input line 98.
+(Font)              Font shape `JT1/mc/bx/n' tried instead on input line 6.
 LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <12> not available
-(Font)              Font shape `JT1/gt/m/n' tried instead on input line 98.
+(Font)              Font shape `JT1/gt/m/n' tried instead on input line 6.
 LaTeX Font Info:    Font shape `JY1/mc/b/n' in size <12> not available
-(Font)              Font shape `JY1/mc/bx/n' tried instead on input line 98.
+(Font)              Font shape `JY1/mc/bx/n' tried instead on input line 6.
 LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <12> not available
-(Font)              Font shape `JY1/gt/m/n' tried instead on input line 98.
-[3
-
-]
-第 3 章
-LaTeX Font Info:    Font shape `JT1/mc/b/n' in size <10.95> not available
-(Font)              Font shape `JT1/mc/bx/n' tried instead on input line 193.
-LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <10.95> not available
-(Font)              Font shape `JT1/gt/m/n' tried instead on input line 193.
-LaTeX Font Info:    Font shape `JY1/mc/b/n' in size <10.95> not available
-(Font)              Font shape `JY1/mc/bx/n' tried instead on input line 193.
-LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <10.95> not available
-(Font)              Font shape `JY1/gt/m/n' tried instead on input line 193.
-
-LaTeX Warning: Reference `table_mf_d.tex' on page 4 undefined on input line 193
-.
-
-
-LaTeX Warning: Reference `table_mf_d.tex' on page 4 undefined on input line 203
-.
-
-(./table/table_commom_d.tex
-Overfull \hbox (10.53546pt too wide) in paragraph at lines 9--42
- [] 
- []
-
-) (./table/table_mf_d.tex
-Overfull \hbox (10.5403pt too wide) in paragraph at lines 9--42
- [] 
- []
-
-) (./ModelStructure.tex
-Overfull \hbox (10.54677pt too wide) in paragraph at lines 9--91
- [] 
- []
-
-) [4
-
-]
-第 4 章
-(./table/UsedVar.tex
-Overfull \hbox (10.5383pt too wide) in paragraph at lines 9--34
- [] 
- []
-
-) (./table/table_LM_LE_f.tex
-Overfull \hbox (10.54105pt too wide) in paragraph at lines 9--35
- [] 
- []
-
-) (./table/table_LM_LE_m.tex
-Overfull \hbox (34.5653pt too wide) in paragraph at lines 8--26
- [][][][] 
- []
-
-) (./table/table_LM_HLE_f.tex
-Overfull \hbox (45.6234pt too wide) in paragraph at lines 8--33
- [][][][] 
- []
-
-) (./table/table_LM_HLE_m.tex
-Overfull \hbox (34.5653pt too wide) in paragraph at lines 8--26
- [][][][] 
- []
-
-) [5
-
-]
-第 5 章
-(./FAdiagram.tex)
-
-Package amsmath Warning: Cannot use `split' here;
-(amsmath)                trying to recover with `aligned' on input line 323.
-
-[6
+(Font)              Font shape `JY1/gt/m/n' tried instead on input line 6.
+[2
 
 ]
 
@@ -1124,205 +1041,232 @@ Make it at least 15.49998pt.
 We now make it that large for the rest of the document.
 This may cause the page layout to be inconsistent, however.
 
-[7] (./table/table_FA_f.tex) (./table/table_FA_m.tex) [8]
-第 6 章
-[9
+[3]
+第 2 章
+[4
 
+] (./table/table_commom_d.tex
+Overfull \hbox (1.46564pt too wide) in paragraph at lines 9--43
+ [] 
+ []
+
+) [5
+
+] (./table/table_mf_d.tex
+Overfull \hbox (1.48166pt too wide) in paragraph at lines 9--42
+ [] 
+ []
+
+) [6
+
+
+]) (./sub/chap2.tex
+第 3 章
+(./ModelStructure.tex) [7
+
+
+] (./ModelSupression.tex)) [8]
+第 4 章
+(./table/UsedVar.tex) [9
 
 ]
+LaTeX Font Info:    Font shape `JT1/mc/b/n' in size <10.95> not available
+(Font)              Font shape `JT1/mc/bx/n' tried instead on input line 213.
+LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <10.95> not available
+(Font)              Font shape `JT1/gt/m/n' tried instead on input line 213.
+LaTeX Font Info:    Font shape `JY1/mc/b/n' in size <10.95> not available
+(Font)              Font shape `JY1/mc/bx/n' tried instead on input line 213.
+LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <10.95> not available
+(Font)              Font shape `JY1/gt/m/n' tried instead on input line 213.
+ (./table/table_LM_LE_f.tex)
+(./table/table_LM_LE_m.tex) (./table/table_LM_HLE_f.tex)
+(./table/table_LM_HLE_m.tex [10]) (./fig/VarSel.tex
+(/usr/local/texlive/2020/texmf-dist/tex/generic/pgf/frontendlayer/tikz/librarie
+s/tikzlibraryshapes.code.tex
+File: tikzlibraryshapes.code.tex 2020/01/08 v3.1.5b (3.1.5b)
+
+(/usr/local/texlive/2020/texmf-dist/tex/generic/pgf/frontendlayer/tikz/librarie
+s/tikzlibraryshapes.geometric.code.tex
+File: tikzlibraryshapes.geometric.code.tex 2020/01/08 v3.1.5b (3.1.5b)
+
+(/usr/local/texlive/2020/texmf-dist/tex/generic/pgf/libraries/shapes/pgflibrary
+shapes.geometric.code.tex
+File: pgflibraryshapes.geometric.code.tex 2020/01/08 v3.1.5b (3.1.5b)
+))
+(/usr/local/texlive/2020/texmf-dist/tex/generic/pgf/frontendlayer/tikz/librarie
+s/tikzlibraryshapes.misc.code.tex
+File: tikzlibraryshapes.misc.code.tex 2020/01/08 v3.1.5b (3.1.5b)
+
+(/usr/local/texlive/2020/texmf-dist/tex/generic/pgf/libraries/shapes/pgflibrary
+shapes.misc.code.tex
+File: pgflibraryshapes.misc.code.tex 2020/01/08 v3.1.5b (3.1.5b)
+))
+(/usr/local/texlive/2020/texmf-dist/tex/generic/pgf/frontendlayer/tikz/librarie
+s/tikzlibraryshapes.symbols.code.tex
+File: tikzlibraryshapes.symbols.code.tex 2020/01/08 v3.1.5b (3.1.5b)
+
+(/usr/local/texlive/2020/texmf-dist/tex/generic/pgf/libraries/shapes/pgflibrary
+shapes.symbols.code.tex
+File: pgflibraryshapes.symbols.code.tex 2020/01/08 v3.1.5b (3.1.5b)
+))
+(/usr/local/texlive/2020/texmf-dist/tex/generic/pgf/frontendlayer/tikz/librarie
+s/tikzlibraryshapes.arrows.code.tex
+File: tikzlibraryshapes.arrows.code.tex 2020/01/08 v3.1.5b (3.1.5b)
+
+(/usr/local/texlive/2020/texmf-dist/tex/generic/pgf/libraries/shapes/pgflibrary
+shapes.arrows.code.tex
+File: pgflibraryshapes.arrows.code.tex 2020/01/08 v3.1.5b (3.1.5b)
+))
+(/usr/local/texlive/2020/texmf-dist/tex/generic/pgf/frontendlayer/tikz/librarie
+s/tikzlibraryshapes.callouts.code.tex
+(/usr/local/texlive/2020/texmf-dist/tex/generic/pgf/libraries/shapes/pgflibrary
+shapes.callouts.code.tex))
+(/usr/local/texlive/2020/texmf-dist/tex/generic/pgf/frontendlayer/tikz/librarie
+s/tikzlibraryshapes.multipart.code.tex
+File: tikzlibraryshapes.multipart.code.tex 2020/01/08 v3.1.5b (3.1.5b)
+
+(/usr/local/texlive/2020/texmf-dist/tex/generic/pgf/libraries/shapes/pgflibrary
+shapes.multipart.code.tex
+File: pgflibraryshapes.multipart.code.tex 2020/01/08 v3.1.5b (3.1.5b)
+\pgfnodepartlowerbox=\box139
+\pgfnodeparttwobox=\box140
+\pgfnodepartthreebox=\box141
+\pgfnodepartfourbox=\box142
+\pgfnodeparttwentybox=\box143
+\pgfnodepartnineteenbox=\box144
+\pgfnodeparteighteenbox=\box145
+\pgfnodepartseventeenbox=\box146
+\pgfnodepartsixteenbox=\box147
+\pgfnodepartfifteenbox=\box148
+\pgfnodepartfourteenbox=\box149
+\pgfnodepartthirteenbox=\box150
+\pgfnodeparttwelvebox=\box151
+\pgfnodepartelevenbox=\box152
+\pgfnodeparttenbox=\box153
+\pgfnodepartninebox=\box154
+\pgfnodeparteightbox=\box155
+\pgfnodepartsevenbox=\box156
+\pgfnodepartsixbox=\box157
+\pgfnodepartfivebox=\box158
+)))) [11] [12]
+第 5 章
+(./FAdiagram.tex)
+
+Package amsmath Warning: Cannot use `split' here;
+(amsmath)                trying to recover with `aligned' on input line 331.
+
+[13
+
+] [14] [15] (./table/table_FA_f.tex) (./table/table_FA_m.tex) [16]
+第 6 章
+[17
+
+] (./table/table_LM_LE_FA_f.tex) (./table/table_LM_LE_FA_m.tex)
+(./table/table_LM_HLE_FA_f.tex) (./table/table_LM_HLE_FA_m.tex)
+(./table/table_Gamma_LE_FA_f.tex) (./table/table_Gamma_LE_FA_m.tex)
+(./table/table_Gamma_HLE_FA_f.tex) (./table/table_Gamma_HLE_FA_m.tex [18])
+(./table/table_logit_LE_FA_f.tex) (./table/table_logit_LE_FA_m.tex)
+(./table/table_logit_HLE_FA_f.tex) (./table/table_logit_HLE_FA_m.tex) [19]
+[20]
 第 7 章
-(./table/table_LM_LE_FA_f.tex
-Overfull \hbox (21.10031pt too wide) in paragraph at lines 6--16
- [][][][] 
- []
-
-) (./table/table_LM_LE_FA_m.tex
-Overfull \hbox (24.79471pt too wide) in paragraph at lines 6--16
- [][][][] 
- []
-
-) (./table/table_LM_HLE_FA_f.tex
-Overfull \hbox (21.10031pt too wide) in paragraph at lines 6--16
- [][][][] 
- []
-
-) (./table/table_LM_HLE_FA_m.tex
-Overfull \hbox (24.79471pt too wide) in paragraph at lines 6--16
- [][][][] 
- []
-
-) (./table/table_Gamma_LE_FA_f.tex) (./table/table_Gamma_LE_FA_m.tex)
-(./table/table_Gamma_HLE_FA_f.tex) (./table/table_Gamma_HLE_FA_m.tex)
-(./table/table_logit_LE_FA_f.tex
-Overfull \hbox (21.10031pt too wide) in paragraph at lines 6--16
- [][][][] 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 16--16
-[]\OT1/cmr/m/n/10.95 Table. 7.9 []\JY1/mc/m/sc/10.95 女性の一般化線形モデル
- []
-
-) (./table/table_logit_LE_FA_m.tex
-Overfull \hbox (24.79471pt too wide) in paragraph at lines 6--16
- [][][][] 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 16--16
-[]\OT1/cmr/m/n/10.95 Table. 7.10 []\JY1/mc/m/sc/10.95 男性の一般化線形モデル
- []
-
-) (./table/table_logit_HLE_FA_f.tex) (./table/table_logit_HLE_FA_m.tex
-Overfull \hbox (24.79471pt too wide) in paragraph at lines 6--16
- [][][][] 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 16--16
-[]\OT1/cmr/m/n/10.95 Table. 7.11 []\JY1/mc/m/sc/10.95 男性の一般化線形モデル
- []
-
-)
-Overfull \hbox (37.57922pt too wide) in paragraph at lines 492--493
-[]\OT1/cmr/m/n/10.95 https://www.stata.com/features/overview/bayesian-
- []
-
-[10
+[21
 
 ] (./table/Bayes_fit_LE_d_f.tex) (./table/Bayes_fit_LE_d_m.tex)
 (./table/Bayes_fit_HLE_d_f.tex) (./table/Bayes_fit_HLE_d_m.tex)
 File: fig/Bayes_LE_f_ccdf_F1.pdf Graphic file (type pdf)
 <fig/Bayes_LE_f_ccdf_F1.pdf>
 
-Overfull \hbox (6.79999pt too wide) in paragraph at lines 561--562
+Overfull \hbox (6.79999pt too wide) in paragraph at lines 682--683
  [] 
  []
 
 File: fig/Bayes_LE_f_ccdf_F2.pdf Graphic file (type pdf)
 <fig/Bayes_LE_f_ccdf_F2.pdf>
 
-Overfull \hbox (6.79999pt too wide) in paragraph at lines 569--570
+Overfull \hbox (6.79999pt too wide) in paragraph at lines 690--691
  [] 
  []
 
+[22]
 File: fig/Bayes_LE_m_ccdf_F1.pdf Graphic file (type pdf)
 <fig/Bayes_LE_m_ccdf_F1.pdf>
 
-Overfull \hbox (6.79999pt too wide) in paragraph at lines 579--580
+Overfull \hbox (6.79999pt too wide) in paragraph at lines 700--701
  [] 
  []
-
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 File: fig/Bayes_LE_m_ccdf_F2.pdf Graphic file (type pdf)
 <fig/Bayes_LE_m_ccdf_F2.pdf>
 
-Overfull \hbox (6.79999pt too wide) in paragraph at lines 587--588
+Overfull \hbox (6.79999pt too wide) in paragraph at lines 708--709
  [] 
  []
-
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 File: fig/Bayes_HLE_f_ccdf_F1.pdf Graphic file (type pdf)
 <fig/Bayes_HLE_f_ccdf_F1.pdf>
 
-Overfull \hbox (6.79999pt too wide) in paragraph at lines 598--599
+Overfull \hbox (6.79999pt too wide) in paragraph at lines 719--720
  [] 
  []
 
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
+[23]
 File: fig/Bayes_HLE_f_ccdf_F2.pdf Graphic file (type pdf)
 <fig/Bayes_HLE_f_ccdf_F2.pdf>
 
-Overfull \hbox (6.79999pt too wide) in paragraph at lines 607--608
+Overfull \hbox (6.79999pt too wide) in paragraph at lines 728--729
  [] 
  []
-
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 File: fig/Bayes_HLE_m_ccdf_F1.pdf Graphic file (type pdf)
 <fig/Bayes_HLE_m_ccdf_F1.pdf>
 
-Overfull \hbox (6.79999pt too wide) in paragraph at lines 617--618
+Overfull \hbox (6.79999pt too wide) in paragraph at lines 738--739
  [] 
  []
-
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 File: fig/Bayes_HLE_m_ccdf_F2.pdf Graphic file (type pdf)
 <fig/Bayes_HLE_m_ccdf_F2.pdf>
 
-Overfull \hbox (6.79999pt too wide) in paragraph at lines 626--627
+Overfull \hbox (6.79999pt too wide) in paragraph at lines 747--748
  [] 
  []
 
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-runsystem([ 'fig/daly.png' -nt 'fig/daly.bb' ] && cd 'fig/' && ebb 'daly.png').
-..disabled (restricted).
-
-File: fig/daly.png Graphic file (type bmp)
-<fig/daly.png>
-Overfull \hbox (6.79999pt too wide) in paragraph at lines 637--639
- [] 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 639--639
-[]\OT1/cmr/m/n/10.95 Fig. 7.9 []DALY \JY1/mc/m/sc/10.95 の算出概念図\OT1/cmr/m/
-n/10.95 , \JY1/mc/m/sc/10.95 出典 ：
- []
-
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-[11] [12]
+[24] [25]
 第 8 章
-[13
-
+[26
 
 ]
-第 9 章
 No file report_kenko._wakayama_final.bbl.
-[14
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 794.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 794.
+(./report_kenko._wakayama_final.aux)
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 794.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 794.
 
 
-]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 697.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 697.
- (./report_kenko._wakayama_final.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 697.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 697.
-Package rerunfilecheck Info: File `report_kenko._wakayama_final.out' has not ch
-anged.
-(rerunfilecheck)             Checksum: 45F088A6DD509C76B6572525057B233E;1308.
+Package rerunfilecheck Warning: File `report_kenko._wakayama_final.out' has cha
+nged.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
 
+Package rerunfilecheck Info: Checksums for `report_kenko._wakayama_final.out':
+(rerunfilecheck)             Before: CE1AED586BE5137B148DC675E1E3A96C;1950
+(rerunfilecheck)             After:  47535E89928F61448672AEB57934F2F2;1950.
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
 
-LaTeX Warning: There were undefined references.
-
-
 LaTeX Warning: There were multiply-defined labels.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 697.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 794.
  ) 
 Here is how much of TeX's memory you used:
- 19333 strings out of 481140
- 357622 string characters out of 5917417
- 647014 words of memory out of 5000000
- 34825 multiletter control sequences out of 15000+600000
+ 21380 strings out of 481140
+ 415421 string characters out of 5917417
+ 726673 words of memory out of 5000000
+ 36819 multiletter control sequences out of 15000+600000
  556734 words of font info for 119 fonts, out of 8000000 for 9000
  929 hyphenation exceptions out of 8191
- 72i,12n,71p,3763b,970s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 72i,12n,73p,3763b,1633s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on report_kenko._wakayama_final.dvi (15 pages, 131072 bytes).
+Output written on report_kenko._wakayama_final.dvi (27 pages, 175388 bytes).

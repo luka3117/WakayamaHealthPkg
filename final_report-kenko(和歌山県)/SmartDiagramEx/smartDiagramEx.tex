@@ -1,0 +1,53 @@
+%https://www.youtube.com/watch?v=1kY-1ssTk7o
+
+
+
+\documentclass[dvipdfmx]{book}
+\usepackage{otf}
+
+\usepackage{mathptmx}
+\usepackage{amsmath}
+\usepackage{longtable}
+
+
+\usepackage{smartdiagram}
+\usesmartdiagramlibrary{additions}
+\usetikzlibrary{shapes.geometric}
+
+
+
+\begin{document}
+
+
+% \smartdiagramset{circular distance=4cm, \font=\Large}
+% \smartdiagramset{circular distance=4cm,
+% text width=2.5cm,
+% module minimum width=3.5cm,
+% module minimum height=3.5cm,
+% arrow tip=to
+% }
+
+\smartdiagram[circular diagram:clockwise]{test1, test2}
+
+\smartdiagram[circular diagram]{test1, test2}
+
+
+
+% \smartdiagramset{circular distance=4cm, \font=\Large}
+% \smartdiagramset{
+% module shape=diamond,
+% circular distance=10cm,
+% text width=2.5cm,
+% module minimum width=3.5cm,
+% module minimum height=3.5cm,
+% arrow tip=to
+% }
+%
+
+\smartdiagram[circular diagram]{test1, test2}
+
+
+\smartdiagram[flow diagram:horizontal]{test1, test2,  test2}
+
+
+\end{document}

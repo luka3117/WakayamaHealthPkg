@@ -1,0 +1,15 @@
+INFO: latexindent version 3.8, 2020-03-21, a script to indent .tex files
+      latexindent lives here: /usr/local/texlive/2020/texmf-dist/scripts/latexindent/
+      Wed Jul  7 20:29:57 2021
+      Filename: dereport.sty
+INFO: Processing switches:
+INFO: Directory for backup files and indent.log: .
+INFO: YAML settings read: defaultSettings.yaml
+      Reading defaultSettings.yaml from /usr/local/texlive/2020/texmf-dist/scripts/latexindent/defaultSettings.yaml
+INFO: YAML settings read: indentconfig.yaml or .indentconfig.yaml
+      Home directory is /Users/jlee (didn't find either indentconfig.yaml or .indentconfig.yaml)
+      To specify user settings you would put indentconfig.yaml here: /Users/jlee/indentconfig.yaml
+      Alternatively, you can use the hidden file .indentconfig.yaml as: /Users/jlee/.indentconfig.yaml
+FATAL: I couldn't find dereport.sty, are you sure it exists?.
+       No indentation done.
+       Exiting.
