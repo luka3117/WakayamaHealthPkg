@@ -1,0 +1,431 @@
+commit 4abb94167cbdc0b33787fdf9cc701a3e4800f461
+Author: Jongchan Lee <jc@JongchannoMac-mini.local>
+Date:   Tue Jul 13 04:10:26 2021 +0900
+
+    final report tex by variable selection chapter
+
+commit 2db79853491b788f268276bf1ae3ccc2fd6f5b85
+Author: Jongchan Lee <jc@JongchannoMac-mini.local>
+Date:   Tue Jul 6 12:47:03 2021 +0900
+
+    Var MF HL, HLE var delete in RforTexJpn.R
+
+commit 56cd6a66890a041ead325b6b280a3395992f6748
+Author: Jongchan Lee <jc@JongchannoMac-mini.local>
+Date:   Tue Jul 6 02:27:23 2021 +0900
+
+    ModelStructure.tex file added, modeling structure
+
+commit b0a6fb98b546858414f30e97c029ca9a8a61fc0c
+Author: Jongchan Lee <jc@JongchannoMac-mini.local>
+Date:   Mon Jul 5 15:46:57 2021 +0900
+
+    RforTEx chnaged, exex.py for adjustbox tex added
+
+commit cdab7fc75fd4f7a7b55f8df83ee144bbd4b2cbbc
+Author: Jongchan Lee <jc@JongchannoMac-mini.local>
+Date:   Sat Jul 3 22:29:57 2021 +0900
+
+    RforJpnmodified
+
+commit d3c5811f90e16dfb7c6f3cdd6dd583bde1c12c57
+Author: Jongchan Lee <jc@JongchannoMac-mini.local>
+Date:   Sat Jul 3 12:13:09 2021 +0900
+
+    RforTEXJpn.R added, FA network fig changed
+
+commit d2c14f51af5932264ff596c537926927c8dd7a1c
+Author: Jongchan Lee <jc@JongchannoMac-mini.local>
+Date:   Sat Jul 3 01:38:21 2021 +0900
+
+    WakayamaData.Rmd data information for tex added
+
+commit 42e6aadf66b36e09a8f0708fbf3ab1a748bf973e
+Author: Jongchan Lee <jc@JongchannoMac-mini.local>
+Date:   Wed Jun 30 01:32:41 2021 +0900
+
+    km2 change bash command added in the female data
+
+commit e371718969faa34b9e34614f079aba30903c09e9
+Author: Jongchan Lee <jclee@JongchannoiMac.local>
+Date:   Tue Jun 29 20:18:07 2021 +0900
+
+     Latex work start, FA fig left
+
+commit 1854ebfdc056ff51c4ef4f5c1c82e87967400949
+Author: Jongchan Lee <jclee@JongchannoiMac.local>
+Date:   Tue Jun 29 18:43:08 2021 +0900
+
+    Bayes estimate table end, Byyes post fig start for tex
+
+commit a41f2ef1db3a3722980069018beb6aecf7980086
+Author: Jongchan Lee <jclee@JongchannoiMac.local>
+Date:   Mon Jun 28 20:33:35 2021 +0900
+
+    RforTEX.R LM with FA complete, gamma table start
+
+commit fcf93d2e7fb4dff03831992bd6a31f54bb699820
+Author: Jongchan Lee <jc@JongchannoMac-mini.local>
+Date:   Mon Jun 28 13:38:06 2021 +0900
+
+    tex table name added in the bottom of RforTEX.R
+
+commit 37dbd3935d55ff475ddbe056d347edee374357b3
+Author: Jongchan Lee <jc@JongchannoMac-mini.local>
+Date:   Sun Jun 27 02:02:46 2021 +0900
+
+    report_kenko._wakayama_final added, RforTex.R modified
+
+commit 858dd57861fd0c39d60efa47744e55fbc9e19271
+Author: Jongchan Lee <jc@JongchannoMac-mini.local>
+Date:   Sun Jun 27 00:30:34 2021 +0900
+
+     ScreenEnd.RData copied to reprot work folder, whole R code is copied in RforTex.R
+
+commit 29d4f87bb4724069dddedc6e3995efa413da423b
+Author: Jongchan Lee <jc@JongchannoMac-mini.local>
+Date:   Sat Jun 26 11:42:30 2021 +0900
+
+    final_report-kenko(和歌山県) RforTEX.R added, fig, table folder added
+
+commit 4456ef6e20bfff370ddeac3d4476b368edafc14f
+Author: Jongchan Lee <jclee@JongchannoiMac.local>
+Date:   Thu Jun 24 20:05:12 2021 +0900
+
+    model fit obj name assinged
+
+commit 2bb5df6cd78a347b033159604a09b08587f4a03f
+Author: Jongchan Lee <jc@JongchannoMac-mini.local>
+Date:   Thu Jun 24 13:38:45 2021 +0900
+
+    contentsForm.txt added in tex folder
+
+commit 9f711302491074088184c498e61da2c7941c21d1
+Author: Jongchan Lee <jc@JongchannoMac-mini.local>
+Date:   Thu Jun 24 13:33:26 2021 +0900
+
+    WakayamaHtml_final_report_for_Print.Rmd added
+
+commit 6ab927b9faa5e2c46c4564cd7a133fda3eda929c
+Author: Jongchan Lee <jc@JongchannoMac-mini.local>
+Date:   Tue Jun 22 13:00:10 2021 +0900
+
+    report material added
+
+commit 82684b6a4751a8cc6fd32b6793ade24b0860b263
+Author: Jongchan Lee <jc@JongchannoMac-mini.local>
+Date:   Tue Jun 22 01:53:56 2021 +0900
+
+    Bayes end, finishing touch left
+
+commit 45ee45ad09392ee90dc60f15e6ee25b4c00c08ea
+Author: Jongchan Lee <jc@JongchannoMac-mini.local>
+Date:   Tue Jun 22 01:49:28 2021 +0900
+
+    Bayes analysis end, finishig touch left
+
+commit ceab9e6c880beda86d78f4842cd62b05f09cb0db
+Author: Jongchan Lee <jclee@JongchannoiMac.local>
+Date:   Mon Jun 21 20:53:52 2021 +0900
+
+    complementary CDF start
+
+commit f0a3ee25c40ed266928be66c38f5c6a2d839bad6
+Author: Jongchan Lee <jc@JongchannoMac-mini.local>
+Date:   Mon Jun 21 14:15:51 2021 +0900
+
+    comp ecdf trial
+
+commit 37d3203f3d54329b50bc2cfecae4acc5410bc987
+Author: Jongchan Lee <jc@JongchannoMac-mini.local>
+Date:   Sat Jun 19 13:54:34 2021 +0900
+
+    Bayes Female end, male start, key word final think
+
+commit 0c5d9a1a5dabc9b159403ead0b16f60cddf7b2e5
+Author: Jongchan Lee <jclee@JongchannoiMac.local>
+Date:   Fri Jun 18 20:27:26 2021 +0900
+
+    Bayesian Female LE start
+
+commit 61e6055344ea5e6936a244840e2da216afdba0f9
+Author: Jongchan Lee <jclee@JongchannoiMac.local>
+Date:   Thu Jun 17 20:09:42 2021 +0900
+
+    Bayes start
+
+commit aacef887980f96e156d3ec6ea573d802d4c5318f
+Author: Jongchan Lee <jc@JongchannoMac-mini.local>
+Date:   Mon Jun 14 13:52:56 2021 +0900
+
+    Gamma glm end, finishi touch DT etc. left
+
+commit a1454bc0a4719029f21381381ca16848b71910ec
+Author: Jongchan Lee <jc@JongchannoMac-mini.local>
+Date:   Sat Jun 12 14:05:13 2021 +0900
+
+    R glmm gamma code added
+
+commit e91b41029eb9fa85417e11593a295131293df42f
+Author: Jongchan Lee <jclee@JongchannoiMac.local>
+Date:   Fri Jun 11 20:40:01 2021 +0900
+
+    glmm a little bit done
+
+commit c990c87f0901d5b35a5f5be201a68cedf279e54c
+Author: Jongchan Lee <jclee@JongchannoiMac.local>
+Date:   Thu Jun 10 19:33:40 2021 +0900
+
+    logit model end, glmm start
+
+commit d402ebfb68fd060129a584e90f06aed054a79a02
+Author: Jongchan Lee <jc@JongchannoMac-mini.local>
+Date:   Wed Jun 9 19:43:35 2021 +0900
+
+    FA rotate end. reg<-f1, f2 end
+
+commit af21d6d1932241165e7771a03fa8f26dc7f7e4c9
+Author: Jongchan Lee <jc@JongchannoMac-mini.local>
+Date:   Sat Jun 5 13:59:19 2021 +0900
+
+    female FA extracted
+
+commit dac019756945e19f1c36fc4ad03810008c9075d5
+Author: Jongchan Lee <jc@JongchannoMac-mini.local>
+Date:   Fri Jun 4 22:32:05 2021 +0900
+
+    FA analysis start
+
+commit e1fcf3c1ae1ecaf034c2d89799f6383b44e3295f
+Author: Jongchan Lee <jc@JongchannoMac-mini.local>
+Date:   Fri Jun 4 01:18:15 2021 +0900
+
+    PCA FA material added
+
+commit 8189da2eb4f58a7e1e40dcf1d6e0050aba57378a
+Author: Jongchan Lee <jc@JongchannoMac-mini.local>
+Date:   Tue Jun 1 12:04:08 2021 +0900
+
+    GLMM book added
+
+commit bc4dbc51598a3b62d985eeb19f4747ec948251d9
+Author: Jongchan Lee <jc@JongchannoMac-mini.local>
+Date:   Mon May 31 14:06:16 2021 +0900
+
+    working with /WakayamaHtml_final_report.Rmd Regression
+
+commit dbe41a04d5d92280828ca60a97761b74d48de0cb
+Author: Jongchan Lee <jc@JongchannoMac-mini.local>
+Date:   Fri May 28 23:37:04 2021 +0900
+
+    WakayamaHtml_final_report.R　added
+
+commit dae7677b1d9705573f6199e3fc4a0aab9b4b86a2
+Author: Jongchan Lee <jclee@JongchannoiMac.local>
+Date:   Fri May 28 20:33:20 2021 +0900
+
+    ScreenEnd.RData added, working file changed
+
+commit 84fa7ab38ac82df9e3cc585ee5e67c116b72579e
+Author: Jongchan Lee <jc@JongchannoMac-mini.local>
+Date:   Fri May 28 15:17:41 2021 +0900
+
+    3rd complete finishing touch
+
+commit 901e91a61883282091b8c5adeb676192c5bfaf56
+Author: Jongchan Lee <jc@JongchannoMac-mini.local>
+Date:   Fri May 28 15:13:45 2021 +0900
+
+    3rd screening complete
+
+commit b78052c8ad989d8fbe414dd9eb3e3fa723965dc7
+Author: Jongchan Lee <jclee@JongchannoiMac.local>
+Date:   Fri May 21 20:44:30 2021 +0900
+
+    2nd reg screening end
+
+commit 34edc83f64e684f21ac0b8456562fb5d24a0d471
+Author: Jongchan Lee <jc@JongchannoMac-mini.local>
+Date:   Fri May 21 15:12:59 2021 +0900
+
+    1st screening end, 2nd screening start
+
+commit 42bce1919f7d45f37f634ca56ef330d51c793233
+Author: Jongchan Lee <jc@JongchannoMac-mini.local>
+Date:   Fri May 21 13:15:04 2021 +0900
+
+    first screen variable selection completed
+
+commit 9cdfa556e491cf09836a7e0809dabfea2ec388ff
+Author: Jongchan Lee <jc@JongchannoMac-mini.local>
+Date:   Thu May 20 17:26:29 2021 +0900
+
+    data division ; m f data
+
+commit ddb8c07d324370b7a1cb8805d06be6d20e04bb3d
+Author: Jongchan Lee <jc@JongchannoMac-mini.local>
+Date:   Wed May 19 00:25:56 2021 +0900
+
+    regression variable selection start
+
+commit 9bc03562264e600a09bad8f9d5eca56c5ee9d34f
+Author: Jongchan Lee <jc@JongchannoMac-mini.local>
+Date:   Sat May 15 14:49:28 2021 +0900
+
+    令和3年5月15日
+
+commit a2ed1a5077b597c958387133217a436d08bcf632
+Author: Jongchan Lee <jc@JongchannoMac-mini.local>
+Date:   Sat May 15 14:48:30 2021 +0900
+
+    令和3年5月15日
+
+commit 99c08e78444e9faca24fd2c582d7ebe51d9a03d4
+Author: Jongchan Lee <jlee@JongchannoMacBook-Pro.local>
+Date:   Sat May 15 02:52:20 2021 +0900
+
+    R3 project start
+
+commit 75661d8794c5d567ab336a17a54a019f3427ebb4
+Author: Jongchan Lee <jlee@JongchannoMacBook-Pro.local>
+Date:   Sat May 15 02:47:45 2021 +0900
+
+    R2 project final
+
+commit ac312ef4b2de76252fb9df8af770151db65a4445
+Author: Jongchan Lee <jc@JongchannoMac-mini.local>
+Date:   Fri May 14 14:11:46 2021 +0900
+
+    time before new project start
+
+commit e240d24ce1ecfc888dd08c6ca0508b6b77f4a4ea
+Author: Jongchan Lee <jlee@JongchannoMacBook-Pro.local>
+Date:   Sat Apr 24 02:32:49 2021 +0900
+
+    令和3年4月24日
+
+commit a59382de6a34000cccebf131e0fab52ddafc8a70
+Author: Jongchan Lee <jc@JongchannoMac-mini.local>
+Date:   Wed Mar 31 00:05:53 2021 +0900
+
+    令和3年3月31日
+
+commit d1d5ea1b9ab8485af833c42973494d89aae55b00
+Author: Jongchan Lee <jclee@JongchannoiMac.local>
+Date:   Thu Mar 25 21:03:16 2021 +0900
+
+    令和3年3月25日
+
+commit ee09e07434e56c123b4ae383706abe85e2a0f40d
+Author: Jongchan Lee <jc@JongchannoMac-mini.local>
+Date:   Wed Mar 24 23:09:59 2021 +0900
+
+    令和3年3月24日
+
+commit d5b86711d84f0f9e620ab48d1e59bd0b70080aca
+Author: Jongchan Lee <jc@JongchannoMac-mini.local>
+Date:   Tue Mar 23 11:37:09 2021 +0900
+
+    令和3年3月23日
+
+commit 172f11dd403f00065e5409ed1730033c70450c22
+Author: Jongchan Lee <jclee@JongchannoiMac.local>
+Date:   Mon Mar 22 20:11:53 2021 +0900
+
+    令和3年3月22日
+
+commit b3406d01944acfec6321c8f706142869589214f1
+Author: Jongchan Lee <jlee@JongchannoMacBook-Pro.local>
+Date:   Sun Mar 21 03:56:47 2021 +0900
+
+    令和3年3月21日
+
+commit 50b376bd88984e6bd4a2693b606a8761b4e99460
+Author: Jongchan Lee <jclee@JongchannoiMac.local>
+Date:   Thu Mar 18 21:07:08 2021 +0900
+
+    令和3年3月18日
+
+commit 27f0e468f12d836c94f356543898c54a37c7c978
+Author: Jongchan Lee <jc@JongchannoMac-mini.local>
+Date:   Thu Mar 18 15:25:52 2021 +0900
+
+    令和3年3月18日
+
+commit 3cd00888ad87e5e2a10f246f166436f3ef6b6657
+Author: Jongchan Lee <jc@JongchannoMac-mini.local>
+Date:   Tue Mar 16 13:26:17 2021 +0900
+
+    令和3年3月16日
+
+commit 5bf842ad64de11c5be00dec87d380f39bc9b01f2
+Author: Jongchan Lee <jlee@JongchannoMacBook-Pro.local>
+Date:   Fri Mar 12 01:52:54 2021 +0900
+
+    令和3年3月12日
+
+commit 701f1338864ddbb23c6252806040a9c7e3e4c6e5
+Author: Jongchan Lee <jclee@JongchannoiMac.local>
+Date:   Mon Mar 8 18:53:32 2021 +0900
+
+    令和3年3月8日
+
+commit ccee7b1bb30fc1a542dff5c871e8379b355ce096
+Author: Jongchan Lee <jlee@JongchannoMacBook-Pro.local>
+Date:   Tue Mar 2 13:02:17 2021 +0900
+
+    令和3年3月2日
+
+commit 565ac4fe0b0243b1be046a63fc4624582032f29a
+Author: Jongchan Lee <jlee@JongchannoMacBook-Pro.local>
+Date:   Fri Feb 26 14:58:10 2021 +0900
+
+    令和3年2月26日
+
+commit 815af7f2f93728565fe3617ecee8942d7d809c1a
+Author: Jongchan Lee <jlee@JongchannoMacBook-Pro.local>
+Date:   Thu Feb 25 03:46:09 2021 +0900
+
+    R03/02/25
+
+commit e82450f3439023e0279242f26bc1c9e3ae8e1996
+Author: Jongchan Lee <jlee@JongchannoMacBook-Pro.local>
+Date:   Thu Feb 25 03:38:55 2021 +0900
+
+    令和3年2月25日
+
+commit 477e2d0d9788b9edbef766d56523eac761d4c256
+Author: Jongchan Lee <jlee@JongchannoMacBook-Pro.local>
+Date:   Wed Feb 24 13:07:27 2021 +0900
+
+    令和3年2月24日
+
+commit 9b155f7c1ef4c5843a91c7d39b3454bb16117359
+Author: Jongchan Lee <jlee@JongchannoMacBook-Pro.local>
+Date:   Tue Feb 16 14:02:05 2021 +0900
+
+    京都講義資料追加
+
+commit 07dd81782e9864b493ae4b40297aa47b0c6ef4f9
+Author: Jongchan Lee <jlee@JongchannoMacBook-Pro.local>
+Date:   Mon Feb 15 14:27:54 2021 +0900
+
+    令和3年2月15日
+
+commit 1f1e3c95657ea4c29dc91ac9bd872d9668b3c2b5
+Author: Jongchan Lee <jlee@JongchannoMacBook-Pro.local>
+Date:   Fri Feb 12 12:53:04 2021 +0900
+
+    R03/02/12
+
+commit fc03e85f950088e28bee87a767ce36510cf8fb98
+Author: Jongchan Lee <jlee@JongchannoMacBook-Pro.local>
+Date:   Wed Feb 10 14:14:00 2021 +0900
+
+    令和3年2月10日
+
+commit a4a10ba6c93a5929d7503e40cc7d1447fdb45db8
+Author: Jongchan Lee <jlee@JongchannoMacBook-Pro.local>
+Date:   Wed Feb 10 12:57:53 2021 +0900
+
+    first commit

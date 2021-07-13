@@ -1,4 +1,4 @@
-This is e-pTeX, Version 3.14159265-p3.8.3-191112-2.6 (utf8.euc) (TeX Live 2020) (preloaded format=platex 2021.2.25)  13 JUL 2021 00:41
+This is e-pTeX, Version 3.14159265-p3.8.3-191112-2.6 (utf8.euc) (TeX Live 2020) (preloaded format=platex 2021.2.25)  13 JUL 2021 13:49
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1043,22 +1043,26 @@ This may cause the page layout to be inconsistent, however.
 
 [3]
 第 2 章
-[4
+LaTeX Font Info:    Font shape `JT1/mc/b/n' in size <10.95> not available
+(Font)              Font shape `JT1/mc/bx/n' tried instead on input line 107.
+LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <10.95> not available
+(Font)              Font shape `JT1/gt/m/n' tried instead on input line 107.
+LaTeX Font Info:    Font shape `JY1/mc/b/n' in size <10.95> not available
+(Font)              Font shape `JY1/mc/bx/n' tried instead on input line 107.
+LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <10.95> not available
+(Font)              Font shape `JY1/gt/m/n' tried instead on input line 107.
 
-] (./table/table_commom_d.tex
-Overfull \hbox (1.46564pt too wide) in paragraph at lines 9--43
- [] 
- []
+LaTeX Warning: Reference `table_commom_d.tex' on page 4 undefined on input line
+ 107.
 
-) [5
+(./table/table_commom_d2.tex) [4
 
-] (./table/table_mf_d.tex
+] [5] (./table/table_mf_d.tex
 Overfull \hbox (1.48166pt too wide) in paragraph at lines 9--42
  [] 
  []
 
 ) [6
-
 
 ]) (./sub/chap2.tex
 第 3 章
@@ -1069,16 +1073,7 @@ Overfull \hbox (1.48166pt too wide) in paragraph at lines 9--42
 第 4 章
 (./table/UsedVar.tex) [9
 
-]
-LaTeX Font Info:    Font shape `JT1/mc/b/n' in size <10.95> not available
-(Font)              Font shape `JT1/mc/bx/n' tried instead on input line 213.
-LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <10.95> not available
-(Font)              Font shape `JT1/gt/m/n' tried instead on input line 213.
-LaTeX Font Info:    Font shape `JY1/mc/b/n' in size <10.95> not available
-(Font)              Font shape `JY1/mc/bx/n' tried instead on input line 213.
-LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <10.95> not available
-(Font)              Font shape `JY1/gt/m/n' tried instead on input line 213.
- (./table/table_LM_LE_f.tex)
+] (./table/table_LM_LE_f.tex)
 (./table/table_LM_LE_m.tex) (./table/table_LM_HLE_f.tex)
 (./table/table_LM_HLE_m.tex [10]) (./fig/VarSel.tex
 (/usr/local/texlive/2020/texmf-dist/tex/generic/pgf/frontendlayer/tikz/librarie
@@ -1242,18 +1237,15 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 794.
 (./report_kenko._wakayama_final.aux)
 Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 794.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 794.
+Package rerunfilecheck Info: File `report_kenko._wakayama_final.out' has not ch
+anged.
+(rerunfilecheck)             Checksum: 47535E89928F61448672AEB57934F2F2;1950.
 
-
-Package rerunfilecheck Warning: File `report_kenko._wakayama_final.out' has cha
-nged.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `report_kenko._wakayama_final.out':
-(rerunfilecheck)             Before: CE1AED586BE5137B148DC675E1E3A96C;1950
-(rerunfilecheck)             After:  47535E89928F61448672AEB57934F2F2;1950.
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
+
+
+LaTeX Warning: There were undefined references.
 
 
 LaTeX Warning: There were multiply-defined labels.
@@ -1261,12 +1253,12 @@ LaTeX Warning: There were multiply-defined labels.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 794.
  ) 
 Here is how much of TeX's memory you used:
- 21380 strings out of 481140
- 415421 string characters out of 5917417
- 726673 words of memory out of 5000000
- 36819 multiletter control sequences out of 15000+600000
+ 21381 strings out of 481140
+ 415446 string characters out of 5917417
+ 732711 words of memory out of 5000000
+ 36820 multiletter control sequences out of 15000+600000
  556734 words of font info for 119 fonts, out of 8000000 for 9000
  929 hyphenation exceptions out of 8191
  72i,12n,73p,3763b,1633s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on report_kenko._wakayama_final.dvi (27 pages, 175388 bytes).
+Output written on report_kenko._wakayama_final.dvi (27 pages, 175328 bytes).

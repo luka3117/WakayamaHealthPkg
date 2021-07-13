@@ -62,6 +62,7 @@ sink()
 library(xtable)
 # table 変数リスト
 
+# 4分割
 d_common1 <- d_common[, 7:104] %>% colnames() %>% enframe() %>% .[1:25, ] %>%
   left_join(var, by=c("value"="var_name_Eng")) %>% select(id, var_name_Jpn)
 d_common2 <- d_common[, 7:104] %>% colnames() %>% enframe() %>% .[26:50, ]  %>%
@@ -71,6 +72,7 @@ d_common3 <- d_common[, 7:104] %>% colnames() %>% enframe() %>% .[51:75, ]  %>%
 d_common4 <- d_common[, 7:104] %>% colnames() %>% enframe() %>% .[76:98, ] %>%
   rbind(c(NA, NA), c(NA, NA)) %>%
   left_join(var, by=c("value"="var_name_Eng")) %>% select(id, var_name_Jpn)
+
 
 bind_cols(d_common1, d_common2[-11,], d_common3, d_common4) %>% select(2,4,6,8)
 
@@ -93,7 +95,7 @@ d_common4 <- d_common[, 7:104] %>% colnames() %>% enframe() %>% .[76:98, ] %>%
 bind_cols(d_common1, d_common2[-11,], d_common3, d_common4) %>% select(2,4,6,8) %>%
   xtable(label = "table_commom_d.tex",
          caption = c("共通変数(98個)"), digits=3) %>%
-   print(size = "\\tiny", caption.placement = "top")
+  print(size = "\\tiny", caption.placement = "top")
 sink()
 
 system('
@@ -105,6 +107,45 @@ python3 ../../exex.py "table_commom_d.tex" "temp.tex";
 mv "temp.tex" "table_commom_d.tex"
 ')
 rm(d_common1,d_common2,d_common3,d_common4)
+
+
+
+# 2分割
+d_common5 <- d_common[, 7:104] %>% colnames() %>% enframe() %>% .[1:50, ] %>%
+  left_join(var, by=c("value"="var_name_Eng")) %>% select(id, var_name_Jpn)
+d_common6 <- d_common[, 7:104] %>% colnames() %>% enframe() %>% .[51:98, ] %>%
+  rbind(c(NA, NA), c(NA, NA)) %>%
+  left_join(var, by=c("value"="var_name_Eng")) %>% select(id, var_name_Jpn)
+
+bind_cols(d_common5[-36, ], d_common6) %>% select(2,4)
+
+
+
+file="table_commom_d2.tex"
+path="./final_report-kenko(和歌山県)/table/"
+
+sink(file = paste0(path, file))
+d_common5 <- d_common[, 7:104] %>% colnames() %>% enframe() %>% .[1:50, ] %>%
+  left_join(var, by=c("value"="var_name_Eng")) %>% select(id, var_name_Jpn)
+d_common6 <- d_common[, 7:104] %>% colnames() %>% enframe() %>% .[51:98, ] %>%
+  rbind(c(NA, NA), c(NA, NA)) %>%
+  left_join(var, by=c("value"="var_name_Eng")) %>% select(id, var_name_Jpn)
+
+
+bind_cols(d_common5[-36, ], d_common6) %>% select(2,4)%>%
+  xtable(label = "table_commom_d2.tex",
+         caption = c("共通変数(98個)"), digits=3) %>%
+  print(size = "\\tiny", caption.placement = "top")
+sink()
+
+system('
+cd "./final_report-kenko(和歌山県)/table/";
+sed -e "s/㎡/m$^2$/g" "table_commom_d2.tex" > "temp1.tex";
+mv temp1.tex temp2.tex;
+python3 ../../exex.py "temp2.tex" "temp3.tex";
+mv "temp3.tex" "table_commom_d2.tex";
+')
+rm(d_common5,d_common6)
 
 
 
