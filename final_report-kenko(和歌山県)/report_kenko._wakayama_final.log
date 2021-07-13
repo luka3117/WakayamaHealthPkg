@@ -1,4 +1,4 @@
-This is e-pTeX, Version 3.14159265-p3.8.3-191112-2.6 (utf8.euc) (TeX Live 2020) (preloaded format=platex 2021.2.25)  13 JUL 2021 13:49
+This is e-pTeX, Version 3.14159265-p3.8.3-191112-2.6 (utf8.euc) (TeX Live 2020) (preloaded format=platex 2021.2.25)  14 JUL 2021 02:08
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -873,9 +873,6 @@ LaTeX Warning: Unused global option(s):
 
 (./report_kenko._wakayama_final.aux
 
-LaTeX Warning: Label `UsualHLMLEf' multiply defined.
-
-
 LaTeX Warning: Label `table_Gamma_HLE_FA_m' multiply defined.
 
 
@@ -1043,39 +1040,32 @@ This may cause the page layout to be inconsistent, however.
 
 [3]
 第 2 章
-LaTeX Font Info:    Font shape `JT1/mc/b/n' in size <10.95> not available
-(Font)              Font shape `JT1/mc/bx/n' tried instead on input line 107.
-LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <10.95> not available
-(Font)              Font shape `JT1/gt/m/n' tried instead on input line 107.
-LaTeX Font Info:    Font shape `JY1/mc/b/n' in size <10.95> not available
-(Font)              Font shape `JY1/mc/bx/n' tried instead on input line 107.
-LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <10.95> not available
-(Font)              Font shape `JY1/gt/m/n' tried instead on input line 107.
-
-LaTeX Warning: Reference `table_commom_d.tex' on page 4 undefined on input line
- 107.
-
 (./table/table_commom_d2.tex) [4
 
-] [5] (./table/table_mf_d.tex
-Overfull \hbox (1.48166pt too wide) in paragraph at lines 9--42
- [] 
- []
-
-) [6
-
-]) (./sub/chap2.tex
+] (./table/table_mf_d2.tex)) [5] [6]
 第 3 章
-(./ModelStructure.tex) [7
+(./table/LE_Ttest_d_f.tex) (./table/LE_Ttest_d_m.tex) (./sub/chap2.tex [7
 
-
-] (./ModelSupression.tex)) [8]
+]
 第 4 章
-(./table/UsedVar.tex) [9
+(./ModelStructure.tex) [8
 
-] (./table/table_LM_LE_f.tex)
-(./table/table_LM_LE_m.tex) (./table/table_LM_HLE_f.tex)
-(./table/table_LM_HLE_m.tex [10]) (./fig/VarSel.tex
+] (./ModelSupression.tex)) [9]
+第 5 章
+(./table/UsedVar.tex) [10
+
+]
+LaTeX Font Info:    Font shape `JT1/mc/b/n' in size <10.95> not available
+(Font)              Font shape `JT1/mc/bx/n' tried instead on input line 240.
+LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <10.95> not available
+(Font)              Font shape `JT1/gt/m/n' tried instead on input line 240.
+LaTeX Font Info:    Font shape `JY1/mc/b/n' in size <10.95> not available
+(Font)              Font shape `JY1/mc/bx/n' tried instead on input line 240.
+LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <10.95> not available
+(Font)              Font shape `JY1/gt/m/n' tried instead on input line 240.
+ (./table/table_LM_LE_m.tex)
+(./table/table_LM_HLE_m.tex) [11] (./table/table_LM_LE_f.tex)
+(../tikz-example.tex) (./table/table_LM_HLE_f.tex) [12] (./fig/VarSel.tex
 (/usr/local/texlive/2020/texmf-dist/tex/generic/pgf/frontendlayer/tikz/librarie
 s/tikzlibraryshapes.code.tex
 File: tikzlibraryshapes.code.tex 2020/01/08 v3.1.5b (3.1.5b)
@@ -1143,122 +1133,125 @@ File: pgflibraryshapes.multipart.code.tex 2020/01/08 v3.1.5b (3.1.5b)
 \pgfnodepartsevenbox=\box156
 \pgfnodepartsixbox=\box157
 \pgfnodepartfivebox=\box158
-)))) [11] [12]
-第 5 章
+)))
+Overfull \hbox (0.62744pt too wide) in paragraph at lines 45--45
+ \OT1/cmr/m/n/10.95 [\OML/cmm/b/it/10.95 X[]\OMS/cmsy/m/n/10.95 j\OML/cmm/b/it/
+10.95 X[]\OMS/cmsy/m/n/10.95 j\OML/cmm/b/it/10.95 X[]\OT1/cmr/m/n/10.95 ]$ 
+ []
+
+) [13] [14]
+第 6 章
 (./FAdiagram.tex)
 
 Package amsmath Warning: Cannot use `split' here;
-(amsmath)                trying to recover with `aligned' on input line 331.
+(amsmath)                trying to recover with `aligned' on input line 418.
 
-[13
+[15
 
-] [14] [15] (./table/table_FA_f.tex) (./table/table_FA_m.tex) [16]
-第 6 章
-[17
+] [16] [17] (./table/table_FA_f.tex) (./table/table_FA_m.tex) [18]
+第 7 章
+[19
 
 ] (./table/table_LM_LE_FA_f.tex) (./table/table_LM_LE_FA_m.tex)
 (./table/table_LM_HLE_FA_f.tex) (./table/table_LM_HLE_FA_m.tex)
 (./table/table_Gamma_LE_FA_f.tex) (./table/table_Gamma_LE_FA_m.tex)
-(./table/table_Gamma_HLE_FA_f.tex) (./table/table_Gamma_HLE_FA_m.tex [18])
+(./table/table_Gamma_HLE_FA_f.tex) (./table/table_Gamma_HLE_FA_m.tex [20])
 (./table/table_logit_LE_FA_f.tex) (./table/table_logit_LE_FA_m.tex)
-(./table/table_logit_HLE_FA_f.tex) (./table/table_logit_HLE_FA_m.tex) [19]
-[20]
-第 7 章
-[21
+(./table/table_logit_HLE_FA_f.tex) (./table/table_logit_HLE_FA_m.tex) [21]
+[22]
+第 8 章
+[23
 
 ] (./table/Bayes_fit_LE_d_f.tex) (./table/Bayes_fit_LE_d_m.tex)
 (./table/Bayes_fit_HLE_d_f.tex) (./table/Bayes_fit_HLE_d_m.tex)
 File: fig/Bayes_LE_f_ccdf_F1.pdf Graphic file (type pdf)
 <fig/Bayes_LE_f_ccdf_F1.pdf>
 
-Overfull \hbox (6.79999pt too wide) in paragraph at lines 682--683
+Overfull \hbox (6.79999pt too wide) in paragraph at lines 768--769
  [] 
  []
 
 File: fig/Bayes_LE_f_ccdf_F2.pdf Graphic file (type pdf)
 <fig/Bayes_LE_f_ccdf_F2.pdf>
 
-Overfull \hbox (6.79999pt too wide) in paragraph at lines 690--691
+Overfull \hbox (6.79999pt too wide) in paragraph at lines 776--777
  [] 
  []
 
-[22]
+[24]
 File: fig/Bayes_LE_m_ccdf_F1.pdf Graphic file (type pdf)
 <fig/Bayes_LE_m_ccdf_F1.pdf>
 
-Overfull \hbox (6.79999pt too wide) in paragraph at lines 700--701
+Overfull \hbox (6.79999pt too wide) in paragraph at lines 786--787
  [] 
  []
 
 File: fig/Bayes_LE_m_ccdf_F2.pdf Graphic file (type pdf)
 <fig/Bayes_LE_m_ccdf_F2.pdf>
 
-Overfull \hbox (6.79999pt too wide) in paragraph at lines 708--709
+Overfull \hbox (6.79999pt too wide) in paragraph at lines 794--795
  [] 
  []
 
 File: fig/Bayes_HLE_f_ccdf_F1.pdf Graphic file (type pdf)
 <fig/Bayes_HLE_f_ccdf_F1.pdf>
 
-Overfull \hbox (6.79999pt too wide) in paragraph at lines 719--720
+Overfull \hbox (6.79999pt too wide) in paragraph at lines 805--806
  [] 
  []
 
-[23]
+[25]
 File: fig/Bayes_HLE_f_ccdf_F2.pdf Graphic file (type pdf)
 <fig/Bayes_HLE_f_ccdf_F2.pdf>
 
-Overfull \hbox (6.79999pt too wide) in paragraph at lines 728--729
+Overfull \hbox (6.79999pt too wide) in paragraph at lines 814--815
  [] 
  []
 
 File: fig/Bayes_HLE_m_ccdf_F1.pdf Graphic file (type pdf)
 <fig/Bayes_HLE_m_ccdf_F1.pdf>
 
-Overfull \hbox (6.79999pt too wide) in paragraph at lines 738--739
+Overfull \hbox (6.79999pt too wide) in paragraph at lines 824--825
  [] 
  []
 
 File: fig/Bayes_HLE_m_ccdf_F2.pdf Graphic file (type pdf)
 <fig/Bayes_HLE_m_ccdf_F2.pdf>
 
-Overfull \hbox (6.79999pt too wide) in paragraph at lines 747--748
+Overfull \hbox (6.79999pt too wide) in paragraph at lines 833--834
  [] 
  []
 
-[24] [25]
-第 8 章
-[26
+[26] [27]
+第 9 章
+[28
 
 ]
 No file report_kenko._wakayama_final.bbl.
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 794.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 794.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 880.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 880.
 (./report_kenko._wakayama_final.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 794.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 794.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 880.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 880.
 Package rerunfilecheck Info: File `report_kenko._wakayama_final.out' has not ch
 anged.
-(rerunfilecheck)             Checksum: 47535E89928F61448672AEB57934F2F2;1950.
+(rerunfilecheck)             Checksum: 8933C69F5BE4B921DC829426C8DBFD0B;2146.
 
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
 
-LaTeX Warning: There were undefined references.
-
-
 LaTeX Warning: There were multiply-defined labels.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 794.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 880.
  ) 
 Here is how much of TeX's memory you used:
- 21381 strings out of 481140
- 415446 string characters out of 5917417
- 732711 words of memory out of 5000000
- 36820 multiletter control sequences out of 15000+600000
+ 21403 strings out of 481140
+ 415846 string characters out of 5917417
+ 730960 words of memory out of 5000000
+ 36832 multiletter control sequences out of 15000+600000
  556734 words of font info for 119 fonts, out of 8000000 for 9000
  929 hyphenation exceptions out of 8191
  72i,12n,73p,3763b,1633s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on report_kenko._wakayama_final.dvi (27 pages, 175328 bytes).
+Output written on report_kenko._wakayama_final.dvi (29 pages, 215304 bytes).

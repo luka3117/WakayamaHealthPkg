@@ -212,6 +212,51 @@ mv "temp.tex" "table_mf_d.tex"
 
 rm(d_mf1,d_mf2,d_mf3)
 
+# 2分割＜ーRequest from Prof Takemura
+d_mf
+
+d_mf5 <- d_mf[, 7:70] %>% .[, -c(3, 4)] %>% colnames() %>% enframe() %>% .[1:31, ] %>%
+  left_join(var, by=c("value"="var_name_Eng")) %>% select(id,var_name_Jpn)
+d_mf6 <- d_mf[, 7:70] %>% .[, -c(3, 4)] %>% colnames() %>% enframe() %>% .[32:62, ]  %>%
+  left_join(var, by=c("value"="var_name_Eng")) %>% select(id, var_name_Jpn)
+
+bind_cols(d_mf5[-13,], d_mf6) %>% select(2,4)
+#
+# d_mf3 <- d_mf[, 7:70] %>% .[, -c(3, 4)] %>% colnames() %>% enframe() %>% .[51:62, ] %>%
+#   rbind(
+#     c(NA, NA), c(NA, NA), c(NA, NA), c(NA, NA), c(NA, NA), c(NA, NA),
+#     c(NA, NA), c(NA, NA), c(NA, NA), c(NA, NA), c(NA, NA), c(NA, NA), c(NA, NA)
+#   ) %>%
+#   left_join(var, by=c("value"="var_name_Eng")) %>% select(id, var_name_Jpn)
+
+
+
+file="table_mf_d2.tex"
+path="./final_report-kenko(和歌山県)/table/"
+
+sink(file = paste0(path, file))
+
+
+d_mf5 <- d_mf[, 7:70] %>% .[, -c(3, 4)] %>% colnames() %>% enframe() %>% .[1:31, ] %>%
+  left_join(var, by=c("value"="var_name_Eng")) %>% select(id,var_name_Jpn)
+d_mf6 <- d_mf[, 7:70] %>% .[, -c(3, 4)] %>% colnames() %>% enframe() %>% .[32:62, ]  %>%
+  left_join(var, by=c("value"="var_name_Eng")) %>% select(id, var_name_Jpn)
+
+
+bind_cols(d_mf5[-13,], d_mf6) %>% select(2,4) %>%
+  xtable(label = "table_mf_d2.tex",
+         caption = c("性別変数(62個)"), digits=3) %>%
+  print(size = "\\tiny", caption.placement = "top")
+sink()
+
+system('
+cd "./final_report-kenko(和歌山県)/table/";
+sed -e "s/㎡/m$^2$/g" "table_mf_d2.tex" > "temp1.tex";
+mv temp1.tex temp2.tex;
+python3 ../../exex.py "temp2.tex" "temp3.tex";
+mv "temp3.tex" "table_mf_d2.tex";
+')
+rm(d_mf5,d_mf6)
 
 
 
