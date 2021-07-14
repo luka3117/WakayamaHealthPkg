@@ -9,7 +9,7 @@
 \begin{adjustbox}{width=.7\textwidth}
 \begin{tabular}{rlrrr}
   \hline
- & var\_name\_Jpn & 差 & 下位県 & 上位県 \\
+ & var\_name\_Jpn & 差 & 下位群 & 上位群 \\
   \hline
 1 & 健康寿命\_2016 & -0.85 & 71.65 & 72.50 \\
   2 & 受療率\_入院\_心疾患\_2017 & 9.12 & 62.25 & 53.13 \\

@@ -9,7 +9,7 @@
 \begin{adjustbox}{width=.7\textwidth}
 \begin{tabular}{rlrrr}
   \hline
- & var\_name\_Jpn & 差 & 下位県 & 上位県 \\
+ & var\_name\_Jpn & 差 & 下位群 & 上位群 \\
   \hline
 1 & 平均寿命\_2015 & -0.64 & 86.71 & 87.35 \\
   2 & 受療率\_外来\_脳血管疾患\_2017 & 15.62 & 87.67 & 72.04 \\

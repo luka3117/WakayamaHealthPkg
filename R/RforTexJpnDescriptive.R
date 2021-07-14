@@ -189,31 +189,6 @@ mv -f "temp1.tex" "HLE_Ttest_d_m.tex"
 ')
 
 
-
-
-
-
-options(digits = 5)              # Modify global options
-
-
-ls(pattern = "logit")
-
-
-LE_d_f_final %>% summary()
-
-
-LE_d_f_final %>% dim()
-LE_d_m_final %>% dim()
-
-
-
-HLE_d_f_final$HLE_binary <- ifelse(HLE_d_f_final$HLE_2016>median(HLE_d_f_final$HLE_2016),1,0)
-LE_d_m_final$LE_binary <- ifelse(LE_d_m_final$LE_2015>median(LE_d_m_final$LE_2015),1,0)
-HLE_d_m_final$HLE_binary <- ifelse(HLE_d_m_final$HLE_2016>median(HLE_d_m_final$HLE_2016),1,0)
-
-
-t.test(LE_d_f_final$Treatment_rate_Outpatient_Cerebrovascular_dz_2017~LE_d_f_final$LE_binary) %>% broom::tidy()
-
 # ----------------- corr # -----------------
 #  ____ ___  ____  ____
 # / ___/ _ \|  _ \|  _ \
@@ -409,11 +384,6 @@ sed -e "s/㎡/m$^2$/g" "HLE_d_m_corr.tex" > "temp.tex";
 python3 ../../exex.py "temp.tex" "temp1.tex";
 mv -f "temp1.tex" "HLE_d_m_corr.tex"
 ')
-
-
-
-
-
 
 
 

@@ -24,15 +24,14 @@
 \contentsline {section}{\numberline {5.4}変数選択のアルゴリズム}{17}{section.5.4}%
 \contentsline {chapter}{\numberline {第6章}因子分析による説明変数の次元の縮約}{19}{chapter.6}%
 \contentsline {section}{\numberline {6.1}因子分析とは}{19}{section.6.1}%
-\contentsline {section}{\numberline {6.2}回転とは何か}{21}{section.6.2}%
-\contentsline {section}{\numberline {6.3}抽出された共通因子}{22}{section.6.3}%
-\contentsline {chapter}{\numberline {第7章}一般化線形モデルによる分析}{23}{chapter.7}%
-\contentsline {section}{\numberline {7.1}線形回帰分析：正規分布を仮定するモデル}{24}{section.7.1}%
-\contentsline {section}{\numberline {7.2}一般化線形モデル: ガンマ分布を仮定するモデル}{24}{section.7.2}%
-\contentsline {section}{\numberline {7.3}一般化線形モデル: ベルヌーイ分布を仮定するモデル}{25}{section.7.3}%
-\contentsline {chapter}{\numberline {第8章}ベイズモデルによる推定}{27}{chapter.8}%
-\contentsline {section}{\numberline {8.1}bayes モデルによる係数の事後分布推定}{28}{section.8.1}%
-\contentsline {section}{\numberline {8.2}因子による寿命の生存曲線への影響}{28}{section.8.2}%
-\contentsline {section}{\numberline {8.3}ベイズモデルによる寿命の事後分布の推定}{28}{section.8.3}%
-\contentsline {chapter}{\numberline {第9章}まとめ}{32}{chapter.9}%
+\contentsline {section}{\numberline {6.2}抽出された共通因子}{20}{section.6.2}%
+\contentsline {chapter}{\numberline {第7章}一般化線形モデルによる分析}{21}{chapter.7}%
+\contentsline {section}{\numberline {7.1}線形回帰分析：正規分布を仮定するモデル}{21}{section.7.1}%
+\contentsline {section}{\numberline {7.2}一般化線形モデル: ガンマ分布を仮定するモデル}{22}{section.7.2}%
+\contentsline {section}{\numberline {7.3}一般化線形モデル: ベルヌーイ分布を仮定するモデル}{22}{section.7.3}%
+\contentsline {chapter}{\numberline {第8章}ベイズモデルによる推定}{24}{chapter.8}%
+\contentsline {section}{\numberline {8.1}ベイズモデルによる係数の事後分布推定}{24}{section.8.1}%
+\contentsline {section}{\numberline {8.2}因子による寿命の生存曲線への影響}{25}{section.8.2}%
+\contentsline {section}{\numberline {8.3}ベイズモデルによる寿命の事後分布の推定}{25}{section.8.3}%
+\contentsline {chapter}{\numberline {第9章}まとめ}{28}{chapter.9}%
 \contentsfinish 

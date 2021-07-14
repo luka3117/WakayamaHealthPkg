@@ -24,14 +24,13 @@
 \BOOKMARK [1][-]{section.5.4}{変数選択のアルゴリズム}{chapter.5}% 24
 \BOOKMARK [0][-]{chapter.6}{因子分析による説明変数の次元の縮約}{}% 25
 \BOOKMARK [1][-]{section.6.1}{因子分析とは}{chapter.6}% 26
-\BOOKMARK [1][-]{section.6.2}{回転とは何か}{chapter.6}% 27
-\BOOKMARK [1][-]{section.6.3}{抽出された共通因子}{chapter.6}% 28
-\BOOKMARK [0][-]{chapter.7}{一般化線形モデルによる分析}{}% 29
-\BOOKMARK [1][-]{section.7.1}{線形回帰分析：正規分布を仮定するモデル}{chapter.7}% 30
-\BOOKMARK [1][-]{section.7.2}{一般化線形モデル: ガンマ分布を仮定するモデル}{chapter.7}% 31
-\BOOKMARK [1][-]{section.7.3}{一般化線形モデル: ベルヌーイ分布を仮定するモデル}{chapter.7}% 32
-\BOOKMARK [0][-]{chapter.8}{ベイズモデルによる推定}{}% 33
-\BOOKMARK [1][-]{section.8.1}{bayes モデルによる係数の事後分布推定}{chapter.8}% 34
-\BOOKMARK [1][-]{section.8.2}{因子による寿命の生存曲線への影響}{chapter.8}% 35
-\BOOKMARK [1][-]{section.8.3}{ベイズモデルによる寿命の事後分布の推定}{chapter.8}% 36
-\BOOKMARK [0][-]{chapter.9}{まとめ}{}% 37
+\BOOKMARK [1][-]{section.6.2}{抽出された共通因子}{chapter.6}% 27
+\BOOKMARK [0][-]{chapter.7}{一般化線形モデルによる分析}{}% 28
+\BOOKMARK [1][-]{section.7.1}{線形回帰分析：正規分布を仮定するモデル}{chapter.7}% 29
+\BOOKMARK [1][-]{section.7.2}{一般化線形モデル: ガンマ分布を仮定するモデル}{chapter.7}% 30
+\BOOKMARK [1][-]{section.7.3}{一般化線形モデル: ベルヌーイ分布を仮定するモデル}{chapter.7}% 31
+\BOOKMARK [0][-]{chapter.8}{ベイズモデルによる推定}{}% 32
+\BOOKMARK [1][-]{section.8.1}{ベイズモデルによる係数の事後分布推定}{chapter.8}% 33
+\BOOKMARK [1][-]{section.8.2}{因子による寿命の生存曲線への影響}{chapter.8}% 34
+\BOOKMARK [1][-]{section.8.3}{ベイズモデルによる寿命の事後分布の推定}{chapter.8}% 35
+\BOOKMARK [0][-]{chapter.9}{まとめ}{}% 36
