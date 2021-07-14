@@ -7,23 +7,31 @@
 \BOOKMARK [1][-]{section.1.6}{期待効果}{chapter.1}% 7
 \BOOKMARK [0][-]{chapter.2}{データと変数}{}% 8
 \BOOKMARK [0][-]{chapter.3}{記述統計}{}% 9
-\BOOKMARK [0][-]{chapter.4}{方法}{}% 10
-\BOOKMARK [0][-]{chapter.5}{前処理1:変数選択}{}% 11
-\BOOKMARK [1][-]{section.5.1}{選択された説明変数}{chapter.5}% 12
-\BOOKMARK [1][-]{section.5.2}{線形回帰モデルからの探索}{chapter.5}% 13
-\BOOKMARK [2][-]{subsection.5.2.1}{線形回帰モデルからの探索（男性）}{section.5.2}% 14
-\BOOKMARK [2][-]{subsection.5.2.2}{線形回帰モデルからの探索（女性）}{section.5.2}% 15
-\BOOKMARK [1][-]{section.5.3}{変数選択のアルゴリズム}{chapter.5}% 16
-\BOOKMARK [0][-]{chapter.6}{前処理２：因子分析による次元縮約}{}% 17
-\BOOKMARK [1][-]{section.6.1}{因子分析とは}{chapter.6}% 18
-\BOOKMARK [1][-]{section.6.2}{回転とは何か}{chapter.6}% 19
-\BOOKMARK [1][-]{section.6.3}{抽出された共通因子}{chapter.6}% 20
-\BOOKMARK [0][-]{chapter.7}{一般化線形モデルによる分析}{}% 21
-\BOOKMARK [1][-]{section.7.1}{線形回帰分析：正規分布を仮定するモデル}{chapter.7}% 22
-\BOOKMARK [1][-]{section.7.2}{一般化線形モデル: ガンマ分布を仮定するモデル}{chapter.7}% 23
-\BOOKMARK [1][-]{section.7.3}{一般化線形モデル: ベルヌーイ分布を仮定するモデル}{chapter.7}% 24
-\BOOKMARK [0][-]{chapter.8}{ベイズモデルによる推定}{}% 25
-\BOOKMARK [1][-]{section.8.1}{bayes モデルによる係数の事後分布推定}{chapter.8}% 26
-\BOOKMARK [1][-]{section.8.2}{因子による寿命の生存曲線への影響}{chapter.8}% 27
-\BOOKMARK [1][-]{section.8.3}{ベイズモデルによる寿命の事後分布の推定}{chapter.8}% 28
-\BOOKMARK [0][-]{chapter.9}{まとめ}{}% 29
+\BOOKMARK [1][-]{section.3.1}{相関}{chapter.3}% 10
+\BOOKMARK [2][-]{subsection.3.1.1}{平均寿命との相関\(女性\)}{section.3.1}% 11
+\BOOKMARK [2][-]{subsection.3.1.2}{平均寿命との相関\(男性\)}{section.3.1}% 12
+\BOOKMARK [2][-]{subsection.3.1.3}{健康寿命との相関\(女性\)}{section.3.1}% 13
+\BOOKMARK [2][-]{subsection.3.1.4}{健康寿命との相関\(男性\)}{section.3.1}% 14
+\BOOKMARK [0][-]{chapter.4}{方法}{}% 15
+\BOOKMARK [0][-]{chapter.5}{前処理1:変数選択}{}% 16
+\BOOKMARK [1][-]{section.5.1}{選択された説明変数}{chapter.5}% 17
+\BOOKMARK [1][-]{section.5.2}{寿命の上位県と下位県の比較}{chapter.5}% 18
+\BOOKMARK [2][-]{subsection.5.2.1}{平均寿命}{section.5.2}% 19
+\BOOKMARK [2][-]{subsection.5.2.2}{健康寿命}{section.5.2}% 20
+\BOOKMARK [1][-]{section.5.3}{線形回帰モデルからの探索}{chapter.5}% 21
+\BOOKMARK [2][-]{subsection.5.3.1}{線形回帰モデルからの探索（男性）}{section.5.3}% 22
+\BOOKMARK [2][-]{subsection.5.3.2}{線形回帰モデルからの探索（女性）}{section.5.3}% 23
+\BOOKMARK [1][-]{section.5.4}{変数選択のアルゴリズム}{chapter.5}% 24
+\BOOKMARK [0][-]{chapter.6}{前処理２：因子分析による次元縮約}{}% 25
+\BOOKMARK [1][-]{section.6.1}{因子分析とは}{chapter.6}% 26
+\BOOKMARK [1][-]{section.6.2}{回転とは何か}{chapter.6}% 27
+\BOOKMARK [1][-]{section.6.3}{抽出された共通因子}{chapter.6}% 28
+\BOOKMARK [0][-]{chapter.7}{一般化線形モデルによる分析}{}% 29
+\BOOKMARK [1][-]{section.7.1}{線形回帰分析：正規分布を仮定するモデル}{chapter.7}% 30
+\BOOKMARK [1][-]{section.7.2}{一般化線形モデル: ガンマ分布を仮定するモデル}{chapter.7}% 31
+\BOOKMARK [1][-]{section.7.3}{一般化線形モデル: ベルヌーイ分布を仮定するモデル}{chapter.7}% 32
+\BOOKMARK [0][-]{chapter.8}{ベイズモデルによる推定}{}% 33
+\BOOKMARK [1][-]{section.8.1}{bayes モデルによる係数の事後分布推定}{chapter.8}% 34
+\BOOKMARK [1][-]{section.8.2}{因子による寿命の生存曲線への影響}{chapter.8}% 35
+\BOOKMARK [1][-]{section.8.3}{ベイズモデルによる寿命の事後分布の推定}{chapter.8}% 36
+\BOOKMARK [0][-]{chapter.9}{まとめ}{}% 37

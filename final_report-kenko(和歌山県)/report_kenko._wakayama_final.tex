@@ -12,6 +12,9 @@
 
 
 \usepackage{tikz}
+\usepackage{lipsum}
+\usepackage {bxjalipsum}
+
 
 %
 %
@@ -115,22 +118,52 @@
 \input{sub/chap1.tex}
 
 
+
 % # ========================
 \chapter{記述統計}\label{chapter:Descriptive}
-% # ========================
 
-\input{table/LE_Ttest_d_f.tex}
+\section{相関}
 
-sdfjkldsjlf
-sdfjdskljfds
+相関係数は、2つのの変数の間の関連の
+強さを測る指標である。
+目的変数との個々の説明変数の相関係数を探索することが
+最初の分析として一般に行われる。
+相関係数の符号によって正の相関が、負の相関があると解釈し、
+その強さは絶対値が1に近いほど強い相関があること意味する。
+ただし、どれくらいの強さであれば強い相関と言えるかについては、
+明確な基準が示されておらず、因果関係まで表現しないこのに注意が必要である。
+また、二つの変数が強い相関を示したときでも、
+観測できない共通因子がこの二つの変数に同時に影響する場合は、
+実際には二つの変数は無相関である可能性がある(擬似相関)。
+
+以下に
+寿命変数と
+説明変数の相関を示すが、
+相関係数の解釈に注意が必要である。
+
+\subsection{平均寿命との相関(女性)}
+
+\input{table/LE_d_common_f_corr.tex}
+\input{table/LE_d_f_corr.tex}
+
+\subsection{平均寿命との相関(男性)}
+
+\input{table/LE_d_common_m_corr.tex}
+\input{table/LE_d_m_corr.tex}
+
+\subsection{健康寿命との相関(女性)}
+
+\input{table/HLE_d_common_f_corr.tex}
+\input{table/HLE_d_f_corr.tex}
+
+\subsection{健康寿命との相関(男性)}
 
 
-\input{table/LE_Ttest_d_m.tex}
+\input{table/HLE_d_common_m_corr.tex}
+\input{table/HLE_d_m_corr.tex}
 
 
 
-sdjkfljkdslfj
-sdkjfljdsklfj
 
 
 
@@ -212,8 +245,49 @@ AIC基準のような定量的な変数選択を使う利点の一つは、目�
 「受療率\_入院\_心疾患\_2017」,
 「悪性新生物(大腸)\_年齢調整死亡率2015」が
 平均寿命と健康寿命のいずれかと関連があると結果である。
-これらの変数が正負の方向については、次節で説明する。
+これらの変数が正負の方向については、後術する。
 
+
+
+
+
+% # ========================
+\section{寿命の上位県と下位県の比較}
+この節では
+変数選択された変数を用いて、
+平均寿命と健康寿命のそれぞれの中央値で寿命の長い県と短い県て、
+グループごとに説明変数の平均値を示す。
+
+
+\subsection{平均寿命}
+\lipsum[2]
+
+
+
+
+
+
+%\jalipsum[2]{preamble}
+%\jalipsum[3]{preamble}
+%\jalipsum[4]{preamble}
+%\jalipsum[5]{preamble}
+%
+%
+%\jalipsum[1]{iroha}　　　range=1
+
+
+
+
+\input{table/LE_Ttest_d_f.tex}
+\input{table/LE_Ttest_d_m.tex}
+
+\subsection{健康寿命}
+
+\lipsum[2]
+
+
+\input{table/HLE_Ttest_d_f.tex}
+\input{table/HLE_Ttest_d_m.tex}
 
 
 
@@ -281,29 +355,25 @@ AIC基準のような定量的な変数選択を使う利点の一つは、目�
 高い県ほど
 平均寿命が高い。
 
-女性の線形回帰 (健康寿命)
-estimate statistic p.value
- var name Jpn
--0.00 -0.16 -0.25 -0.25 -0.09 -0.03
-9 悪性新生物 (大腸) 年齢調整死亡率 2015
-12 居住 一戸建住宅比率
 \input{table/table_LM_LE_f.tex}%<-送付用
 
 
-健康寿命も同様に解釈すると
-「人口・世帯 高齢単身者世帯の割合」が低い県ほど、、
-「自己啓発・訓練-英語以外の外国語」が高い県ほど
-健康寿命が高い。
+「人口・世帯\_老年人口割合2020」、
+「人口・世帯\_生産年齢人口割合2020」、
+「自然環境\_年平均気温」、
+「高血圧疾患\_外来2014年」、
+「悪性新生物(大腸)\_年齢調」整死亡率2015」が高いほど、
+「労働\_完全失業率」、
+「75歳未満調整死亡率\_悪政新生物\_2019」が低い
+ほど健康寿命が長い。
 
-\input{../tikz-example.tex}
 
-「人口・世帯 老年人口割合 2020」
-「人口・世帯 生産年齢人口割合 2020」
-「労働 完全失業率」が低い県ほど、
-「ボランティア総行動率-高齢者を対象とした活動」
-高い県ほど
-平均寿命が高い。
+
+
 \input{table/table_LM_HLE_f.tex}%<-送付用
+
+
+
 
 
 
